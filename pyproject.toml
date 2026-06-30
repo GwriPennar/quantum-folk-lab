@@ -1,0 +1,41 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "quantum-folk-lab"
+version = "0.1.0"
+description = "Learning and research sandbox for QUBO/QAOA experiments on synthetic symbolic music sequences."
+readme = "README.md"
+requires-python = ">=3.11"
+license = {text = "MIT"}
+authors = [{name = "Gwri Pennar"}]
+dependencies = []
+keywords = ["quantum-computing", "qaoa", "qubo", "symbolic-music", "python"]
+
+[project.optional-dependencies]
+quantum = ["qiskit>=1.0", "qiskit-aer>=0.14"]
+ibm = ["qiskit-ibm-runtime>=0.23"]
+dev = ["pytest>=8", "ruff>=0.5", "mypy>=1.10"]
+
+[project.scripts]
+qfl = "quantum_folk_lab.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B", "UP", "C4"]
+
+[tool.mypy]
+python_version = "3.11"
+strict = true
+files = ["src", "tests"]

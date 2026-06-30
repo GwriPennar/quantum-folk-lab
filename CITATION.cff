@@ -1,0 +1,9 @@
+cff-version: 1.2.0
+title: Quantum Folk Lab
+message: If you use this learning repository, please cite it.
+type: software
+authors:
+  - family-names: Pennar
+    given-names: Gwri
+license: MIT
+repository-code: https://github.com/GwriPennar/quantum-folk-lab

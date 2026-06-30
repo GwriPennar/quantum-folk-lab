@@ -1,0 +1,7 @@
+name: Experiment
+description: Propose a bounded experiment.
+body:
+  - type: textarea
+    id: objective
+    attributes:
+      label: Objective
