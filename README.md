@@ -10,13 +10,15 @@ Given a small set of synthetic symbolic melodies and interpretable pairwise simi
 
 ```mermaid
 flowchart LR
-  A["Synthetic melody families"] --> B["Interval, contour, rhythm similarity"]
-  B --> C["Sparse weighted graph"]
-  C --> D["Two-family QUBO"]
-  D --> E["Exact classical solver"]
-  D --> F["Local simulator QAOA"]
-  E --> G["Evaluation"]
-  F --> G
+  A["Quantum basics"] --> B["Reference optimisation problems"]
+  B --> C["Synthetic melody families"]
+  C --> D["Interval, contour, rhythm similarity"]
+  D --> E["Sparse weighted graph"]
+  E --> F["Two-family QUBO"]
+  F --> G["Exact classical solver"]
+  F --> H["Future local QAOA"]
+  G --> I["Evaluation"]
+  H --> I
 ```
 
 ## Quick Start
@@ -41,17 +43,32 @@ qfl doctor
 qfl compare --seed 42
 ```
 
-Optional quantum dependencies can be installed with `python -m pip install -e ".[quantum]"`. IBM Quantum hardware support is deliberately optional and disabled by default.
+## EXP-001: Local Qiskit Fundamentals
+
+EXP-001 is complete and uses real Qiskit circuits with local Aer simulation only. It requires optional quantum dependencies but no IBM account, no token, and no QPU access.
+
+```powershell
+py -3.13 -m venv .venv-qiskit
+.\.venv-qiskit\Scripts\Activate.ps1
+python -m pip install --upgrade pip
+python -m pip install -e ".[dev,quantum]"
+qfl basics-list
+qfl basics-run --experiment zero --shots 1024
+qfl basics-run --experiment hadamard --shots 4096
+qfl basics-run --experiment bell --shots 4096
+```
+
+The fundamentals commands fail clearly when Qiskit is not installed; they do not substitute classical pseudo-results.
 
 ## Experiments
 
 | Experiment | Status | Purpose |
 | --- | --- | --- |
-| EXP-001 quantum basics | planned | one-qubit and Bell-state learning circuits |
+| EXP-001 quantum basics | complete | Qiskit circuits, measurement, gates, superposition, Bell-state simulation |
 | EXP-002 Max-Cut reference | planned | platform validation against brute force |
 | EXP-003 synthetic tune families | complete | deterministic labelled benchmark |
 | EXP-004 QUBO family partition | complete | transparent two-family binary model |
-| EXP-005 QAOA simulator | complete | local simulator only, compared with exact optimum |
+| EXP-005 QAOA simulator | planned | future genuine local QAOA, separated from the current classical fallback |
 | EXP-006 noise sensitivity | planned | local noise-model comparison |
 | EXP-007 IBM hardware | optional | dry-run first, explicit QPU confirmation required |
 
@@ -60,10 +77,12 @@ Optional quantum dependencies can be installed with `python -m pip install -e ".
 ```bash
 qfl generate-synthetic --seed 42
 qfl solve-exact --seed 42
-qfl solve-qaoa --seed 42 --depth 1
+qfl solve-qaoa --seed 42
 qfl compare --seed 42
 python scripts/check_public_safety.py
 ```
+
+The existing `solve-qaoa` path is a deterministic classical fallback over QUBO energies and should not be interpreted as genuine Qiskit QAOA. EXP-005A is planned to separate and replace that user-facing label.
 
 ## Responsible Scope
 
@@ -71,7 +90,7 @@ Music is used here as an interpretable sequence testbed. The repository does not
 
 ## Limitations
 
-The initial QAOA runner is a tiny local simulator path for bounded toy problems. If Qiskit is not installed, the package still demonstrates the optimisation workflow using the same QUBO and deterministic pseudo-sampling. Real hardware execution is not implemented as a default path and no QPU jobs are submitted.
+EXP-001 uses ideal local simulation. Ideal simulator results do not represent real hardware noise, queueing, topology, calibration drift, or readout error. IBM Quantum hardware support is deliberately optional and disabled by default.
 
 ## Licence
 

@@ -1,0 +1,37 @@
+{
+  "experiment_name": "bell",
+  "description": "Create a Bell state with H on qubit 0 and CX from qubit 0 to qubit 1.",
+  "qubit_count": 2,
+  "classical_bit_count": 2,
+  "shots": 4096,
+  "seed_simulator": 42,
+  "seed_transpiler": 42,
+  "circuit_depth": 3,
+  "circuit_width": 4,
+  "operation_counts": {
+    "measure": 2,
+    "h": 1,
+    "cx": 1
+  },
+  "transpiled_depth": 3,
+  "transpiled_operation_counts": {
+    "measure": 2,
+    "h": 1,
+    "cx": 1
+  },
+  "measurement_counts": {
+    "00": 2009,
+    "11": 2087
+  },
+  "empirical_probabilities": {
+    "00": 0.490478515625,
+    "11": 0.509521484375
+  },
+  "expected_behaviour": "Only 00 and 11 should appear, approximately balanced, in an ideal simulator.",
+  "pass_or_caution": "pass",
+  "limitations": "Ideal entanglement correlations are shown without decoherence or readout error.",
+  "python_version": "3.13.5",
+  "qiskit_version": "2.4.2",
+  "aer_version": "0.17.2",
+  "elapsed_seconds": 0.120071
+}

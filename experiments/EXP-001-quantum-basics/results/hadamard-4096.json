@@ -1,0 +1,35 @@
+{
+  "experiment_name": "hadamard",
+  "description": "Apply H to |0>, creating an equal superposition, then measure.",
+  "qubit_count": 1,
+  "classical_bit_count": 1,
+  "shots": 4096,
+  "seed_simulator": 42,
+  "seed_transpiler": 42,
+  "circuit_depth": 2,
+  "circuit_width": 2,
+  "operation_counts": {
+    "h": 1,
+    "measure": 1
+  },
+  "transpiled_depth": 2,
+  "transpiled_operation_counts": {
+    "h": 1,
+    "measure": 1
+  },
+  "measurement_counts": {
+    "0": 2022,
+    "1": 2074
+  },
+  "empirical_probabilities": {
+    "0": 0.49365234375,
+    "1": 0.50634765625
+  },
+  "expected_behaviour": "Finite shots should show both 0 and 1 with probability near 0.5.",
+  "pass_or_caution": "pass",
+  "limitations": "Sampling varies with finite shots even in an ideal simulator.",
+  "python_version": "3.13.5",
+  "qiskit_version": "2.4.2",
+  "aer_version": "0.17.2",
+  "elapsed_seconds": 0.105737
+}

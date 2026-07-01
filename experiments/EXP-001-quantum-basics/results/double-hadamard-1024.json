@@ -1,0 +1,32 @@
+{
+  "experiment_name": "double-hadamard",
+  "description": "Apply H twice. Since H is its own inverse, the state returns to |0>.",
+  "qubit_count": 1,
+  "classical_bit_count": 1,
+  "shots": 1024,
+  "seed_simulator": 42,
+  "seed_transpiler": 42,
+  "circuit_depth": 3,
+  "circuit_width": 2,
+  "operation_counts": {
+    "h": 2,
+    "measure": 1
+  },
+  "transpiled_depth": 1,
+  "transpiled_operation_counts": {
+    "measure": 1
+  },
+  "measurement_counts": {
+    "0": 1024
+  },
+  "empirical_probabilities": {
+    "0": 1.0
+  },
+  "expected_behaviour": "An ideal simulator should return only 0.",
+  "pass_or_caution": "pass",
+  "limitations": "This is exact in the ideal circuit model, before hardware noise is considered.",
+  "python_version": "3.13.5",
+  "qiskit_version": "2.4.2",
+  "aer_version": "0.17.2",
+  "elapsed_seconds": 0.100545
+}

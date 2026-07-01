@@ -20,6 +20,7 @@ PATTERNS = {
 SKIP_DIRS = {
     ".git",
     ".venv",
+    ".venv-qiskit",
     "__pycache__",
     ".pytest_cache",
     ".mypy_cache",

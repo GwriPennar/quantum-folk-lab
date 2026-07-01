@@ -1,0 +1,33 @@
+{
+  "experiment_name": "x",
+  "description": "Apply an X gate to |0>, producing |1>, then measure.",
+  "qubit_count": 1,
+  "classical_bit_count": 1,
+  "shots": 1024,
+  "seed_simulator": 42,
+  "seed_transpiler": 42,
+  "circuit_depth": 2,
+  "circuit_width": 2,
+  "operation_counts": {
+    "x": 1,
+    "measure": 1
+  },
+  "transpiled_depth": 2,
+  "transpiled_operation_counts": {
+    "x": 1,
+    "measure": 1
+  },
+  "measurement_counts": {
+    "1": 1024
+  },
+  "empirical_probabilities": {
+    "1": 1.0
+  },
+  "expected_behaviour": "An ideal simulator should return only 1.",
+  "pass_or_caution": "pass",
+  "limitations": "The X gate is noise-free here; real hardware can flip or read out incorrectly.",
+  "python_version": "3.13.5",
+  "qiskit_version": "2.4.2",
+  "aer_version": "0.17.2",
+  "elapsed_seconds": 0.098275
+}
