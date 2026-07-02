@@ -1,0 +1,221 @@
+{
+  "experiment_id": "EXP-002-maxcut-reference",
+  "graph_name": "cycle4",
+  "exact": {
+    "graph_name": "cycle4",
+    "node_count": 4,
+    "edge_count": 4,
+    "total_edge_weight": 4.0,
+    "graph_edges": [
+      [
+        0,
+        1,
+        1.0
+      ],
+      [
+        1,
+        2,
+        1.0
+      ],
+      [
+        2,
+        3,
+        1.0
+      ],
+      [
+        3,
+        0,
+        1.0
+      ]
+    ],
+    "maximum_cut": 4.0,
+    "optimal_assignments": [
+      "0101",
+      "1010"
+    ],
+    "assignments_enumerated": 16,
+    "canonical_bitstring": "0101",
+    "complementary_bitstring": "1010",
+    "elapsed_seconds": 7e-05
+  },
+  "qaoa": {
+    "experiment_id": "EXP-002-maxcut-reference",
+    "graph_name": "cycle4",
+    "node_count": 4,
+    "edge_count": 4,
+    "total_edge_weight": 4.0,
+    "graph_edges": [
+      [
+        0,
+        1,
+        1.0
+      ],
+      [
+        1,
+        2,
+        1.0
+      ],
+      [
+        2,
+        3,
+        1.0
+      ],
+      [
+        3,
+        0,
+        1.0
+      ]
+    ],
+    "execution_path": "local-qiskit-qaoa-statevector-estimator-and-sampler",
+    "genuine_qiskit_circuit": true,
+    "simulator_type": "StatevectorEstimator optimisation; StatevectorSampler finite-shot sampling",
+    "python_version": "3.13.5",
+    "qiskit_version": "2.4.2",
+    "aer_version": "0.17.2",
+    "scipy_version": "1.18.0",
+    "seed": 42,
+    "shots": 4096,
+    "qaoa_depth": 1,
+    "parameter_count": 2,
+    "optimiser_name": "COBYLA",
+    "optimiser_max_iterations": 80,
+    "optimiser_function_evaluations": 152,
+    "initial_points": [
+      [
+        0.2,
+        0.2
+      ],
+      [
+        0.5,
+        0.5
+      ],
+      [
+        0.8,
+        0.3
+      ],
+      [
+        1.0,
+        0.7
+      ]
+    ],
+    "selected_initial_point": [
+      0.5,
+      0.5
+    ],
+    "optimisation_attempts": [
+      {
+        "initial_point": [
+          0.2,
+          0.2
+        ],
+        "optimal_parameters": [
+          1.1781569497,
+          0.7853352799
+        ],
+        "expected_energy": -2.9999999636,
+        "expected_cut_value": 2.9999999636,
+        "function_evaluations": 42,
+        "success": true,
+        "message": "Return from COBYLA because the trust region radius reaches its lower bound."
+      },
+      {
+        "initial_point": [
+          0.5,
+          0.5
+        ],
+        "optimal_parameters": [
+          1.1780719862,
+          0.7853768025
+        ],
+        "expected_energy": -2.999999994,
+        "expected_cut_value": 2.999999994,
+        "function_evaluations": 40,
+        "success": true,
+        "message": "Return from COBYLA because the trust region radius reaches its lower bound."
+      },
+      {
+        "initial_point": [
+          0.8,
+          0.3
+        ],
+        "optimal_parameters": [
+          1.1781627407,
+          0.7853403349
+        ],
+        "expected_energy": -2.999999959,
+        "expected_cut_value": 2.999999959,
+        "function_evaluations": 31,
+        "success": true,
+        "message": "Return from COBYLA because the trust region radius reaches its lower bound."
+      },
+      {
+        "initial_point": [
+          1.0,
+          0.7
+        ],
+        "optimal_parameters": [
+          1.178142811,
+          0.7854669713
+        ],
+        "expected_energy": -2.9999999739,
+        "expected_cut_value": 2.9999999739,
+        "function_evaluations": 39,
+        "success": true,
+        "message": "Return from COBYLA because the trust region radius reaches its lower bound."
+      }
+    ],
+    "optimal_parameters": [
+      1.1780719862,
+      0.7853768025
+    ],
+    "exact_max_cut": 4.0,
+    "exact_optimal_bitstrings": [
+      "0101",
+      "1010"
+    ],
+    "exact_canonical_bitstring": "0101",
+    "expected_cut_value": 2.999999994,
+    "expected_approximation_ratio": 0.7499999985,
+    "sampled_best_bitstring": "0101",
+    "sampled_best_cut": 4.0,
+    "sampled_best_approximation_ratio": 1.0,
+    "optimal_sample_count": 2148,
+    "optimal_sample_probability": 0.5244140625,
+    "measurement_counts": {
+      "0000": 53,
+      "0001": 63,
+      "0010": 72,
+      "0011": 324,
+      "0100": 69,
+      "0101": 1066,
+      "0110": 343,
+      "0111": 58,
+      "1000": 60,
+      "1001": 317,
+      "1010": 1082,
+      "1011": 57,
+      "1100": 332,
+      "1101": 60,
+      "1110": 63,
+      "1111": 77
+    },
+    "circuit_width": 8,
+    "circuit_depth": 15,
+    "transpiled_depth": 15,
+    "operation_counts": {
+      "u": 12,
+      "cx": 8,
+      "measure": 4,
+      "barrier": 1
+    },
+    "two_qubit_gate_count": 8,
+    "elapsed_seconds": 2.450983,
+    "pass_or_caution": "pass",
+    "limitations": "Four-node ideal statevector simulation only; brute force is superior for this tiny instance and no quantum advantage or hardware behaviour is claimed."
+  },
+  "interpretation": {
+    "exact_solver_is_ground_truth": true,
+    "expected_and_sampled_metrics_are_distinct": true,
+    "no_quantum_advantage_claimed": true
+  }
+}
