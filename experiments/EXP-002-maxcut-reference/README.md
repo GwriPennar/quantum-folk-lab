@@ -1,17 +1,63 @@
-# EXP-002-maxcut-reference
+# EXP-002 Max-Cut Reference
 
-Status: planned
+Status: complete
 
-Objective: explore one bounded learning step in the synthetic music optimisation pipeline.
+EXP-002 validates the quantum optimisation pipeline on a standard four-node Max-Cut problem before applying QAOA to the repository's more domain-specific tune-family QUBO work.
 
-Inputs: deterministic synthetic sequences only.
+## Graph
 
-Method: compare transparent classical calculations with any quantum-inspired or QAOA simulator output.
+Primary registered graph: `cycle4`
 
-Classical baseline: exhaustive search where the instance is small enough.
+- Nodes: `0, 1, 2, 3`
+- Edges: `(0, 1)`, `(1, 2)`, `(2, 3)`, `(3, 0)`
+- Edge weights: `1.0`
+- Fixed node order: `[0, 1, 2, 3]`
 
-Metrics: objective value, family recovery, repeatability, and limitations.
+The exact maximum cut is `4.0`. The complementary optimal bitstrings are `0101` and `1010` under graph-node order.
 
-Command: `qfl compare --seed 42`
+## Conventions
 
-Responsible interpretation: negative and inconclusive results are valid; no quantum advantage is assumed.
+Assignments are displayed left-to-right in graph-node order. Qiskit qubit `k` maps to graph node `nodes[k]`. Qiskit count keys are decoded through one conversion layer because measured classical strings are displayed most-significant classical bit first.
+
+For each edge:
+
+```text
+different(i, j) = x_i + x_j - 2 x_i x_j
+```
+
+The direct cut objective and QUBO value are maximised. The Pauli cut operator is:
+
+```text
+H_cut = sum w_ij / 2 * (I - Z_i Z_j)
+```
+
+The QAOA optimiser minimises `-H_cut`; the expected cut is recovered as `-expected_energy`.
+
+## Commands
+
+```powershell
+qfl maxcut-list
+qfl maxcut-exact --graph cycle4
+qfl maxcut-qaoa --graph cycle4 --depth 1 --shots 4096
+qfl maxcut-compare --graph cycle4 --depth 1 --shots 4096
+```
+
+The exact command is available without Qiskit. The QAOA commands require optional local quantum dependencies:
+
+```powershell
+python -m pip install -e ".[dev,quantum]"
+```
+
+No IBM account, token, Runtime service, cloud backend, or QPU is used.
+
+## Results
+
+See `RESULT.md` and `results/`.
+
+The registered p=1 run uses `QAOAAnsatz`, `SparsePauliOp`, `StatevectorEstimator` for exact statevector expectation during optimisation, `scipy.optimize.minimize(method="COBYLA")`, and `StatevectorSampler` for finite-shot sampling.
+
+The sampled best bitstring is optimal, but the expected approximation ratio is about `0.75`, not `1.0`. These metrics are intentionally kept separate. Reported Qiskit circuit width is total circuit width after measurements, so the registered width `8` means four logical problem qubits plus four classical bits, not eight problem qubits.
+
+## Interpretation
+
+Brute force is superior for this tiny instance. The quantum circuit is educational and validates the local Qiskit plumbing, bit ordering, sign conventions, and reporting schema. No quantum advantage is claimed, and ideal simulation does not represent hardware noise.

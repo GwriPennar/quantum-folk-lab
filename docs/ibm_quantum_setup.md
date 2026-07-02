@@ -1,8 +1,8 @@
 # IBM Quantum Setup
 
-EXP-001 does not use IBM Quantum services. It runs real Qiskit circuits on a local Aer simulator and requires no IBM account, no token, no Runtime service, no secrets, and no QPU job.
+EXP-001 and EXP-002 do not use IBM Quantum services. They run real Qiskit circuits on local simulators and requires no IBM account, no token, no Runtime service, no secrets, and no QPU job.
 
-For EXP-001 install only local simulator dependencies:
+For EXP-001 and EXP-002 install only local simulator dependencies:
 
 ```bash
 python -m pip install -e ".[dev,quantum]"

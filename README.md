@@ -16,7 +16,7 @@ flowchart LR
   D --> E["Sparse weighted graph"]
   E --> F["Two-family QUBO"]
   F --> G["Exact classical solver"]
-  F --> H["Future local QAOA"]
+  F --> H["Verified local QAOA"]
   G --> I["Evaluation"]
   H --> I
 ```
@@ -60,12 +60,26 @@ qfl basics-run --experiment bell --shots 4096
 
 The fundamentals commands fail clearly when Qiskit is not installed; they do not substitute classical pseudo-results.
 
+
+## EXP-002: Max-Cut Reference
+
+EXP-002 is complete and uses the four-node `cycle4` Max-Cut benchmark as a transparent reference problem. It compares exact enumeration, verified QUBO/Ising algebra, statevector expectation during QAOA parameter optimisation, and finite-shot sampling from a genuine local Qiskit circuit.
+
+```powershell
+qfl maxcut-list
+qfl maxcut-exact --graph cycle4
+qfl maxcut-qaoa --graph cycle4 --depth 1 --shots 4096
+qfl maxcut-compare --graph cycle4 --depth 1 --shots 4096
+```
+
+The exact maximum cut is `4.0` with complementary optima `0101` and `1010`. The registered p=1 QAOA run samples an optimal bitstring, but its expected approximation ratio is about `0.75`; this distinction is deliberate. Brute force is superior for this tiny instance, and no quantum advantage is claimed.
+
 ## Experiments
 
 | Experiment | Status | Purpose |
 | --- | --- | --- |
 | EXP-001 quantum basics | complete | Qiskit circuits, measurement, gates, superposition, Bell-state simulation |
-| EXP-002 Max-Cut reference | planned | platform validation against brute force |
+| EXP-002 Max-Cut reference | complete | exact Max-Cut, verified QUBO/Ising mapping, and genuine local Qiskit QAOA |
 | EXP-003 synthetic tune families | complete | deterministic labelled benchmark |
 | EXP-004 QUBO family partition | complete | transparent two-family binary model |
 | EXP-005 QAOA simulator | planned | future genuine local QAOA, separated from the current classical fallback |
