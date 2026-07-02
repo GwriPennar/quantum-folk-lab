@@ -45,7 +45,9 @@ The QAOA cost operator minimises `-H_cut`, where `H_cut = sum w_ij / 2 * (I - Z_
 - Sampled-best approximation ratio: 1.0
 - Optimal sample count across `0101` and `1010`: 2148
 - Optimal sample probability: 0.5244140625
-- Circuit width: 8
+- Logical problem qubits: 4
+- Classical bits after measurement: 4
+- Circuit width: 8, using Qiskit total width: logical qubits plus classical bits after measurement
 - Circuit depth: 15
 - Transpiled depth: 15
 - Two-qubit gate count: 8

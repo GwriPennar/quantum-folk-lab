@@ -33,7 +33,7 @@
   "assignments_enumerated": 16,
   "canonical_bitstring": "0101",
   "complementary_bitstring": "1010",
-  "elapsed_seconds": 5.3e-05,
+  "elapsed_seconds": 4.9e-05,
   "qubo_ising_verified_assignments": 16,
   "convention": "direct cut and QUBO are maximized; QAOA minimises -H_cut"
 }

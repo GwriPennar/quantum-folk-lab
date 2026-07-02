@@ -64,6 +64,11 @@ def test_qaoa_ansatz_and_measured_circuit() -> None:
 def test_registered_cycle4_qaoa_run_samples_optimum() -> None:
     result = run_maxcut_qaoa(CYCLE4, depth=1, shots=512, seed=42, optimiser_max_iterations=30)
     assert result.genuine_qiskit_circuit is True
+    assert result.logical_problem_qubits == 4
+    assert result.classical_bit_count == 4
+    assert result.circuit_width == 8
+    assert "logical qubits plus classical bits" in result.circuit_width_definition
+    assert result.run_identifier == "cycle4-p1-shots512-seed42"
     assert result.exact_max_cut == 4.0
     assert result.exact_optimal_bitstrings == ["0101", "1010"]
     assert result.sampled_best_bitstring in {"0101", "1010"}

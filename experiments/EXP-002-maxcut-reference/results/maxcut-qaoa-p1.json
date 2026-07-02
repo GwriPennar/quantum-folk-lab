@@ -26,6 +26,10 @@
       1.0
     ]
   ],
+  "run_identifier": "cycle4-p1-shots4096-seed42",
+  "result_schema_version": "exp002.maxcut_qaoa.v1",
+  "logical_problem_qubits": 4,
+  "classical_bit_count": 4,
   "execution_path": "local-qiskit-qaoa-statevector-estimator-and-sampler",
   "genuine_qiskit_circuit": true,
   "simulator_type": "StatevectorEstimator optimisation; StatevectorSampler finite-shot sampling",
@@ -160,6 +164,7 @@
     "1111": 77
   },
   "circuit_width": 8,
+  "circuit_width_definition": "Qiskit total width: logical qubits plus classical bits after measurement",
   "circuit_depth": 15,
   "transpiled_depth": 15,
   "operation_counts": {
@@ -169,7 +174,7 @@
     "barrier": 1
   },
   "two_qubit_gate_count": 8,
-  "elapsed_seconds": 2.509323,
+  "elapsed_seconds": 2.198438,
   "pass_or_caution": "pass",
   "limitations": "Four-node ideal statevector simulation only; brute force is superior for this tiny instance and no quantum advantage or hardware behaviour is claimed."
 }

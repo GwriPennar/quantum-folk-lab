@@ -51,6 +51,10 @@ class MaxCutQAOAResult:
     edge_count: int
     total_edge_weight: float
     graph_edges: list[list[object]]
+    run_identifier: str
+    result_schema_version: str
+    logical_problem_qubits: int
+    classical_bit_count: int
     execution_path: str
     genuine_qiskit_circuit: bool
     simulator_type: str
@@ -81,6 +85,7 @@ class MaxCutQAOAResult:
     optimal_sample_probability: float
     measurement_counts: dict[str, int]
     circuit_width: int
+    circuit_width_definition: str
     circuit_depth: int
     transpiled_depth: int
     operation_counts: dict[str, int]
@@ -227,6 +232,10 @@ def run_maxcut_qaoa(
         edge_count=graph.edge_count,
         total_edge_weight=graph.total_edge_weight,
         graph_edges=[[edge.u, edge.v, edge.weight] for edge in graph.edges],
+        run_identifier=f"{graph.name}-p{depth}-shots{shots}-seed{seed}",
+        result_schema_version="exp002.maxcut_qaoa.v1",
+        logical_problem_qubits=graph.node_count,
+        classical_bit_count=int(measured.num_clbits),
         execution_path="local-qiskit-qaoa-statevector-estimator-and-sampler",
         genuine_qiskit_circuit=True,
         simulator_type="StatevectorEstimator optimisation; StatevectorSampler finite-shot sampling",
@@ -257,6 +266,9 @@ def run_maxcut_qaoa(
         optimal_sample_probability=round(optimal_sample_count / shots, 10),
         measurement_counts=counts,
         circuit_width=int(measured.width()),
+        circuit_width_definition=(
+            "Qiskit total width: logical qubits plus classical bits after measurement"
+        ),
         circuit_depth=int(measured.depth() or 0),
         transpiled_depth=int(transpiled.depth() or 0),
         operation_counts=operation_counts(transpiled),

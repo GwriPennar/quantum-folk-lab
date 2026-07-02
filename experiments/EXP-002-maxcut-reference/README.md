@@ -56,7 +56,7 @@ See `RESULT.md` and `results/`.
 
 The registered p=1 run uses `QAOAAnsatz`, `SparsePauliOp`, `StatevectorEstimator` for exact statevector expectation during optimisation, `scipy.optimize.minimize(method="COBYLA")`, and `StatevectorSampler` for finite-shot sampling.
 
-The sampled best bitstring is optimal, but the expected approximation ratio is about `0.75`, not `1.0`. These metrics are intentionally kept separate.
+The sampled best bitstring is optimal, but the expected approximation ratio is about `0.75`, not `1.0`. These metrics are intentionally kept separate. Reported Qiskit circuit width is total circuit width after measurements, so the registered width `8` means four logical problem qubits plus four classical bits, not eight problem qubits.
 
 ## Interpretation
 
