@@ -2,7 +2,9 @@
 
 ## Recommendation
 
-APPROVE WITH AMENDMENTS
+APPROVE PLAN AS AMENDED
+
+Historical note: the original second-review recommendation was `APPROVE WITH AMENDMENTS`. The section "Required Amendments Before Implementation" below preserves the audit trail for that earlier recommendation. The amendment closure verification later in this report records why the current recommendation is now `APPROVE PLAN AS AMENDED`.
 
 The revised EXP-005A plan is a substantial improvement over the first reviewed version. It now defines the tune-family mathematical objective before QAOA, registers the synthetic fixture, fixes the bit-ordering ambiguity, separates the classical fallback from genuine local Qiskit QAOA, and adds the validation gates needed before any quantum run.
 
@@ -127,8 +129,46 @@ python scripts/check_public_safety.py
 
 The known local optional-Qiskit typing issue is outside this documentation-only review and should not be fixed in this review PR.
 
+## Amendment Closure Verification
+
+Newly reviewed PR #4 head: `25451581d3534d036b508b57d7f97b5a235eebb1`
+
+Previous reviewed PR #4 head: `32c6badcb883fd999a92c33f8862807bcf811a41`
+
+The old-to-new PR #4 diff changes only `docs/plans/EXP-005A-current-qiskit-local-plan.md`. The amendment commit is limited to the four authorised documentation amendments plus review/approval-state wording. No fixture, tune ordering, similarity weights, registered edge values, QUBO coefficients, `tau=0.25`, `lambda=0.1`, Ising convention, complement canonicalisation, QAOA depth, safety boundaries, or implementation phases changed.
+
+| Amendment | Status | Evidence in amended plan |
+| --- | --- | --- |
+| Random-success probabilities | CLOSED | The plan records `2 / 256 = 0.00781250` and `2 / 70 = 0.02857143`, states that the numerator corresponds to `00001111` and `11110000`, distinguishes random-success probability from expected random energy, and requires future results and threshold justification to report both. |
+| Threshold-governance lock | CLOSED | The threshold must be derived only after direct/QUBO and QUBO/Ising verification, justified against both random baselines and shallow-QAOA expectations, written into committed configuration, task documentation, or a manifest, committed before any optimiser, estimator, or sampler output is generated or inspected, and changed post hoc only through documented amended/sensitivity review with Gwri approval. |
+| Plan provenance | CLOSED | The result schema now requires `governing_plan_path`, `governing_plan_commit`, `governing_plan_version`, `governing_review_path`, and `governing_review_commit`, and distinguishes those approved-design fields from implementation/run `source_commit`. It does not hard-code the pre-amendment commit as the eventual approved governing commit. |
+| `tau` terminology mapping | CLOSED | The plan maps `tau` to the existing internal `dissimilar_threshold` name and requires consistent mapping in code comments, configuration, CLI output, result schema, and documentation. It separately defines graph edge-inclusion boundaries, pair-classification threshold `tau`, and balance penalty `lambda`. |
+
+Closure-section check: the amended plan records the prior recommendation as `APPROVE WITH AMENDMENTS`, lists all four amendments, identifies where each is addressed, and keeps final approval with Gwri. It does not state that implementation has already been authorised.
+
+Mathematical regression check with existing repository functions:
+
+- registered tunes: `8`
+- graph edges: `28`
+- `tau`: `0.25`
+- `lambda`: `0.1`
+- exact optima: `00001111`, `11110000`
+- maximum direct/QUBO disagreement: about `5.33e-15`
+- both optima balanced: yes
+- family recovery: `1.0` for both optima
+
+No EXP-005A implementation was added. No QUBO, Ising, QAOA, CLI, notebook, result-generation code, Qiskit run, IBM Runtime use, cloud backend, hardware execution, or QPU job was introduced.
+
+Closure validation:
+
+- `python -m pytest -m "not quantum"`: `18 passed, 15 deselected`
+- `python -m ruff check .`: passed
+- `python -m ruff format --check .`: passed
+- `python scripts/check_public_safety.py`: passed
+- `python -m mypy`: failed with the same pre-existing optional-Qiskit missing-stub and unused-ignore pattern in `quantum_basics.py`, `maxcut_ising.py`, `simulation.py`, `qubo/qiskit_adapter.py`, and `maxcut_qaoa.py`; this report-only change did not introduce the typing issue.
+
 ## Final Decision
 
-Recommendation: APPROVE WITH AMENDMENTS.
+Recommendation: APPROVE PLAN AS AMENDED.
 
-The plan no longer needs a fundamental redesign. The next safe step is to amend the plan with the four review points above, then proceed to implementation in a separate task only after that amended plan is accepted.
+The amended plan is ready for Gwri's final human approval. Implementation must still occur in a separate branch and PR, and all pre-QAOA validation gates remain mandatory. This approval does not claim successful QAOA performance, quantum advantage, real-corpus relevance, or production readiness.
