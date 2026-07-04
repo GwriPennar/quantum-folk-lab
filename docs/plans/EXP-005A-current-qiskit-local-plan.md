@@ -1,10 +1,12 @@
 # EXP-005A Tune-Family QUBO And Local Qiskit QAOA Plan
 
-Status: planned only. This document is a revised mathematical and experimental design plan, not implementation evidence.
+Status: revised and reviewed; awaiting final human approval before implementation. This document is a mathematical and experimental design plan, not implementation evidence.
 
 Reviewed base: `38e07a00867d5d6fe05760abf35ef3943a1df949`
 
 Merged review addressed: `docs/reviews/EXP-005A-tune-family-qubo-plan-review.md`
+
+Second review addressed: `docs/reviews/EXP-005A-revised-plan-second-review.md`
 
 ## Purpose
 
@@ -101,6 +103,14 @@ Graph construction:
 - an edge is included when `combined_similarity >= 0.45` or `combined_similarity <= 0.25`;
 - edge weights are rounded to six decimal places;
 - for the registered fixture, the graph contains all `28` pairwise edges.
+
+Terminology:
+
+- graph edge inclusion boundaries decide which pairwise similarities enter the graph;
+- pair classification threshold `tau` decides whether an included pair is treated as similar or dissimilar in the QUBO objective;
+- balance penalty `lambda` controls the soft partition-size penalty.
+
+`tau` is the mathematical and result-schema name for the pair-classification threshold. In the existing implementation code, the equivalent parameter may currently appear as `dissimilar_threshold`. Future implementation must either rename the public and user-facing parameter to `tau`, or retain `dissimilar_threshold` internally while explicitly mapping it to `tau` in code comments, configuration, CLI output, result schema, and documentation. Do not conflate `tau`, graph edge inclusion boundaries, and other similarity thresholds.
 
 Registered edge weights for seed `42`:
 
@@ -296,6 +306,13 @@ Baseline energy summaries for the primary registration:
 - balanced-assignment energy range: approximately `0.0` to `13.579168`;
 - uniform random over all assignments expected energy: `12.036707`;
 - uniform random over balanced assignments expected energy: `11.622336` over `70` balanced assignments.
+
+Random-success probabilities for the exact optimum complement class are separate from expected random energy:
+
+- uniform over all assignments: `2 / 256 = 0.00781250`;
+- uniform over balanced Hamming-weight-four assignments: `2 / 70 = 0.02857143`.
+
+The numerator `2` corresponds to the two complement-equivalent exact optima `00001111` and `11110000`. Future result files must report both random expected energy and random probability of the exact optimum complement class. These probabilities must be used when justifying the future QAOA optimal-probability threshold.
 
 Pre-QAOA gate:
 
@@ -498,7 +515,9 @@ Optimisation success:
 
 Threshold gate:
 
-The exact numerical optimal-probability threshold must be registered after the QUBO/Ising validation and before QAOA result generation. It must be justified against the random baseline and expected shallow-QAOA behaviour, not chosen after seeing final samples.
+The exact numerical optimal-probability threshold must be derived only after the QUBO/direct and QUBO/Ising verification gates pass. It must be justified against `2 / 256`, `2 / 70`, and expected shallow-QAOA behaviour.
+
+The threshold must be written into a committed configuration file, task document, or experiment manifest and committed before any QAOA optimiser, estimator, or sampler output is generated or inspected. The implementer must not select or revise the threshold post hoc. After QAOA output has been inspected, the threshold cannot be changed without documenting the reason, treating the change as a new sensitivity or amended experiment, and obtaining fresh review and Gwri approval.
 
 Caution:
 
@@ -528,6 +547,11 @@ Future result files must include:
 - result schema version;
 - run identifier;
 - source commit;
+- `governing_plan_path`;
+- `governing_plan_commit`;
+- `governing_plan_version`;
+- `governing_review_path`;
+- `governing_review_commit`;
 - fixture identifier;
 - deterministic seed;
 - tune ordering;
@@ -569,6 +593,8 @@ Future result files must include:
 - Python, Qiskit, Aer, and SciPy versions;
 - execution classification: `genuine-local-qiskit` or `classical-fallback`;
 - limitations.
+
+The `governing_plan_path` is `docs/plans/EXP-005A-current-qiskit-local-plan.md`. The result must identify the final approved plan commit, not the current pre-approval amendment commit. `source_commit` records the implementation or run commit, while the governing-plan and governing-review fields identify the approved experiment design that authorised the run.
 
 Do not record private machine paths, usernames, credentials, tokens, cloud backend names, hardware job identifiers, private data paths, or local Streamlit workspace details.
 
@@ -716,6 +742,17 @@ Stop and request review if any of these occur:
 | 16. Interpretation boundaries not tied to success | Success, Caution, And Failure Criteria; Privacy And Research Boundaries | Allowed and disallowed conclusions are listed with success/caution/failure criteria | resolved in plan |
 | 17. Privacy/provenance schema incomplete | Result Schema; Privacy And Research Boundaries | Result fields and excluded private fields are explicitly listed | resolved in plan |
 
-## Required Second Review
+## Second-Review Amendment Closure
 
-Before any EXP-005A implementation begins, this revised plan should receive a second plan review. The second review should confirm that every mathematical and experimental-design item from the merged `REVISE` review is now explicit enough to authorise implementation.
+The independent second review recommended `APPROVE WITH AMENDMENTS`. This plan remains revised and reviewed, awaiting final human approval before implementation. This section records closure of the four authorised documentation amendments; it does not claim final approval by Gwri.
+
+| Second-review amendment | Addressed in this plan |
+| --- | --- |
+| Add random-success probabilities | Balance Sensitivity Registration records `2 / 256 = 0.00781250` and `2 / 70 = 0.02857143`, explains the two optimum bitstrings, and requires future results to report random expected energy and random optimum-class probability separately. |
+| Strengthen optimal-probability threshold governance | Success, Caution, And Failure Criteria requires the threshold to be derived after verification, justified against both random-success probabilities and shallow-QAOA expectations, committed before any QAOA output is inspected, and changed only through a reviewed amended experiment. |
+| Add plan provenance | Result Schema requires governing plan and review path, commit, and version fields, and distinguishes those fields from `source_commit`. |
+| Map `tau` terminology to `dissimilar_threshold` | Feature And Similarity Representation defines `tau` as the mathematical and result-schema pair-classification threshold and maps it to the existing internal `dissimilar_threshold` name while separating graph thresholds, `tau`, and `lambda`. |
+
+## Required Final Approval
+
+Before any EXP-005A implementation begins, this amended plan should receive final human approval. No QUBO, Ising, QAOA, CLI, notebook, or result-generation implementation may start from this plan alone.
