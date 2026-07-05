@@ -1,0 +1,84 @@
+{
+  "manifest_schema_version": "exp005a.threshold-manifest.v1",
+  "experiment_id": "EXP-005A-tune-family-qaoa",
+  "governing_plan_path": "docs/plans/EXP-005A-current-qiskit-local-plan.md",
+  "governing_plan_commit": "e2ed10d692b5ac03cd2964c691ba37de8de4eacd",
+  "governing_plan_version": "EXP-005A-current-qiskit-local-plan",
+  "governing_review_paths": [
+    "docs/reviews/EXP-005A-tune-family-qubo-plan-review.md",
+    "docs/reviews/EXP-005A-revised-plan-second-review.md"
+  ],
+  "governing_review_commits": [
+    "e2ed10d692b5ac03cd2964c691ba37de8de4eacd",
+    "e2ed10d692b5ac03cd2964c691ba37de8de4eacd"
+  ],
+  "source_base_commit": "e2ed10d692b5ac03cd2964c691ba37de8de4eacd",
+  "fixture_identifier": "synthetic-two-family-v1-seed42",
+  "tune_ordering": [
+    "fam_a_base",
+    "fam_a_transposed",
+    "fam_a_substitution",
+    "fam_a_rhythm",
+    "fam_b_base",
+    "fam_b_transposed",
+    "fam_b_inserted",
+    "fam_b_deleted"
+  ],
+  "variable_ordering": [
+    "x_0_fam_a_base",
+    "x_1_fam_a_transposed",
+    "x_2_fam_a_substitution",
+    "x_3_fam_a_rhythm",
+    "x_4_fam_b_base",
+    "x_5_fam_b_transposed",
+    "x_6_fam_b_inserted",
+    "x_7_fam_b_deleted"
+  ],
+  "tau": 0.25,
+  "dissimilar_threshold_internal_name": "tau maps to build_two_family_qubo.dissimilar_threshold",
+  "lambda": 0.1,
+  "graph_threshold": 0.45,
+  "low_similarity_edge_threshold": 0.25,
+  "exact_optimum_energy": -1.7763568394002505e-15,
+  "exact_optimal_bitstrings": [
+    "00001111",
+    "11110000"
+  ],
+  "canonical_complement_class": "00001111",
+  "random_expected_energies": {
+    "all_assignments": 12.036707,
+    "balanced_assignments": 11.622336428571428
+  },
+  "random_exact_success_probabilities": {
+    "all_assignments": 0.0078125,
+    "balanced_assignments": 0.02857142857142857
+  },
+  "qaoa_depth": 1,
+  "optimiser": "COBYLA",
+  "optimiser_evaluation_budget": 80,
+  "fixed_initial_points": [
+    [
+      0.2,
+      0.2
+    ],
+    [
+      0.5,
+      0.5
+    ],
+    [
+      0.8,
+      0.3
+    ],
+    [
+      1.0,
+      0.7
+    ]
+  ],
+  "estimator_seed": 42,
+  "sampler_seed": 42,
+  "transpile_seed": 42,
+  "shot_count": 4096,
+  "optimal_probability_success_threshold": 0.05,
+  "threshold_rationale": "The threshold is fixed before any EXP-005A QAOA output is generated. It is 6.4x the uniform all-assignment optimum-class probability (0.00781250) and 1.75x the uniform balanced optimum-class probability (0.02857143). The value remains cautious for a dense eight-variable p=1 local ideal-simulation benchmark while requiring measurable concentration beyond random sampling.",
+  "qaoa_output_generated_before_manifest": false
+}
