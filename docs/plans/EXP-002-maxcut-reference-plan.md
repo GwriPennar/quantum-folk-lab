@@ -15,7 +15,7 @@
 - Add `src/quantum_folk_lab/maxcut_qaoa.py` for genuine local Qiskit QAOA execution.
 - Extend `src/quantum_folk_lab/cli.py` with `maxcut-list`, `maxcut-exact`, `maxcut-qaoa`, and `maxcut-compare`.
 - Add tests for non-quantum exact logic and quantum mapping/QAOA logic.
-- Update EXP-002 experiment docs, machine-readable results, README, architecture, roadmap, learning roadmap, and IBM setup docs.
+- Update EXP-002 experiment docs, machine-readable results, README, architecture, roadmap, research roadmap, and IBM setup docs.
 - Add `notebooks/03_maxcut_reference.ipynb` as a thin package-function companion.
 - Extend CI quantum job to include EXP-002 CLI smoke coverage while preserving split installs.
 
@@ -90,7 +90,7 @@ Machine-readable QAOA results will include experiment ID, graph metadata, execut
 
 - Mark EXP-002 complete only after validation succeeds.
 - Explain that Max-Cut is a tiny transparent reference benchmark and brute force is superior for this instance.
-- State that the quantum circuit is educational, ideal simulation is not hardware, and sampling an optimal string is not the same as expected approximation ratio 1.
+- State that the quantum circuit is a bounded reference benchmark, ideal simulation is not hardware, and sampling an optimal string is not the same as expected approximation ratio 1.
 - Keep EXP-005A as the future domain-specific QAOA milestone.
 
 ## CI Changes

@@ -5,13 +5,24 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "quantum-folk-lab"
 version = "0.1.0"
-description = "Learning and research sandbox for QUBO/QAOA experiments on synthetic symbolic music sequences."
+description = "Reproducible quantum optimisation research for tune-family inference with QUBO, Ising models and local Qiskit QAOA."
 readme = "README.md"
 requires-python = ">=3.11"
 license = {text = "MIT"}
 authors = [{name = "Gwri Pennar"}]
 dependencies = []
-keywords = ["quantum-computing", "qaoa", "qubo", "symbolic-music", "python"]
+keywords = [
+  "quantum-computing",
+  "qiskit",
+  "qaoa",
+  "qubo",
+  "ising-model",
+  "quantum-optimization",
+  "computational-musicology",
+  "music-information-retrieval",
+  "reproducible-research",
+  "python",
+]
 
 [project.optional-dependencies]
 quantum = ["qiskit>=2.4,<3", "qiskit-aer>=0.17,<0.18", "scipy>=1.15,<2"]

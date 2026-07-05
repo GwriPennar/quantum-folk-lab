@@ -25,7 +25,7 @@ The reviewed PR changes only the governing EXP-005A plan. It does not contain im
 
 The revised plan is now clear enough to authorise implementation after a small set of documentation amendments. The remaining amendments are governance and result-schema clarifications, not mathematical blockers.
 
-The plan correctly states that EXP-005A is not direct Max-Cut. It frames the problem as a two-family signed graph-partitioning or correlation-style QUBO, with known family labels used only for evaluation. It also correctly preserves brute-force exact enumeration as ground truth and treats QAOA as an educational local ideal-simulation reference.
+The plan correctly states that EXP-005A is not direct Max-Cut. It frames the problem as a two-family signed graph-partitioning or correlation-style QUBO, with known family labels used only for evaluation. It also correctly preserves brute-force exact enumeration as ground truth and treats QAOA as a controlled local ideal-simulation reference.
 
 ## Closure Of Prior Review
 
@@ -99,7 +99,7 @@ The tau/lambda grid in the revised plan was also reproduced. For every tested co
 The revised plan is suitable for implementation once the amendments above are made. In particular:
 
 - preserving the eight-variable benchmark is appropriate;
-- `p=1` with optional `p=2` sensitivity is an educationally sound scope;
+- `p=1` with optional `p=2` sensitivity is a bounded reference scope;
 - the dense eight-qubit complete interaction graph is acceptable for local ideal simulation;
 - exact enumeration remains the source of truth;
 - QUBO/Ising equivalence must precede any QAOA output;

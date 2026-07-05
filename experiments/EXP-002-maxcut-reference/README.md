@@ -60,4 +60,4 @@ The sampled best bitstring is optimal, but the expected approximation ratio is a
 
 ## Interpretation
 
-Brute force is superior for this tiny instance. The quantum circuit is educational and validates the local Qiskit plumbing, bit ordering, sign conventions, and reporting schema. No quantum advantage is claimed, and ideal simulation does not represent hardware noise.
+Brute force is superior for this tiny instance. The quantum circuit is a bounded reference benchmark that validates local Qiskit execution, bit ordering, sign conventions, and reporting schema. No quantum advantage is claimed, and ideal simulation does not represent hardware noise.

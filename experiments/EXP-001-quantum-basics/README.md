@@ -2,11 +2,11 @@
 
 Status: complete
 
-EXP-001 is a local, noise-free Qiskit/Aer learning experiment. It introduces qubits, computational basis measurement, X/H/Z gates, superposition, finite-shot sampling, and Bell-state entanglement before the project moves into Max-Cut or music-inspired QUBO work.
+EXP-001 is a local, noise-free Qiskit/Aer reference experiment. It validates circuit construction, computational-basis measurement, X/H/Z gates, superposition, finite-shot sampling, and Bell-state entanglement before the project moves into Max-Cut or music-inspired QUBO work.
 
 No IBM account, token, Runtime service, cloud backend, or QPU is used.
 
-## Learning Goals
+## Validation Goals
 
 - Represent a qubit as amplitudes over `|0>` and `|1>`.
 - Connect amplitudes to measurement probabilities.
@@ -55,7 +55,7 @@ python -m quantum_folk_lab.cli basics-run-all --shots 4096
 
 ## Interpretation
 
-The simulator is ideal and noise-free. Deterministic circuits should produce a single basis-state result. Superposition circuits produce probabilities, so finite-shot counts vary slightly even with a fixed simulator seed. The Bell state demonstrates correlation: measuring one qubit determines the other in the same shot, so `01` and `10` are absent in the ideal result.
+The simulator is ideal and noise-free. Deterministic circuits should produce a single basis-state result. Superposition circuits produce probabilities, so finite-shot counts vary slightly even with a fixed simulator seed. The Bell state validates correlation: measuring one qubit determines the other in the same shot, so `01` and `10` are absent in the ideal result.
 
 ## Results
 
