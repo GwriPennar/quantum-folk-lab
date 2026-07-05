@@ -29,7 +29,7 @@ EXPERIMENTS: dict[str, BasicsExperiment] = {
         "zero",
         "Prepare |0> and measure it in the computational basis.",
         "An ideal simulator should return only 0.",
-        "This demonstrates ideal preparation and measurement, not hardware noise.",
+        "This validates ideal preparation and measurement, not hardware noise.",
     ),
     "x": BasicsExperiment(
         "x",

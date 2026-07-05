@@ -17,7 +17,7 @@ This plan now governs both:
 - the tune-family mathematical formulation; and
 - the future local-Qiskit execution route.
 
-The eventual implementation must remain local, synthetic, and educational. It must use no IBM account, no IBM Runtime service, no cloud backend, no hardware execution, and no QPU job. The exact classical solver remains the source of truth.
+The eventual implementation must remain local, synthetic, and suitable for controlled local-simulation research. It must use no IBM account, no IBM Runtime service, no cloud backend, no hardware execution, and no QPU job. The exact classical solver remains the source of truth.
 
 ## Plain-English Summary
 
@@ -390,7 +390,7 @@ Register these baselines separately:
 
 The exact classical solver is the source of truth.
 
-Brute force is superior for this eight-variable benchmark. EXP-005A is educational: it validates modelling, QUBO/Ising conversion, bit ordering, local Qiskit execution, and reporting. It is not a claim of computational advantage.
+Brute force is superior for this eight-variable benchmark. EXP-005A is a controlled research experiment that validates modelling, QUBO/Ising conversion, bit ordering, local Qiskit execution, and reporting. It is not a claim of computational advantage.
 
 The classical fallback must never be invoked silently when genuine Qiskit QAOA is requested. If optional Qiskit dependencies are missing, the genuine-QAOA command must fail clearly rather than returning fallback results under a QAOA label.
 
@@ -422,7 +422,7 @@ EXP-005A uses the standard X mixer with a soft quadratic balance penalty. The mi
 
 ## Quantum Experiment Suitability
 
-The registered fixture is suitable for a first local ideal QAOA demonstration because it is still exhaustively checkable:
+The registered fixture is suitable for a first local ideal QAOA reference run because it is still exhaustively checkable:
 
 - logical variables and problem qubits: `8`;
 - exhaustive search size: `256` assignments;
@@ -434,7 +434,7 @@ The registered fixture is suitable for a first local ideal QAOA demonstration be
 - approximate pre-routing two-qubit gate count: about `56` CX-equivalent gates for standard `RZZ` decompositions;
 - measured Qiskit circuit width: expected to be `16` under Qiskit's total-width convention after adding eight classical bits.
 
-This is denser than EXP-002's four-node cycle. The point is educational validation, not scalable performance. If future fixture changes increase the logical variable count beyond eight to ten variables or add one-hot assignment variables, the first EXP-005A QAOA target should be reduced before implementation proceeds.
+This is denser than EXP-002's four-node cycle. The point is controlled local-simulation validation, not scalable performance. If future fixture changes increase the logical variable count beyond eight to ten variables or add one-hot assignment variables, the first EXP-005A QAOA target should be reduced before implementation proceeds.
 
 ## Qiskit Environment And Dependencies
 

@@ -1,11 +1,11 @@
 # Architecture
 
-The project is staged as a learning path before it becomes a music-inspired optimisation sandbox.
+The project is structured as a reproducible quantum optimisation research platform for controlled computational-musicology benchmarks.
 
 ## Layers
 
-1. Quantum fundamentals: small Qiskit circuits run locally with Aer in EXP-001.
-2. Reference optimisation: EXP-002 uses a bounded Max-Cut example with exact enumeration, verified QUBO/Ising algebra, and genuine local Qiskit QAOA.
+1. Local Qiskit circuit infrastructure: small reference circuits run locally with Aer in EXP-001.
+2. Reference optimisation: EXP-002 uses a bounded Max-Cut benchmark with exact enumeration, verified QUBO/Ising algebra, and genuine local Qiskit QAOA.
 3. Synthetic music domain: deterministic symbolic melody families and transformations.
 4. Similarity graph: interval, contour, and rhythm scores create weighted edges.
 5. QUBO and exact solving: provider-independent binary optimisation remains the source of truth.

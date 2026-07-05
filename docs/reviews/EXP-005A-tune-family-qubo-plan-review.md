@@ -88,7 +88,7 @@ The EXP-005A plan is sound in several implementation and research-boundary areas
 - It preserves the non-Qiskit installation path and keeps Qiskit imports optional.
 - It chooses a local simulator-only route with no IBM account, no Runtime service, no cloud backend, and no QPU job.
 - It keeps the exact classical solver as the source of truth.
-- It prefers direct `QAOAAnsatz` construction for educational transparency, which matches the repository's learning goals.
+- It prefers direct `QAOAAnsatz` construction for modelling transparency, which matches the repository's research-governance goals.
 - It requires Qiskit, Aer, SciPy, seeds, shots, depth, optimiser settings, and circuit metadata in future result records.
 - It keeps CI split between default non-quantum checks and optional quantum checks.
 - It explicitly avoids quantum-advantage claims.
@@ -107,7 +107,7 @@ Unsupported assumptions to resolve before implementation:
 - that the objective should be treated as Max-Cut-like because EXP-002 implemented Max-Cut;
 - that a sampled label-swapped bitstring can be interpreted without explicit canonicalisation rules;
 - that future result metrics can reuse approximation-ratio language from EXP-002 without redefining it for a minimisation problem;
-- that the eight-variable dense interaction graph will remain educationally transparent after QAOA circuit expansion.
+- that the eight-variable dense interaction graph will remain interpretable after QAOA circuit expansion.
 
 These are not fatal objections. They are design choices that need to be made visible and testable.
 
@@ -391,7 +391,7 @@ For the current eight-tune, one-bit-per-tune formulation:
 - approximate two-qubit entangling gate count before transpiler-specific routing: about `2 * 28 = 56` CX-equivalent gates for standard `RZZ` decompositions
 - measured circuit width by Qiskit convention: likely `16` total width after adding eight classical bits
 
-This is still small enough for local ideal statevector simulation and educational debugging. It is much denser than EXP-002, so the plan must keep claims modest and treat QAOA as a local reference demonstration rather than a useful solver.
+This is still small enough for local ideal statevector simulation and transparent debugging. It is much denser than EXP-002, so the plan must keep claims modest and treat QAOA as a local reference run rather than a useful solver.
 
 If the formulation grows beyond eight to ten logical variables or adds one-hot `x[i,k]` assignment variables, EXP-005A should reduce the fixture before attempting a first QAOA reference.
 
@@ -483,7 +483,7 @@ Before EXP-005A implementation, amend the governing plan or add a linked mathema
 | 13 | EXP-002 approximation-ratio language does not transfer cleanly. | The tune-family objective is minimised and may have optimum near zero, making ratio metrics unstable. | Prefer objective gap and recovery/probability metrics; only use ratios if mathematically defined for this objective. | The plan avoids misleading approximation-ratio claims for zero or near-zero optima. | Yes |
 | 14 | Circuit size and density are not registered for the tune-family instance. | Eight variables on a complete interaction graph is still small but much denser than EXP-002. | Record expected logical qubits, Pauli term count, interaction density, circuit-width definition, and approximate two-qubit gate count. | The plan states the first benchmark remains eight logical qubits and about 28 quadratic interactions unless deliberately reduced. | No, but required before result publication |
 | 15 | The fallback path still has user-facing QAOA naming. | It can make deterministic classical pseudo-sampling look like quantum evidence. | Rename or relabel the fallback as classical fallback sampling everywhere it appears in EXP-005A scope. | CLI, docs, and result schema never present fallback results as genuine QAOA. | Yes |
-| 16 | Interpretation boundaries need to be tied to EXP-005A success criteria. | Sampling an optimum on a tiny synthetic fixture is easy to overstate. | Register allowed and disallowed conclusions before implementation. | The plan permits only a local ideal synthetic-QUBO demonstration and rejects quantum advantage, real-corpus, or production claims. | Yes |
+| 16 | Interpretation boundaries need to be tied to EXP-005A success criteria. | Sampling an optimum on a tiny synthetic fixture is easy to overstate. | Register allowed and disallowed conclusions before implementation. | The plan permits only a local ideal synthetic-QUBO reference result and rejects quantum advantage, real-corpus, or production claims. | Yes |
 | 17 | Privacy and provenance fields are not tied to the final result schema. | Result files could accidentally expose local paths or private context. | Require schema fields for fixture version and package versions while excluding usernames, paths, credentials, backend accounts, and job IDs. | Public-safety scan passes and committed result files contain no private data or hardware identifiers. | Yes |
 
 No plan amendment was made in this review because the required changes define the scientific formulation and should be approved deliberately rather than silently rewritten.
@@ -494,4 +494,4 @@ Recommendation: REVISE
 
 The current code and supporting mathematical note contain a plausible, bounded, testable two-family partition QUBO. However, the governing EXP-005A plan is primarily an implementation-environment plan for replacing pseudo-sampling with local Qiskit. It does not yet define the tune-family optimisation problem, variables, penalties, verification table, symmetry handling, or evaluation metrics with enough precision to authorise EXP-005A quantum implementation.
 
-Once the required amendments are made, the current eight-variable synthetic fixture is a reasonable local ideal QAOA demonstration target.
+Once the required amendments are made, the current eight-variable synthetic fixture is a reasonable local ideal QAOA reference target.

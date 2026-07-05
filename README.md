@@ -1,8 +1,8 @@
 # Quantum Folk Lab
 
-Quantum Folk Lab explores small, transparent optimisation problems inspired by symbolic music sequences. Classical methods create and evaluate the problem; QUBO, Ising and QAOA methods are then tested against exact classical baselines.
+Quantum Folk Lab is a reproducible research repository investigating QUBO, Ising and QAOA formulations for tune-family inference and related computational-musicology optimisation problems.
 
-This is a learning and research repository, not a claim of quantum advantage. The first benchmark uses only deterministic synthetic melodies: no private corpora, no real tune collections, and no credentials are included.
+The repository develops controlled synthetic benchmarks, exact classical validation, QUBO-to-Ising verification, and local Qiskit QAOA reference experiments. It makes no claim of quantum advantage, production readiness, or real-corpus tune-family discovery. Current tune-family work uses only deterministic synthetic melodies: no private corpora, no real tune collections, and no credentials are included.
 
 ## Research Question
 
@@ -10,7 +10,7 @@ Given a small set of synthetic symbolic melodies and interpretable pairwise simi
 
 ```mermaid
 flowchart LR
-  A["Quantum basics"] --> B["Reference optimisation problems"]
+  A["Local Qiskit circuit infrastructure"] --> B["Reference optimisation benchmarks"]
   B --> C["Synthetic melody families"]
   C --> D["Interval, contour, rhythm similarity"]
   D --> E["Sparse weighted graph"]
@@ -43,9 +43,9 @@ qfl doctor
 qfl compare --seed 42
 ```
 
-## EXP-001: Local Qiskit Fundamentals
+## EXP-001: Local Qiskit Circuit Infrastructure
 
-EXP-001 is complete and uses real Qiskit circuits with local Aer simulation only. It requires optional quantum dependencies but no IBM account, no token, and no QPU access.
+EXP-001 is complete and validates local Qiskit circuit construction, transpilation, measurement, and finite-shot reporting with Aer simulation only. It requires optional quantum dependencies but no IBM account, no token, and no QPU access.
 
 ```powershell
 py -3.13 -m venv .venv-qiskit
@@ -58,7 +58,7 @@ qfl basics-run --experiment hadamard --shots 4096
 qfl basics-run --experiment bell --shots 4096
 ```
 
-The fundamentals commands fail clearly when Qiskit is not installed; they do not substitute classical pseudo-results.
+The circuit-infrastructure commands fail clearly when Qiskit is not installed; they do not substitute classical pseudo-results.
 
 
 ## EXP-002: Max-Cut Reference
@@ -78,11 +78,11 @@ The exact maximum cut is `4.0` with complementary optima `0101` and `1010`. The 
 
 | Experiment | Status | Purpose |
 | --- | --- | --- |
-| EXP-001 quantum basics | complete | Qiskit circuits, measurement, gates, superposition, Bell-state simulation |
+| EXP-001 quantum basics | complete | local Qiskit circuit and measurement infrastructure |
 | EXP-002 Max-Cut reference | complete | exact Max-Cut, verified QUBO/Ising mapping, and genuine local Qiskit QAOA |
 | EXP-003 synthetic tune families | complete | deterministic labelled benchmark |
 | EXP-004 QUBO family partition | complete | transparent two-family binary model |
-| EXP-005 QAOA simulator | planned | future genuine local QAOA, separated from the current classical fallback |
+| EXP-005A tune-family QAOA | plan approved | mathematically reviewed tune-family QUBO plan awaiting implementation |
 | EXP-006 noise sensitivity | planned | local noise-model comparison |
 | EXP-007 IBM hardware | optional | dry-run first, explicit QPU confirmation required |
 
@@ -97,6 +97,14 @@ python scripts/check_public_safety.py
 ```
 
 The existing `solve-qaoa` path is a deterministic classical fallback over QUBO energies and should not be interpreted as genuine Qiskit QAOA. EXP-005A is planned to separate and replace that user-facing label.
+
+## Research Discipline
+
+- Exact classical enumeration remains the ground truth for registered small fixtures.
+- All basis states are checked for small benchmark instances before QAOA claims are interpreted.
+- Expected energy and best sampled solution are reported separately.
+- Classical fallback sampling must never be presented as genuine QAOA.
+- Plans and implementations receive separate review before results are published.
 
 ## Responsible Scope
 

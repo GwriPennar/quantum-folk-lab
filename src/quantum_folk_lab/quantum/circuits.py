@@ -1,1 +1,1 @@
-"""Small circuit helpers will live here as Qiskit examples mature."""
+"""Small circuit helpers for local Qiskit reference experiments."""

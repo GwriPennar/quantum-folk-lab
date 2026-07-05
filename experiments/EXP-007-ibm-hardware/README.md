@@ -2,7 +2,7 @@
 
 Status: optional
 
-Objective: explore one bounded learning step in the synthetic music optimisation pipeline.
+Objective: define one bounded research step in the synthetic music optimisation pipeline.
 
 Inputs: deterministic synthetic sequences only.
 
