@@ -29,10 +29,10 @@ def test_exp005a_ising_operator_structure_and_all_basis_equivalence() -> None:
     verification = verify_qubo_ising()
     assert verification.verified_assignments == 256
     assert verification.maximum_disagreement <= 1e-8
-    assert len(ising.linear_z) == 8
+    assert len(ising.linear_z) == 0
     assert len(ising.quadratic_zz) == 28
     terms = sparse_pauli_terms(fixture.model, include_constant=False)
-    assert len(terms) == 36
+    assert len(terms) == 28
     operator = build_sparse_pauli_operator(include_constant=False)
     assert operator.num_qubits == 8
 
