@@ -15,10 +15,19 @@ EXPERIMENT_ID = "EXP-005A-tune-family-qaoa"
 RESULT_SCHEMA_VERSION = "exp005a.tune_family_qaoa.v1"
 PLAN_PATH = "docs/plans/EXP-005A-current-qiskit-local-plan.md"
 PLAN_VERSION = "EXP-005A-current-qiskit-local-plan"
+GOVERNING_PLAN_COMMIT = "53c9b4cf13375a842a5d5d095629c1fbc67ffb28"
 REVIEW_PATHS = (
     "docs/reviews/EXP-005A-tune-family-qubo-plan-review.md",
     "docs/reviews/EXP-005A-revised-plan-second-review.md",
 )
+GOVERNING_REVIEW_COMMITS = (
+    "38e07a00867d5d6fe05760abf35ef3943a1df949",
+    "10b86878ae64eaeb82080d9fab897bea42e4b8cf",
+)
+IMPLEMENTATION_BASE_COMMIT = "e2ed10d692b5ac03cd2964c691ba37de8de4eacd"
+THRESHOLD_CHECKPOINT_COMMIT = "4cd27253385c349c4a4b87f67388452ea8b2cef4"
+EXECUTABLE_SOURCE_COMMIT = THRESHOLD_CHECKPOINT_COMMIT
+THRESHOLD_MANIFEST_PATH = "experiments/EXP-005A-tune-family-qaoa/threshold-manifest.json"
 EXPECTED_TUNE_ORDER = (
     "fam_a_base",
     "fam_a_transposed",
@@ -384,7 +393,12 @@ def sparse_pauli_terms(model: QUBOModel, include_constant: bool = False) -> list
     return terms
 
 
-def threshold_manifest(governing_plan_commit: str, source_base_commit: str) -> dict[str, object]:
+def threshold_manifest(
+    governing_plan_commit: str = GOVERNING_PLAN_COMMIT,
+    implementation_base_commit: str = IMPLEMENTATION_BASE_COMMIT,
+    governing_review_commits: tuple[str, str] = GOVERNING_REVIEW_COMMITS,
+    threshold_checkpoint_commit: str = THRESHOLD_CHECKPOINT_COMMIT,
+) -> dict[str, object]:
     fixture = registered_fixture()
     exact = solve_registered_exact(fixture)
     return {
@@ -394,8 +408,18 @@ def threshold_manifest(governing_plan_commit: str, source_base_commit: str) -> d
         "governing_plan_commit": governing_plan_commit,
         "governing_plan_version": PLAN_VERSION,
         "governing_review_paths": list(REVIEW_PATHS),
-        "governing_review_commits": [governing_plan_commit, governing_plan_commit],
-        "source_base_commit": source_base_commit,
+        "governing_review_commits": list(governing_review_commits),
+        "implementation_base_commit": implementation_base_commit,
+        "source_base_commit": implementation_base_commit,
+        "threshold_checkpoint_commit": threshold_checkpoint_commit,
+        "checkpoint_commit": threshold_checkpoint_commit,
+        "executable_source_commit": EXECUTABLE_SOURCE_COMMIT,
+        "threshold_manifest_path": THRESHOLD_MANIFEST_PATH,
+        "provenance_clarification": (
+            "This branch version clarifies governing document provenance after independent "
+            "review. It does not alter the pre-QAOA threshold, fixture, QAOA configuration, "
+            "or scientific criteria registered at the threshold checkpoint."
+        ),
         "fixture_identifier": FIXTURE_ID,
         "tune_ordering": list(fixture.graph.tune_ids),
         "variable_ordering": list(fixture.model.variables),

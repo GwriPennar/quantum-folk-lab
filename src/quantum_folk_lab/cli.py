@@ -20,9 +20,15 @@ from quantum_folk_lab.qubo.model import QUBOModel
 from quantum_folk_lab.qubo.two_family import build_two_family_qubo
 from quantum_folk_lab.simulation import run_all_basics, run_basics_experiment
 from quantum_folk_lab.tune_family import (
+    EXECUTABLE_SOURCE_COMMIT,
     FIXTURE_ID,
+    GOVERNING_PLAN_COMMIT,
+    GOVERNING_REVIEW_COMMITS,
+    IMPLEMENTATION_BASE_COMMIT,
     QAOA_DEPTH,
     QAOA_SHOTS,
+    THRESHOLD_CHECKPOINT_COMMIT,
+    THRESHOLD_MANIFEST_PATH,
     build_ising_model,
     coefficient_summary,
     registered_fixture,
@@ -70,10 +76,8 @@ def _add_tune_family_qaoa_options(parser: argparse.ArgumentParser) -> None:
         "--shots", type=int, default=QAOA_SHOTS, help="finite sampling shots, default: 4096"
     )
     parser.add_argument("--seed", type=int, default=42, help="deterministic sampler seed")
-    parser.add_argument("--source-commit", default="working-tree")
-    parser.add_argument(
-        "--governing-plan-commit", default="e2ed10d692b5ac03cd2964c691ba37de8de4eacd"
-    )
+    parser.add_argument("--source-commit", default=EXECUTABLE_SOURCE_COMMIT)
+    parser.add_argument("--governing-plan-commit", default=GOVERNING_PLAN_COMMIT)
     parser.add_argument("--threshold-manifest", default="")
 
 
@@ -224,17 +228,27 @@ def main() -> None:
         )
         return
     if args.command in {"tune-family-qaoa", "tune-family-compare"}:
-        manifest = threshold_manifest(args.governing_plan_commit, args.governing_plan_commit)
+        manifest = threshold_manifest(
+            governing_plan_commit=args.governing_plan_commit,
+            implementation_base_commit=IMPLEMENTATION_BASE_COMMIT,
+            governing_review_commits=GOVERNING_REVIEW_COMMITS,
+            threshold_checkpoint_commit=THRESHOLD_CHECKPOINT_COMMIT,
+        )
         if args.threshold_manifest:
             manifest = json.loads(Path(args.threshold_manifest).read_text(encoding="utf-8"))
         try:
             tune_family_result = run_tune_family_qaoa(
+                threshold_manifest=manifest,
                 source_commit=args.source_commit,
                 governing_plan_commit=args.governing_plan_commit,
-                threshold_manifest=manifest,
                 depth=args.depth,
                 shots=args.shots,
                 sampler_seed=args.seed,
+                base_commit=IMPLEMENTATION_BASE_COMMIT,
+                checkpoint_commit=THRESHOLD_CHECKPOINT_COMMIT,
+                executable_source_commit=EXECUTABLE_SOURCE_COMMIT,
+                threshold_manifest_path=THRESHOLD_MANIFEST_PATH,
+                governing_review_commits=GOVERNING_REVIEW_COMMITS,
             )
         except RuntimeError as exc:
             _handle_qiskit_error(exc)

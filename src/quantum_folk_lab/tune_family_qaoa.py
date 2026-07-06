@@ -10,8 +10,12 @@ from quantum_folk_lab.circuit_reporting import operation_counts
 from quantum_folk_lab.simulation import package_version
 from quantum_folk_lab.tune_family import (
     ESTIMATOR_SEED,
+    EXECUTABLE_SOURCE_COMMIT,
     EXPERIMENT_ID,
     FIXTURE_ID,
+    GOVERNING_PLAN_COMMIT,
+    GOVERNING_REVIEW_COMMITS,
+    IMPLEMENTATION_BASE_COMMIT,
     INITIAL_POINTS,
     OPTIMISER_MAX_ITERATIONS,
     OPTIMISER_NAME,
@@ -22,6 +26,8 @@ from quantum_folk_lab.tune_family import (
     RESULT_SCHEMA_VERSION,
     REVIEW_PATHS,
     SAMPLER_SEED,
+    THRESHOLD_CHECKPOINT_COMMIT,
+    THRESHOLD_MANIFEST_PATH,
     TRANSPILE_SEED,
     assignment_metrics,
     build_ising_model,
@@ -57,7 +63,12 @@ class TuneFamilyQAOAResult:
     result_schema_version: str
     experiment_id: str
     run_identifier: str
+    base_commit: str
+    implementation_base_commit: str
+    checkpoint_commit: str
+    executable_source_commit: str
     source_commit: str
+    threshold_manifest_path: str
     governing_plan_path: str
     governing_plan_commit: str
     governing_plan_version: str
@@ -158,15 +169,20 @@ def _two_qubit_gate_count(circuit: Any) -> int:
 
 
 def run_tune_family_qaoa(
-    source_commit: str,
-    governing_plan_commit: str,
     threshold_manifest: dict[str, object],
+    source_commit: str = EXECUTABLE_SOURCE_COMMIT,
+    governing_plan_commit: str = GOVERNING_PLAN_COMMIT,
     depth: int = QAOA_DEPTH,
     shots: int = QAOA_SHOTS,
     sampler_seed: int = SAMPLER_SEED,
     estimator_seed: int = ESTIMATOR_SEED,
     optimiser_max_iterations: int = OPTIMISER_MAX_ITERATIONS,
     initial_points: tuple[tuple[float, ...], ...] = INITIAL_POINTS,
+    base_commit: str = IMPLEMENTATION_BASE_COMMIT,
+    checkpoint_commit: str = THRESHOLD_CHECKPOINT_COMMIT,
+    executable_source_commit: str = EXECUTABLE_SOURCE_COMMIT,
+    threshold_manifest_path: str = THRESHOLD_MANIFEST_PATH,
+    governing_review_commits: tuple[str, str] = GOVERNING_REVIEW_COMMITS,
 ) -> TuneFamilyQAOAResult:
     if shots <= 0:
         raise ValueError("shots must be positive")
@@ -242,12 +258,17 @@ def run_tune_family_qaoa(
         result_schema_version=RESULT_SCHEMA_VERSION,
         experiment_id=EXPERIMENT_ID,
         run_identifier=f"{FIXTURE_ID}-p{depth}-shots{shots}-seed{sampler_seed}",
+        base_commit=base_commit,
+        implementation_base_commit=base_commit,
+        checkpoint_commit=checkpoint_commit,
+        executable_source_commit=executable_source_commit,
         source_commit=source_commit,
+        threshold_manifest_path=threshold_manifest_path,
         governing_plan_path=PLAN_PATH,
         governing_plan_commit=governing_plan_commit,
         governing_plan_version=PLAN_VERSION,
         governing_review_paths=list(REVIEW_PATHS),
-        governing_review_commits=[governing_plan_commit, governing_plan_commit],
+        governing_review_commits=list(governing_review_commits),
         fixture_identifier=FIXTURE_ID,
         deterministic_seed=42,
         tune_ordering=list(graph.tune_ids),

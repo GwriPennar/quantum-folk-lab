@@ -120,17 +120,18 @@
     "random_balanced_expected_energy": 11.622336428571428,
     "random_balanced_success_probability": 0.02857142857142857
   },
+  "executable_source_commit": "4cd27253385c349c4a4b87f67388452ea8b2cef4",
   "execution_classification": "genuine-local-qiskit",
   "expected_energy": 5.2872120969,
   "expected_objective_gap": 5.2872120969,
   "experiment_id": "EXP-005A-tune-family-qaoa",
   "fixture_identifier": "synthetic-two-family-v1-seed42",
-  "governing_plan_commit": "e2ed10d692b5ac03cd2964c691ba37de8de4eacd",
+  "governing_plan_commit": "53c9b4cf13375a842a5d5d095629c1fbc67ffb28",
   "governing_plan_path": "docs/plans/EXP-005A-current-qiskit-local-plan.md",
   "governing_plan_version": "EXP-005A-current-qiskit-local-plan",
   "governing_review_commits": [
-    "e2ed10d692b5ac03cd2964c691ba37de8de4eacd",
-    "e2ed10d692b5ac03cd2964c691ba37de8de4eacd"
+    "38e07a00867d5d6fe05760abf35ef3943a1df949",
+    "10b86878ae64eaeb82080d9fab897bea42e4b8cf"
   ],
   "governing_review_paths": [
     "docs/reviews/EXP-005A-tune-family-qubo-plan-review.md",
@@ -147,6 +148,7 @@
     1,
     1
   ],
+  "implementation_base_commit": "e2ed10d692b5ac03cd2964c691ba37de8de4eacd",
   "ising": {
     "constant": 12.036707000000009,
     "linear_z": {},
@@ -1011,6 +1013,7 @@
   "tau": 0.25,
   "threshold_manifest": {
     "canonical_complement_class": "00001111",
+    "checkpoint_commit": "4cd27253385c349c4a4b87f67388452ea8b2cef4",
     "dissimilar_threshold_internal_name": "tau maps to build_two_family_qubo.dissimilar_threshold",
     "estimator_seed": 42,
     "exact_optimal_bitstrings": [
@@ -1018,6 +1021,7 @@
       "11110000"
     ],
     "exact_optimum_energy": -1.7763568394002505e-15,
+    "executable_source_commit": "4cd27253385c349c4a4b87f67388452ea8b2cef4",
     "experiment_id": "EXP-005A-tune-family-qaoa",
     "fixed_initial_points": [
       [
@@ -1038,24 +1042,26 @@
       ]
     ],
     "fixture_identifier": "synthetic-two-family-v1-seed42",
-    "governing_plan_commit": "e2ed10d692b5ac03cd2964c691ba37de8de4eacd",
+    "governing_plan_commit": "53c9b4cf13375a842a5d5d095629c1fbc67ffb28",
     "governing_plan_path": "docs/plans/EXP-005A-current-qiskit-local-plan.md",
     "governing_plan_version": "EXP-005A-current-qiskit-local-plan",
     "governing_review_commits": [
-      "e2ed10d692b5ac03cd2964c691ba37de8de4eacd",
-      "e2ed10d692b5ac03cd2964c691ba37de8de4eacd"
+      "38e07a00867d5d6fe05760abf35ef3943a1df949",
+      "10b86878ae64eaeb82080d9fab897bea42e4b8cf"
     ],
     "governing_review_paths": [
       "docs/reviews/EXP-005A-tune-family-qubo-plan-review.md",
       "docs/reviews/EXP-005A-revised-plan-second-review.md"
     ],
     "graph_threshold": 0.45,
+    "implementation_base_commit": "e2ed10d692b5ac03cd2964c691ba37de8de4eacd",
     "lambda": 0.1,
     "low_similarity_edge_threshold": 0.25,
     "manifest_schema_version": "exp005a.threshold-manifest.v1",
     "optimal_probability_success_threshold": 0.05,
     "optimiser": "COBYLA",
     "optimiser_evaluation_budget": 80,
+    "provenance_clarification": "This branch version clarifies governing document provenance after independent review. It does not alter the pre-QAOA threshold, fixture, QAOA configuration, or scientific criteria registered at the threshold checkpoint.",
     "qaoa_depth": 1,
     "qaoa_output_generated_before_manifest": false,
     "random_exact_success_probabilities": {
@@ -1070,6 +1076,8 @@
     "shot_count": 4096,
     "source_base_commit": "e2ed10d692b5ac03cd2964c691ba37de8de4eacd",
     "tau": 0.25,
+    "threshold_checkpoint_commit": "4cd27253385c349c4a4b87f67388452ea8b2cef4",
+    "threshold_manifest_path": "experiments/EXP-005A-tune-family-qaoa/threshold-manifest.json",
     "threshold_rationale": "The threshold is fixed before any EXP-005A QAOA output is generated. It is 6.4x the uniform all-assignment optimum-class probability (0.00781250) and 1.75x the uniform balanced optimum-class probability (0.02857143). The value remains cautious for a dense eight-variable p=1 local ideal-simulation benchmark while requiring measurable concentration beyond random sampling.",
     "transpile_seed": 42,
     "tune_ordering": [

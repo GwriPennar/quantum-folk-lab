@@ -38,6 +38,29 @@ This threshold was registered before QAOA output was generated. It is above both
 
 The sampled distribution recovered an exact optimum and exceeded the precommitted probability threshold. The expected energy remains substantially above the exact optimum, so the result is a successful local execution and sampling result, not evidence that QAOA is a useful solver for this instance.
 
+## Independent Review Amendments
+
+The independent implementation review was merged at
+`1370749cbf76b25a902d20b829bbeb34beaa9aaf` with recommendation
+`APPROVE WITH AMENDMENTS`. The amendments clarify provenance, make generated
+schema and CLI output consistent, and add automated genuine-Qiskit estimator/sampler
+smoke coverage.
+
+The governing provenance is now first-class generated result data:
+
+- implementation base commit: `e2ed10d692b5ac03cd2964c691ba37de8de4eacd`
+- threshold checkpoint: `4cd27253385c349c4a4b87f67388452ea8b2cef4`
+- executable source commit for the registered result:
+  `4cd27253385c349c4a4b87f67388452ea8b2cef4`
+- governing plan commit: `53c9b4cf13375a842a5d5d095629c1fbc67ffb28`
+- governing review commits:
+  `38e07a00867d5d6fe05760abf35ef3943a1df949`,
+  `10b86878ae64eaeb82080d9fab897bea42e4b8cf`
+
+These amendments do not change the mathematical formulation, threshold `0.05`,
+registered fixture, primary QAOA configuration, or registered 4,096-shot numerical
+result.
+
 ## Interpretation
 
 Exact enumeration remains the source of truth. Brute force is superior for this eight-variable fixture. The result validates the formulation, QUBO/Ising conversion, bit ordering, local Qiskit execution, finite-shot sampling, and reporting path.

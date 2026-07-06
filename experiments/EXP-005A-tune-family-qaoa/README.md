@@ -73,6 +73,23 @@ The sampled distribution exceeds the precommitted optimal-probability threshold 
 - `threshold-manifest.json`: pre-QAOA registration and threshold rationale
 - `results/tune-family-qaoa-p1.json`: structured exact/QAOA/sampling result
 
+## Provenance Clarification
+
+The independent implementation review required provenance fields to be generated directly by
+the schema and CLI output rather than added after result generation. The current schema records:
+
+- implementation base commit: `e2ed10d692b5ac03cd2964c691ba37de8de4eacd`
+- threshold checkpoint and executable source commit:
+  `4cd27253385c349c4a4b87f67388452ea8b2cef4`
+- governing plan commit: `53c9b4cf13375a842a5d5d095629c1fbc67ffb28`
+- governing review commits:
+  `38e07a00867d5d6fe05760abf35ef3943a1df949`,
+  `10b86878ae64eaeb82080d9fab897bea42e4b8cf`
+
+This clarification does not change the mathematical formulation, registered fixture,
+`tau=0.25`, `lambda=0.1`, threshold `0.05`, primary QAOA configuration, or the
+registered 4,096-shot numerical result.
+
 ## Limitations
 
 Brute-force enumeration is superior for this eight-variable benchmark and remains the source of truth. This is a local ideal-simulation reference result, not evidence of quantum advantage, hardware behaviour, real-corpus family discovery, or production readiness.
