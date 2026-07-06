@@ -82,7 +82,7 @@ The exact maximum cut is `4.0` with complementary optima `0101` and `1010`. The 
 | EXP-002 Max-Cut reference | complete | exact Max-Cut, verified QUBO/Ising mapping, and genuine local Qiskit QAOA |
 | EXP-003 synthetic tune families | complete | deterministic labelled benchmark |
 | EXP-004 QUBO family partition | complete | transparent two-family binary model |
-| EXP-005A tune-family QAOA | plan approved | mathematically reviewed tune-family QUBO plan awaiting implementation |
+| EXP-005A tune-family QAOA | complete | verified tune-family QUBO/Ising mapping and genuine local Qiskit p=1 QAOA |
 | EXP-006 noise sensitivity | planned | local noise-model comparison |
 | EXP-007 IBM hardware | optional | dry-run first, explicit QPU confirmation required |
 
@@ -96,7 +96,7 @@ qfl compare --seed 42
 python scripts/check_public_safety.py
 ```
 
-The existing `solve-qaoa` path is a deterministic classical fallback over QUBO energies and should not be interpreted as genuine Qiskit QAOA. EXP-005A is planned to separate and replace that user-facing label.
+The existing `solve-qaoa` path is a deterministic classical fallback over QUBO energies and should not be interpreted as genuine Qiskit QAOA. EXP-005A adds separate `tune-family-*` commands for exact verification and genuine local Qiskit QAOA execution.
 
 ## Research Discipline
 
