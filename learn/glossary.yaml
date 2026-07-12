@@ -1,0 +1,78 @@
+version: 1
+terms:
+  - term: bit
+    one_liner: A classical unit that is definitely 0 or 1.
+    deeper: Bits store definite information; qubits use amplitudes until measurement.
+    related_lessons: [guided.foundations.bits_qubits]
+  - term: qubit
+    one_liner: A quantum two-level system described by amplitudes.
+    deeper: Probabilities at measurement are |alpha|^2 and |beta|^2; phase matters for interference.
+    related_lessons: [guided.foundations.bits_qubits]
+  - term: measurement
+    one_liner: An operation that yields a classical 0 or 1 outcome.
+    deeper: Measurement collapses amplitudes to a definite classical result with given probabilities.
+    related_lessons: [guided.foundations.bits_qubits, guided.foundations.gates]
+  - term: gate
+    one_liner: A reversible operation that changes qubit amplitudes.
+    deeper: Common single-qubit gates include X, Z, and H; they are unitary transformations.
+    related_lessons: [guided.foundations.gates]
+  - term: circuit
+    one_liner: An ordered sequence of gates applied to qubits.
+    deeper: Circuits are read left-to-right; depth counts the longest gate path.
+    related_lessons: [guided.foundations.gates]
+  - term: shot
+    one_liner: One repeated execution of a quantum circuit for statistics.
+    deeper: Finite shots add sampling noise even in ideal simulation.
+    related_lessons: [guided.foundations.hadamard]
+  - term: amplitude
+    one_liner: A complex coefficient in a qubit superposition.
+    deeper: Amplitudes can interfere; probabilities come from |amplitude|^2 at measurement.
+    related_lessons: [guided.foundations.hadamard]
+  - term: probability
+    one_liner: The chance of observing a particular measurement outcome.
+    deeper: For a qubit, P(0)=|alpha|^2 and P(1)=|beta|^2 before measurement.
+    related_lessons: [guided.foundations.hadamard]
+  - term: phase
+    one_liner: The relative angle between amplitudes in a superposition.
+    deeper: Equal probabilities can hide different phases; Z and second H gates reveal this.
+    related_lessons: [guided.foundations.hadamard]
+  - term: interference
+    one_liner: Amplitudes adding or cancelling when paths recombine.
+    deeper: A second Hadamard can return |0> because amplitudes reinforce or cancel.
+    related_lessons: [guided.foundations.hadamard]
+  - term: entanglement
+    one_liner: Correlated outcomes between qubits that cannot be described separately.
+    deeper: Bell states show 00 and 11 but not 01/10; each bit alone looks random.
+    related_lessons: [guided.foundations.entanglement]
+  - term: objective
+    one_liner: A score assigned to each candidate solution.
+    deeper: Optimisation seeks the candidate with the best objective value.
+    related_lessons: [guided.foundations.optimisation]
+  - term: constraint
+    one_liner: A rule that limits which candidates are allowed.
+    deeper: Constraints shrink the search space before comparing objectives.
+    related_lessons: [guided.foundations.optimisation]
+  - term: exact solution
+    one_liner: The best score found by exhaustive classical search.
+    deeper: At small sizes brute force is authoritative ground truth.
+    related_lessons: [guided.foundations.optimisation]
+  - term: expectation
+    one_liner: The average value of an operator over a quantum state.
+    deeper: Quantum expectation differs from a single measured sample.
+    related_lessons: [guided.foundations.optimisation]
+  - term: sample
+    one_liner: A finite-shot measurement outcome from a circuit run.
+    deeper: Sampled frequencies approximate theoretical probabilities with noise.
+    related_lessons: [guided.foundations.hadamard]
+  - term: QUBO
+    one_liner: Quadratic Unconstrained Binary Optimisation over 0/1 variables.
+    deeper: Pairwise terms encode interactions; same problem can be written as Ising spins.
+    related_lessons: [guided.foundations.optimisation]
+  - term: Ising
+    one_liner: A spin formulation using +1/-1 variables instead of 0/1.
+    deeper: QUBO and Ising are relabellings of the same optimisation score.
+    related_lessons: [guided.foundations.optimisation]
+  - term: QAOA
+    one_liner: Quantum Approximate Optimisation Algorithm — hybrid quantum/classical loop.
+    deeper: Alternates cost and mixer layers; a classical optimiser picks angles.
+    related_lessons: [guided.foundations.optimisation]

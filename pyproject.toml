@@ -27,6 +27,7 @@ keywords = [
 [project.optional-dependencies]
 quantum = ["qiskit>=2.4,<3", "qiskit-aer>=0.17,<0.18", "scipy>=1.15,<2"]
 ibm = ["qiskit-ibm-runtime>=0.23"]
+learning = ["PyYAML>=6", "streamlit>=1.32"]
 dev = ["pytest>=8", "ruff>=0.5", "mypy>=1.10"]
 
 [project.scripts]
