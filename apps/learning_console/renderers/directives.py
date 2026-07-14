@@ -11,7 +11,9 @@ def render_visual(visual_id: str) -> None:
     captions = {
         "bit-vs-qubit": "Classical bit: definite 0 or 1. Qubit: amplitudes until measurement.",
         "hadamard-probability-split": "After H on |0⟩, Theory predicts equal P(0) and P(1).",
-        "z-phase-reveal": "A Z gate can change phase without changing computational-basis probabilities.",
+        "z-phase-reveal": (
+            "A Z gate can change phase without changing computational-basis probabilities."
+        ),
         "double-h-interference": "H then H can return to |0⟩ because amplitudes interfere.",
         "bell-correlation": "Bell outcomes favour 00 and 11; each bit alone looks random.",
         "circuit-thumbnail": "Circuit sketch placeholder — use EXP-001 for full circuit diagrams.",
@@ -22,7 +24,12 @@ def render_visual(visual_id: str) -> None:
 
 def render_interaction(interaction_id: str, params: dict[str, Any]) -> None:
     if interaction_id == "x-gate-input":
-        state = st.radio("Input state for X gate", ["|0⟩", "|1⟩"], horizontal=True, key="pub-x-input")
+        state = st.radio(
+            "Input state for X gate",
+            ["|0⟩", "|1⟩"],
+            horizontal=True,
+            key="pub-x-input",
+        )
         if state == "|0⟩":
             st.write("Before: 0: 100% → After X: 1: 100%")
         else:

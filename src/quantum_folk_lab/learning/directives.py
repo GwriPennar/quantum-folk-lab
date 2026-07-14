@@ -38,7 +38,7 @@ REGISTERED_INTERACTIONS = frozenset(
     }
 )
 
-REGISTERED_DATA = frozenset()
+REGISTERED_DATA: frozenset[str] = frozenset()
 
 
 def _parse_kv_block(body: str) -> dict[str, str]:

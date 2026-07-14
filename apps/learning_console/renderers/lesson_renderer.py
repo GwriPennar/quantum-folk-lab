@@ -38,7 +38,9 @@ def render_lesson(lesson: LessonDocument, registry: LessonRegistry) -> None:
             st.markdown(block.text)
         elif isinstance(block, MermaidBlock):
             st.code(block.source, language="text")
-            st.caption(f"Diagram `{block.diagram_id}` (Mermaid source; see dev/learning/MERMAID-POLICY.md)")
+            st.caption(
+                f"Diagram `{block.diagram_id}` (Mermaid source; see dev/learning/MERMAID-POLICY.md)"
+            )
         elif isinstance(block, VisualDirective):
             render_visual(block.visual_id)
         elif isinstance(block, InteractionDirective):

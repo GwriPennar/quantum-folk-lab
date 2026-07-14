@@ -5,6 +5,7 @@ from __future__ import annotations
 import json
 import re
 from pathlib import Path
+from typing import Any, cast
 
 from quantum_folk_lab.learning.directives import (
     REGISTERED_DATA,
@@ -107,5 +108,5 @@ def validate_schema_file(schema_path: Path) -> bool:
     return schema_path.is_file() and schema_path.suffix == ".json"
 
 
-def load_schema(schema_path: Path) -> dict:
-    return json.loads(schema_path.read_text(encoding="utf-8"))
+def load_schema(schema_path: Path) -> dict[str, Any]:
+    return cast(dict[str, Any], json.loads(schema_path.read_text(encoding="utf-8")))

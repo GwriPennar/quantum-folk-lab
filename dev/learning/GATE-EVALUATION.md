@@ -16,10 +16,10 @@ Evaluated against `dev/learning/RELEASE-GATES.md`.
 | G9 | PRs #10–#12 untouched | **PASS** | This work does not merge or modify those PRs. |
 | G10 | Dependency honesty | **PASS** | Optional `[learning]` extra adds PyYAML + Streamlit; parse/export needs PyYAML only. |
 | G11 | Docs present | **PASS** | Architecture, scope, Mermaid policy, contributing, release gates present. |
-| G12 | Human product decision | **NEEDS HUMAN DECISION** | Whether/when to link this Learning Console from the main README. Deliberately out of scope here. |
+| G12 | Main README linkage | **PASS** | Decision: do not link from root README in this experimental release. Root README intentionally unchanged. The feature is discoverable through `learn/README.md`, `apps/learning_console/README.md` and the PR/release notes. |
 
 ## Publication decision
 
-- Automatic **ready-for-review** PR: **blocked** by G12 (product decision on README visibility).
-- **Draft / experimental** PR: allowed, with G12 called out and main README left unchanged.
+- **Ready-for-review** PR: allowed — all gates PASS (G12 decided: no root README link).
+- Root `README.md` remains unchanged for this release.
 - Local `.gitignore` `private/` entry remains unstaged and is not part of this release.

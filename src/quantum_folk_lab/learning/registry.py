@@ -8,6 +8,7 @@ from pathlib import Path
 
 import yaml
 
+from quantum_folk_lab.learning.models import LessonDocument
 from quantum_folk_lab.learning.parser import load_lesson
 from quantum_folk_lab.learning.paths import REGISTRY_PATH
 

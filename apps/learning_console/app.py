@@ -22,9 +22,10 @@ if str(SRC) not in sys.path:
 if str(Path(__file__).resolve().parent) not in sys.path:
     sys.path.insert(0, str(Path(__file__).resolve().parent))
 
-from quantum_folk_lab.learning.glossary import load_glossary
-from quantum_folk_lab.learning.registry import load_registry
-from renderers.lesson_renderer import render_lesson
+from renderers.lesson_renderer import render_lesson  # noqa: E402
+
+from quantum_folk_lab.learning.glossary import load_glossary  # noqa: E402
+from quantum_folk_lab.learning.registry import load_registry  # noqa: E402
 
 st.set_page_config(
     page_title="QFL Learning Console — Foundations",
@@ -54,7 +55,9 @@ with tab_glossary:
     query = st.text_input("Search glossary", placeholder="e.g. qubit, QAOA, shot")
     terms = load_glossary()
     for term in terms:
-        if query and query.lower() not in term.term.lower() and query.lower() not in term.deeper.lower():
+        term_hit = query.lower() in term.term.lower() if query else True
+        deeper_hit = query.lower() in term.deeper.lower() if query else True
+        if query and not term_hit and not deeper_hit:
             continue
         with st.expander(term.term):
             st.markdown(f"**One sentence:** {term.one_liner}")

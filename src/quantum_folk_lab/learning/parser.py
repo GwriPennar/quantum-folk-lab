@@ -5,6 +5,7 @@ from __future__ import annotations
 import hashlib
 import re
 from pathlib import Path
+from typing import Any
 
 import yaml
 
@@ -27,7 +28,7 @@ FRONT_MATTER_RE = re.compile(r"^---\s*\n(.*?)\n---\s*\n", re.DOTALL)
 MERMAID_FENCE_RE = re.compile(r"```mermaid\s*\n(.*?)```", re.DOTALL)
 
 
-def _parse_metadata(raw: dict, source_path: Path) -> LessonMetadata:
+def _parse_metadata(raw: dict[str, Any], source_path: Path) -> LessonMetadata:
     semantic_raw = raw.get("semantic", {}) or {}
     completion_raw = raw.get("completion", {}) or {}
     completion = None
@@ -144,15 +145,11 @@ def parse_lesson_markdown(text: str, source_path: Path) -> LessonDocument:
             assert directive_match is not None
             kind = directive_match.group(1)
             body_text = directive_match.group(2)
-            blocks.append(
-                parse_directive_block(kind, body_text, line_at(directive_match.start()))
-            )
+            blocks.append(parse_directive_block(kind, body_text, line_at(directive_match.start())))
             cursor = directive_match.end()
 
     metadata = _parse_metadata(raw, source_path)
-    return LessonDocument(
-        metadata=metadata, blocks=tuple(blocks), sections=_split_sections(blocks)
-    )
+    return LessonDocument(metadata=metadata, blocks=tuple(blocks), sections=_split_sections(blocks))
 
 
 def load_lesson(relative_path: str) -> LessonDocument:

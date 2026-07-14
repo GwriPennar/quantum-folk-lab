@@ -18,6 +18,7 @@ Any `FAIL` or `NEEDS HUMAN DECISION` stops publication.
 | G9 | PRs #10–#12 untouched | Those PRs remain open/unmerged by this work |
 | G10 | Dependency honesty | Optional extras declared; Streamlit/Qiskit not required for parse/export |
 | G11 | Docs present | `PUBLIC-RELEASE-SCOPE`, architecture, Mermaid policy, contributing docs |
-| G12 | Human product decision | Whether to attach the Learning Console to the main README |
+| G12 | Main README linkage | Human decision on whether to attach the Learning Console to the main README |
 
-Gate G12 is always `NEEDS HUMAN DECISION` for README linkage; it does **not** block a draft PR labelled experimental, but it **does** block claiming “featured in README” readiness.
+Until a human records a decision, G12 is `NEEDS HUMAN DECISION` and blocks ready-for-review publication.
+Once decided, record **PASS** with the decision text (link or do-not-link). “Featured in README” readiness requires an explicit link decision; do-not-link is a valid PASS for an experimental release that keeps the root README unchanged.

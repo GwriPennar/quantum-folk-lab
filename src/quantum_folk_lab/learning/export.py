@@ -9,6 +9,7 @@ from quantum_folk_lab.learning.models import (
     DisclosureDirective,
     GlossaryDirective,
     InteractionDirective,
+    LessonBlock,
     LessonDocument,
     MarkdownBlock,
     MermaidBlock,
@@ -19,7 +20,7 @@ from quantum_folk_lab.learning.registry import LessonRegistry
 from quantum_folk_lab.learning.semantic_state import semantic_marker_html
 
 
-def _render_block_markdown(block) -> str:
+def _render_block_markdown(block: LessonBlock) -> str:
     if isinstance(block, MarkdownBlock):
         return block.text
     if isinstance(block, MermaidBlock):
@@ -27,10 +28,7 @@ def _render_block_markdown(block) -> str:
     if isinstance(block, VisualDirective):
         return f"*[Visual: {block.visual_id} — see Learning Console]*"
     if isinstance(block, InteractionDirective):
-        return (
-            f"> **Interactive in the Learning Console app:** "
-            f"{block.interaction_id}"
-        )
+        return f"> **Interactive in the Learning Console app:** {block.interaction_id}"
     if isinstance(block, RegisteredDataDirective):
         return f"*[Registered data: {block.data_id}]*"
     if isinstance(block, DisclosureDirective):
@@ -77,9 +75,7 @@ def export_lesson_html(doc: LessonDocument) -> str:
         f"<title>{html.escape(doc.metadata.title)}</title>"
         "<style>body{font-family:system-ui;max-width:48rem;margin:2rem auto;line-height:1.5}"
         ".visual-callout{border-left:4px solid #334155;padding-left:1rem}</style>"
-        "</head><body>"
-        + "".join(body_parts)
-        + "</body></html>"
+        "</head><body>" + "".join(body_parts) + "</body></html>"
     )
 
 
