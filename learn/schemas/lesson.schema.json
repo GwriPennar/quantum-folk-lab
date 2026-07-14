@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Quantum Folk Lab portable lesson front matter",
+  "type": "object",
+  "required": ["id", "version", "title", "mode", "section", "order", "route", "status"],
+  "properties": {
+    "id": { "type": "string", "pattern": "^[a-z0-9._-]+$" },
+    "version": { "type": "integer", "minimum": 1 },
+    "title": { "type": "string", "minLength": 1 },
+    "mode": { "enum": ["guided", "researcher"] },
+    "section": { "type": "string" },
+    "order": { "type": "integer", "minimum": 0 },
+    "route": { "type": "string" },
+    "status": { "enum": ["pilot", "active", "deprecated"] },
+    "estimated_minutes": { "type": "integer" },
+    "visuals": { "type": "array", "items": { "type": "string" } },
+    "legacy_progress_key": { "type": "string" },
+    "semantic": {
+      "type": "object",
+      "properties": {
+        "required_markers": { "type": "array", "items": { "type": "string" } },
+        "forbidden_markers": { "type": "array", "items": { "type": "string" } }
+      }
+    },
+    "completion": {
+      "type": "object",
+      "properties": {
+        "type": { "type": "string" },
+        "legacy_key": { "type": "string" }
+      }
+    }
+  }
+}

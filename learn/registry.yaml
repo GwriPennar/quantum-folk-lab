@@ -1,0 +1,47 @@
+version: 1
+lessons:
+  - id: guided.foundations.bits_qubits
+    path: lessons/bits-and-qubits.md
+    route: learn/bits-and-qubits
+    mode: guided
+    section: Foundations
+    order: 1
+    title: Bits and qubits
+    legacy_progress_key: bits_qubits
+    foundations_nav: true
+  - id: guided.foundations.gates
+    path: lessons/gates-and-measurement.md
+    route: learn/gates-and-measurement
+    mode: guided
+    section: Foundations
+    order: 2
+    title: Gates and measurement
+    legacy_progress_key: gates_measurement
+    foundations_nav: true
+  - id: guided.foundations.hadamard
+    path: lessons/hadamard-and-interference.md
+    route: learn/hadamard
+    mode: guided
+    section: Foundations
+    order: 3
+    title: Hadamard and interference
+    legacy_progress_key: superposition_interference
+    foundations_nav: true
+  - id: guided.foundations.entanglement
+    path: lessons/entanglement.md
+    route: learn/entanglement
+    mode: guided
+    section: Foundations
+    order: 4
+    title: Entanglement
+    legacy_progress_key: entanglement
+    foundations_nav: true
+  - id: guided.foundations.optimisation
+    path: lessons/optimisation-intro.md
+    route: learn/optimisation-intro
+    mode: guided
+    section: Foundations
+    order: 5
+    title: What is an optimisation problem?
+    legacy_progress_key: optimisation
+    foundations_nav: true

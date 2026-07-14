@@ -10,7 +10,7 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.11"
-      - run: python -m pip install -e ".[dev]"
+      - run: python -m pip install -e ".[dev,learning]"
       - run: ruff check .
       - run: ruff format --check .
       - run: mypy
@@ -24,7 +24,8 @@ jobs:
         with:
           python-version: "3.13"
       - run: python -m pip install -e ".[dev,quantum]"
-      - run: pytest -m quantum
+      # Learning content tests need PyYAML; they are not quantum-marked.
+      - run: pytest -m quantum --ignore=tests/learning
       - run: qfl basics-run --experiment bell --shots 1024
       - run: qfl maxcut-compare --graph cycle4 --depth 1 --shots 512
       - run: python scripts/check_public_safety.py
