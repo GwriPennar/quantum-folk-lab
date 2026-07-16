@@ -5,6 +5,7 @@ import json
 import sys
 from pathlib import Path
 
+from quantum_folk_lab.build_week import LearnerLevel, export_json, export_markdown, run_guided_exact
 from quantum_folk_lab.classical.exact import solve_exact
 from quantum_folk_lab.domain.models import Melody
 from quantum_folk_lab.domain.synthetic import generate_benchmark, to_jsonable
@@ -117,6 +118,14 @@ def main() -> None:
     _add_tune_family_qaoa_options(tune_family_qaoa)
     tune_family_compare = sub.add_parser("tune-family-compare")
     _add_tune_family_qaoa_options(tune_family_compare)
+    build_week_exact = sub.add_parser("build-week-exact")
+    build_week_exact.add_argument(
+        "--format", choices=("summary", "json", "markdown"), default="summary"
+    )
+    build_week_exact.add_argument("--output", type=Path)
+    build_week_exact.add_argument(
+        "--level", choices=tuple(level.value for level in LearnerLevel), default="first_encounter"
+    )
     args = parser.parse_args()
 
     if args.command == "doctor":
@@ -226,6 +235,29 @@ def main() -> None:
                 "execution_classification": "classical-verification",
             }
         )
+        return
+    if args.command == "build-week-exact":
+        try:
+            envelope = run_guided_exact()
+            if args.format == "json":
+                output = export_json(envelope)
+            elif args.format == "markdown":
+                output = export_markdown(envelope, LearnerLevel(args.level))
+            else:
+                output = (
+                    f"Fixture: {envelope.fixture_identifier}\n"
+                    f"Exact minimum: {envelope.exact_result['minimum_energy']:.6f}\n"
+                    "Canonical complement class: "
+                    f"{envelope.exact_result['canonical_complement_class']}\n"
+                    "Authority: exact enumeration of 256 assignments\n"
+                )
+        except (AssertionError, ValueError) as exc:
+            print(f"Build Week exact validation failed: {exc}", file=sys.stderr)
+            raise SystemExit(2) from exc
+        if args.output:
+            args.output.write_text(output, encoding="utf-8")
+        else:
+            print(output, end="")
         return
     if args.command in {"tune-family-qaoa", "tune-family-compare"}:
         manifest = threshold_manifest(
