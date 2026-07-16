@@ -31,3 +31,28 @@ Gwri decisions governing this work:
 `PENDING USER ACTION — invoke /feedback in the primary Codex session and add the returned session ID during release review.`
 
 Do not replace this placeholder with an invented identifier.
+
+## Stage 2 — Guided Experiment product
+
+Codex contributions:
+
+- made Guided Experiment the prominent Learning Console route, alongside Foundations and
+  Glossary;
+- reused the Stage 1 validated result envelope for evidence, exact results, learner-level
+  explanations, and reproducibility downloads;
+- added a bounded adapter around the existing genuine local-Qiskit route using p=1, 256 shots,
+  fixed registered seeds, one fixed initial point, and eight optimiser iterations;
+- measured the quick route locally and kept current exact, current quick-Qiskit, and historical
+  registered 4,096-shot evidence explicitly separated;
+- added an optional Responses API adapter defaulting to `gpt-5.6-sol`, with a filtered input,
+  strict JSON schema, grounding checks, claim checks, numeric checks, and deterministic fallback;
+- added fake-client, capability, service, navigation, and adapter tests and completed a Streamlit
+  AppTest runtime audit.
+
+Gwri decisions governing this stage:
+
+- the exact path must remain complete without Qiskit, OpenAI, network access, or credentials;
+- optional controls must not turn the product into a developer dashboard;
+- only the standard OpenAI SDK credential environment variable may be used as a runtime secret,
+  and it must never be displayed or saved;
+- the deterministic musical preview was omitted to protect the reliability and clarity of P0/P1.
