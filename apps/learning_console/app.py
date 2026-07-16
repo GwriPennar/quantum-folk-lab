@@ -22,7 +22,9 @@ if str(SRC) not in sys.path:
 if str(Path(__file__).resolve().parent) not in sys.path:
     sys.path.insert(0, str(Path(__file__).resolve().parent))
 
+from renderers.guided_experiment import render_guided_experiment  # noqa: E402
 from renderers.lesson_renderer import render_lesson  # noqa: E402
+from services.build_week_service import load_guided_experiment  # noqa: E402
 
 from quantum_folk_lab.learning.glossary import load_glossary  # noqa: E402
 from quantum_folk_lab.learning.registry import load_registry  # noqa: E402
@@ -33,25 +35,27 @@ st.set_page_config(
     layout="wide",
 )
 
-st.title("Learning Console — Foundations")
+st.title("Quantum Folk Lab — Learning Console")
 st.caption(
     "Public experimental edition. Portable Markdown lessons under `learn/`. "
     "Simulator-first. No claim of quantum advantage."
 )
 
+route = st.sidebar.radio("Explore", ["Guided Experiment", "Foundations", "Glossary"])
 registry = load_registry()
-entries = registry.ordered()
-labels = [f"{e.order}. {e.title}" for e in entries]
-choice = st.sidebar.selectbox("Lesson", labels, index=0)
-entry = entries[labels.index(choice)]
 
-tab_lesson, tab_glossary = st.tabs(["Lesson", "Glossary"])
-
-with tab_lesson:
+if route == "Guided Experiment":
+    render_guided_experiment(load_guided_experiment())
+elif route == "Foundations":
+    st.header("Foundations")
+    entries = registry.ordered()
+    labels = [f"{e.order}. {e.title}" for e in entries]
+    choice = st.selectbox("Lesson", labels, index=0)
+    entry = entries[labels.index(choice)]
     lesson = registry.load_document(entry.id)
     render_lesson(lesson, registry)
-
-with tab_glossary:
+else:
+    st.header("Glossary")
     query = st.text_input("Search glossary", placeholder="e.g. qubit, QAOA, shot")
     terms = load_glossary()
     for term in terms:
