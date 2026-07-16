@@ -31,7 +31,7 @@ def test_explanations_differ_by_level_and_are_safe() -> None:
     assert all(not claim_violations(text) for text in explanations.values())
 
 
-@pytest.mark.parametrize(  # type: ignore[untyped-decorator]
+@pytest.mark.parametrize(
     "text",
     [
         "This demonstrates quantum advantage.",
