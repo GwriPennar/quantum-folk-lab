@@ -31,7 +31,7 @@ class QuantumCapability:
 
 def quantum_capability() -> QuantumCapability:
     try:
-        import qiskit  # type: ignore[import-untyped,unused-ignore]  # noqa: F401
+        import qiskit  # type: ignore[import-not-found,import-untyped,unused-ignore]  # noqa: F401
         import scipy  # type: ignore[import-untyped,unused-ignore]  # noqa: F401
     except ModuleNotFoundError:
         return QuantumCapability(
