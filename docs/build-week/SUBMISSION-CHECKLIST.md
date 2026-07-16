@@ -1,7 +1,7 @@
 # Build Week submission checklist
 
-- [ ] Invoke `/feedback` in the primary Codex session and copy the returned session ID.
-- [ ] Replace only the public feedback placeholder during final release review.
+- [x] Codex Session ID supplied privately through the Devpost submission form.
+- [x] Confirm the actual Session ID is excluded from public repository evidence.
 - [ ] Run the judging guide from a clean public clone.
 - [ ] Capture public-safe landing, evidence/model, exact result, comparison, explanation, and export screenshots.
 - [ ] Check screenshots for credentials, usernames, personal paths, emails, and private windows.

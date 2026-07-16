@@ -30,6 +30,6 @@ The deterministic explanation is the complete fallback.
 
 ## Primary-session feedback
 
-`PENDING USER ACTION — invoke /feedback in this primary Codex session and save the returned session ID.`
+Codex Session ID supplied privately through the Devpost submission form.
 
-No identifier has been fabricated.
+The identifier is intentionally excluded from public repository evidence.
