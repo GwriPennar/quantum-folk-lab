@@ -1,0 +1,339 @@
+{
+  "bit_ordering_convention": "Human bitstrings are left-to-right in tune order; bit i maps to tune i.",
+  "claims_boundary": [
+    "Exact enumeration is authoritative for this fixed eight-variable fixture.",
+    "The fixture is deterministic and synthetic, not authentic cultural data.",
+    "No quantum speed, scale, production, or hardware claim is supported.",
+    "Historical registered evidence must never be presented as a current run."
+  ],
+  "complement_canonicalisation_rule": "A bitstring and its global complement are the same unlabeled partition; the lexicographically smaller string is canonical.",
+  "evidence_summary": {
+    "features": [
+      "interval",
+      "contour",
+      "rhythm"
+    ],
+    "graph_edge_count": 28,
+    "labels_used_only_for_evaluation": true,
+    "pair_count": 28,
+    "pairs": [
+      {
+        "combined_similarity": 1.0,
+        "contour_similarity": 1.0,
+        "graph_edge": true,
+        "interval_similarity": 1.0,
+        "left_tune": "fam_a_base",
+        "rhythm_similarity": 1.0,
+        "right_tune": "fam_a_transposed"
+      },
+      {
+        "combined_similarity": 0.857143,
+        "contour_similarity": 1.0,
+        "graph_edge": true,
+        "interval_similarity": 0.714286,
+        "left_tune": "fam_a_base",
+        "rhythm_similarity": 1.0,
+        "right_tune": "fam_a_substitution"
+      },
+      {
+        "combined_similarity": 0.975,
+        "contour_similarity": 1.0,
+        "graph_edge": true,
+        "interval_similarity": 1.0,
+        "left_tune": "fam_a_base",
+        "rhythm_similarity": 0.875,
+        "right_tune": "fam_a_rhythm"
+      },
+      {
+        "combined_similarity": 0.125,
+        "contour_similarity": 0.0,
+        "graph_edge": true,
+        "interval_similarity": 0.0,
+        "left_tune": "fam_a_base",
+        "rhythm_similarity": 0.625,
+        "right_tune": "fam_b_base"
+      },
+      {
+        "combined_similarity": 0.125,
+        "contour_similarity": 0.0,
+        "graph_edge": true,
+        "interval_similarity": 0.0,
+        "left_tune": "fam_a_base",
+        "rhythm_similarity": 0.625,
+        "right_tune": "fam_b_transposed"
+      },
+      {
+        "combined_similarity": 0.170833,
+        "contour_similarity": 0.125,
+        "graph_edge": true,
+        "interval_similarity": 0.0,
+        "left_tune": "fam_a_base",
+        "rhythm_similarity": 0.666667,
+        "right_tune": "fam_b_inserted"
+      },
+      {
+        "combined_similarity": 0.239286,
+        "contour_similarity": 0.142857,
+        "graph_edge": true,
+        "interval_similarity": 0.142857,
+        "left_tune": "fam_a_base",
+        "rhythm_similarity": 0.625,
+        "right_tune": "fam_b_deleted"
+      },
+      {
+        "combined_similarity": 0.857143,
+        "contour_similarity": 1.0,
+        "graph_edge": true,
+        "interval_similarity": 0.714286,
+        "left_tune": "fam_a_transposed",
+        "rhythm_similarity": 1.0,
+        "right_tune": "fam_a_substitution"
+      },
+      {
+        "combined_similarity": 0.975,
+        "contour_similarity": 1.0,
+        "graph_edge": true,
+        "interval_similarity": 1.0,
+        "left_tune": "fam_a_transposed",
+        "rhythm_similarity": 0.875,
+        "right_tune": "fam_a_rhythm"
+      },
+      {
+        "combined_similarity": 0.125,
+        "contour_similarity": 0.0,
+        "graph_edge": true,
+        "interval_similarity": 0.0,
+        "left_tune": "fam_a_transposed",
+        "rhythm_similarity": 0.625,
+        "right_tune": "fam_b_base"
+      },
+      {
+        "combined_similarity": 0.125,
+        "contour_similarity": 0.0,
+        "graph_edge": true,
+        "interval_similarity": 0.0,
+        "left_tune": "fam_a_transposed",
+        "rhythm_similarity": 0.625,
+        "right_tune": "fam_b_transposed"
+      },
+      {
+        "combined_similarity": 0.170833,
+        "contour_similarity": 0.125,
+        "graph_edge": true,
+        "interval_similarity": 0.0,
+        "left_tune": "fam_a_transposed",
+        "rhythm_similarity": 0.666667,
+        "right_tune": "fam_b_inserted"
+      },
+      {
+        "combined_similarity": 0.239286,
+        "contour_similarity": 0.142857,
+        "graph_edge": true,
+        "interval_similarity": 0.142857,
+        "left_tune": "fam_a_transposed",
+        "rhythm_similarity": 0.625,
+        "right_tune": "fam_b_deleted"
+      },
+      {
+        "combined_similarity": 0.832143,
+        "contour_similarity": 1.0,
+        "graph_edge": true,
+        "interval_similarity": 0.714286,
+        "left_tune": "fam_a_substitution",
+        "rhythm_similarity": 0.875,
+        "right_tune": "fam_a_rhythm"
+      },
+      {
+        "combined_similarity": 0.125,
+        "contour_similarity": 0.0,
+        "graph_edge": true,
+        "interval_similarity": 0.0,
+        "left_tune": "fam_a_substitution",
+        "rhythm_similarity": 0.625,
+        "right_tune": "fam_b_base"
+      },
+      {
+        "combined_similarity": 0.125,
+        "contour_similarity": 0.0,
+        "graph_edge": true,
+        "interval_similarity": 0.0,
+        "left_tune": "fam_a_substitution",
+        "rhythm_similarity": 0.625,
+        "right_tune": "fam_b_transposed"
+      },
+      {
+        "combined_similarity": 0.170833,
+        "contour_similarity": 0.125,
+        "graph_edge": true,
+        "interval_similarity": 0.0,
+        "left_tune": "fam_a_substitution",
+        "rhythm_similarity": 0.666667,
+        "right_tune": "fam_b_inserted"
+      },
+      {
+        "combined_similarity": 0.239286,
+        "contour_similarity": 0.142857,
+        "graph_edge": true,
+        "interval_similarity": 0.142857,
+        "left_tune": "fam_a_substitution",
+        "rhythm_similarity": 0.625,
+        "right_tune": "fam_b_deleted"
+      },
+      {
+        "combined_similarity": 0.125,
+        "contour_similarity": 0.0,
+        "graph_edge": true,
+        "interval_similarity": 0.0,
+        "left_tune": "fam_a_rhythm",
+        "rhythm_similarity": 0.625,
+        "right_tune": "fam_b_base"
+      },
+      {
+        "combined_similarity": 0.125,
+        "contour_similarity": 0.0,
+        "graph_edge": true,
+        "interval_similarity": 0.0,
+        "left_tune": "fam_a_rhythm",
+        "rhythm_similarity": 0.625,
+        "right_tune": "fam_b_transposed"
+      },
+      {
+        "combined_similarity": 0.193056,
+        "contour_similarity": 0.125,
+        "graph_edge": true,
+        "interval_similarity": 0.0,
+        "left_tune": "fam_a_rhythm",
+        "rhythm_similarity": 0.777778,
+        "right_tune": "fam_b_inserted"
+      },
+      {
+        "combined_similarity": 0.239286,
+        "contour_similarity": 0.142857,
+        "graph_edge": true,
+        "interval_similarity": 0.142857,
+        "left_tune": "fam_a_rhythm",
+        "rhythm_similarity": 0.625,
+        "right_tune": "fam_b_deleted"
+      },
+      {
+        "combined_similarity": 1.0,
+        "contour_similarity": 1.0,
+        "graph_edge": true,
+        "interval_similarity": 1.0,
+        "left_tune": "fam_b_base",
+        "rhythm_similarity": 1.0,
+        "right_tune": "fam_b_transposed"
+      },
+      {
+        "combined_similarity": 0.815278,
+        "contour_similarity": 0.875,
+        "graph_edge": true,
+        "interval_similarity": 0.75,
+        "left_tune": "fam_b_base",
+        "rhythm_similarity": 0.888889,
+        "right_tune": "fam_b_inserted"
+      },
+      {
+        "combined_similarity": 0.789286,
+        "contour_similarity": 0.857143,
+        "graph_edge": true,
+        "interval_similarity": 0.714286,
+        "left_tune": "fam_b_base",
+        "rhythm_similarity": 0.875,
+        "right_tune": "fam_b_deleted"
+      },
+      {
+        "combined_similarity": 0.815278,
+        "contour_similarity": 0.875,
+        "graph_edge": true,
+        "interval_similarity": 0.75,
+        "left_tune": "fam_b_transposed",
+        "rhythm_similarity": 0.888889,
+        "right_tune": "fam_b_inserted"
+      },
+      {
+        "combined_similarity": 0.789286,
+        "contour_similarity": 0.857143,
+        "graph_edge": true,
+        "interval_similarity": 0.714286,
+        "left_tune": "fam_b_transposed",
+        "rhythm_similarity": 0.875,
+        "right_tune": "fam_b_deleted"
+      },
+      {
+        "combined_similarity": 0.630556,
+        "contour_similarity": 0.75,
+        "graph_edge": true,
+        "interval_similarity": 0.5,
+        "left_tune": "fam_b_inserted",
+        "rhythm_similarity": 0.777778,
+        "right_tune": "fam_b_deleted"
+      }
+    ]
+  },
+  "exact_result": {
+    "all_optima_balanced": true,
+    "canonical_complement_class": "00001111",
+    "evaluated_assignments": 256,
+    "family_recovery": 1.0,
+    "minimum_energy": 0.0,
+    "optimal_assignments": [
+      "00001111",
+      "11110000"
+    ]
+  },
+  "execution_classification": "current-exact-classical-computation",
+  "explanations": {
+    "first_encounter": "We asked whether eight made-up tune variants could be separated into two groups using their melodic intervals, up-and-down contour, and rhythm. The computer checked every possible grouping. Its best unlabeled split is represented by 00001111, with energy 0.000000. Reversing every 0 and 1 describes the same two groups, so neither label is special. Checking every option is practical here and is the authoritative answer. A later local quantum simulation can be compared with this answer, but it does not replace it. The fixture is synthetic and this does not discover real cultural tune families.",
+    "research_detail": "The registered synthetic fixture preserves the EXP-005A variable order and uses tau=0.25, lambda=0.10. All 2^8 assignments are evaluated, with direct/QUBO and QUBO/Ising agreement enforced at their registered tolerances. The argmin is represented canonically by 00001111; its global bitwise complement is scientifically equivalent because partition labels are exchangeable. The exact minimum (0.000000) and family-recovery metric are deterministic validation evidence. A bounded ideal-simulator QAOA run can later report expectation and finite-shot statistics separately. An optimum sample cannot establish an optimum expectation, hardware performance, or generalisation beyond this fixture.",
+    "technical_learner": "The fixed eight-tune fixture is converted into a weighted graph from interval, contour, and rhythm similarities. One binary variable assigns each tune to either side of an unlabeled partition. The QUBO penalises separating similar pairs, keeping dissimilar pairs together, and severe imbalance. Exhaustive enumeration validates the minimum energy 0.000000; 00001111 is the canonical representative of its complement class. Direct, QUBO, and Ising energies are checked before the envelope is issued. Exact enumeration is authoritative for 256 assignments. Optional p=1 local Qiskit sampling later measures how probability concentrates relative to this known reference, not whether the reference is correct."
+  },
+  "export_format_version": "qfl.build_week.export.v1",
+  "fixture_description": "Eight deterministic synthetic tune variants form a small two-family partitioning question. Evaluation labels are withheld from optimisation.",
+  "fixture_identifier": "synthetic-two-family-v1-seed42",
+  "parameters": {
+    "graph_threshold": 0.45,
+    "lambda": 0.1,
+    "tau": 0.25
+  },
+  "qubo_summary": {
+    "linear_count": 8,
+    "nonzero_abs_max": 14.937301,
+    "nonzero_abs_min": 1.061112,
+    "offset": 14.937301,
+    "quadratic_count": 28
+  },
+  "run_identifier": "build-week-exact-synthetic-two-family-v1-seed42",
+  "schema_version": "qfl.build_week.result_envelope.v1",
+  "software_provenance": {
+    "entry_point": "quantum_folk_lab.build_week.run_guided_exact",
+    "executable_source_commit": "working-tree",
+    "governing_plan_commit": "3950a1f4f6c7c3f65c613133dec6dd8075739f57",
+    "package": "quantum-folk-lab 0.1.0",
+    "pre_build_week_commit": "281ba4013112a071bba4a70579c24d051da36c51",
+    "python": "3.13.5"
+  },
+  "tune_ordering": [
+    "fam_a_base",
+    "fam_a_transposed",
+    "fam_a_substitution",
+    "fam_a_rhythm",
+    "fam_b_base",
+    "fam_b_transposed",
+    "fam_b_inserted",
+    "fam_b_deleted"
+  ],
+  "validation_state": {
+    "direct_qubo": {
+      "maximum_disagreement": 5.329070518200751e-15,
+      "tolerance": 1e-09,
+      "verified_assignments": 256
+    },
+    "passed": true,
+    "qubo_ising": {
+      "maximum_disagreement": 2.4868995751603507e-14,
+      "tolerance": 1e-08,
+      "verified_assignments": 256
+    }
+  }
+}

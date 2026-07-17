@@ -28,9 +28,9 @@ Gwri decisions governing this work:
 
 ## Primary-session feedback evidence
 
-`PENDING USER ACTION — invoke /feedback in the primary Codex session and add the returned session ID during release review.`
+Codex Session ID supplied privately through the Devpost submission form.
 
-Do not replace this placeholder with an invented identifier.
+The identifier is intentionally excluded from public repository evidence.
 
 ## Stage 2 — Guided Experiment product
 

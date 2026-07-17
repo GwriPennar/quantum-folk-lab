@@ -43,6 +43,26 @@ qfl doctor
 qfl compare --seed 42
 ```
 
+## OpenAI Build Week 2026
+
+Quantum Folk Lab now offers a guided Education journey from synthetic musical evidence to a
+verified exact partition, optional local-Qiskit comparison, grounded optional GPT-5.6 Sol
+explanation, and reproducibility export.
+
+- **Before Build Week:** the public Foundations console and registered research experiments
+  already existed at commit `281ba40`.
+- **Built during Build Week:** the validated exact-first service and Guided Experiment were added
+  after governing-plan commit `3950a1f`.
+
+```powershell
+python -m pip install -e ".[learning]"
+streamlit run apps/learning_console/app.py
+```
+
+The complete journey needs neither Qiskit nor an OpenAI credential. Optional capabilities use
+`.[quantum]` and `.[ai]`. See the [Build Week judging guide](docs/build-week/JUDGING-GUIDE.md).
+Exact enumeration remains authoritative; no quantum advantage is claimed.
+
 ## EXP-001: Local Qiskit Circuit Infrastructure
 
 EXP-001 is complete and validates local Qiskit circuit construction, transpilation, measurement, and finite-shot reporting with Aer simulation only. It requires optional quantum dependencies but no IBM account, no token, and no QPU access.
