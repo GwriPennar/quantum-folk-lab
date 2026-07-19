@@ -2,7 +2,7 @@
 
 - [x] Codex Session ID supplied privately through the Devpost submission form.
 - [x] Confirm the actual Session ID is excluded from public repository evidence.
-- [ ] Run the judging guide from a clean public clone.
+- [x] Validate the merged release with the judging guide in clean temporary environments.
 - [ ] Capture public-safe landing, evidence/model, exact result, comparison, explanation, and export screenshots.
 - [ ] Check screenshots for credentials, usernames, personal paths, emails, and private windows.
 - [ ] Record the under-three-minute demo using `DEMO-SCRIPT.md`.

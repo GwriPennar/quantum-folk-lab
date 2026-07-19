@@ -6,7 +6,7 @@
 | Governing plan | `3950a1f4f6c7c3f65c613133dec6dd8075739f57` | Approved Build Week scope |
 | Deterministic core | `39489b0422715936bb9059c7d70cbc8ef4a5e4d0` | Squash merge of PR #16 |
 | Guided product | `06f55317a8d38ac0c5d22285793cabf3ebb40b48` | Squash merge of PR #17 |
-| Release | release draft PR head | Documentation, verification, and example export |
+| Release | `120016459c45c26066188602a463bde1f68f630b` | Squash merge of PR #18 |
 
 ## New after the governing plan
 
@@ -19,4 +19,4 @@
 - Build Week unit, CLI, service, adapter, navigation, safety, quantum, and runtime tests.
 
 No registered EXP-005A artefact or result was changed. The existing Foundations lessons remain
-available. The release branch adds no new scientific computation.
+available. The release merged into `main` adds no new scientific computation.
