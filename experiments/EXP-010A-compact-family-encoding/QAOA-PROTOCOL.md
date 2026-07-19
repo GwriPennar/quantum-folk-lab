@@ -24,6 +24,7 @@ Frozen: 2026-07-20, after exact compact equivalence passed and before QAOA execu
 - evaluate every one of the 33,153 grid pairs with exact statevectors;
 - select the 16 lowest expected-energy grid points, tied by lower gamma then beta;
 - refine all 16 with SciPy L-BFGS-B using the exact frozen bounds;
+- L-BFGS-B maximum iterations 500, `ftol=1e-15`, `gtol=1e-12`, and `maxls=20`;
 - select lowest refined exact expected energy, tied by lower gamma then beta.
 
 Domains, grid, objective, starts, and selection rules may not change after observing results.
