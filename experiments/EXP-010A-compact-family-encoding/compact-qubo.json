@@ -1,0 +1,39 @@
+{
+  "coefficient_sha256": "96cfa65ca023ef7dc7449ce4b8ef132f0cbd2bbfc035f357d19f55431b3bb86e",
+  "convention": "offset + diagonal + upper-triangular pair terms",
+  "matrix": [
+    [
+      -0.013538186828123001,
+      0.0010976367589740008,
+      -0.004851128595873999,
+      -0.001235595811224996
+    ],
+    [
+      0.0,
+      0.008060540508226993,
+      0.004975324807780006,
+      -0.009263386585144986
+    ],
+    [
+      0.0,
+      0.0,
+      -0.003932433401315001,
+      0.003739642778779008
+    ],
+    [
+      0.0,
+      0.0,
+      0.0,
+      0.003440290848792993
+    ]
+  ],
+  "offset": 0.055374836501815,
+  "penalty_term": false,
+  "source": "algebraic substitution using committed R2 15-decimal cross-family terms",
+  "variable_order": [
+    "blackbird",
+    "bold-deserter",
+    "catherine-tyrrell",
+    "merry-old-woman"
+  ]
+}
