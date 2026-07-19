@@ -7,6 +7,7 @@ from types import SimpleNamespace
 import pytest
 
 from quantum_folk_lab.quantum.ibm_runtime import (
+    HARDWARE_CONFIRMATION,
     build_hello_folk_circuit,
     extract_v2_counts,
     load_api_token,
@@ -47,6 +48,19 @@ def test_extract_v2_counts_uses_named_measure_register() -> None:
     assert extract_v2_counts(pub_result) == {"00": 7, "11": 9}
 
 
-def test_hardware_execution_requires_explicit_confirmation() -> None:
-    with pytest.raises(PermissionError, match="confirm-qpu"):
-        run_hardware_smoke(token="not-used", shots=256, confirm_qpu=False)
+def test_hardware_execution_requires_explicit_submission_flag() -> None:
+    with pytest.raises(PermissionError, match="submit-hardware"):
+        run_hardware_smoke(
+            token="not-used", shots=256, submit_hardware=False, confirmation=HARDWARE_CONFIRMATION
+        )
+
+
+def test_hardware_execution_requires_exact_confirmation_phrase() -> None:
+    with pytest.raises(PermissionError, match="exact confirmation phrase"):
+        run_hardware_smoke(token="not-used", shots=256, submit_hardware=True, confirmation="almost")
+
+
+def test_documented_confirmation_phrase_passes_offline_guard() -> None:
+    from quantum_folk_lab.quantum.ibm_runtime import require_confirmation
+
+    require_confirmation(submit_hardware=True, confirmation=HARDWARE_CONFIRMATION)

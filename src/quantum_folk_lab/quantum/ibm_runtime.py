@@ -5,10 +5,14 @@ from dataclasses import asdict, dataclass
 from pathlib import Path
 from typing import Any
 
+HARDWARE_CONFIRMATION = "I AUTHORIZE ONE IBM QPU JOB"
 
-def require_confirmation(confirm_qpu: bool) -> None:
-    if not confirm_qpu:
-        raise PermissionError("IBM QPU execution requires --confirm-qpu.")
+
+def require_confirmation(*, submit_hardware: bool, confirmation: str) -> None:
+    if not submit_hardware:
+        raise PermissionError("IBM QPU execution requires --submit-hardware.")
+    if confirmation != HARDWARE_CONFIRMATION:
+        raise PermissionError("IBM QPU execution requires the exact confirmation phrase.")
 
 
 def import_runtime() -> object:
@@ -85,9 +89,11 @@ class HardwareSmokeResult:
         return asdict(self)
 
 
-def run_hardware_smoke(*, token: str, shots: int, confirm_qpu: bool) -> HardwareSmokeResult:
+def run_hardware_smoke(
+    *, token: str, shots: int, submit_hardware: bool, confirmation: str
+) -> HardwareSmokeResult:
     """Submit exactly one bounded Bell-state circuit in SamplerV2 backend-job mode."""
-    require_confirmation(confirm_qpu)
+    require_confirmation(submit_hardware=submit_hardware, confirmation=confirmation)
     if not 1 <= shots <= 4096:
         raise ValueError("shots must be between 1 and 4096")
 
