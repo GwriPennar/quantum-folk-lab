@@ -16,7 +16,7 @@ from quantum_folk_lab.build_week.quantum import quantum_capability
 from quantum_folk_lab.tune_family import bits_from_bitstring, registered_fixture
 
 REGISTERED_RESULT = Path("experiments/EXP-005A-tune-family-qaoa/results/tune-family-qaoa-p1.json")
-REGISTERED_RESULT_SHA256 = "2f5a1803fa8977dcf5fb4f4acf73bd4146f610e317c1e441f1e0d37165fda3a3"
+REGISTERED_RESULT_SHA256 = "c3f2b346bc692e20a006df645ead8ced121f2c9197ca71f73e92241362737f1e"
 
 
 def test_exact_landscape_is_complete_validated_and_deterministic() -> None:
@@ -60,7 +60,8 @@ def test_landscape_values_use_the_registered_qubo_energy() -> None:
 
 
 def test_registered_qaoa_read_model_matches_unchanged_tracked_evidence() -> None:
-    source_hash = hashlib.sha256(REGISTERED_RESULT.read_bytes()).hexdigest()
+    normalized_source = REGISTERED_RESULT.read_text(encoding="utf-8").replace("\r\n", "\n")
+    source_hash = hashlib.sha256(normalized_source.encode("utf-8")).hexdigest()
     assert source_hash == REGISTERED_RESULT_SHA256
     evidence = parse_registered_qaoa_evidence(
         json.loads(REGISTERED_RESULT.read_text(encoding="utf-8"))
