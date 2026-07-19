@@ -45,7 +45,11 @@ def load_api_token(credential_file: Path) -> str:
 def build_hello_folk_circuit() -> Any:
     """Build a measured Bell pair, thematically labelled call-and-response."""
     try:
-        from qiskit import ClassicalRegister, QuantumCircuit, QuantumRegister
+        from qiskit import (  # type: ignore[import-not-found]
+            ClassicalRegister,
+            QuantumCircuit,
+            QuantumRegister,
+        )
     except ModuleNotFoundError as exc:
         raise RuntimeError("Install the optional quantum extra to build the circuit.") from exc
     qubits = QuantumRegister(2, "call_response")
@@ -100,7 +104,9 @@ def run_hardware_smoke(
     try:
         import qiskit
         import qiskit_ibm_runtime
-        from qiskit.transpiler.preset_passmanagers import generate_preset_pass_manager
+        from qiskit.transpiler.preset_passmanagers import (  # type: ignore[import-not-found]
+            generate_preset_pass_manager,
+        )
         from qiskit_ibm_runtime import QiskitRuntimeService, SamplerV2
     except ModuleNotFoundError as exc:
         raise RuntimeError("Install the quantum and ibm extras to execute on hardware.") from exc
