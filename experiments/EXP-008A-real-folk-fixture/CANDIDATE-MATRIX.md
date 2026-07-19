@@ -59,3 +59,30 @@ family. Every setting must still meet the same exact-source, tune-specific right
 and documentary family-evidence standard described above. The experimental fixture therefore
 remains eight settings in total. This scientific scope correction was made before any fixture,
 QAOA, or hardware experiment was created or run.
+
+## Revised 4×2 investigation outcome
+
+The revised gate was assessed against the same evidence standard. Tune-number and title-index
+evidence identified four possible pairs, but none was admitted for transcription because exact
+printed and scan pages were not verified against readable images of the original 1903 score in this
+audit environment.
+
+| Provisional family | Proposed pair | Documentary family evidence | Printed / scan pages | Rights confidence | Transcription readiness |
+|---|---|---|---|---|---|
+| The Bold Deserter | O'Neill nos. 291 and 1791 | The O'Neill revision notes describe the two as variants of the same basic tune; the historical index does not label them first and second settings. | Not verified against the original scan | Medium: 1903 edition route is defensible, but tune-specific image review remains outstanding | Not ready |
+| Catherine Tyrrell | O'Neill nos. 336 and 337 | The collection index and revision notes identify first and second settings. | Not verified against the original scan | Medium-high subject to score-image and tune-specific attribution review | Not ready |
+| The Merry Old Woman | O'Neill nos. 799 and 800 | The collection index identifies first and second settings. | Not verified against the original scan | Medium-high subject to score-image and tune-specific attribution review | Not ready |
+| The Blackbird | O'Neill nos. 199 and 200 | The collection index identifies first and second settings, but the title also occurs for other distinct records, so only this bounded labelled pair was considered. | Not verified against the original scan | Medium subject to score-image, attribution, and identity review | Not ready; fourth family not verified |
+
+The IMSLP catalogue record verifies a 378-page scan of the original Lyon & Healy 1903 score as item
+`#495828`, but automated access to the score images was not available during this audit. A separate
+publicly discoverable PDF was inspected outside the repository and rejected: its pages identify it
+as a 2003 ABC-derived typesetting with named modern transcribers, not a scan of the historical
+edition. No notation, metadata, or ABC text from that derivative file was copied.
+
+Passing the gate now requires human or tool-assisted access to the verified original scan, followed
+by page-by-page confirmation of title, tune number, printed page, scan page, legibility, attribution,
+and family identity for all eight settings. Until then, creating ABC would violate the independent-
+transcription and exact-source requirements.
+
+DEFER — FOURTH TWO-SETTING FAMILY NOT VERIFIED
