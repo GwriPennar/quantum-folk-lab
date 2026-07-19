@@ -1,0 +1,232 @@
+{
+  "experiment_id": "EXP-009A-R2",
+  "feature_names": [
+    "event_count_scaled",
+    "range_scaled",
+    "ascending_proportion",
+    "descending_proportion",
+    "repeated_proportion",
+    "step_proportion",
+    "skip_proportion",
+    "leap_proportion",
+    "contour_change_rate"
+  ],
+  "records": [
+    {
+      "alawarchwilio_stable_id": "139490",
+      "dataset_hash_verified": true,
+      "deterministic_tie_break_verified": true,
+      "family_id": "blackbird",
+      "features": {
+        "ascending_proportion": 0.472440944882,
+        "contour_change_rate": 0.339130434783,
+        "descending_proportion": 0.44094488189,
+        "event_count_scaled": 0.5,
+        "leap_proportion": 0.007874015748,
+        "range_scaled": 0.392857142857,
+        "repeated_proportion": 0.086614173228,
+        "skip_proportion": 0.125984251969,
+        "step_proportion": 0.779527559055
+      },
+      "inline_field_counts": {
+        "K": 0,
+        "M": 0,
+        "Q": 0
+      },
+      "irishman_row_index": 24633,
+      "irishman_split": "train",
+      "normalized_fingerprint_verified": true,
+      "setting_id": "blackbird-1",
+      "source_record_hash_verified": true
+    },
+    {
+      "alawarchwilio_stable_id": "139491",
+      "dataset_hash_verified": true,
+      "deterministic_tie_break_verified": true,
+      "family_id": "blackbird",
+      "features": {
+        "ascending_proportion": 0.407407407407,
+        "contour_change_rate": 0.424657534247,
+        "descending_proportion": 0.506172839506,
+        "event_count_scaled": 0.3203125,
+        "leap_proportion": 0.037037037037,
+        "range_scaled": 0.392857142857,
+        "repeated_proportion": 0.086419753086,
+        "skip_proportion": 0.197530864198,
+        "step_proportion": 0.679012345679
+      },
+      "inline_field_counts": {
+        "K": 0,
+        "M": 0,
+        "Q": 0
+      },
+      "irishman_row_index": 32836,
+      "irishman_split": "train",
+      "normalized_fingerprint_verified": true,
+      "setting_id": "blackbird-2",
+      "source_record_hash_verified": true
+    },
+    {
+      "alawarchwilio_stable_id": "141073",
+      "dataset_hash_verified": true,
+      "deterministic_tie_break_verified": true,
+      "family_id": "bold-deserter",
+      "features": {
+        "ascending_proportion": 0.435294117647,
+        "contour_change_rate": 0.303797468354,
+        "descending_proportion": 0.505882352941,
+        "event_count_scaled": 0.3359375,
+        "leap_proportion": 0.023529411765,
+        "range_scaled": 0.357142857143,
+        "repeated_proportion": 0.058823529412,
+        "skip_proportion": 0.282352941176,
+        "step_proportion": 0.635294117647
+      },
+      "inline_field_counts": {
+        "K": 0,
+        "M": 0,
+        "Q": 0
+      },
+      "irishman_row_index": 39010,
+      "irishman_split": "train",
+      "normalized_fingerprint_verified": true,
+      "setting_id": "bold-deserter-air",
+      "source_record_hash_verified": true
+    },
+    {
+      "alawarchwilio_stable_id": "141074",
+      "dataset_hash_verified": true,
+      "deterministic_tie_break_verified": true,
+      "family_id": "bold-deserter",
+      "features": {
+        "ascending_proportion": 0.384057971014,
+        "contour_change_rate": 0.436974789916,
+        "descending_proportion": 0.485507246377,
+        "event_count_scaled": 0.54296875,
+        "leap_proportion": 0.065217391304,
+        "range_scaled": 0.392857142857,
+        "repeated_proportion": 0.130434782609,
+        "skip_proportion": 0.31884057971,
+        "step_proportion": 0.485507246377
+      },
+      "inline_field_counts": {
+        "K": 1,
+        "M": 1,
+        "Q": 1
+      },
+      "irishman_row_index": 209065,
+      "irishman_split": "train",
+      "normalized_fingerprint_verified": true,
+      "setting_id": "bold-deserter-longdance",
+      "source_record_hash_verified": true
+    },
+    {
+      "alawarchwilio_stable_id": "147293",
+      "dataset_hash_verified": true,
+      "deterministic_tie_break_verified": true,
+      "family_id": "catherine-tyrrell",
+      "features": {
+        "ascending_proportion": 0.349206349206,
+        "contour_change_rate": 0.392523364486,
+        "descending_proportion": 0.507936507937,
+        "event_count_scaled": 0.49609375,
+        "leap_proportion": 0.031746031746,
+        "range_scaled": 0.392857142857,
+        "repeated_proportion": 0.142857142857,
+        "skip_proportion": 0.15873015873,
+        "step_proportion": 0.666666666667
+      },
+      "inline_field_counts": {
+        "K": 0,
+        "M": 0,
+        "Q": 0
+      },
+      "irishman_row_index": 17968,
+      "irishman_split": "train",
+      "normalized_fingerprint_verified": true,
+      "setting_id": "catherine-tyrrell-1",
+      "source_record_hash_verified": true
+    },
+    {
+      "alawarchwilio_stable_id": "73496",
+      "dataset_hash_verified": true,
+      "deterministic_tie_break_verified": true,
+      "family_id": "catherine-tyrrell",
+      "features": {
+        "ascending_proportion": 0.43,
+        "contour_change_rate": 0.5,
+        "descending_proportion": 0.52,
+        "event_count_scaled": 0.39453125,
+        "leap_proportion": 0.04,
+        "range_scaled": 0.392857142857,
+        "repeated_proportion": 0.05,
+        "skip_proportion": 0.2,
+        "step_proportion": 0.71
+      },
+      "inline_field_counts": {
+        "K": 0,
+        "M": 0,
+        "Q": 0
+      },
+      "irishman_row_index": 24035,
+      "irishman_split": "train",
+      "normalized_fingerprint_verified": true,
+      "setting_id": "catherine-tyrrell-2",
+      "source_record_hash_verified": true
+    },
+    {
+      "alawarchwilio_stable_id": "175474",
+      "dataset_hash_verified": true,
+      "deterministic_tie_break_verified": true,
+      "family_id": "merry-old-woman",
+      "features": {
+        "ascending_proportion": 0.5,
+        "contour_change_rate": 0.526315789474,
+        "descending_proportion": 0.375,
+        "event_count_scaled": 0.34765625,
+        "leap_proportion": 0.034090909091,
+        "range_scaled": 0.464285714286,
+        "repeated_proportion": 0.125,
+        "skip_proportion": 0.25,
+        "step_proportion": 0.590909090909
+      },
+      "inline_field_counts": {
+        "K": 1,
+        "M": 1,
+        "Q": 0
+      },
+      "irishman_row_index": 32494,
+      "irishman_split": "train",
+      "normalized_fingerprint_verified": true,
+      "setting_id": "merry-old-woman-1",
+      "source_record_hash_verified": true
+    },
+    {
+      "alawarchwilio_stable_id": "175476",
+      "dataset_hash_verified": true,
+      "deterministic_tie_break_verified": true,
+      "family_id": "merry-old-woman",
+      "features": {
+        "ascending_proportion": 0.413793103448,
+        "contour_change_rate": 0.534653465347,
+        "descending_proportion": 0.465517241379,
+        "event_count_scaled": 0.45703125,
+        "leap_proportion": 0.068965517241,
+        "range_scaled": 0.464285714286,
+        "repeated_proportion": 0.120689655172,
+        "skip_proportion": 0.301724137931,
+        "step_proportion": 0.508620689655
+      },
+      "inline_field_counts": {
+        "K": 1,
+        "M": 1,
+        "Q": 0
+      },
+      "irishman_row_index": 136698,
+      "irishman_split": "train",
+      "normalized_fingerprint_verified": true,
+      "setting_id": "merry-old-woman-2",
+      "source_record_hash_verified": true
+    }
+  ]
+}
