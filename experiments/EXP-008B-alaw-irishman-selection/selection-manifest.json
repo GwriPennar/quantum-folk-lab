@@ -1,0 +1,66 @@
+{
+  "experiment_id": "EXP-008B",
+  "schema_version": "1.0",
+  "created_on": "2026-07-19",
+  "irishman_revision": "30902e69ca45266207f8466e0d04e4bc742c5604",
+  "matching_method": "diatonic adjacent-interval SHA-256 and hashed 2-4-gram cosine",
+  "selection_rule": "exact fingerprint; train before validation; lowest zero-based index",
+  "settings": [
+    {
+      "family_id": "blackbird", "setting_id": "blackbird-1", "title": "The Blackbird", "alternate_titles": [], "proposed_oneill_number": 199,
+      "alawarchwilio_stable_id": "139490", "alawarchwilio_provenance": "Press aggregate O'Neill-numbered record; historical pages absent",
+      "irishman_split": "train", "irishman_row_index": 24633, "raw_record_sha256": "9e1985fd69bb1a99a14d793ce8b423044f7de01757c29cc00e337dc65aed4830",
+      "normalized_melody_fingerprint": "ceb3498b3ec287dcf70dcf483b233b71386e5ff89ef61b35afcbf9956f47a63f", "matching_confidence": 1.0,
+      "family_membership_evidence": "O'Neill labels 199/200 first/second settings", "rights_reuse_classification": "controlled research only; modern transcription rights unresolved", "research_computation_eligible": true, "public_redistribution_eligible": false
+    },
+    {
+      "family_id": "blackbird", "setting_id": "blackbird-2", "title": "The Blackbird", "alternate_titles": [], "proposed_oneill_number": 200,
+      "alawarchwilio_stable_id": "139491", "alawarchwilio_provenance": "Press aggregate O'Neill-numbered record; historical pages absent",
+      "irishman_split": "train", "irishman_row_index": 32836, "raw_record_sha256": "8bc3087768932a3ce2b6980ba30a5749e56cdaf2dd3c24596126bc2372065560",
+      "normalized_melody_fingerprint": "87fe1a7e65d185337c1e4eab810857a312743de4b5c8271be96d4b239a6fd1bc", "matching_confidence": 1.0,
+      "family_membership_evidence": "O'Neill labels 199/200 first/second settings", "rights_reuse_classification": "controlled research only; modern transcription rights unresolved", "research_computation_eligible": true, "public_redistribution_eligible": false
+    },
+    {
+      "family_id": "bold-deserter", "setting_id": "bold-deserter-air", "title": "The Bold Deserter", "alternate_titles": [], "proposed_oneill_number": 291,
+      "alawarchwilio_stable_id": "141073", "alawarchwilio_provenance": "Press aggregate O'Neill-numbered record; historical pages absent",
+      "irishman_split": "train", "irishman_row_index": 39010, "raw_record_sha256": "41c7d6c3886b19f396b92cf9201a27588ab6ed2c76c48f0602c8ce7c1b139d20",
+      "normalized_melody_fingerprint": "9446a4473441f728820c10217ce73eb000c36ad9d1d1843b6cb819dd0919b2fe", "matching_confidence": 1.0,
+      "family_membership_evidence": "O'Neill revision notes describe 291/1791 as variants", "rights_reuse_classification": "controlled research only; modern transcription rights unresolved", "research_computation_eligible": true, "public_redistribution_eligible": false
+    },
+    {
+      "family_id": "bold-deserter", "setting_id": "bold-deserter-longdance", "title": "The Bold Deserter", "alternate_titles": [], "proposed_oneill_number": 1791,
+      "alawarchwilio_stable_id": "141074", "alawarchwilio_provenance": "Press aggregate O'Neill-numbered record; historical pages absent",
+      "irishman_split": "train", "irishman_row_index": 209065, "raw_record_sha256": "eb7a8ab9985ae8af9e25b0fda9b9cd471f63ec44139c556a75b20393411bb692",
+      "normalized_melody_fingerprint": "efda6601c695c4f9662adf8b095a6f58250d352f8579f87daebec1cf99d26228", "matching_confidence": 1.0,
+      "family_membership_evidence": "O'Neill revision notes describe 291/1791 as variants", "rights_reuse_classification": "controlled research only; modern transcription rights unresolved", "research_computation_eligible": true, "public_redistribution_eligible": false
+    },
+    {
+      "family_id": "catherine-tyrrell", "setting_id": "catherine-tyrrell-1", "title": "Catherine Tyrrell", "alternate_titles": ["Caitilin Tirriall"], "proposed_oneill_number": 336,
+      "alawarchwilio_stable_id": "147293", "alawarchwilio_provenance": "Press aggregate O'Neill-numbered record; historical pages absent",
+      "irishman_split": "train", "irishman_row_index": 17968, "raw_record_sha256": "07e920de605ad4ed4fdb3ca90c4715f3b7bcb57f2c1da2254c9fcefc2d8ac260",
+      "normalized_melody_fingerprint": "3c8e1ecb96058b29b807d3d4ebabccf8b70c000a5668b7e6fb51ec3a5179eae3", "matching_confidence": 1.0,
+      "family_membership_evidence": "O'Neill labels 336/337 first/second settings", "rights_reuse_classification": "controlled research only; modern transcription rights unresolved", "research_computation_eligible": true, "public_redistribution_eligible": false
+    },
+    {
+      "family_id": "catherine-tyrrell", "setting_id": "catherine-tyrrell-2", "title": "Catherine Tyrrell", "alternate_titles": ["Caitilin Tirriall"], "proposed_oneill_number": 337,
+      "alawarchwilio_stable_id": "73496", "alawarchwilio_provenance": "Press aggregate Irish-title record; source-local number is not globally unique",
+      "irishman_split": "train", "irishman_row_index": 24035, "raw_record_sha256": "f018bd200581230f4676ff5cdb89543d5dd7ecd5aacf4ea5b3a3cfc75766e563",
+      "normalized_melody_fingerprint": "6d541ce3536d5e917919480d6b154f390999ec0b48a749ac9a387488df9cb713", "matching_confidence": 1.0,
+      "family_membership_evidence": "O'Neill labels 336/337 first/second settings", "rights_reuse_classification": "controlled research only; modern transcription rights unresolved", "research_computation_eligible": true, "public_redistribution_eligible": false
+    },
+    {
+      "family_id": "merry-old-woman", "setting_id": "merry-old-woman-1", "title": "The Merry Old Woman", "alternate_titles": [], "proposed_oneill_number": 799,
+      "alawarchwilio_stable_id": "175474", "alawarchwilio_provenance": "Press aggregate O'Neill-numbered record; historical pages absent",
+      "irishman_split": "train", "irishman_row_index": 32494, "raw_record_sha256": "ee4647070486bc4e22f13277d035681844e7a21804352a4f89408b02d419ca95",
+      "normalized_melody_fingerprint": "16505622a378552fb23eebf8c5711528c19c59d760648af61e15e4c24a450acf", "matching_confidence": 1.0,
+      "family_membership_evidence": "O'Neill labels 799/800 first/second settings", "rights_reuse_classification": "controlled research only; modern transcription rights unresolved", "research_computation_eligible": true, "public_redistribution_eligible": false
+    },
+    {
+      "family_id": "merry-old-woman", "setting_id": "merry-old-woman-2", "title": "The Merry Old Woman", "alternate_titles": [], "proposed_oneill_number": 800,
+      "alawarchwilio_stable_id": "175476", "alawarchwilio_provenance": "Press aggregate O'Neill-numbered record; historical pages absent",
+      "irishman_split": "train", "irishman_row_index": 136698, "raw_record_sha256": "19555386cac9c991b39b48affbe410358b4d43f95a34c5f753f7daf33d238198",
+      "normalized_melody_fingerprint": "bc64d1b1052db804c17c0fdf7b621e8bfce7447f4528898b74505023921fa26b", "matching_confidence": 1.0,
+      "family_membership_evidence": "O'Neill labels 799/800 first/second settings", "rights_reuse_classification": "controlled research only; modern transcription rights unresolved", "research_computation_eligible": true, "public_redistribution_eligible": false
+    }
+  ]
+}
