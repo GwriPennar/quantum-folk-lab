@@ -14,7 +14,7 @@ def test_qaoa_local_smoke() -> None:
 
 def test_qpu_requires_confirmation() -> None:
     try:
-        require_confirmation(False)
+        require_confirmation(submit_hardware=False, confirmation="")
     except PermissionError:
         return
     raise AssertionError("QPU execution should require confirmation")
