@@ -14,6 +14,204 @@ LEVEL_LABELS = {
 }
 
 
+def _render_landscape(view: GuidedExperimentView) -> None:
+    landscape = view.landscape
+    rows = landscape.chart_rows()
+    order = [f"{value:04b}" for value in range(16)]
+    tooltips = [
+        {"field": "assignment", "type": "nominal", "title": "Assignment"},
+        {"field": "integer_index", "type": "quantitative", "title": "Integer index"},
+        {
+            "field": "display_energy",
+            "type": "quantitative",
+            "title": "Exact energy",
+            "format": ".6f",
+        },
+        {"field": "energy_rank", "type": "quantitative", "title": "Energy rank"},
+        {"field": "hamming_weight", "type": "quantitative", "title": "Hamming weight"},
+        {"field": "is_global_optimum", "type": "nominal", "title": "Global optimum"},
+        {
+            "field": "is_canonical_representative",
+            "type": "nominal",
+            "title": "Canonical",
+        },
+        {"field": "complement", "type": "nominal", "title": "Complement"},
+    ]
+    st.vega_lite_chart(
+        rows,
+        {
+            "height": 520,
+            "mark": {"type": "rect"},
+            "encoding": {
+                "x": {
+                    "field": "column_bits",
+                    "type": "ordinal",
+                    "sort": order,
+                    "axis": {"title": "Low four bits (binary index layout)"},
+                },
+                "y": {
+                    "field": "row_bits",
+                    "type": "ordinal",
+                    "sort": order,
+                    "axis": {"title": "High four bits (binary index layout)"},
+                },
+                "color": {
+                    "field": "display_energy",
+                    "type": "quantitative",
+                    "scale": {"scheme": "viridis", "reverse": True},
+                    "legend": {"title": "Exact energy"},
+                },
+                "stroke": {
+                    "condition": {"test": "datum.is_global_optimum", "value": "white"},
+                    "value": "transparent",
+                },
+                "strokeWidth": {
+                    "condition": {"test": "datum.is_global_optimum", "value": 4},
+                    "value": 0,
+                },
+                "tooltip": tooltips,
+            },
+            "config": {"view": {"stroke": None}},
+        },
+        width="stretch",
+    )
+    st.caption(
+        "Grid mapping: row = high four bits; column = low four bits. Adjacency is only binary "
+        "index layout and has no musical meaning. The two outlined cells are global optima: "
+        "top-right is the Canonical representative; bottom-left is the Equivalent complement."
+    )
+    left, middle, right = st.columns(3)
+    left.metric("Assignments checked", str(len(landscape.entries)))
+    middle.metric("Distinct energy levels", str(landscape.distinct_energy_levels))
+    right.metric("Gap to next best", f"{landscape.optimum_to_next_gap:.6f}")
+    st.success(
+        "Because the problem is deliberately small, the app does not ask the learner to trust "
+        "a prediction. It evaluates every possible assignment and establishes the complete "
+        "answer space first."
+    )
+    st.markdown(
+        f"**Canonical representative:** `{landscape.canonical_representative}`  \n"
+        f"**Equivalent complement:** `{landscape.global_optima[1]}`"
+    )
+    with st.expander("Accessible table of all 256 assignments"):
+        st.dataframe(rows, width="stretch", hide_index=True)
+
+
+def _render_registered_comparison(view: GuidedExperimentView) -> None:
+    evidence = view.registered_qaoa
+    st.subheader("Part B · Compare registered QAOA evidence")
+    st.markdown(
+        "**Registered evidence · Local ideal simulation · Not quantum hardware · "
+        "No quantum advantage claimed**"
+    )
+    exact_column, qaoa_column, random_column = st.columns(3)
+    exact_column.metric("Exact enumeration", "256 / 256 checked")
+    exact_column.caption("Authoritative answer space — not a sampling probability.")
+    qaoa_column.metric("Registered optimum-class mass", f"{evidence.optimum_class_probability:.2%}")
+    qaoa_column.caption(
+        f"{evidence.optimum_class_count:,} / {evidence.shots:,} samples across both optima."
+    )
+    random_column.metric(
+        "Uniform random baseline", f"{evidence.uniform_optimum_class_probability:.5%}"
+    )
+    random_column.caption("Two optima among 256 assignments.")
+    comparison = [
+        {
+            "method": "Registered p=1 QAOA",
+            "probability": evidence.optimum_class_probability,
+            "label": f"{evidence.optimum_class_probability:.2%}",
+        },
+        {
+            "method": "Uniform random",
+            "probability": evidence.uniform_optimum_class_probability,
+            "label": f"{evidence.uniform_optimum_class_probability:.5%}",
+        },
+    ]
+    st.vega_lite_chart(
+        comparison,
+        {
+            "height": 190,
+            "layer": [
+                {
+                    "mark": {"type": "bar"},
+                    "encoding": {
+                        "y": {"field": "method", "type": "nominal", "sort": None, "title": None},
+                        "x": {
+                            "field": "probability",
+                            "type": "quantitative",
+                            "axis": {
+                                "title": "Probability mass across both exact optima",
+                                "format": ".0%",
+                            },
+                        },
+                        "color": {"field": "method", "type": "nominal", "legend": None},
+                        "tooltip": [
+                            {"field": "method", "type": "nominal"},
+                            {"field": "probability", "type": "quantitative", "format": ".6%"},
+                        ],
+                    },
+                },
+                {
+                    "mark": {"type": "text", "align": "left", "dx": 6},
+                    "encoding": {
+                        "y": {"field": "method", "type": "nominal", "sort": None},
+                        "x": {"field": "probability", "type": "quantitative"},
+                        "text": {"field": "label"},
+                    },
+                },
+            ],
+        },
+        width="stretch",
+    )
+    st.info(
+        "53.10% is the total registered sample mass across both complement-equivalent global "
+        "optima. It is not the probability of the canonical representative alone and is not "
+        "the current 256-shot quick run."
+    )
+    with st.expander("Registered experiment contract"):
+        st.json(
+            {
+                "experiment": evidence.experiment_identifier,
+                "depth": f"p={evidence.depth}",
+                "shots": evidence.shots,
+                "optimiser": evidence.optimiser,
+                "optimiser maximum iterations": evidence.optimiser_max_iterations,
+                "fixed initial points": evidence.initial_point_count,
+                "sampler / estimator / transpiler seeds": evidence.sampler_seed,
+                "00001111": {
+                    "count": evidence.canonical_count,
+                    "probability": evidence.canonical_probability,
+                },
+                "11110000": {
+                    "count": evidence.complement_count,
+                    "probability": evidence.complement_probability,
+                },
+            }
+        )
+
+
+def _render_evidence_hierarchy() -> None:
+    st.subheader("Part C · Explain the evidence hierarchy")
+    st.markdown(
+        "**Exact enumeration**  \n"
+        "↓ governs  \n"
+        "**Qiskit heuristic comparison**  \n"
+        "↓ interpreted through  \n"
+        "**Validated GPT-5.6 explanation**"
+    )
+    st.info("The AI can explain the experiment. It cannot rewrite the evidence.")
+    st.write(
+        "GPT-5.6 receives validated evidence; it does not calculate the objective, choose the "
+        "optimum, or change registered values. Schema, grounding, numerical and claim checks "
+        "apply. Invalid or unavailable output fails closed to the deterministic explanation, "
+        "so the scientific result is identical without OpenAI access."
+    )
+    st.caption(
+        "Codex helped implement and test this Build Week release under human-defined "
+        "scientific contracts."
+    )
+
+
 def render_guided_experiment(view: GuidedExperimentView) -> None:
     result = view.result
     st.header("Guided Experiment")
@@ -41,7 +239,21 @@ def render_guided_experiment(view: GuidedExperimentView) -> None:
         )
         st.json({"parameters": result.parameters, "QUBO summary": result.qubo_summary})
 
-    st.subheader("5–6 · Exact result computed now")
+    st.subheader("5 · The 256 Reveal")
+    st.write(
+        "Eight synthetic tune variants. Two hidden families. There are 256 possible "
+        "assignments. Before the system reveals the answer, which split would you expect to win?"
+    )
+    if st.button("Reveal all 256 assignments", type="primary"):
+        st.session_state["build_week_256_revealed"] = True
+    if not st.session_state.get("build_week_256_revealed", False):
+        st.caption("Reveal the complete answer space to continue the exact-first journey.")
+        return
+
+    st.subheader("Part A · Complete exact answer space")
+    _render_landscape(view)
+
+    st.subheader("6 · Exact result computed now")
     exact = result.exact_result
     left, middle, right = st.columns(3)
     left.metric("Minimum energy", f"{float(exact['minimum_energy']):.6f}")
@@ -52,7 +264,14 @@ def render_guided_experiment(view: GuidedExperimentView) -> None:
         "bitwise complement denotes the same unlabeled partition."
     )
 
+    _render_registered_comparison(view)
+    _render_evidence_hierarchy()
+
     st.subheader("7–8 · Optional local-Qiskit comparison")
+    st.caption(
+        "This live bounded quick run uses a smaller submission-safe contract. It is separate "
+        "from the registered 4,096-shot evidence shown above."
+    )
     st.write(view.quantum.message)
     if view.quantum.available:
         if st.button("Run bounded local Qiskit (p=1, 256 shots)"):
@@ -71,12 +290,6 @@ def render_guided_experiment(view: GuidedExperimentView) -> None:
             )
     else:
         st.code(view.quantum.install_command)
-    with st.expander("Historical registered evidence boundary"):
-        st.write(
-            "EXP-005A includes separate registered 4,096-shot historical evidence. It is not "
-            "loaded or presented as this current quick run."
-        )
-
     st.subheader("9–10 · Explain this result")
     label = st.selectbox("Explanation level", list(LEVEL_LABELS))
     level = LEVEL_LABELS[label]

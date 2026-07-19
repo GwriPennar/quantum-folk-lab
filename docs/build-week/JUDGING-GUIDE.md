@@ -30,7 +30,15 @@ streamlit run apps/learning_console/app.py
 ```
 
 Open the displayed local URL. Guided Experiment is the first route. Move through evidence, model,
-exact result, optional comparison, explanation, export, and limitations.
+the app-native **256 Reveal**, exact result, optional comparison, explanation, export, and
+limitations. The reveal displays every assignment in a deterministic 16×16 binary-index grid,
+then distinguishes the two complement-equivalent optima before showing registered QAOA evidence.
+
+The registered comparison is historical EXP-005A evidence: a p=1, 4,096-shot local ideal
+simulation placed `2175 / 4096` samples (`53.10%`) across both exact optima. This is separate from
+the optional current 256-shot quick run. The uniform-all-assignments optimum-class baseline is
+`2 / 256 = 0.78125%`. Exact enumeration remains authoritative because it checks the complete
+space, not because it has a comparable sampling success rate.
 
 ## Optional capabilities
 
