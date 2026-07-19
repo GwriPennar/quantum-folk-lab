@@ -1,0 +1,125 @@
+{
+  "metric": "uniform-weight squared Euclidean over nine frozen features",
+  "pairs": [
+    {
+      "distance": 0.009034339827,
+      "left": "blackbird-1",
+      "right": "bold-deserter-air"
+    },
+    {
+      "distance": 0.016674133517,
+      "left": "blackbird-1",
+      "right": "bold-deserter-longdance"
+    },
+    {
+      "distance": 0.004453747498,
+      "left": "blackbird-1",
+      "right": "catherine-tyrrell-1"
+    },
+    {
+      "distance": 0.006415412079,
+      "left": "blackbird-1",
+      "right": "catherine-tyrrell-2"
+    },
+    {
+      "distance": 0.013508319382,
+      "left": "blackbird-1",
+      "right": "merry-old-woman-1"
+    },
+    {
+      "distance": 0.017598814373,
+      "left": "blackbird-1",
+      "right": "merry-old-woman-2"
+    },
+    {
+      "distance": 0.00299495945,
+      "left": "blackbird-2",
+      "right": "bold-deserter-air"
+    },
+    {
+      "distance": 0.011732389899,
+      "left": "blackbird-2",
+      "right": "bold-deserter-longdance"
+    },
+    {
+      "distance": 0.004465912295,
+      "left": "blackbird-2",
+      "right": "catherine-tyrrell-1"
+    },
+    {
+      "distance": 0.00157644828,
+      "left": "blackbird-2",
+      "right": "catherine-tyrrell-2"
+    },
+    {
+      "distance": 0.005997348133,
+      "left": "blackbird-2",
+      "right": "merry-old-woman-1"
+    },
+    {
+      "distance": 0.008852247313,
+      "left": "blackbird-2",
+      "right": "merry-old-woman-2"
+    },
+    {
+      "distance": 0.007289903655,
+      "left": "bold-deserter-air",
+      "right": "catherine-tyrrell-1"
+    },
+    {
+      "distance": 0.006238179726,
+      "left": "bold-deserter-air",
+      "right": "catherine-tyrrell-2"
+    },
+    {
+      "distance": 0.009995108842,
+      "left": "bold-deserter-air",
+      "right": "merry-old-woman-1"
+    },
+    {
+      "distance": 0.011538074793,
+      "left": "bold-deserter-air",
+      "right": "merry-old-woman-2"
+    },
+    {
+      "distance": 0.007291070175,
+      "left": "bold-deserter-longdance",
+      "right": "catherine-tyrrell-1"
+    },
+    {
+      "distance": 0.011214671054,
+      "left": "bold-deserter-longdance",
+      "right": "catherine-tyrrell-2"
+    },
+    {
+      "distance": 0.01041468914,
+      "left": "bold-deserter-longdance",
+      "right": "merry-old-woman-1"
+    },
+    {
+      "distance": 0.002694268506,
+      "left": "bold-deserter-longdance",
+      "right": "merry-old-woman-2"
+    },
+    {
+      "distance": 0.011093417298,
+      "left": "catherine-tyrrell-1",
+      "right": "merry-old-woman-1"
+    },
+    {
+      "distance": 0.008900247204,
+      "left": "catherine-tyrrell-1",
+      "right": "merry-old-woman-2"
+    },
+    {
+      "distance": 0.006251043244,
+      "left": "catherine-tyrrell-2",
+      "right": "merry-old-woman-1"
+    },
+    {
+      "distance": 0.00779751593,
+      "left": "catherine-tyrrell-2",
+      "right": "merry-old-woman-2"
+    }
+  ]
+}

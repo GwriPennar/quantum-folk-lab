@@ -1,0 +1,74 @@
+{
+  "metrics": {
+    "expected_energy": {
+      "alternative_uncertainty": {
+        "median": 0.051070878518569535,
+        "q025": 0.050741485563579394,
+        "q975": 0.05446509529105586,
+        "standard_deviation": 0.0010394600527879974
+      },
+      "detectable_at_power_0_80": true,
+      "estimated_power": 1.0,
+      "favorable_direction": "lower",
+      "null_critical_value": 13.872410801619514
+    },
+    "feasible_energy_probability_spearman": {
+      "alternative_uncertainty": {
+        "median": 0.0014716707442631505,
+        "q025": -0.4974338789914483,
+        "q975": 0.5004000277742124,
+        "standard_deviation": 0.2585364496242093
+      },
+      "detectable_at_power_0_80": false,
+      "estimated_power": 0.0487,
+      "favorable_direction": "lower",
+      "null_critical_value": -0.42456364565950094
+    },
+    "feasible_subspace_mass": {
+      "alternative_uncertainty": {
+        "median": 1.0,
+        "q025": 0.99951171875,
+        "q975": 1.0,
+        "standard_deviation": 0.00013197352730947025
+      },
+      "detectable_at_power_0_80": true,
+      "estimated_power": 1.0,
+      "favorable_direction": "higher",
+      "null_critical_value": 0.06884765625
+    },
+    "four_lowest_feasible_mass": {
+      "alternative_uncertainty": {
+        "median": 0.25,
+        "q025": 0.237060546875,
+        "q975": 0.26318359375,
+        "standard_deviation": 0.006648922824603806
+      },
+      "detectable_at_power_0_80": true,
+      "estimated_power": 1.0,
+      "favorable_direction": "higher",
+      "null_critical_value": 0.018798828125
+    },
+    "optimum_class_mass": {
+      "alternative_uncertainty": {
+        "median": 0.0625,
+        "q025": 0.055419921875,
+        "q975": 0.070068359375,
+        "standard_deviation": 0.0037836079014546614
+      },
+      "detectable_at_power_0_80": true,
+      "estimated_power": 1.0,
+      "favorable_direction": "higher",
+      "null_critical_value": 0.005615234375
+    }
+  },
+  "primary_hardware_metric_selected": false,
+  "protocol": {
+    "alternative": "frozen ideal p=1 local-QAOA distribution",
+    "detectability_power_threshold": 0.8,
+    "null": "uniform distribution over all 256 states",
+    "resamples": 10000,
+    "seed": 42,
+    "shots_per_resample": 4096,
+    "significance_level": 0.05
+  }
+}
