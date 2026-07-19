@@ -63,6 +63,27 @@ The complete journey needs neither Qiskit nor an OpenAI credential. Optional cap
 `.[quantum]` and `.[ai]`. See the [Build Week judging guide](docs/build-week/JUDGING-GUIDE.md).
 Exact enumeration remains authoritative; no quantum advantage is claimed.
 
+### Built with Codex and GPT-5.6
+
+Codex accelerated repository inspection, bounded implementation, test construction, runtime
+verification, CI diagnosis, visual review, and PR preparation across the deterministic exact-first
+core, Guided Experiment, validated GPT-5.6 boundary, and in-app 256 Reveal. Gwri retained and
+approved the governing product, engineering, and scientific decisions: Education positioning, the
+fixed synthetic fixture, exact enumeration as authority, separation of exact truth from registered
+QAOA and the live quick run, no hardware or advantage claim, optional GPT-5.6 with deterministic
+fallback, rejection or deferral of unsafe scope, and every final merge.
+
+GPT-5.6 optionally explains validated results at different learner levels; deterministic code
+calculates the result. Its input is filtered, and output is schema-, grounding-, number-, and
+claim-checked. It cannot alter registered values, and invalid or unavailable output fails closed to
+the deterministic explanation. **The AI can explain the experiment. It cannot rewrite the
+evidence.**
+
+Evidence: [Codex contribution log](docs/build-week/CODEX-CONTRIBUTION-LOG.md),
+[Codex and GPT-5.6 evidence](docs/build-week/CODEX-AND-GPT56-EVIDENCE.md),
+[before and after](docs/build-week/BEFORE-AND-AFTER.md), and
+[judging guide](docs/build-week/JUDGING-GUIDE.md).
+
 ## EXP-001: Local Qiskit Circuit Infrastructure
 
 EXP-001 is complete and validates local Qiskit circuit construction, transpilation, measurement, and finite-shot reporting with Aer simulation only. It requires optional quantum dependencies but no IBM account, no token, and no QPU access.
