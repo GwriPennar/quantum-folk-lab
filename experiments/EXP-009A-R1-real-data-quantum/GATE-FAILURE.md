@@ -35,4 +35,3 @@ Feature extraction stopped before a complete eight-record feature set existed. E
 and local QAOA were therefore prohibited and were not run.
 
 Outcome: `NO-GO — SUCCESSOR PARSER OR OBJECTIVE INVALID`.
-

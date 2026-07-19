@@ -36,4 +36,3 @@ exception.
 Parsing returns only the nine aggregate features and the inline-key-field count. Raw ABC, inline
 field content, ordered notes, and interval sequences are transient and must not appear in output,
 exceptions, logs, or committed evidence.
-

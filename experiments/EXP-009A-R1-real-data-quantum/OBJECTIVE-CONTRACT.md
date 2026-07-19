@@ -23,4 +23,3 @@ optimal.
 
 Exact enumeration remains authoritative. A later bounded local QAOA run, if the exact gate passes,
 is a heuristic comparison and does not establish musical truth, authenticity, or quantum advantage.
-

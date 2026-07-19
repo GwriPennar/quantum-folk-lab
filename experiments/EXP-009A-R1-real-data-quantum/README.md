@@ -13,4 +13,3 @@ protocol, QAOA result, or hardware protocol was generated. Raw notation and inli
 were not printed, logged, exported, or committed.
 
 Outcome: `NO-GO — SUCCESSOR PARSER OR OBJECTIVE INVALID`.
-

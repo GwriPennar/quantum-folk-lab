@@ -10,4 +10,3 @@ No IBM Runtime service, backend, session, simulator service, credential, or QPU 
 constructed.
 
 `NO-GO — SUCCESSOR PARSER OR OBJECTIVE INVALID`
-
