@@ -1,0 +1,11 @@
+{
+  "authorization": false,
+  "submitted": false,
+  "job_id": null,
+  "intent_created": false,
+  "receipt_created": false,
+  "shots_per_pub": 4096,
+  "pub_count": 2,
+  "package_complete": false,
+  "blocked_reason": "saved_default_account_unavailable"
+}

@@ -1,0 +1,6 @@
+{
+  "authentication_succeeded": false,
+  "backend_query_attempted": false,
+  "backends": [],
+  "failure_class": "saved_default_account_unavailable"
+}
