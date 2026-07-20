@@ -1,0 +1,441 @@
+{
+  "backend_queried": false,
+  "beta": 2.476505299986026,
+  "compact_ising_sha256": "635c8f05ccc4878e7f9fffad62ddd302e0a29aed4ee5837acefbc9be308a3fd5",
+  "compact_qubo_sha256": "96cfa65ca023ef7dc7449ce4b8ef132f0cbd2bbfc035f357d19f55431b3bb86e",
+  "compact_to_r2_mapping": [
+    {
+      "compact_bitstring": "0000",
+      "r2_bitstring": "10101010"
+    },
+    {
+      "compact_bitstring": "0001",
+      "r2_bitstring": "10101001"
+    },
+    {
+      "compact_bitstring": "0010",
+      "r2_bitstring": "10100110"
+    },
+    {
+      "compact_bitstring": "0011",
+      "r2_bitstring": "10100101"
+    },
+    {
+      "compact_bitstring": "0100",
+      "r2_bitstring": "10011010"
+    },
+    {
+      "compact_bitstring": "0101",
+      "r2_bitstring": "10011001"
+    },
+    {
+      "compact_bitstring": "0110",
+      "r2_bitstring": "10010110"
+    },
+    {
+      "compact_bitstring": "0111",
+      "r2_bitstring": "10010101"
+    },
+    {
+      "compact_bitstring": "1000",
+      "r2_bitstring": "01101010"
+    },
+    {
+      "compact_bitstring": "1001",
+      "r2_bitstring": "01101001"
+    },
+    {
+      "compact_bitstring": "1010",
+      "r2_bitstring": "01100110"
+    },
+    {
+      "compact_bitstring": "1011",
+      "r2_bitstring": "01100101"
+    },
+    {
+      "compact_bitstring": "1100",
+      "r2_bitstring": "01011010"
+    },
+    {
+      "compact_bitstring": "1101",
+      "r2_bitstring": "01011001"
+    },
+    {
+      "compact_bitstring": "1110",
+      "r2_bitstring": "01010110"
+    },
+    {
+      "compact_bitstring": "1111",
+      "r2_bitstring": "01010101"
+    }
+  ],
+  "exact_spectrum": [
+    {
+      "bitstring": "0000",
+      "energy": 0.055374836501815
+    },
+    {
+      "bitstring": "0001",
+      "energy": 0.058815127350607996
+    },
+    {
+      "bitstring": "0010",
+      "energy": 0.0514424031005
+    },
+    {
+      "bitstring": "0011",
+      "energy": 0.058622336728072
+    },
+    {
+      "bitstring": "0100",
+      "energy": 0.063435377010042
+    },
+    {
+      "bitstring": "0101",
+      "energy": 0.05761228127369
+    },
+    {
+      "bitstring": "0110",
+      "energy": 0.064478268416507
+    },
+    {
+      "bitstring": "0111",
+      "energy": 0.062394815458934
+    },
+    {
+      "bitstring": "1000",
+      "energy": 0.041836649673692
+    },
+    {
+      "bitstring": "1001",
+      "energy": 0.04404134471126
+    },
+    {
+      "bitstring": "1010",
+      "energy": 0.033053087676503
+    },
+    {
+      "bitstring": "1011",
+      "energy": 0.03899742549285
+    },
+    {
+      "bitstring": "1100",
+      "energy": 0.050994826940892996
+    },
+    {
+      "bitstring": "1101",
+      "energy": 0.043936135393316
+    },
+    {
+      "bitstring": "1110",
+      "energy": 0.047186589751484
+    },
+    {
+      "bitstring": "1111",
+      "energy": 0.043867540982686
+    }
+  ],
+  "experiment_id": "EXP-010A",
+  "gamma": 3.3177975191929154,
+  "gap": 0.005944337816346998,
+  "hardware_readiness_gate": {
+    "exact_equivalence_passed": true,
+    "ideal_energy_below_uniform16": true,
+    "ideal_relative_improvement_at_least_0_10": true,
+    "passed": true,
+    "postselection_required": false,
+    "primary_power_at_least_0_80": true
+  },
+  "ibm_service_contacted": false,
+  "ideal_and_shot_states": [
+    {
+      "compact_bitstring": "0000",
+      "ideal_probability": 0.014170493712685929,
+      "normalized_energy": 0.7103140952470831,
+      "raw_energy": 0.055374836501815,
+      "shot_count": 51,
+      "shot_probability": 0.012451171875
+    },
+    {
+      "compact_bitstring": "0001",
+      "ideal_probability": 0.0061321988112930485,
+      "normalized_energy": 0.819789705817352,
+      "raw_energy": 0.058815127350607996,
+      "shot_count": 30,
+      "shot_probability": 0.00732421875
+    },
+    {
+      "compact_bitstring": "0010",
+      "ideal_probability": 0.0041803612271437505,
+      "normalized_energy": 0.5851777138894082,
+      "raw_energy": 0.0514424031005,
+      "shot_count": 22,
+      "shot_probability": 0.00537109375
+    },
+    {
+      "compact_bitstring": "0011",
+      "ideal_probability": 0.001240479396621549,
+      "normalized_energy": 0.8136547968686638,
+      "raw_energy": 0.058622336728072,
+      "shot_count": 7,
+      "shot_probability": 0.001708984375
+    },
+    {
+      "compact_bitstring": "0100",
+      "ideal_probability": 0.0034397390207554367,
+      "normalized_energy": 0.966813511270043,
+      "raw_energy": 0.063435377010042,
+      "shot_count": 12,
+      "shot_probability": 0.0029296875
+    },
+    {
+      "compact_bitstring": "0101",
+      "ideal_probability": 0.005384472209682157,
+      "normalized_energy": 0.7815132011611106,
+      "raw_energy": 0.05761228127369,
+      "shot_count": 27,
+      "shot_probability": 0.006591796875
+    },
+    {
+      "compact_bitstring": "0110",
+      "ideal_probability": 0.000863924894317036,
+      "normalized_energy": 1.0,
+      "raw_energy": 0.064478268416507,
+      "shot_count": 6,
+      "shot_probability": 0.00146484375
+    },
+    {
+      "compact_bitstring": "0111",
+      "ideal_probability": 8.745966199052544e-05,
+      "normalized_energy": 0.9337011623000538,
+      "raw_energy": 0.062394815458934,
+      "shot_count": 0,
+      "shot_probability": 0.0
+    },
+    {
+      "compact_bitstring": "1000",
+      "ideal_probability": 0.11596802570053014,
+      "normalized_energy": 0.27950712741669603,
+      "raw_energy": 0.041836649673692,
+      "shot_count": 485,
+      "shot_probability": 0.118408203125
+    },
+    {
+      "compact_bitstring": "1001",
+      "ideal_probability": 0.12894463074560314,
+      "normalized_energy": 0.3496640838971862,
+      "raw_energy": 0.04404134471126,
+      "shot_count": 511,
+      "shot_probability": 0.124755859375
+    },
+    {
+      "compact_bitstring": "1010",
+      "ideal_probability": 0.3038286163786133,
+      "normalized_energy": 0.0,
+      "raw_energy": 0.033053087676503,
+      "shot_count": 1245,
+      "shot_probability": 0.303955078125
+    },
+    {
+      "compact_bitstring": "1011",
+      "ideal_probability": 0.1862410005352728,
+      "normalized_energy": 0.18915842888947665,
+      "raw_energy": 0.03899742549285,
+      "shot_count": 775,
+      "shot_probability": 0.189208984375
+    },
+    {
+      "compact_bitstring": "1100",
+      "ideal_probability": 0.026613657436364405,
+      "normalized_energy": 0.5709351176952916,
+      "raw_energy": 0.050994826940892996,
+      "shot_count": 122,
+      "shot_probability": 0.02978515625
+    },
+    {
+      "compact_bitstring": "1101",
+      "ideal_probability": 0.10608949034053361,
+      "normalized_energy": 0.3463161534965801,
+      "raw_energy": 0.043936135393316,
+      "shot_count": 403,
+      "shot_probability": 0.098388671875
+    },
+    {
+      "compact_bitstring": "1110",
+      "ideal_probability": 0.03361982890822693,
+      "normalized_energy": 0.44975086036622747,
+      "raw_energy": 0.047186589751484,
+      "shot_count": 141,
+      "shot_probability": 0.034423828125
+    },
+    {
+      "compact_bitstring": "1111",
+      "ideal_probability": 0.06319562102036588,
+      "normalized_energy": 0.3441333685765023,
+      "raw_energy": 0.043867540982686,
+      "shot_count": 259,
+      "shot_probability": 0.063232421875
+    }
+  ],
+  "logical_width": 4,
+  "mapped_r2_optimum_bitstrings": [
+    "01100110"
+  ],
+  "maximum_energy": 0.064478268416507,
+  "minimum_energy": 0.033053087676503,
+  "nonzero_quadratic_interactions": 6,
+  "normalized_hamiltonian": {
+    "constant": 0.5712768329307301,
+    "convention": "(H - E_min I) / (E_max - E_min)",
+    "h": [
+      0.25509369038848456,
+      -0.1028685889274965,
+      0.03182979156943807,
+      -0.0009645296951360968
+    ],
+    "j": [
+      [
+        0.0,
+        0.00873214356390891,
+        -0.03859268651475528,
+        -0.009829663522444698
+      ],
+      [
+        0.0,
+        0.0,
+        0.03958071752190798,
+        -0.07369398016980035
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.02975036810224669
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    ]
+  },
+  "optimum_bitstrings": [
+    "1010"
+  ],
+  "primary_metric": {
+    "detectability": {
+      "alternative_median": 0.5999124891688026,
+      "alternative_q025": 0.5897879240524063,
+      "alternative_q975": 0.6100837433140694,
+      "alternative_standard_deviation": 0.005174525679964847,
+      "estimated_power": 1.0,
+      "favorable_direction": "higher",
+      "null_critical_value": 0.01331700777842211
+    },
+    "ideal": 0.5999118429921135,
+    "name": "relative_expected_energy_improvement",
+    "shot": 0.5979854898423357
+  },
+  "purpose": "local evidence for EXP-010B compact-encoding hardware protocol design",
+  "qpu_job_submitted": false,
+  "r2_comparison": {
+    "compact_ideal_energy_probability_spearman": -0.9323529411764706,
+    "compact_logical_width": 4,
+    "compact_penalty": false,
+    "compact_postselection": false,
+    "compact_total_and_valid_states": 16,
+    "r2_ideal_conditional_feasible_distribution_nearly_uniform": true,
+    "r2_ideal_energy_probability_spearman": 0.9441176470588234,
+    "r2_ideal_feasible_mass": 0.9999270070068652,
+    "r2_logical_width": 8,
+    "r2_penalty_A": 7,
+    "r2_possible_pair_interactions": 28,
+    "r2_total_states": 256,
+    "r2_valid_states": 16,
+    "same_exact_musical_spectrum": true
+  },
+  "secondary_metrics": {
+    "detectability": {
+      "four_lowest_mass": {
+        "alternative_median": 0.669189453125,
+        "alternative_q025": 0.65478515625,
+        "alternative_q975": 0.683837890625,
+        "alternative_standard_deviation": 0.007378979142920593,
+        "estimated_power": 1.0,
+        "favorable_direction": "higher",
+        "null_critical_value": 0.26123046875
+      },
+      "negative_energy_probability_spearman": {
+        "alternative_median": -0.9271525688857849,
+        "alternative_q025": -0.95,
+        "alternative_q975": -0.9,
+        "alternative_standard_deviation": 0.013350227035385574,
+        "estimated_power": 1.0,
+        "favorable_direction": "lower",
+        "null_critical_value": -0.4241849755565554
+      },
+      "optimum_mass": {
+        "alternative_median": 0.303955078125,
+        "alternative_q025": 0.289794921875,
+        "alternative_q975": 0.31787109375,
+        "alternative_standard_deviation": 0.007155477905207432,
+        "estimated_power": 1.0,
+        "favorable_direction": "higher",
+        "null_critical_value": 0.06884765625
+      },
+      "relative_expected_energy_improvement": {
+        "alternative_median": 0.5999124891688026,
+        "alternative_q025": 0.5897879240524063,
+        "alternative_q975": 0.6100837433140694,
+        "alternative_standard_deviation": 0.005174525679964847,
+        "estimated_power": 1.0,
+        "favorable_direction": "higher",
+        "null_critical_value": 0.01331700777842211
+      }
+    },
+    "ideal": {
+      "energy_probability_spearman": -0.9323529411764706,
+      "expected_normalized_energy": 0.2285610952285585,
+      "expected_raw_energy": 0.0402356614041937,
+      "four_lowest_mass": 0.6692332636347821,
+      "optimum_mass": 0.3038286163786133,
+      "relative_expected_energy_improvement": 0.5999118429921135,
+      "total_variation_from_uniform16": 0.529267384720919
+    },
+    "shot": {
+      "energy_probability_spearman": -0.9323529411764706,
+      "expected_normalized_energy": 0.22966157615506927,
+      "expected_raw_energy": 0.04027024421621024,
+      "four_lowest_mass": 0.6748046875,
+      "optimum_mass": 0.303955078125,
+      "relative_expected_energy_improvement": 0.5979854898423357,
+      "total_variation_from_uniform16": 0.52294921875
+    },
+    "wilson_95": {
+      "four_lowest_mass": [
+        0.6603007369506804,
+        0.6889810619635415
+      ],
+      "optimum_mass": [
+        0.290058048055496,
+        0.3182194875197551
+      ]
+    }
+  },
+  "spectral_range": 0.031425180740004,
+  "uniform16_baselines": {
+    "expected_normalized_energy": 0.5712768329307296,
+    "expected_raw_energy": 0.05100556540392825,
+    "four_lowest_mass": 0.25,
+    "optimum_mass": 0.0625,
+    "relative_expected_energy_improvement": 0.0
+  },
+  "untranspiled_p1_two_qubit_interaction_count": 6,
+  "variable_order": [
+    "blackbird",
+    "bold-deserter",
+    "catherine-tyrrell",
+    "merry-old-woman"
+  ]
+}
