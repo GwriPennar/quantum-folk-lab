@@ -1,6 +1,26 @@
 {
-  "authentication_succeeded": false,
-  "backend_query_attempted": false,
-  "backends": [],
-  "failure_class": "saved_default_account_unavailable"
+  "backends": [
+    {
+      "backend": "ibm_fez",
+      "operational": true,
+      "qubits": 156,
+      "queue_depth": 14,
+      "snapshot_utc": "2026-07-20T04:19:32.749256+00:00"
+    },
+    {
+      "backend": "ibm_kingston",
+      "operational": true,
+      "qubits": 156,
+      "queue_depth": 2,
+      "snapshot_utc": "2026-07-20T04:19:32.749256+00:00"
+    },
+    {
+      "backend": "ibm_marrakesh",
+      "operational": true,
+      "qubits": 156,
+      "queue_depth": 2,
+      "snapshot_utc": "2026-07-20T04:19:32.749256+00:00"
+    }
+  ],
+  "query_utc": "2026-07-20T04:19:32.749256+00:00"
 }

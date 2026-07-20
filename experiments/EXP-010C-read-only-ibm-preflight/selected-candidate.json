@@ -1,1 +1,40 @@
-null
+{
+  "backend": "ibm_fez",
+  "control_circuit_sha256": "1cdf53e347c15f8b469f7ab2b8fe094f61dce65316f488b7aee1724f0f56bda8",
+  "duration_us": 3.2479999999999993,
+  "layout": [
+    20,
+    21,
+    23,
+    22
+  ],
+  "mean_readout_error": 0.005615234375,
+  "mean_two_qubit_error": 0.0023230032508801224,
+  "passes": true,
+  "qaoa_circuit_sha256": "7f7a811c5175496127db698a50e02d1d950180519cc33dfaf7ec9f577f0c1e0b",
+  "queue_depth": 14,
+  "seed": 44,
+  "total_depth": 55,
+  "touched_couplers": [
+    [
+      20,
+      21
+    ],
+    [
+      21,
+      22
+    ],
+    [
+      22,
+      23
+    ]
+  ],
+  "touched_qubits": [
+    20,
+    21,
+    22,
+    23
+  ],
+  "two_qubit_count": 17,
+  "two_qubit_depth": 14
+}

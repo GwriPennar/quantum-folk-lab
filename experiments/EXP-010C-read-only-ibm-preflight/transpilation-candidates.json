@@ -1,1 +1,914 @@
-[]
+[
+  {
+    "backend": "ibm_fez",
+    "duration_us": 3.499999999999999,
+    "layout": [
+      122,
+      124,
+      123,
+      136
+    ],
+    "mean_readout_error": 0.004913330078125,
+    "mean_two_qubit_error": 0.002754295090391018,
+    "passes": true,
+    "queue_depth": 14,
+    "seed": 42,
+    "total_depth": 62,
+    "touched_couplers": [
+      [
+        122,
+        123
+      ],
+      [
+        123,
+        124
+      ],
+      [
+        123,
+        136
+      ]
+    ],
+    "touched_qubits": [
+      122,
+      123,
+      124,
+      136
+    ],
+    "two_qubit_count": 18,
+    "two_qubit_depth": 18
+  },
+  {
+    "backend": "ibm_fez",
+    "duration_us": 3.455999999999999,
+    "layout": [
+      20,
+      23,
+      22,
+      21
+    ],
+    "mean_readout_error": 0.005615234375,
+    "mean_two_qubit_error": 0.00231567913239595,
+    "passes": true,
+    "queue_depth": 14,
+    "seed": 43,
+    "total_depth": 61,
+    "touched_couplers": [
+      [
+        20,
+        21
+      ],
+      [
+        21,
+        22
+      ],
+      [
+        22,
+        23
+      ]
+    ],
+    "touched_qubits": [
+      20,
+      21,
+      22,
+      23
+    ],
+    "two_qubit_count": 19,
+    "two_qubit_depth": 16
+  },
+  {
+    "backend": "ibm_fez",
+    "duration_us": 3.2479999999999993,
+    "layout": [
+      20,
+      21,
+      23,
+      22
+    ],
+    "mean_readout_error": 0.005615234375,
+    "mean_two_qubit_error": 0.0023230032508801224,
+    "passes": true,
+    "queue_depth": 14,
+    "seed": 44,
+    "total_depth": 55,
+    "touched_couplers": [
+      [
+        20,
+        21
+      ],
+      [
+        21,
+        22
+      ],
+      [
+        22,
+        23
+      ]
+    ],
+    "touched_qubits": [
+      20,
+      21,
+      22,
+      23
+    ],
+    "two_qubit_count": 17,
+    "two_qubit_depth": 14
+  },
+  {
+    "backend": "ibm_fez",
+    "duration_us": 3.2719999999999994,
+    "layout": [
+      20,
+      23,
+      21,
+      22
+    ],
+    "mean_readout_error": 0.005615234375,
+    "mean_two_qubit_error": 0.0023230032508801224,
+    "passes": true,
+    "queue_depth": 14,
+    "seed": 45,
+    "total_depth": 58,
+    "touched_couplers": [
+      [
+        20,
+        21
+      ],
+      [
+        21,
+        22
+      ],
+      [
+        22,
+        23
+      ]
+    ],
+    "touched_qubits": [
+      20,
+      21,
+      22,
+      23
+    ],
+    "two_qubit_count": 17,
+    "two_qubit_depth": 14
+  },
+  {
+    "backend": "ibm_fez",
+    "duration_us": 3.2719999999999994,
+    "layout": [
+      20,
+      23,
+      21,
+      22
+    ],
+    "mean_readout_error": 0.005615234375,
+    "mean_two_qubit_error": 0.0023230032508801224,
+    "passes": true,
+    "queue_depth": 14,
+    "seed": 46,
+    "total_depth": 58,
+    "touched_couplers": [
+      [
+        20,
+        21
+      ],
+      [
+        21,
+        22
+      ],
+      [
+        22,
+        23
+      ]
+    ],
+    "touched_qubits": [
+      20,
+      21,
+      22,
+      23
+    ],
+    "two_qubit_count": 17,
+    "two_qubit_depth": 14
+  },
+  {
+    "backend": "ibm_fez",
+    "duration_us": 3.4999999999999996,
+    "layout": [
+      122,
+      124,
+      136,
+      123
+    ],
+    "mean_readout_error": 0.004913330078125,
+    "mean_two_qubit_error": 0.0027630615427513597,
+    "passes": true,
+    "queue_depth": 14,
+    "seed": 47,
+    "total_depth": 62,
+    "touched_couplers": [
+      [
+        122,
+        123
+      ],
+      [
+        123,
+        124
+      ],
+      [
+        123,
+        136
+      ]
+    ],
+    "touched_qubits": [
+      122,
+      123,
+      124,
+      136
+    ],
+    "two_qubit_count": 18,
+    "two_qubit_depth": 18
+  },
+  {
+    "backend": "ibm_fez",
+    "duration_us": 3.499999999999999,
+    "layout": [
+      122,
+      124,
+      123,
+      136
+    ],
+    "mean_readout_error": 0.004913330078125,
+    "mean_two_qubit_error": 0.002754295090391018,
+    "passes": true,
+    "queue_depth": 14,
+    "seed": 48,
+    "total_depth": 62,
+    "touched_couplers": [
+      [
+        122,
+        123
+      ],
+      [
+        123,
+        124
+      ],
+      [
+        123,
+        136
+      ]
+    ],
+    "touched_qubits": [
+      122,
+      123,
+      124,
+      136
+    ],
+    "two_qubit_count": 18,
+    "two_qubit_depth": 18
+  },
+  {
+    "backend": "ibm_fez",
+    "duration_us": 3.4999999999999996,
+    "layout": [
+      122,
+      124,
+      136,
+      123
+    ],
+    "mean_readout_error": 0.004913330078125,
+    "mean_two_qubit_error": 0.0027630615427513597,
+    "passes": true,
+    "queue_depth": 14,
+    "seed": 49,
+    "total_depth": 62,
+    "touched_couplers": [
+      [
+        122,
+        123
+      ],
+      [
+        123,
+        124
+      ],
+      [
+        123,
+        136
+      ]
+    ],
+    "touched_qubits": [
+      122,
+      123,
+      124,
+      136
+    ],
+    "two_qubit_count": 18,
+    "two_qubit_depth": 18
+  },
+  {
+    "backend": "ibm_kingston",
+    "duration_us": 4.244000000000001,
+    "layout": [
+      150,
+      152,
+      151,
+      138
+    ],
+    "mean_readout_error": 0.006591796875,
+    "mean_two_qubit_error": 0.0015724004995399572,
+    "passes": true,
+    "queue_depth": 2,
+    "seed": 42,
+    "total_depth": 62,
+    "touched_couplers": [
+      [
+        138,
+        151
+      ],
+      [
+        150,
+        151
+      ],
+      [
+        151,
+        152
+      ]
+    ],
+    "touched_qubits": [
+      138,
+      150,
+      151,
+      152
+    ],
+    "two_qubit_count": 18,
+    "two_qubit_depth": 18
+  },
+  {
+    "backend": "ibm_kingston",
+    "duration_us": 4.136000000000001,
+    "layout": [
+      66,
+      69,
+      68,
+      67
+    ],
+    "mean_readout_error": 0.00616455078125,
+    "mean_two_qubit_error": 0.0013581227716888207,
+    "passes": true,
+    "queue_depth": 2,
+    "seed": 43,
+    "total_depth": 61,
+    "touched_couplers": [
+      [
+        66,
+        67
+      ],
+      [
+        67,
+        68
+      ],
+      [
+        68,
+        69
+      ]
+    ],
+    "touched_qubits": [
+      66,
+      67,
+      68,
+      69
+    ],
+    "two_qubit_count": 19,
+    "two_qubit_depth": 16
+  },
+  {
+    "backend": "ibm_kingston",
+    "duration_us": 3.9040000000000012,
+    "layout": [
+      66,
+      67,
+      69,
+      68
+    ],
+    "mean_readout_error": 0.00616455078125,
+    "mean_two_qubit_error": 0.0013881013550808383,
+    "passes": true,
+    "queue_depth": 2,
+    "seed": 44,
+    "total_depth": 55,
+    "touched_couplers": [
+      [
+        66,
+        67
+      ],
+      [
+        67,
+        68
+      ],
+      [
+        68,
+        69
+      ]
+    ],
+    "touched_qubits": [
+      66,
+      67,
+      68,
+      69
+    ],
+    "two_qubit_count": 17,
+    "two_qubit_depth": 14
+  },
+  {
+    "backend": "ibm_kingston",
+    "duration_us": 3.936000000000001,
+    "layout": [
+      66,
+      69,
+      67,
+      68
+    ],
+    "mean_readout_error": 0.00616455078125,
+    "mean_two_qubit_error": 0.0013881013550808383,
+    "passes": true,
+    "queue_depth": 2,
+    "seed": 45,
+    "total_depth": 58,
+    "touched_couplers": [
+      [
+        66,
+        67
+      ],
+      [
+        67,
+        68
+      ],
+      [
+        68,
+        69
+      ]
+    ],
+    "touched_qubits": [
+      66,
+      67,
+      68,
+      69
+    ],
+    "two_qubit_count": 17,
+    "two_qubit_depth": 14
+  },
+  {
+    "backend": "ibm_kingston",
+    "duration_us": 3.936000000000001,
+    "layout": [
+      66,
+      69,
+      67,
+      68
+    ],
+    "mean_readout_error": 0.00616455078125,
+    "mean_two_qubit_error": 0.0013881013550808383,
+    "passes": true,
+    "queue_depth": 2,
+    "seed": 46,
+    "total_depth": 58,
+    "touched_couplers": [
+      [
+        66,
+        67
+      ],
+      [
+        67,
+        68
+      ],
+      [
+        68,
+        69
+      ]
+    ],
+    "touched_qubits": [
+      66,
+      67,
+      68,
+      69
+    ],
+    "two_qubit_count": 17,
+    "two_qubit_depth": 14
+  },
+  {
+    "backend": "ibm_kingston",
+    "duration_us": 4.256,
+    "layout": [
+      152,
+      138,
+      150,
+      151
+    ],
+    "mean_readout_error": 0.006591796875,
+    "mean_two_qubit_error": 0.001573158190291829,
+    "passes": true,
+    "queue_depth": 2,
+    "seed": 47,
+    "total_depth": 62,
+    "touched_couplers": [
+      [
+        138,
+        151
+      ],
+      [
+        150,
+        151
+      ],
+      [
+        151,
+        152
+      ]
+    ],
+    "touched_qubits": [
+      138,
+      150,
+      151,
+      152
+    ],
+    "two_qubit_count": 18,
+    "two_qubit_depth": 18
+  },
+  {
+    "backend": "ibm_kingston",
+    "duration_us": 4.244000000000001,
+    "layout": [
+      150,
+      152,
+      151,
+      138
+    ],
+    "mean_readout_error": 0.006591796875,
+    "mean_two_qubit_error": 0.0015724004995399572,
+    "passes": true,
+    "queue_depth": 2,
+    "seed": 48,
+    "total_depth": 62,
+    "touched_couplers": [
+      [
+        138,
+        151
+      ],
+      [
+        150,
+        151
+      ],
+      [
+        151,
+        152
+      ]
+    ],
+    "touched_qubits": [
+      138,
+      150,
+      151,
+      152
+    ],
+    "two_qubit_count": 18,
+    "two_qubit_depth": 18
+  },
+  {
+    "backend": "ibm_kingston",
+    "duration_us": 4.256,
+    "layout": [
+      152,
+      138,
+      150,
+      151
+    ],
+    "mean_readout_error": 0.006591796875,
+    "mean_two_qubit_error": 0.001573158190291829,
+    "passes": true,
+    "queue_depth": 2,
+    "seed": 49,
+    "total_depth": 62,
+    "touched_couplers": [
+      [
+        138,
+        151
+      ],
+      [
+        150,
+        151
+      ],
+      [
+        151,
+        152
+      ]
+    ],
+    "touched_qubits": [
+      138,
+      150,
+      151,
+      152
+    ],
+    "two_qubit_count": 18,
+    "two_qubit_depth": 18
+  },
+  {
+    "backend": "ibm_marrakesh",
+    "duration_us": 4.340000000000001,
+    "layout": [
+      6,
+      17,
+      7,
+      8
+    ],
+    "mean_readout_error": 0.004638671875,
+    "mean_two_qubit_error": 0.0018897612201924745,
+    "passes": true,
+    "queue_depth": 2,
+    "seed": 42,
+    "total_depth": 62,
+    "touched_couplers": [
+      [
+        6,
+        7
+      ],
+      [
+        7,
+        8
+      ],
+      [
+        7,
+        17
+      ]
+    ],
+    "touched_qubits": [
+      6,
+      7,
+      8,
+      17
+    ],
+    "two_qubit_count": 18,
+    "two_qubit_depth": 18
+  },
+  {
+    "backend": "ibm_marrakesh",
+    "duration_us": 4.272,
+    "layout": [
+      4,
+      1,
+      2,
+      3
+    ],
+    "mean_readout_error": 0.005126953125,
+    "mean_two_qubit_error": 0.001468555326772473,
+    "passes": true,
+    "queue_depth": 2,
+    "seed": 43,
+    "total_depth": 61,
+    "touched_couplers": [
+      [
+        1,
+        2
+      ],
+      [
+        2,
+        3
+      ],
+      [
+        3,
+        4
+      ]
+    ],
+    "touched_qubits": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "two_qubit_count": 19,
+    "two_qubit_depth": 16
+  },
+  {
+    "backend": "ibm_marrakesh",
+    "duration_us": 4.028,
+    "layout": [
+      4,
+      3,
+      1,
+      2
+    ],
+    "mean_readout_error": 0.005126953125,
+    "mean_two_qubit_error": 0.00148442234484054,
+    "passes": true,
+    "queue_depth": 2,
+    "seed": 44,
+    "total_depth": 55,
+    "touched_couplers": [
+      [
+        1,
+        2
+      ],
+      [
+        2,
+        3
+      ],
+      [
+        3,
+        4
+      ]
+    ],
+    "touched_qubits": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "two_qubit_count": 17,
+    "two_qubit_depth": 14
+  },
+  {
+    "backend": "ibm_marrakesh",
+    "duration_us": 4.063999999999998,
+    "layout": [
+      4,
+      1,
+      3,
+      2
+    ],
+    "mean_readout_error": 0.005126953125,
+    "mean_two_qubit_error": 0.00148442234484054,
+    "passes": true,
+    "queue_depth": 2,
+    "seed": 45,
+    "total_depth": 58,
+    "touched_couplers": [
+      [
+        1,
+        2
+      ],
+      [
+        2,
+        3
+      ],
+      [
+        3,
+        4
+      ]
+    ],
+    "touched_qubits": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "two_qubit_count": 17,
+    "two_qubit_depth": 14
+  },
+  {
+    "backend": "ibm_marrakesh",
+    "duration_us": 4.063999999999998,
+    "layout": [
+      4,
+      1,
+      3,
+      2
+    ],
+    "mean_readout_error": 0.005126953125,
+    "mean_two_qubit_error": 0.00148442234484054,
+    "passes": true,
+    "queue_depth": 2,
+    "seed": 46,
+    "total_depth": 58,
+    "touched_couplers": [
+      [
+        1,
+        2
+      ],
+      [
+        2,
+        3
+      ],
+      [
+        3,
+        4
+      ]
+    ],
+    "touched_qubits": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "two_qubit_count": 17,
+    "two_qubit_depth": 14
+  },
+  {
+    "backend": "ibm_marrakesh",
+    "duration_us": 4.352,
+    "layout": [
+      17,
+      8,
+      6,
+      7
+    ],
+    "mean_readout_error": 0.004638671875,
+    "mean_two_qubit_error": 0.0019020851766068704,
+    "passes": true,
+    "queue_depth": 2,
+    "seed": 47,
+    "total_depth": 62,
+    "touched_couplers": [
+      [
+        6,
+        7
+      ],
+      [
+        7,
+        8
+      ],
+      [
+        7,
+        17
+      ]
+    ],
+    "touched_qubits": [
+      6,
+      7,
+      8,
+      17
+    ],
+    "two_qubit_count": 18,
+    "two_qubit_depth": 18
+  },
+  {
+    "backend": "ibm_marrakesh",
+    "duration_us": 4.340000000000001,
+    "layout": [
+      6,
+      17,
+      7,
+      8
+    ],
+    "mean_readout_error": 0.004638671875,
+    "mean_two_qubit_error": 0.0018897612201924745,
+    "passes": true,
+    "queue_depth": 2,
+    "seed": 48,
+    "total_depth": 62,
+    "touched_couplers": [
+      [
+        6,
+        7
+      ],
+      [
+        7,
+        8
+      ],
+      [
+        7,
+        17
+      ]
+    ],
+    "touched_qubits": [
+      6,
+      7,
+      8,
+      17
+    ],
+    "two_qubit_count": 18,
+    "two_qubit_depth": 18
+  },
+  {
+    "backend": "ibm_marrakesh",
+    "duration_us": 4.352,
+    "layout": [
+      17,
+      8,
+      6,
+      7
+    ],
+    "mean_readout_error": 0.004638671875,
+    "mean_two_qubit_error": 0.0019020851766068704,
+    "passes": true,
+    "queue_depth": 2,
+    "seed": 49,
+    "total_depth": 62,
+    "touched_couplers": [
+      [
+        6,
+        7
+      ],
+      [
+        7,
+        8
+      ],
+      [
+        7,
+        17
+      ]
+    ],
+    "touched_qubits": [
+      6,
+      7,
+      8,
+      17
+    ],
+    "two_qubit_count": 18,
+    "two_qubit_depth": 18
+  }
+]
