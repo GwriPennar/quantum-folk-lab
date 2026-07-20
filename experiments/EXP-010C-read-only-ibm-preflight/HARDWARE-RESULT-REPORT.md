@@ -1,6 +1,3 @@
-Exit code: 0
-Wall time: 1.4 seconds
-Output:
 # EXP-010C IBM hardware result
 
 The single authorized IBM Runtime job `d9eq7faneu4c739oohf0` completed on `ibm_fez`. It returned the frozen QAOA PUB followed by the frozen uniform-control PUB, each with 4,096 shots. No second job was submitted and no automatic retry occurred.
