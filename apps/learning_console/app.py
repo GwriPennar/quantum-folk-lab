@@ -22,6 +22,7 @@ if str(SRC) not in sys.path:
 if str(Path(__file__).resolve().parent) not in sys.path:
     sys.path.insert(0, str(Path(__file__).resolve().parent))
 
+from renderers.compact_experiment import render_compact_experiment  # noqa: E402
 from renderers.guided_experiment import render_guided_experiment  # noqa: E402
 from renderers.lesson_renderer import render_lesson  # noqa: E402
 from services.build_week_service import load_guided_experiment  # noqa: E402
@@ -33,6 +34,7 @@ st.set_page_config(
     page_title="QFL Learning Console — Foundations",
     page_icon="⚛",
     layout="wide",
+    initial_sidebar_state="collapsed",
 )
 
 st.title("Quantum Folk Lab — Learning Console")
@@ -41,20 +43,35 @@ st.caption(
     "Simulator-first. No claim of quantum advantage."
 )
 
-route = st.sidebar.radio("Explore", ["Guided Experiment", "Foundations", "Glossary"])
 registry = load_registry()
 
-if route == "Guided Experiment":
-    render_guided_experiment(load_guided_experiment())
-elif route == "Foundations":
+experiments_tab, foundations_tab, glossary_tab = st.tabs(["Experiments", "Foundations", "Glossary"])
+
+with experiments_tab:
+    exp010a_tab, exp005a_tab = st.tabs(
+        [
+            "EXP-010A · Four-family optimisation",
+            "EXP-005A · Synthetic partitioning",
+        ]
+    )
+    with exp010a_tab:
+        render_compact_experiment()
+    with exp005a_tab:
+        render_guided_experiment(load_guided_experiment())
+
+with foundations_tab:
     st.header("Foundations")
-    entries = registry.ordered()
-    labels = [f"{e.order}. {e.title}" for e in entries]
-    choice = st.selectbox("Lesson", labels, index=0)
-    entry = entries[labels.index(choice)]
-    lesson = registry.load_document(entry.id)
-    render_lesson(lesson, registry)
-else:
+    entries = registry.foundations_entries()
+    foundation_labels = ["Bits & qubits", "Gates", "Hadamard", "Entanglement", "Optimisation"]
+    if len(entries) != len(foundation_labels):
+        st.error("Foundation navigation needs review before adding more horizontal tabs.")
+    else:
+        foundation_tabs = st.tabs(foundation_labels)
+        for lesson_tab, entry in zip(foundation_tabs, entries, strict=True):
+            with lesson_tab:
+                render_lesson(registry.load_document(entry.id), registry)
+
+with glossary_tab:
     st.header("Glossary")
     query = st.text_input("Search glossary", placeholder="e.g. qubit, QAOA, shot")
     terms = load_glossary()

@@ -10,7 +10,12 @@ from streamlit.testing.v1 import AppTest
 
 def test_navigation_hierarchy_and_no_secret_display() -> None:
     app = Path("apps/learning_console/app.py").read_text(encoding="utf-8")
-    assert '["Guided Experiment", "Foundations", "Glossary"]' in app
+    assert '["Experiments", "Foundations", "Glossary"]' in app
+    assert "EXP-010A · Four-family optimisation" in app
+    assert "EXP-005A · Synthetic partitioning" in app
+    assert "st.sidebar.radio" not in app
+    assert "st.sidebar.selectbox" not in app
+    assert 'st.selectbox("Lesson"' not in app
     renderer = Path("apps/learning_console/renderers/guided_experiment.py").read_text(
         encoding="utf-8"
     )
@@ -39,7 +44,18 @@ def test_guided_experiment_256_reveal_journey_requires_no_openai_key(
     app = AppTest.from_file("apps/learning_console/app.py")
     app.run(timeout=30)
     assert not app.exception
-    assert app.sidebar.radio[0].value == "Guided Experiment"
+    assert len(app.sidebar) == 0
+    labels = [tab.label for tab in app.tabs]
+    assert [labels[index] for index in (0, 3, 9)] == [
+        "Experiments",
+        "Foundations",
+        "Glossary",
+    ]
+    assert labels[1:3] == [
+        "EXP-010A · Four-family optimisation",
+        "EXP-005A · Synthetic partitioning",
+    ]
+    assert app.tabs[1].label.startswith("EXP-010A")
     assert any(element.value == "5 · The 256 Reveal" for element in app.subheader)
     reveal = next(button for button in app.button if button.label == "Reveal all 256 assignments")
 
@@ -75,6 +91,71 @@ def test_guided_experiment_256_reveal_journey_requires_no_openai_key(
     ):
         assert expected in rendered
     assert len(app.dataframe) >= 1
+
+
+def test_foundation_tabs_follow_registry_and_render_without_execution() -> None:
+    app = AppTest.from_file("apps/learning_console/app.py")
+    app.run(timeout=30)
+    assert not app.exception
+    labels = [tab.label for tab in app.tabs]
+    assert labels[4:9] == [
+        "Bits & qubits",
+        "Gates",
+        "Hadamard",
+        "Entanglement",
+        "Optimisation",
+    ]
+    assert any(text.value == "Glossary" for text in app.header)
+    assert any(widget.label == "Search glossary" for widget in app.text_input)
+    assert "build_week_quantum" not in app.session_state.filtered_state
+
+
+def test_optional_qiskit_stays_button_gated() -> None:
+    renderer = Path("apps/learning_console/renderers/guided_experiment.py").read_text(
+        encoding="utf-8"
+    )
+    assert 'st.button("Run bounded local Qiskit (p=1, 256 shots)")' in renderer
+    assert "execute_quick_qiskit()" in renderer
+    app = Path("apps/learning_console/app.py").read_text(encoding="utf-8")
+    assert "execute_quick_qiskit" not in app
+
+
+def test_compact_experiment_presents_four_frozen_evidence_layers() -> None:
+    app = AppTest.from_file("apps/learning_console/app.py")
+    app.run(timeout=30)
+    assert not app.exception
+    rendered = "\n".join(
+        str(element.value)
+        for collection in (
+            app.header,
+            app.subheader,
+            app.markdown,
+            app.info,
+            app.success,
+            app.caption,
+        )
+        for element in collection
+    )
+    for expected in (
+        "Exact classical result",
+        "Ideal quantum simulation",
+        "IBM hardware",
+        "Frozen uniform control",
+        "ibm_fez",
+        "4,096 QAOA shots",
+        "one tiny controlled validation",
+        "not quantum advantage",
+        "a speedup",
+        "Exact enumeration remains the scientific authority",
+    ):
+        assert expected in rendered
+    metrics = {metric.label: metric.value for metric in app.metric}
+    assert metrics["Exact optimum"] == "1010"
+    assert metrics["Hardware QAOA R"] == "0.514933"
+    assert metrics["P(1010)"] == "24.17%"
+    assert metrics["Most likely state"] == "1010"
+    assert metrics["Control R"] == "-0.021309"
+    assert metrics["QAOA minus control"] == "0.536242"
 
 
 def test_renderer_keeps_registered_and_quick_run_claims_separate() -> None:
