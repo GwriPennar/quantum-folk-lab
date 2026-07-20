@@ -24,7 +24,7 @@
 
 - [ ] Capture public-safe Guided Experiment, 256 Reveal, exact result, Foundations, Glossary, and
   evidence-report screenshots.
-- [ ] Do not claim or capture a dedicated EXP-010D/011 app panel unless one is later merged.
+- [x] Present the merged governed, read-only EXP-010D/EXP-011 app panel without implying live IBM access.
 - [ ] Check screenshots for credentials, usernames, personal paths, emails, account data, and
   private windows.
 - [ ] Create and upload the submission thumbnail.

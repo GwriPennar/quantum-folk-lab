@@ -7,12 +7,15 @@ from pathlib import Path
 import pytest
 from streamlit.testing.v1 import AppTest
 
+from quantum_folk_lab.learning.registry import load_registry
+
 
 def test_navigation_hierarchy_and_no_secret_display() -> None:
     app = Path("apps/learning_console/app.py").read_text(encoding="utf-8")
     assert '["Experiments", "Foundations", "Glossary"]' in app
-    assert "EXP-010A · Four-family optimisation" in app
-    assert "EXP-005A · Synthetic partitioning" in app
+    assert "Start here · Guided experiment" in app
+    assert "Real folk data & IBM results" in app
+    assert "Experiment archive" not in app
     assert "st.sidebar.radio" not in app
     assert "st.sidebar.selectbox" not in app
     assert 'st.selectbox("Lesson"' not in app
@@ -20,7 +23,7 @@ def test_navigation_hierarchy_and_no_secret_display() -> None:
         encoding="utf-8"
     )
     assert "OPENAI_" + "API" + "_KEY" not in renderer
-    assert "Guided Experiment" in renderer
+    assert "Guided experiment" in renderer
 
 
 def test_service_loads_without_streamlit_qiskit_or_openai_imports() -> None:
@@ -52,12 +55,17 @@ def test_guided_experiment_256_reveal_journey_requires_no_openai_key(
         "Glossary",
     ]
     assert labels[1:3] == [
-        "EXP-010A · Four-family optimisation",
-        "EXP-005A · Synthetic partitioning",
+        "Start here · Guided experiment",
+        "Real folk data & IBM results",
     ]
-    assert app.tabs[1].label.startswith("EXP-010A")
-    assert any(element.value == "5 · The 256 Reveal" for element in app.subheader)
-    reveal = next(button for button in app.button if button.label == "Reveal all 256 assignments")
+    assert app.tabs[1].label.startswith("Start here")
+    assert any(
+        element.value == "The answer stays hidden until you reveal it." for element in app.caption
+    )
+    assert not any(element.value == "Every possible answer" for element in app.subheader)
+    assert not any(metric.label == "Minimum energy" for metric in app.metric)
+    assert not any(expander.label == "Technical model and QUBO" for expander in app.expander)
+    reveal = next(button for button in app.button if button.label == "Reveal all 256 answers")
 
     reveal.click().run(timeout=30)
 
@@ -76,7 +84,11 @@ def test_guided_experiment_256_reveal_journey_requires_no_openai_key(
         for element in collection
     )
     for expected in (
-        "Part A · Complete exact answer space",
+        "Every possible answer",
+        "The exact result",
+        "How did the quantum method do?",
+        "How was this model built?",
+        "Can AI explain the result safely?",
         "256",
         "00001111",
         "11110000",
@@ -88,9 +100,16 @@ def test_guided_experiment_256_reveal_journey_requires_no_openai_key(
         "Local ideal simulation",
         "Not quantum hardware",
         "No quantum advantage claimed",
+        "Eight tune variants. Two hidden families. 256 possible groupings.",
+        "You just checked every possible answer",
+        "This answer is not a prediction",
+        "found one of the best answers far more often than random guessing",
+        "every quantum result below can be checked rather than taken on trust",
+        "GPT-5.6 may explain the validated result",
     ):
         assert expected in rendered
     assert len(app.dataframe) >= 1
+    assert any(expander.label == "Technical model and QUBO" for expander in app.expander)
 
 
 def test_foundation_tabs_follow_registry_and_render_without_execution() -> None:
@@ -108,6 +127,28 @@ def test_foundation_tabs_follow_registry_and_render_without_execution() -> None:
     assert any(text.value == "Glossary" for text in app.header)
     assert any(widget.label == "Search glossary" for widget in app.text_input)
     assert "build_week_quantum" not in app.session_state.filtered_state
+    rendered = "\n".join(str(item.value) for item in (*app.markdown, *app.caption))
+    for expected in (
+        "New to quantum computing? Learn the few core ideas used by the experiments",
+        "Look up the technical terms used in the experiments in plain language",
+    ):
+        assert expected in rendered
+    objectives = {
+        load_registry().load_document(entry.id).metadata.learning_objectives[0]
+        for entry in load_registry().foundations_entries()
+    }
+    assert all(objective in rendered for objective in objectives)
+    disclosure_labels = {
+        "Show the notation",
+        "Why measurement matters",
+        "Why phase matters",
+        "Why correlation is not communication",
+        "Why exact-first matters",
+    }
+    assert not disclosure_labels.intersection(expander.label for expander in app.expander)
+    assert not any(
+        caption.value == "Optional detail — keep plain language first." for caption in app.caption
+    )
 
 
 def test_optional_qiskit_stays_button_gated() -> None:
@@ -139,7 +180,7 @@ def test_compact_experiment_presents_four_frozen_evidence_layers() -> None:
     for expected in (
         "Exact classical result",
         "Ideal quantum simulation",
-        "IBM hardware",
+        "First IBM hardware validation",
         "Frozen uniform control",
         "ibm_fez",
         "4,096 QAOA shots",
@@ -147,6 +188,15 @@ def test_compact_experiment_presents_four_frozen_evidence_layers() -> None:
         "not quantum advantage",
         "a speedup",
         "Exact enumeration remains the scientific authority",
+        "Four real folk-tune families, two settings each",
+        "Can we apply the same exact-first approach to choices drawn from real public "
+        "folk-tune families?",
+        "Which combination is best when every possibility is checked?",
+        "Does the ideal quantum circuit concentrate on the better choices?",
+        "Did the correct answer remain visible on real hardware?",
+        "Replicated IBM hardware landscape",
+        "Did real hardware preserve which circuit settings should perform better?",
+        "Did a second, denser run reproduce the same pattern?",
     ):
         assert expected in rendered
     metrics = {metric.label: metric.value for metric in app.metric}
@@ -156,6 +206,50 @@ def test_compact_experiment_presents_four_frozen_evidence_layers() -> None:
     assert metrics["Most likely state"] == "1010"
     assert metrics["Control R"] == "-0.021309"
     assert metrics["QAOA minus control"] == "0.536242"
+
+
+def test_human_question_opening_and_top_level_explainers_render() -> None:
+    app = AppTest.from_file("apps/learning_console/app.py")
+    app.run(timeout=30)
+    assert not app.exception
+    rendered = "\n".join(
+        str(item.value)
+        for item in (*app.title, *app.header, *app.subheader, *app.markdown, *app.caption)
+    )
+    for expected in (
+        "Quantum Folk Lab",
+        "Can a quantum method recover hidden structure in folk music?",
+        "Make a prediction, reveal every possible answer",
+        "The exact answer is always computed first",
+        "No quantum-advantage claim is made",
+        "Ask a musical question, reveal the exact answer",
+    ):
+        assert expected in rendered
+    source = Path("apps/learning_console/app.py").read_text(encoding="utf-8")
+    for removed in (
+        "1 · Reveal the exact answer",
+        "2 · Compare the quantum method",
+        "3 · See what happened on real hardware",
+        "Start with _Start here",
+    ):
+        assert removed not in source
+
+
+def test_stale_hardware_panel_wording_is_absent() -> None:
+    paths = (
+        Path("README.md"),
+        Path("docs/build-week/JUDGING-GUIDE.md"),
+        Path("docs/build-week/DEMO-SCRIPT.md"),
+        Path("docs/build-week/SUBMISSION-CHECKLIST.md"),
+    )
+    text = "\n".join(path.read_text(encoding="utf-8").lower() for path in paths)
+    for stale in (
+        "does not yet contain a dedicated exp-010d/011 result panel",
+        "does not yet have a dedicated exp-010d/011 panel",
+        "do not imply a dedicated hardware panel exists",
+        "do not claim or capture a dedicated exp-010d/011 app panel",
+    ):
+        assert stale not in text
 
 
 def test_renderer_keeps_registered_and_quick_run_claims_separate() -> None:

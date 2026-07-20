@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import json
+import re
 from dataclasses import dataclass
 from pathlib import Path
 from typing import Any
@@ -27,11 +28,31 @@ class HardwareLandscapeEvidence:
 
 
 @dataclass(frozen=True)
+class IdealHardwarePoint:
+    """One governed EXP-010D cell for the ideal/hardware chart."""
+
+    cell_id: str
+    ideal_r: float
+    hardware_r: float
+
+
+@dataclass(frozen=True)
+class CrossRunPoint:
+    """One governed cell shared by EXP-010D and EXP-011."""
+
+    cell_id: str
+    exp010d_r: float
+    exp011_r: float
+
+
+@dataclass(frozen=True)
 class HardwareReplicationEvidence:
     """The two governed layers shown together in the Learning Console."""
 
     exp010d: HardwareLandscapeEvidence
     exp011: HardwareLandscapeEvidence
+    ideal_hardware_points: tuple[IdealHardwarePoint, ...]
+    cross_run_points: tuple[CrossRunPoint, ...]
 
 
 def _object(path: Path) -> dict[str, Any]:
@@ -77,6 +98,26 @@ def _number(value: object, field: str) -> float:
 def _assert_equal(actual: object, expected: object, field: str) -> None:
     if actual != expected:
         raise ValueError(f"governed evidence mismatch: {field}")
+
+
+def _cell_map(analysis: dict[str, Any], experiment: str) -> dict[str, dict[str, Any]]:
+    cells: dict[str, dict[str, Any]] = {}
+    for index, value in enumerate(_list(analysis.get("cells"), f"{experiment} cells")):
+        cell = _mapping(value, f"{experiment} cell {index}")
+        point_id = _string(cell.get("point_id"), f"{experiment} point_id")
+        if point_id in cells:
+            raise ValueError(f"governed evidence contains duplicate cell: {point_id}")
+        cells[point_id] = cell
+    return cells
+
+
+def _exp011_shared_id(exp010d_id: str) -> str:
+    match = re.fullmatch(r"g([+-][0-2])_b([+-][0-2])", exp010d_id)
+    if match is None:
+        raise ValueError(f"governed EXP-010D cell id is malformed: {exp010d_id}")
+    gamma_index = 2 * (int(match.group(1)) + 2)
+    beta_index = 2 * (int(match.group(2)) + 2)
+    return f"g{gamma_index}_b{beta_index}"
 
 
 def _load_landscape(
@@ -131,6 +172,8 @@ def load_hardware_replication_evidence(repo_root: Path) -> HardwareReplicationEv
     d_secondary = _mapping(d_analysis["secondary"], "EXP-010D secondary")
     e_primary = _mapping(e_analysis["primary"], "EXP-011 primary")
     e_secondary = _mapping(e_analysis["secondary"], "EXP-011 secondary")
+    d_cells = _cell_map(d_analysis, "EXP-010D")
+    e_cells = _cell_map(e_analysis, "EXP-011")
 
     exp010d = HardwareLandscapeEvidence(
         experiment_id=_string(d_analysis["experiment_id"], "EXP-010D id"),
@@ -166,4 +209,30 @@ def load_hardware_replication_evidence(repo_root: Path) -> HardwareReplicationEv
             "EXP-011 cross-run difference",
         ),
     )
-    return HardwareReplicationEvidence(exp010d=exp010d, exp011=exp011)
+    ideal_hardware_points = tuple(
+        IdealHardwarePoint(
+            cell_id=point_id,
+            ideal_r=_number(cell.get("ideal_r"), f"EXP-010D {point_id} ideal_r"),
+            hardware_r=_number(cell.get("r"), f"EXP-010D {point_id} r"),
+        )
+        for point_id, cell in sorted(d_cells.items())
+    )
+    cross_run_points = tuple(
+        CrossRunPoint(
+            cell_id=point_id,
+            exp010d_r=_number(cell.get("r"), f"EXP-010D {point_id} r"),
+            exp011_r=_number(
+                e_cells.get(_exp011_shared_id(point_id), {}).get("r"),
+                f"EXP-011 match for {point_id}",
+            ),
+        )
+        for point_id, cell in sorted(d_cells.items())
+    )
+    _assert_equal(len(ideal_hardware_points), 25, "EXP-010D chart point count")
+    _assert_equal(len(cross_run_points), 25, "cross-run chart point count")
+    return HardwareReplicationEvidence(
+        exp010d=exp010d,
+        exp011=exp011,
+        ideal_hardware_points=ideal_hardware_points,
+        cross_run_points=cross_run_points,
+    )

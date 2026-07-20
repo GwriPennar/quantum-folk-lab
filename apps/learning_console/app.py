@@ -37,30 +37,40 @@ st.set_page_config(
     initial_sidebar_state="collapsed",
 )
 
-st.title("Quantum Folk Lab — Learning Console")
-st.caption(
-    "Public experimental edition. Portable Markdown lessons under `learn/`. "
-    "Simulator-first. No claim of quantum advantage."
+st.title("Quantum Folk Lab")
+st.subheader("Can a quantum method recover hidden structure in folk music?")
+st.write(
+    "Make a prediction, reveal every possible answer, and see how a quantum method — and a real "
+    "IBM quantum computer — measured up against the exact truth."
 )
+st.caption("The exact answer is always computed first. No quantum-advantage claim is made.")
 
 registry = load_registry()
 
 experiments_tab, foundations_tab, glossary_tab = st.tabs(["Experiments", "Foundations", "Glossary"])
 
 with experiments_tab:
-    exp010a_tab, exp005a_tab = st.tabs(
+    st.write(
+        "Ask a musical question, reveal the exact answer, then compare simulation and real "
+        "quantum hardware with that known truth."
+    )
+    exp005a_tab, exp010a_tab = st.tabs(
         [
-            "EXP-010A · Four-family optimisation",
-            "EXP-005A · Synthetic partitioning",
+            "Start here · Guided experiment",
+            "Real folk data & IBM results",
         ]
     )
-    with exp010a_tab:
-        render_compact_experiment()
     with exp005a_tab:
         render_guided_experiment(load_guided_experiment())
+    with exp010a_tab:
+        render_compact_experiment()
 
 with foundations_tab:
     st.header("Foundations")
+    st.write(
+        "New to quantum computing? Learn the few core ideas used by the experiments, one concept "
+        "at a time."
+    )
     entries = registry.foundations_entries()
     foundation_labels = ["Bits & qubits", "Gates", "Hadamard", "Entanglement", "Optimisation"]
     if len(entries) != len(foundation_labels):
@@ -73,6 +83,7 @@ with foundations_tab:
 
 with glossary_tab:
     st.header("Glossary")
+    st.write("Look up the technical terms used in the experiments in plain language.")
     query = st.text_input("Search glossary", placeholder="e.g. qubit, QAOA, shot")
     terms = load_glossary()
     for term in terms:

@@ -26,6 +26,8 @@ def render_lesson(lesson: LessonDocument, registry: LessonRegistry) -> None:
 
     st.subheader(lesson.metadata.title)
     st.caption(f"Route `{lesson.metadata.route}` · content v{lesson.metadata.version}")
+    if lesson.metadata.learning_objectives:
+        st.write(lesson.metadata.learning_objectives[0])
     st.markdown(semantic_marker_html(lesson, renderer="streamlit"), unsafe_allow_html=True)
 
     if lesson.metadata.learning_objectives:
@@ -46,8 +48,9 @@ def render_lesson(lesson: LessonDocument, registry: LessonRegistry) -> None:
         elif isinstance(block, InteractionDirective):
             render_interaction(block.interaction_id, block.params)
         elif isinstance(block, DisclosureDirective):
-            with st.expander(block.label):
-                st.caption("Optional detail — keep plain language first.")
+            # Disclosure directives currently carry metadata but no associated body.
+            # Rendering nothing is safer than presenting an empty interactive control.
+            pass
         elif isinstance(block, GlossaryDirective):
             st.info("Open the Glossary tab for portable definitions.")
 

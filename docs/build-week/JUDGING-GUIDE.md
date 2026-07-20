@@ -20,8 +20,8 @@ python -m pip install -e ".[learning]"
 streamlit run apps/learning_console/app.py
 ```
 
-Open the displayed URL. In **Experiments**, follow **Guided Experiment** and click **Reveal all 256
-assignments**. Then inspect **Foundations** and **Glossary**. The exact path works without Qiskit,
+Open the displayed URL. In **Experiments**, follow **Start here · Guided experiment** and click
+**Reveal all 256 answers**. Then inspect **Foundations** and **Glossary**. The exact path works without Qiskit,
 IBM credentials, an OpenAI API key, or network access.
 
 ## Three strongest proof points
@@ -40,14 +40,15 @@ Public reports:
 - [`experiments/EXP-010D-hardware-parameter-landscape-run/RESULT-REPORT.md`](../../experiments/EXP-010D-hardware-parameter-landscape-run/RESULT-REPORT.md)
 - [`experiments/EXP-011-dense-hardware-landscape-run/RESULT-REPORT.md`](../../experiments/EXP-011-dense-hardware-landscape-run/RESULT-REPORT.md)
 
-The current app does not yet have a dedicated EXP-010D/011 panel; use these public reports or a
-prepared public-safe frame for hardware review.
+The merged Learning Console includes a governed, read-only EXP-010D/EXP-011 hardware replication
+panel. Its two scatter plots and headline statistics load directly from the public evidence above;
+no IBM access is performed while the app renders.
 
 ## Judging criteria
 
 | Criterion | Evidence |
 | --- | --- |
-| Education | progressive Guided Experiment, exact 256 Reveal, portable Foundations and Glossary |
+| Education | progressive Guided experiment, exact 256 Reveal, portable Foundations and Glossary |
 | Technological Implementation | deterministic contracts, QUBO/Ising verification, bounded Qiskit, fail-closed IBM intent/receipt and tests |
 | Design | tabbed learner path, capability gating, accessible exact landscape and reproducibility exports |
 | Potential Impact | teaches scientific restraint while connecting quantum optimisation with culturally meaningful subject matter |

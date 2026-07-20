@@ -39,8 +39,20 @@ def render_compact_experiment() -> None:
     st.header("EXP-010A")
     st.subheader("Choosing one setting from four folk-tune families")
     st.markdown(
+        "**Can we apply the same exact-first approach to choices drawn from real public "
+        "folk-tune families?**"
+    )
+    st.write(
+        "The lab checks all sixteen choices exactly, compares an ideal quantum circuit, and then "
+        "examines what happened on real IBM hardware."
+    )
+    st.markdown(
         "**Real public tune data · 4 binary choices · 16 combinations**  \n"
         "**Exact classical result · Ideal simulation · IBM hardware · Frozen uniform control**"
+    )
+    st.write(
+        "Four real folk-tune families, two settings each: sixteen combinations, all checked "
+        "exactly."
     )
 
     st.markdown("## Why this experiment exists")
@@ -100,6 +112,8 @@ def render_compact_experiment() -> None:
     )
 
     st.markdown("## Exact classical result")
+    st.markdown("**Which combination is best when every possibility is checked?**")
+    st.write("This answer is not a prediction — the computer tried every possibility.")
     optimum = exact["optimum_bitstrings"][0]
     left, middle, right = st.columns(3)
     left.metric("Exact optimum", optimum)
@@ -110,6 +124,7 @@ def render_compact_experiment() -> None:
     )
 
     st.markdown("## Ideal quantum simulation")
+    st.markdown("**Does the ideal quantum circuit concentrate on the better choices?**")
     metrics = qaoa["ideal_metrics"]
     first, second, third = st.columns(3)
     first.metric(
@@ -122,7 +137,12 @@ def render_compact_experiment() -> None:
         "hardware run below. No Qiskit computation runs while this tab renders."
     )
 
-    st.markdown("## IBM hardware")
+    st.markdown("## First IBM hardware validation")
+    st.markdown("**Did the correct answer remain visible on real hardware?**")
+    st.write(
+        "One IBM hardware run tested whether the compact real-data result remained visible under "
+        "device noise."
+    )
     hardware_qaoa = hardware["qaoa"]
     first, second, third = st.columns(3)
     first.metric("Hardware QAOA R", f"{hardware_qaoa['r']:.6f}")
