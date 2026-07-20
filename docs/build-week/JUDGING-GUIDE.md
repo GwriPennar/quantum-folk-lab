@@ -40,8 +40,9 @@ Public reports:
 - [`experiments/EXP-010D-hardware-parameter-landscape-run/RESULT-REPORT.md`](../../experiments/EXP-010D-hardware-parameter-landscape-run/RESULT-REPORT.md)
 - [`experiments/EXP-011-dense-hardware-landscape-run/RESULT-REPORT.md`](../../experiments/EXP-011-dense-hardware-landscape-run/RESULT-REPORT.md)
 
-The current app does not yet have a dedicated EXP-010D/011 panel; use these public reports or a
-prepared public-safe frame for hardware review.
+The merged Learning Console includes a governed, read-only EXP-010D/EXP-011 hardware replication
+panel. Its two scatter plots and headline statistics load directly from the public evidence above;
+no IBM access is performed while the app renders.
 
 ## Judging criteria
 

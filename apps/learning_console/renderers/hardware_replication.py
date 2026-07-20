@@ -25,15 +25,16 @@ def render_hardware_replication(repo_root: Path) -> None:
 
     exp010d = evidence.exp010d
     exp011 = evidence.exp011
-    st.markdown("## IBM Hardware Replication")
+    st.markdown("## Replicated IBM hardware landscape")
     st.write(
-        "After validating the problem exactly and testing it locally, Quantum Folk Lab ran the "
-        "same controlled four-qubit landscape experiment on IBM hardware. A second, denser run "
-        "then tested whether the observed structure was reproducible rather than a one-off "
-        "calibration result."
+        "Two governed hardware runs tested whether the broader pattern of better and worse "
+        "circuit settings could be reproduced."
     )
 
     st.markdown("### EXP-010D — Controlled hardware landscape")
+    st.markdown(
+        "**Question:** Did real hardware preserve which circuit settings should perform better?"
+    )
     st.caption(
         f"{exp010d.backend} · {exp010d.unique_cells} unique cells · "
         f"{exp010d.pub_count} PUBs · {exp010d.shots_per_pub:,} shots per PUB"
@@ -49,7 +50,51 @@ def render_hardware_replication(repo_root: Path) -> None:
     )
     st.warning(CONTROL_WARNING)
 
-    st.markdown("### EXP-011 — Dense independent replication")
+    st.markdown("#### Did real hardware preserve the predicted landscape?")
+    ideal_hardware_rows = [
+        {
+            "cell": point.cell_id,
+            "Ideal value": point.ideal_r,
+            "Hardware value": point.hardware_r,
+        }
+        for point in evidence.ideal_hardware_points
+    ]
+    st.vega_lite_chart(
+        ideal_hardware_rows,
+        {
+            "height": 260,
+            "mark": {"type": "point", "filled": True, "size": 80},
+            "encoding": {
+                "x": {
+                    "field": "Ideal value",
+                    "type": "quantitative",
+                    "scale": {"zero": False},
+                    "axis": {"title": "Ideal relative improvement (R)"},
+                },
+                "y": {
+                    "field": "Hardware value",
+                    "type": "quantitative",
+                    "scale": {"zero": False},
+                    "axis": {"title": "Measured hardware improvement (R)"},
+                },
+                "tooltip": [
+                    {"field": "cell", "type": "nominal", "title": "Cell"},
+                    {"field": "Ideal value", "type": "quantitative", "format": ".4f"},
+                    {"field": "Hardware value", "type": "quantitative", "format": ".4f"},
+                ],
+            },
+        },
+        width="stretch",
+    )
+    st.caption(
+        f"Across 25 governed cells, rho was {exp010d.spearman_rho:.4f}. Points following the "
+        "same upward pattern mean theory and hardware broadly agreed about which settings were "
+        "better. This is agreement in ordering, not evidence of speedup, scale or quantum "
+        "advantage."
+    )
+
+    st.markdown("### EXP-011 — Independent dense replication")
+    st.markdown("**Question:** Did a second, denser run reproduce the same landscape structure?")
     st.caption(
         f"{exp011.backend} · {exp011.unique_cells} unique cells · {exp011.pub_count} PUBs · "
         f"{exp011.shots_per_pub:,} shots per PUB"
@@ -70,6 +115,48 @@ def render_hardware_replication(repo_root: Path) -> None:
         "run, supporting repeatability across different calibration windows."
     )
     st.warning(CONTROL_WARNING)
+
+    st.markdown("#### Did the hardware pattern reproduce?")
+    cross_run_rows = [
+        {
+            "cell": point.cell_id,
+            "EXP-010D result": point.exp010d_r,
+            "EXP-011 result": point.exp011_r,
+        }
+        for point in evidence.cross_run_points
+    ]
+    st.vega_lite_chart(
+        cross_run_rows,
+        {
+            "height": 260,
+            "mark": {"type": "point", "filled": True, "size": 80},
+            "encoding": {
+                "x": {
+                    "field": "EXP-010D result",
+                    "type": "quantitative",
+                    "scale": {"zero": False},
+                    "axis": {"title": "EXP-010D measured improvement (R)"},
+                },
+                "y": {
+                    "field": "EXP-011 result",
+                    "type": "quantitative",
+                    "scale": {"zero": False},
+                    "axis": {"title": "EXP-011 measured improvement (R)"},
+                },
+                "tooltip": [
+                    {"field": "cell", "type": "nominal", "title": "Shared cell"},
+                    {"field": "EXP-010D result", "type": "quantitative", "format": ".4f"},
+                    {"field": "EXP-011 result", "type": "quantitative", "format": ".4f"},
+                ],
+            },
+        },
+        width="stretch",
+    )
+    st.caption(
+        f"Across 25 shared governed cells, cross-run rho was {exp011.cross_run_rho:.4f}. The "
+        "second hardware run closely reproduced the first. Replication strengthens confidence "
+        "in this small experiment; it does not establish general performance."
+    )
 
     st.markdown("### Comparison")
     st.dataframe(

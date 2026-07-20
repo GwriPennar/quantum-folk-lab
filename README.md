@@ -1,47 +1,93 @@
 # Quantum Folk Lab
 
-Quantum computing is difficult to learn because many demonstrations are abstract, opaque, and
-disconnected from meaningful subject matter. Quantum Folk Lab turns folk-music-derived
-optimisation problems into transparent, exact-first learning experiences in which users can
-inspect the classical truth, compare quantum heuristics, and understand what real hardware did
-and did not demonstrate.
+> Learn quantum computing by checking the exact answer first — folk-music problems, transparent
+> experiments, real IBM hardware and no hype.
 
-The public product deliberately separates three evidence layers: a deterministic synthetic fixture
-for guided teaching; a governed, licence- and provenance-gated real-data experiment programme;
-and bounded IBM Quantum hardware results. Not every guided example uses raw historical notation,
-and the application does not provide audio playback. Exact classical evaluation remains
-authoritative throughout.
+Quantum Folk Lab is an Education product for learners and educators. Folk music supplies the
+structured choice problems: the console reveals known classical truth, compares a bounded quantum
+method, and then shows what governed IBM hardware did and did not reproduce.
 
-## Research Question
+## Three-step learner journey
 
-Given a small set of synthetic symbolic melodies and interpretable pairwise similarities, can a two-family QUBO formulation recover known tune families, and how do local QAOA-style samples compare with exact classical optima?
+1. **Reveal the exact answer.**
+2. **Compare the quantum method.**
+3. **Inspect real IBM hardware evidence.**
+
+## Four proof points
+
+- The Guided Experiment checks all **256 assignments exactly** before interpretation.
+- The compact experiment uses **public folk-tune-family data** in a 16-state problem.
+- The IBM landscape reached rho **`0.96`** and was independently reproduced with cross-run rho
+  approximately **`0.978`**.
+- **GPT-5.6 may explain governed evidence but cannot alter it.**
+
+<!-- A human-reviewed 256 Reveal screenshot should be inserted here after visual approval. -->
+
+## Launch the Learning Console
+
+```bash
+pip install -e ".[learning]"
+streamlit run apps/learning_console/app.py
+```
+
+Open **Experiments** and begin with **Start here · Guided Experiment**. Reveal all 256 assignments,
+then compare registered local simulation, the real folk-data compact experiment, the first IBM
+validation, and the replicated hardware landscape. **Foundations** and **Glossary** provide the
+beginner path. No IBM credential or OpenAI API key is required; optional Qiskit remains
+button-gated and optional GPT-5.6 fails closed to deterministic explanation.
+
+## Governed IBM evidence
+
+The read-only Learning Console panel distinguishes three layers:
+
+- **EXP-010C — first hardware validation:** the exact optimum `1010` remained the most likely state.
+- **EXP-010D — controlled 25-cell landscape:** ideal/hardware rho `0.96`, classified
+  **LANDSCAPE SUPPORTED**.
+- **EXP-011 — independent 81-cell replication:** full rho `0.9047`, embedded-25 rho `0.9315`, and
+  cross-run rho `0.9777`, classified **STRONGLY REPLICATED**.
+
+Both landscape reports retain the predeclared control warning. Read the authoritative
+[EXP-010D report](experiments/EXP-010D-hardware-parameter-landscape-run/RESULT-REPORT.md) and
+[EXP-011 report](experiments/EXP-011-dense-hardware-landscape-run/RESULT-REPORT.md).
+
+## Built with Codex and GPT-5.6
+
+Codex accelerated bounded implementation, tests, CI diagnosis, experiment packaging, visual
+verification, and pull-request review under human-defined scientific gates. Gwri retained product,
+scientific, hardware-authorization, interpretation, and merge authority. GPT-5.6 is an optional,
+filtered explanation layer: it does not calculate results, and invalid or unavailable output fails
+closed. **The AI can explain the experiment. It cannot rewrite the evidence.**
+
+## Honest limits
+
+Exact classical evaluation remains authoritative, and the project makes no quantum-advantage
+claim. These deliberately small experiments do not demonstrate speedup, scalability,
+generalisation, musical quality, musical truth, or commercial superiority. The application has no
+audio and makes no live IBM call.
+
+## Deeper research documentation
+
+Start with the [Build Week judging guide](docs/build-week/JUDGING-GUIDE.md),
+[Codex contribution log](docs/build-week/CODEX-CONTRIBUTION-LOG.md),
+[Codex and GPT-5.6 evidence](docs/build-week/CODEX-AND-GPT56-EVIDENCE.md), and
+[before and after](docs/build-week/BEFORE-AND-AFTER.md). Detailed experiments and developer
+commands continue below.
+
+### Research question
+
+Given a small set of synthetic symbolic melodies and interpretable pairwise similarities, can a
+two-family QUBO formulation recover known tune families, and how do local QAOA-style samples
+compare with exact classical optima?
 
 ```mermaid
 flowchart LR
-  A["Local Qiskit circuit infrastructure"] --> B["Reference optimisation benchmarks"]
-  B --> C["Synthetic melody families"]
-  C --> D["Interval, contour, rhythm similarity"]
-  D --> E["Sparse weighted graph"]
-  E --> F["Two-family QUBO"]
-  F --> G["Exact classical solver"]
-  F --> H["Verified local QAOA"]
-  G --> I["Evaluation"]
-  H --> I
+  A["Folk-music problem"] --> B["Exact classical truth"]
+  B --> C["Bounded quantum comparison"]
+  C --> D["Governed hardware evidence"]
+  D --> E["Validated explanation"]
 ```
 
-## Quick Start
-
-PowerShell:
-
-```powershell
-py -m venv .venv
-.\.venv\Scripts\Activate.ps1
-python -m pip install -e ".[dev]"
-qfl doctor
-qfl compare --seed 42
-```
-
-Bash:
+### Developer quick start
 
 ```bash
 python -m venv .venv
@@ -50,75 +96,6 @@ python -m pip install -e ".[dev]"
 qfl doctor
 qfl compare --seed 42
 ```
-
-## OpenAI Build Week 2026 — judge quick start
-
-Quantum Folk Lab is an Education product: learners reveal every answer to a small, interpretable
-problem before comparing a bounded quantum heuristic or reading an explanation.
-
-- **Before Build Week:** the public Foundations console and registered research experiments
-  already existed at commit `281ba40`.
-- **Built during Build Week:** the validated exact-first service and Guided Experiment were added
-  after governing-plan commit `3950a1f`.
-
-```powershell
-python -m pip install -e ".[learning]"
-streamlit run apps/learning_console/app.py
-```
-
-In the app, open **Experiments** (the default), follow **Guided Experiment**, and click
-**Reveal all 256 assignments**. Then inspect **Foundations** and **Glossary**. The current app
-shows exact synthetic-fixture evidence, registered local ideal-simulator evidence, and the compact
-experiment story; it does not yet contain a dedicated EXP-010D/011 result panel.
-
-The core app requires no IBM credential. Its deterministic explanation works without an OpenAI
-API key. Optional GPT-5.6 explanation uses `.[ai]`, receives only governed evidence, and fails
-closed to the deterministic explanation when unavailable or invalid. Optional local Qiskit uses
-`.[quantum]` and is explicitly button-gated.
-
-Public hardware reports:
-
-- [EXP-010D result](experiments/EXP-010D-hardware-parameter-landscape-run/RESULT-REPORT.md)
-- [EXP-011 result](experiments/EXP-011-dense-hardware-landscape-run/RESULT-REPORT.md)
-
-See the [Build Week judging guide](docs/build-week/JUDGING-GUIDE.md) for the shortest review path.
-
-### Hardware-era result summary
-
-**EXP-010D.** One `ibm_fez` job returned all 32 PUBs at 4,096 shots per PUB. The
-ideal-versus-hardware landscape Spearman rho was `0.96`, producing the frozen classification
-**LANDSCAPE SUPPORTED**. The centre ranked first, its most-likely state was `1010`, and the
-predeclared control-quality warning was retained.
-
-**EXP-011.** One separate `ibm_fez` job returned all 88 PUBs at 4,096 shots per PUB. Across the
-full 81-cell landscape, rho was `0.9046747967479675`; the embedded original 25-cell rho was
-`0.9315384615384615`; and EXP-010D/EXP-011 cross-run rho was `0.9776923076923076`, with repeated-
-cell mean absolute R difference `0.01871101322274423`. The frozen classification was **STRONGLY
-REPLICATED**. The centre ranked `4/81`, within the frozen top-five check, its most-likely state was
-`1010`, and the control-quality warning was retained.
-
-These results concern preservation and independent replication of a small parameter-landscape
-structure. Exact classical evaluation remains authoritative. They do not demonstrate quantum
-advantage, speedup, generalisation, musical truth, or commercial superiority.
-
-### Built with Codex and GPT-5.6
-
-Codex accelerated repository inspection, bounded implementation, tests, CI diagnosis, visual
-review, experiment packaging, fail-closed hardware preparation, result regeneration, and PR
-verification. Gwri retained and explicitly exercised product, scientific, hardware-authorization,
-interpretation, and merge authority. GPT-5.6 remained an optional explanation layer; it did not
-calculate experiments, choose hardware work, or determine claims.
-
-GPT-5.6 optionally explains validated results at different learner levels; deterministic code
-calculates the result. Its input is filtered, and output is schema-, grounding-, number-, and
-claim-checked. It cannot alter registered values, and invalid or unavailable output fails closed to
-the deterministic explanation. **The AI can explain the experiment. It cannot rewrite the
-evidence.**
-
-Evidence: [Codex contribution log](docs/build-week/CODEX-CONTRIBUTION-LOG.md),
-[Codex and GPT-5.6 evidence](docs/build-week/CODEX-AND-GPT56-EVIDENCE.md),
-[before and after](docs/build-week/BEFORE-AND-AFTER.md), and
-[judging guide](docs/build-week/JUDGING-GUIDE.md).
 
 ## EXP-001: Local Qiskit Circuit Infrastructure
 

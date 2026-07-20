@@ -42,6 +42,10 @@ def render_compact_experiment() -> None:
         "**Real public tune data · 4 binary choices · 16 combinations**  \n"
         "**Exact classical result · Ideal simulation · IBM hardware · Frozen uniform control**"
     )
+    st.write(
+        "Four real folk-tune families, two settings each: sixteen combinations, all checked "
+        "exactly."
+    )
 
     st.markdown("## Why this experiment exists")
     st.write(
@@ -100,6 +104,7 @@ def render_compact_experiment() -> None:
     )
 
     st.markdown("## Exact classical result")
+    st.write("This answer is not a prediction — the computer tried every possibility.")
     optimum = exact["optimum_bitstrings"][0]
     left, middle, right = st.columns(3)
     left.metric("Exact optimum", optimum)
@@ -122,7 +127,14 @@ def render_compact_experiment() -> None:
         "hardware run below. No Qiskit computation runs while this tab renders."
     )
 
-    st.markdown("## IBM hardware")
+    st.markdown("## First IBM hardware validation")
+    st.markdown(
+        "**Question:** Did the compact problem’s correct state remain visible on real hardware?"
+    )
+    st.write(
+        "One IBM hardware run tested whether the compact real-data result remained visible under "
+        "device noise."
+    )
     hardware_qaoa = hardware["qaoa"]
     first, second, third = st.columns(3)
     first.metric("Hardware QAOA R", f"{hardware_qaoa['r']:.6f}")

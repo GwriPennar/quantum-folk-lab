@@ -28,9 +28,9 @@ optimum-class baseline. This is governed simulator evidence—not hardware or ad
 
 ## 1:05–1:35 — real data and IBM hardware
 
-**Screen:** briefly show the current application evidence view, then one prepared public-safe frame
-from the EXP-010D and EXP-011 result reports. Do not imply a dedicated hardware panel exists in the
-app.
+**Screen:** open **Real folk data + IBM hardware · EXP-010A**. Briefly show **First IBM hardware
+validation**, then the governed **Replicated IBM hardware landscape** panel and its two scatter
+plots.
 
 **Narration:** “A separate governed programme progressed from licence-checked folk-derived data to
 a compact four-qubit problem. On IBM hardware, EXP-010D produced ideal-versus-hardware rho 0.96.
@@ -65,5 +65,5 @@ release.”
 - Use public repository files and prepared public-safe frames only.
 - Do not expose credentials, account information, local paths, the private Session ID, or raw
   intent/receipt files.
-- Do not claim audio playback, authentic-notation analysis in the guided fixture, an in-app
-  EXP-010D/011 panel, or actual QPU usage from a preflight estimate.
+- Do not claim audio playback, authentic-notation analysis in the guided fixture, live IBM access
+  from the read-only EXP-010D/EXP-011 panel, or actual QPU usage from a preflight estimate.

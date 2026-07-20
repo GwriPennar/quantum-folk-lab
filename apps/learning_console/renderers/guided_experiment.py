@@ -104,6 +104,7 @@ def _render_registered_comparison(view: GuidedExperimentView) -> None:
         "**Registered evidence · Local ideal simulation · Not quantum hardware · "
         "No quantum advantage claimed**"
     )
+    st.write("The quantum-style method found the true answer far more often than random guessing.")
     exact_column, qaoa_column, random_column = st.columns(3)
     exact_column.metric("Exact enumeration", "256 / 256 checked")
     exact_column.caption("Authoritative answer space — not a sampling probability.")
@@ -199,7 +200,8 @@ def _render_evidence_hierarchy() -> None:
         "↓ interpreted through  \n"
         "**Validated GPT-5.6 explanation**"
     )
-    st.info("The AI can explain the experiment. It cannot rewrite the evidence.")
+    st.info("GPT-5.6 may explain the validated result. It may not change the evidence.")
+    st.caption("The AI can explain the experiment. It cannot rewrite the evidence.")
     st.write(
         "GPT-5.6 receives validated evidence; it does not calculate the objective, choose the "
         "optimum, or change registered values. Schema, grounding, numerical and claim checks "
@@ -216,6 +218,9 @@ def render_guided_experiment(view: GuidedExperimentView) -> None:
     result = view.result
     st.header("Guided Experiment")
     st.caption("A fixed synthetic music question, solved transparently from evidence to result.")
+    st.write(
+        "Eight synthetic tune variants hide two families. Can similarity evidence recover them?"
+    )
 
     st.subheader("1–2 · Meet the fixture and question")
     st.write(result.fixture_description)
@@ -241,8 +246,8 @@ def render_guided_experiment(view: GuidedExperimentView) -> None:
 
     st.subheader("5 · The 256 Reveal")
     st.write(
-        "Eight synthetic tune variants. Two hidden families. There are 256 possible "
-        "assignments. Before the system reveals the answer, which split would you expect to win?"
+        "Every one of the 256 possible answers, checked exactly. The outlined cells are the best "
+        "answers. Before the system reveals them, which split would you expect to win?"
     )
     if st.button("Reveal all 256 assignments", type="primary"):
         st.session_state["build_week_256_revealed"] = True
@@ -254,6 +259,7 @@ def render_guided_experiment(view: GuidedExperimentView) -> None:
     _render_landscape(view)
 
     st.subheader("6 · Exact result computed now")
+    st.write("This answer is not a prediction — the computer tried every possibility.")
     exact = result.exact_result
     left, middle, right = st.columns(3)
     left.metric("Minimum energy", f"{float(exact['minimum_energy']):.6f}")

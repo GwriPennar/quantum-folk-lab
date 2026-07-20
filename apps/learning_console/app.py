@@ -38,9 +38,22 @@ st.set_page_config(
 )
 
 st.title("Quantum Folk Lab — Learning Console")
+st.markdown(
+    "**Learn quantum computing by checking the exact answer first — using folk-music problems, "
+    "a simulator and real IBM hardware.**"
+)
+st.write(
+    "Quantum demonstrations can feel abstract and difficult to verify. This console lets "
+    "learners compare every quantum result with known truth."
+)
+first, second, third = st.columns(3)
+first.markdown("**1 · Reveal the exact answer**")
+second.markdown("**2 · Compare the quantum method**")
+third.markdown("**3 · See what happened on real hardware**")
+st.markdown("**Start with _Start here · Guided Experiment_ in the Experiments tab.**")
 st.caption(
-    "Public experimental edition. Portable Markdown lessons under `learn/`. "
-    "Simulator-first. No claim of quantum advantage."
+    "Exact classical evaluation remains authoritative throughout. "
+    "No quantum-advantage claim is made."
 )
 
 registry = load_registry()
@@ -48,16 +61,16 @@ registry = load_registry()
 experiments_tab, foundations_tab, glossary_tab = st.tabs(["Experiments", "Foundations", "Glossary"])
 
 with experiments_tab:
-    exp010a_tab, exp005a_tab = st.tabs(
+    exp005a_tab, exp010a_tab = st.tabs(
         [
-            "EXP-010A · Four-family optimisation",
-            "EXP-005A · Synthetic partitioning",
+            "Start here · Guided Experiment",
+            "Real folk data + IBM hardware · EXP-010A",
         ]
     )
-    with exp010a_tab:
-        render_compact_experiment()
     with exp005a_tab:
         render_guided_experiment(load_guided_experiment())
+    with exp010a_tab:
+        render_compact_experiment()
 
 with foundations_tab:
     st.header("Foundations")
