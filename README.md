@@ -13,12 +13,13 @@ method, and then shows what governed IBM hardware did and did not reproduce.
 2. **Compare the quantum method.**
 3. **Inspect real IBM hardware evidence.**
 
-## Four proof points
+## What you can inspect
 
 - The Guided Experiment checks all **256 assignments exactly** before interpretation.
 - The compact experiment uses **public folk-tune-family data** in a 16-state problem.
-- The IBM landscape reached rho **`0.96`** and was independently reproduced with cross-run rho
-  approximately **`0.978`**.
+- The IBM landscape preserved almost the same ordering of circuit settings as the ideal model:
+  rho was **`0.96`**, where a value near 1 means the rankings closely agree. An independent run
+  reproduced that ordering with cross-run rho approximately **`0.978`**.
 - **GPT-5.6 may explain governed evidence but cannot alter it.**
 
 <!-- A human-reviewed 256 Reveal screenshot should be inserted here after visual approval. -->

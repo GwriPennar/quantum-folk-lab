@@ -51,48 +51,6 @@ def render_compact_experiment() -> None:
         "combinations, the exact best answer can be found before any quantum comparison."
     )
 
-    st.markdown("## What choices go into the experiment?")
-    choices = [
-        {"bit": "y0", "family": "Blackbird", "0 maps to": "R2 pair 10", "1 maps to": "R2 pair 01"},
-        {
-            "bit": "y1",
-            "family": "Bold Deserter",
-            "0 maps to": "R2 pair 10",
-            "1 maps to": "R2 pair 01",
-        },
-        {
-            "bit": "y2",
-            "family": "Catherine Tyrrell",
-            "0 maps to": "R2 pair 10",
-            "1 maps to": "R2 pair 01",
-        },
-        {
-            "bit": "y3",
-            "family": "The Merry Old Woman",
-            "0 maps to": "R2 pair 10",
-            "1 maps to": "R2 pair 01",
-        },
-    ]
-    st.dataframe(choices, width="stretch", hide_index=True)
-    st.caption("Every four-bit string is valid. No penalty, repair, or postselection is used.")
-
-    st.markdown("## What evidence enters the calculation?")
-    st.write(
-        "The experiment reads only committed aggregate evidence derived from four public tune "
-        "families. It does not reopen the source corpus or include raw notation in this package."
-    )
-    with st.expander("Committed input contract"):
-        st.markdown((EXPERIMENT_ROOT / "ENCODING-CONTRACT.md").read_text(encoding="utf-8"))
-
-    st.markdown("## How is the answer checked?")
-    st.markdown(
-        "1. Substitute one compact bit for each two-variable one-hot pair.\n"
-        "2. Verify all sixteen compact energies against the earlier scientific objective.\n"
-        "3. Enumerate all sixteen states to establish the authoritative optimum.\n"
-        "4. Run the frozen local p=1 QAOA protocol as a bounded heuristic comparison.\n"
-        "5. Compare the sampled distribution with exact energy ordering and a uniform baseline."
-    )
-
     st.markdown("## Exact classical result")
     st.markdown("**Which combination is best when every possibility is checked?**")
     st.write("This answer is not a prediction — the computer tried every possibility.")
@@ -157,6 +115,59 @@ def render_compact_experiment() -> None:
     second.metric("Control R", f"{control['r']:.6f}")
     third.metric("QAOA minus control", f"{hardware['r_qaoa_minus_control']:.6f}")
 
+    render_hardware_replication(Path(__file__).resolve().parents[3])
+
+    st.markdown("## How the four-bit model works")
+    st.write(
+        "Open this technical detail to inspect the bit mappings, committed input contract and "
+        "five-step modelling process behind the results above."
+    )
+    with st.expander("How the four-bit model works"):
+        st.markdown("### Choices and bit meanings")
+        choices = [
+            {
+                "bit": "y0",
+                "family": "Blackbird",
+                "0 maps to": "R2 pair 10",
+                "1 maps to": "R2 pair 01",
+            },
+            {
+                "bit": "y1",
+                "family": "Bold Deserter",
+                "0 maps to": "R2 pair 10",
+                "1 maps to": "R2 pair 01",
+            },
+            {
+                "bit": "y2",
+                "family": "Catherine Tyrrell",
+                "0 maps to": "R2 pair 10",
+                "1 maps to": "R2 pair 01",
+            },
+            {
+                "bit": "y3",
+                "family": "The Merry Old Woman",
+                "0 maps to": "R2 pair 10",
+                "1 maps to": "R2 pair 01",
+            },
+        ]
+        st.dataframe(choices, width="stretch", hide_index=True)
+        st.caption("Every four-bit string is valid. No penalty, repair, or postselection is used.")
+        st.markdown("### Committed input contract")
+        st.write(
+            "The experiment reads only committed aggregate evidence derived from four public "
+            "tune families. It does not reopen the source corpus or include raw notation in this "
+            "package."
+        )
+        st.markdown((EXPERIMENT_ROOT / "ENCODING-CONTRACT.md").read_text(encoding="utf-8"))
+        st.markdown("### Step-by-step process")
+        st.markdown(
+            "1. Substitute one compact bit for each two-variable one-hot pair.\n"
+            "2. Verify all sixteen compact energies against the earlier scientific objective.\n"
+            "3. Enumerate all sixteen states to establish the authoritative optimum.\n"
+            "4. Run the frozen local p=1 QAOA protocol as a bounded heuristic comparison.\n"
+            "5. Compare the sampled distribution with exact energy ordering and a uniform baseline."
+        )
+
     st.markdown("## Technical evidence")
     with st.expander("Encoding equivalence and earlier R2 comparison"):
         st.markdown((EXPERIMENT_ROOT / "R2-COMPARISON.md").read_text(encoding="utf-8"))
@@ -186,10 +197,8 @@ def render_compact_experiment() -> None:
     st.markdown(
         "- Four families and sixteen combinations are intentionally small.\n"
         "- Aggregate evidence is data-informed but does not establish musical or cultural truth.\n"
-        "- The single EXP-010C run is one tiny controlled validation; governed replication "
-        "evidence follows below.\n"
+        "- The single EXP-010C run is one tiny controlled validation; the two governed "
+        "replication runs above extend it.\n"
         "- Exact enumeration remains the scientific authority.\n"
         "- It is not quantum advantage, a speedup, or evidence of general or commercial usefulness."
     )
-
-    render_hardware_replication(Path(__file__).resolve().parents[3])

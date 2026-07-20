@@ -208,6 +208,16 @@ def test_compact_experiment_presents_four_frozen_evidence_layers() -> None:
     assert metrics["Control R"] == "-0.021309"
     assert metrics["QAOA minus control"] == "0.536242"
 
+    source = Path("apps/learning_console/renderers/compact_experiment.py").read_text(
+        encoding="utf-8"
+    )
+    exact_position = source.index('st.markdown("## Exact classical result")')
+    replication_position = source.index("render_hardware_replication(")
+    model_position = source.index('st.markdown("## How the four-bit model works")')
+    assert exact_position < replication_position < model_position
+    assert any(expander.label == "How the four-bit model works" for expander in app.expander)
+    assert 'with st.expander("How the four-bit model works"):' in source
+
 
 def test_human_question_opening_and_top_level_explainers_render() -> None:
     app = AppTest.from_file("apps/learning_console/app.py")
@@ -252,6 +262,13 @@ def test_stale_hardware_panel_wording_is_absent() -> None:
         "do not claim or capture a dedicated exp-010d/011 app panel",
     ):
         assert stale not in text
+
+
+def test_readme_landing_uses_learner_facing_evidence_language() -> None:
+    readme = Path("README.md").read_text(encoding="utf-8")
+    assert "## What you can inspect" in readme
+    assert "## Four proof points" not in readme
+    assert "where a value near 1 means the rankings closely agree" in readme
 
 
 def test_renderer_keeps_registered_and_quick_run_claims_separate() -> None:
