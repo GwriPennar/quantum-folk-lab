@@ -8,6 +8,8 @@ from typing import Any, cast
 
 import streamlit as st
 
+from renderers.hardware_replication import render_hardware_replication
+
 EXPERIMENT_ROOT = (
     Path(__file__).resolve().parents[3] / "experiments" / "EXP-010A-compact-family-encoding"
 )
@@ -172,7 +174,10 @@ def render_compact_experiment() -> None:
     st.markdown(
         "- Four families and sixteen combinations are intentionally small.\n"
         "- Aggregate evidence is data-informed but does not establish musical or cultural truth.\n"
-        "- The hardware evidence is one tiny controlled validation, not a reproducibility claim.\n"
+        "- The single EXP-010C run is one tiny controlled validation; governed replication "
+        "evidence follows below.\n"
         "- Exact enumeration remains the scientific authority.\n"
         "- It is not quantum advantage, a speedup, or evidence of general or commercial usefulness."
     )
+
+    render_hardware_replication(Path(__file__).resolve().parents[3])
