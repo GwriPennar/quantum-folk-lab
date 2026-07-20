@@ -7,6 +7,7 @@ import json
 import os
 from collections.abc import Callable, Mapping, Sequence
 from dataclasses import asdict, dataclass
+from datetime import UTC, datetime
 from pathlib import Path
 from typing import Any
 
@@ -48,6 +49,36 @@ def parameter_row_hash(rows: Sequence[Mapping[str, Any]]) -> str:
     return sha256_bytes(canonical_json(compact))
 
 
+def canonical_workload_hash(
+    *,
+    experiment_id: str,
+    backend: str,
+    initial_layout: Sequence[int],
+    physical_qubit_set: Sequence[int],
+    routing_permutation: Mapping[str, Any],
+    final_layout: Sequence[int],
+    physical_to_classical: Mapping[str, Any],
+    isa_qpy_sha256: str,
+    rows: Sequence[Mapping[str, Any]],
+    transpiler_seed: int,
+) -> str:
+    payload = {
+        "experiment_id": experiment_id,
+        "backend": backend,
+        "initial_layout": list(initial_layout),
+        "physical_qubit_set": list(physical_qubit_set),
+        "routing_permutation": dict(routing_permutation),
+        "final_logical_to_physical": list(final_layout),
+        "physical_to_classical": dict(physical_to_classical),
+        "isa_qpy_sha256": isa_qpy_sha256,
+        "ordered_parameter_rows": list(rows),
+        "shots_by_row": [row["shots"] for row in rows],
+        "pub_count": len(rows),
+        "transpiler_seed": transpiler_seed,
+    }
+    return sha256_bytes(canonical_json(payload))
+
+
 @dataclass(frozen=True)
 class SubmissionEvidence:
     schema_version: int
@@ -70,12 +101,13 @@ class SubmissionEvidence:
     pub_count: int
     shots_per_pub: int
     parameter_row_sha256: str
+    workload_sha256: str
     conservative_usage_seconds: float
     authorization_phrase: str
     run_nonce: str
 
     def validate(self) -> None:
-        if self.schema_version != 1 or self.experiment_id != "EXP-010D-R2":
+        if self.schema_version != 1 or self.experiment_id != "EXP-010D-R3":
             raise ValueError("intent identity or schema mismatch")
         if self.backend != BACKEND or self.initial_layout != INITIAL_LAYOUT:
             raise ValueError("backend or initial layout mismatch")
@@ -93,6 +125,7 @@ class SubmissionEvidence:
             self.workload_template_sha256,
             self.ideal_landscape_sha256,
             self.parameter_row_sha256,
+            self.workload_sha256,
         )
         if any(len(value) != 64 for value in hashes):
             raise ValueError("mandatory hash missing or malformed")
@@ -150,7 +183,7 @@ def build_evidence(
         raise ValueError("row workload mismatch")
     evidence = SubmissionEvidence(
         schema_version=1,
-        experiment_id="EXP-010D-R2",
+        experiment_id="EXP-010D-R3",
         source_commit_sha=source_commit_sha,
         backend=str(workload["backend"]),
         initial_layout=tuple(preflight["initial_layout"]),
@@ -178,6 +211,18 @@ def build_evidence(
         pub_count=int(workload["pub_count"]),
         shots_per_pub=int(workload["shots_per_pub"]),
         parameter_row_sha256=parameter_row_hash(rows),
+        workload_sha256=canonical_workload_hash(
+            experiment_id="EXP-010D-R3",
+            backend=str(workload["backend"]),
+            initial_layout=preflight["initial_layout"],
+            physical_qubit_set=preflight["physical_qubit_set"],
+            routing_permutation=preflight["routing_permutation_on_physical_set"],
+            final_layout=preflight["layout"],
+            physical_to_classical=preflight["physical_to_classical"],
+            isa_qpy_sha256=str(workload["parameterised_isa_qpy_sha256"]),
+            rows=rows,
+            transpiler_seed=int(workload.get("transpiler_seed", 44)),
+        ),
         conservative_usage_seconds=float(preflight["conservative_usage_seconds"]),
         authorization_phrase=AUTHORIZATION,
         run_nonce=run_nonce,
@@ -199,6 +244,51 @@ def durable_create(path: Path, payload: bytes) -> str:
     return sha256_bytes(payload)
 
 
+@dataclass(frozen=True)
+class SubmissionReceipt:
+    schema_version: int
+    experiment_id: str
+    run_nonce: str
+    job_id: str
+    submitted_at_utc: str
+    backend: str
+    source_commit_sha: str
+    workload_sha256: str
+    isa_qpy_sha256: str
+    intent_sha256: str
+    retry: bool
+
+    def validate(self) -> None:
+        if self.schema_version != 2 or self.experiment_id != "EXP-010D-R3":
+            raise ValueError("receipt identity or schema mismatch")
+        if not self.job_id or self.backend != BACKEND or self.retry:
+            raise ValueError("receipt job, backend, or retry value invalid")
+        if len(self.source_commit_sha) != 40:
+            raise ValueError("receipt source SHA malformed")
+        if any(
+            len(value) != 64
+            for value in (self.workload_sha256, self.isa_qpy_sha256, self.intent_sha256)
+        ):
+            raise ValueError("receipt hash malformed")
+        if not self.submitted_at_utc.endswith("Z"):
+            raise ValueError("receipt timestamp must be UTC Z format")
+        datetime.fromisoformat(self.submitted_at_utc.removesuffix("Z") + "+00:00")
+
+    def serialize(self) -> bytes:
+        self.validate()
+        return canonical_json(asdict(self))
+
+
+def validate_receipt_template(evidence: SubmissionEvidence) -> None:
+    evidence.validate()
+    if any(len(value) != 64 for value in (evidence.workload_sha256, evidence.isa_qpy_sha256)):
+        raise ValueError("receipt template hash missing")
+
+
+def utc_now() -> datetime:
+    return datetime.now(UTC)
+
+
 def execute_once(
     *,
     evidence: SubmissionEvidence,
@@ -208,10 +298,12 @@ def execute_once(
     service_factory: Callable[[Any], Any],
     sampler_factory: Callable[[Any], Any],
     submitter: Callable[[Any], str],
+    clock: Callable[[], datetime] = utc_now,
 ) -> str:
     """Enforce validation → intent → credential → service → sampler → one call → receipt."""
     if intent_path.exists() or receipt_path.exists():
         raise RuntimeError("stale intent or receipt blocks execution")
+    validate_receipt_template(evidence)
     intent_hash = durable_create(intent_path, evidence.serialize())
     credential = credential_reader()
     service = service_factory(credential)
@@ -219,15 +311,19 @@ def execute_once(
     job_id = submitter(sampler)
     if not job_id:
         raise RuntimeError("submission returned no job ID")
-    receipt = canonical_json(
-        {
-            "schema_version": 1,
-            "experiment_id": evidence.experiment_id,
-            "run_nonce": evidence.run_nonce,
-            "job_id": job_id,
-            "intent_sha256": intent_hash,
-            "retry": False,
-        }
+    submitted_at = clock().astimezone(UTC).isoformat().replace("+00:00", "Z")
+    receipt = SubmissionReceipt(
+        schema_version=2,
+        experiment_id="EXP-010D-R3",
+        run_nonce=evidence.run_nonce,
+        job_id=job_id,
+        submitted_at_utc=submitted_at,
+        backend=evidence.backend,
+        source_commit_sha=evidence.source_commit_sha,
+        workload_sha256=evidence.workload_sha256,
+        isa_qpy_sha256=evidence.isa_qpy_sha256,
+        intent_sha256=intent_hash,
+        retry=False,
     )
-    durable_create(receipt_path, receipt)
+    durable_create(receipt_path, receipt.serialize())
     return job_id
