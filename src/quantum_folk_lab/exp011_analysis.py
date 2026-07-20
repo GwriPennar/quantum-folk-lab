@@ -2,8 +2,8 @@
 
 from __future__ import annotations
 
-import random
 import math
+import random
 from collections.abc import Mapping, Sequence
 from statistics import fmean
 
