@@ -1,0 +1,9 @@
+{
+  "alpha": 0.05,
+  "finite_shot_R": 0.5902006485219975,
+  "finite_shot_detected": true,
+  "one_sided_R_critical": 0.013243523204876345,
+  "seed": 42,
+  "shots": 4096,
+  "uniform_null_resamples": 100000
+}

@@ -1,0 +1,43 @@
+[
+  {
+    "backend": "fixture-line",
+    "duration_us": 73.2,
+    "layout": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "passes": true,
+    "post": {
+      "depth": 61,
+      "swaps": 3,
+      "two_qubit_count": 18,
+      "two_qubit_depth": 12
+    },
+    "pre": {
+      "h": 4,
+      "measure": 4,
+      "rx": 4,
+      "rz": 4,
+      "rzz": 6
+    }
+  },
+  {
+    "backend": "fixture-heavy",
+    "duration_us": 164.0,
+    "layout": [
+      2,
+      3,
+      4,
+      5
+    ],
+    "passes": false,
+    "post": {
+      "depth": 128,
+      "swaps": 5,
+      "two_qubit_count": 26,
+      "two_qubit_depth": 19
+    }
+  }
+]

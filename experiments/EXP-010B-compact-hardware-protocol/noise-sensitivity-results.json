@@ -1,0 +1,39 @@
+{
+  "model": "synthetic depolarizing/readout envelope; not a backend prediction",
+  "rows": [
+    {
+      "expected_energy": 0.04044733276241881,
+      "extra_two_qubit_gates": 0,
+      "readout_error": 0.0,
+      "relative_improvement": 0.5881211942895251,
+      "scenario": "ideal",
+      "two_qubit_error": 0.0
+    },
+    {
+      "expected_energy": 0.04084232460552763,
+      "extra_two_qubit_gates": 2,
+      "readout_error": 0.01,
+      "relative_improvement": 0.5661191147378316,
+      "scenario": "mild",
+      "two_qubit_error": 0.005
+    },
+    {
+      "expected_energy": 0.041388655713911524,
+      "extra_two_qubit_gates": 4,
+      "readout_error": 0.02,
+      "relative_improvement": 0.5356870419800257,
+      "scenario": "moderate",
+      "two_qubit_error": 0.01
+    },
+    {
+      "expected_energy": 0.043717203609795585,
+      "extra_two_qubit_gates": 8,
+      "readout_error": 0.05,
+      "relative_improvement": 0.40598082920880263,
+      "scenario": "stress",
+      "two_qubit_error": 0.02
+    }
+  ],
+  "seed": 42,
+  "shots": 4096
+}
