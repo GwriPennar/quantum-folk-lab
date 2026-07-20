@@ -12,7 +12,7 @@ examples where the truth can be checked before a quantum or AI result is interpr
 
 ## 0:15–0:45 — working learner journey
 
-**Screen:** **Guided Experiment**; click **Reveal all 256 assignments**.
+**Screen:** **Start here · Guided experiment**; click **Reveal all 256 answers**.
 
 **Narration:** “This synthetic teaching fixture has 256 possible assignments. The app evaluates
 every one, reveals both complement-equivalent optima, and makes the exact classical truth visible
@@ -28,7 +28,7 @@ optimum-class baseline. This is governed simulator evidence—not hardware or ad
 
 ## 1:05–1:35 — real data and IBM hardware
 
-**Screen:** open **Real folk data + IBM hardware · EXP-010A**. Briefly show **First IBM hardware
+**Screen:** open **Real folk data & IBM results**. Briefly show **First IBM hardware
 validation**, then the governed **Replicated IBM hardware landscape** panel and its two scatter
 plots.
 

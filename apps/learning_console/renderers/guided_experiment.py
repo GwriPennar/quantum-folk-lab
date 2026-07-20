@@ -80,6 +80,10 @@ def _render_landscape(view: GuidedExperimentView) -> None:
         "index layout and has no musical meaning. The two outlined cells are global optima: "
         "top-right is the Canonical representative; bottom-left is the Equivalent complement."
     )
+    st.success(
+        "You just checked every possible answer. The outlined cells are the best groupings — "
+        "not a prediction, but the exact result."
+    )
     left, middle, right = st.columns(3)
     left.metric("Assignments checked", str(len(landscape.entries)))
     middle.metric("Distinct energy levels", str(landscape.distinct_energy_levels))
@@ -99,12 +103,15 @@ def _render_landscape(view: GuidedExperimentView) -> None:
 
 def _render_registered_comparison(view: GuidedExperimentView) -> None:
     evidence = view.registered_qaoa
-    st.subheader("Part B · Compare registered QAOA evidence")
+    st.subheader("How did the quantum method do?")
     st.markdown(
         "**Registered evidence · Local ideal simulation · Not quantum hardware · "
         "No quantum advantage claimed**"
     )
-    st.write("The quantum-style method found the true answer far more often than random guessing.")
+    st.write(
+        "The bounded quantum method found one of the best answers far more often than random "
+        "guessing."
+    )
     exact_column, qaoa_column, random_column = st.columns(3)
     exact_column.metric("Exact enumeration", "256 / 256 checked")
     exact_column.caption("Authoritative answer space — not a sampling probability.")
@@ -192,7 +199,6 @@ def _render_registered_comparison(view: GuidedExperimentView) -> None:
 
 
 def _render_evidence_hierarchy() -> None:
-    st.subheader("Part C · Explain the evidence hierarchy")
     st.markdown(
         "**Exact enumeration**  \n"
         "↓ governs  \n"
@@ -216,20 +222,18 @@ def _render_evidence_hierarchy() -> None:
 
 def render_guided_experiment(view: GuidedExperimentView) -> None:
     result = view.result
-    st.header("Guided Experiment")
-    st.caption("A fixed synthetic music question, solved transparently from evidence to result.")
-    st.write(
-        "Eight synthetic tune variants hide two families. Can similarity evidence recover them?"
+    st.header("Guided experiment")
+    st.markdown(
+        "**Eight tune variants. Two hidden families. 256 possible groupings.**\n\n"
+        "Look at the musical evidence if you like, then make your prediction: which tunes "
+        "belong together?"
     )
 
-    st.subheader("1–2 · Meet the fixture and question")
-    st.write(result.fixture_description)
-    st.info(
-        "Can interval, contour, and rhythm similarities separate these eight synthetic tune "
-        "variants into two unlabeled families? Labels are hidden until evaluation."
-    )
-
-    with st.expander("3 · Inspect the musical evidence"):
+    with st.expander("Look at the musical evidence"):
+        st.write(
+            "This is the evidence your prediction can use. The data is synthetic teaching "
+            "material, not authentic cultural material."
+        )
         pairs = result.evidence_summary["pairs"]
         st.dataframe(pairs, width="stretch", hide_index=True)
         st.caption(
@@ -237,28 +241,16 @@ def render_guided_experiment(view: GuidedExperimentView) -> None:
             "threshold. This is not authentic cultural data."
         )
 
-    with st.expander("4 · Understand the model"):
-        st.write(
-            "Each tune receives a 0 or 1. The verified QUBO rewards a coherent, balanced split; "
-            "0 and 1 are exchangeable family labels."
-        )
-        st.json({"parameters": result.parameters, "QUBO summary": result.qubo_summary})
-
-    st.subheader("5 · The 256 Reveal")
-    st.write(
-        "Every one of the 256 possible answers, checked exactly. The outlined cells are the best "
-        "answers. Before the system reveals them, which split would you expect to win?"
-    )
-    if st.button("Reveal all 256 assignments", type="primary"):
+    if st.button("Reveal all 256 answers", type="primary"):
         st.session_state["build_week_256_revealed"] = True
     if not st.session_state.get("build_week_256_revealed", False):
-        st.caption("Reveal the complete answer space to continue the exact-first journey.")
+        st.caption("The answer stays hidden until you reveal it.")
         return
 
-    st.subheader("Part A · Complete exact answer space")
+    st.subheader("Every possible answer")
     _render_landscape(view)
 
-    st.subheader("6 · Exact result computed now")
+    st.subheader("The exact result")
     st.write("This answer is not a prediction — the computer tried every possibility.")
     exact = result.exact_result
     left, middle, right = st.columns(3)
@@ -270,10 +262,22 @@ def render_guided_experiment(view: GuidedExperimentView) -> None:
         "bitwise complement denotes the same unlabeled partition."
     )
 
+    st.info(
+        "Because the exact answer is known, every quantum result below can be checked rather "
+        "than taken on trust."
+    )
     _render_registered_comparison(view)
-    _render_evidence_hierarchy()
 
-    st.subheader("7–8 · Optional local-Qiskit comparison")
+    st.subheader("How was this model built?")
+    with st.expander("Technical model and QUBO"):
+        st.write(result.fixture_description)
+        st.write(
+            "Each tune receives a 0 or 1. The verified QUBO rewards a coherent, balanced split; "
+            "0 and 1 are exchangeable family labels."
+        )
+        st.json({"parameters": result.parameters, "QUBO summary": result.qubo_summary})
+
+    st.subheader("Optional local-Qiskit comparison")
     st.caption(
         "This live bounded quick run uses a smaller submission-safe contract. It is separate "
         "from the registered 4,096-shot evidence shown above."
@@ -296,7 +300,8 @@ def render_guided_experiment(view: GuidedExperimentView) -> None:
             )
     else:
         st.code(view.quantum.install_command)
-    st.subheader("9–10 · Explain this result")
+    st.subheader("Can AI explain the result safely?")
+    _render_evidence_hierarchy()
     label = st.selectbox("Explanation level", list(LEVEL_LABELS))
     level = LEVEL_LABELS[label]
     explanation = view.explanation(level)
@@ -312,7 +317,7 @@ def render_guided_experiment(view: GuidedExperimentView) -> None:
             st.caption(f"Validated grounded explanation from {generated.model}.")
     st.write(explanation)
 
-    st.subheader("11 · Export a reproducibility record")
+    st.subheader("Export a reproducibility record")
     first, second = st.columns(2)
     first.download_button(
         "Download validated JSON",
@@ -327,6 +332,6 @@ def render_guided_experiment(view: GuidedExperimentView) -> None:
         "text/markdown",
     )
 
-    st.subheader("12 · Limitations")
+    st.subheader("Limitations")
     for boundary in result.claims_boundary:
         st.write(f"- {boundary}")

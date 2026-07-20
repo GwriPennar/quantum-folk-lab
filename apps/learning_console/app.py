@@ -37,34 +37,27 @@ st.set_page_config(
     initial_sidebar_state="collapsed",
 )
 
-st.title("Quantum Folk Lab — Learning Console")
-st.markdown(
-    "**Learn quantum computing by checking the exact answer first — using folk-music problems, "
-    "a simulator and real IBM hardware.**"
-)
+st.title("Quantum Folk Lab")
+st.subheader("Can a quantum method recover hidden structure in folk music?")
 st.write(
-    "Quantum demonstrations can feel abstract and difficult to verify. This console lets "
-    "learners compare every quantum result with known truth."
+    "Make a prediction, reveal every possible answer, and see how a quantum method — and a real "
+    "IBM quantum computer — measured up against the exact truth."
 )
-first, second, third = st.columns(3)
-first.markdown("**1 · Reveal the exact answer**")
-second.markdown("**2 · Compare the quantum method**")
-third.markdown("**3 · See what happened on real hardware**")
-st.markdown("**Start with _Start here · Guided Experiment_ in the Experiments tab.**")
-st.caption(
-    "Exact classical evaluation remains authoritative throughout. "
-    "No quantum-advantage claim is made."
-)
+st.caption("The exact answer is always computed first. No quantum-advantage claim is made.")
 
 registry = load_registry()
 
 experiments_tab, foundations_tab, glossary_tab = st.tabs(["Experiments", "Foundations", "Glossary"])
 
 with experiments_tab:
+    st.write(
+        "Ask a musical question, reveal the exact answer, then compare simulation and real "
+        "quantum hardware with that known truth."
+    )
     exp005a_tab, exp010a_tab = st.tabs(
         [
-            "Start here · Guided Experiment",
-            "Real folk data + IBM hardware · EXP-010A",
+            "Start here · Guided experiment",
+            "Real folk data & IBM results",
         ]
     )
     with exp005a_tab:
@@ -74,6 +67,10 @@ with experiments_tab:
 
 with foundations_tab:
     st.header("Foundations")
+    st.write(
+        "New to quantum computing? Learn the few core ideas used by the experiments, one concept "
+        "at a time."
+    )
     entries = registry.foundations_entries()
     foundation_labels = ["Bits & qubits", "Gates", "Hadamard", "Entanglement", "Optimisation"]
     if len(entries) != len(foundation_labels):
@@ -86,6 +83,7 @@ with foundations_tab:
 
 with glossary_tab:
     st.header("Glossary")
+    st.write("Look up the technical terms used in the experiments in plain language.")
     query = st.text_input("Search glossary", placeholder="e.g. qubit, QAOA, shot")
     terms = load_glossary()
     for term in terms:

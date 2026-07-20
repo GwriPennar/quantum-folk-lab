@@ -27,20 +27,19 @@ def render_hardware_replication(repo_root: Path) -> None:
     exp011 = evidence.exp011
     st.markdown("## Replicated IBM hardware landscape")
     st.write(
-        "Two governed hardware runs tested whether the broader pattern of better and worse "
-        "circuit settings could be reproduced."
+        "Two governed hardware runs tested whether the map of circuit settings, called the "
+        "parameter landscape, could be reproduced."
     )
 
     st.markdown("### EXP-010D — Controlled hardware landscape")
-    st.markdown(
-        "**Question:** Did real hardware preserve which circuit settings should perform better?"
-    )
+    st.markdown("**Did real hardware preserve which circuit settings should perform better?**")
     st.caption(
-        f"{exp010d.backend} · {exp010d.unique_cells} unique cells · "
-        f"{exp010d.pub_count} PUBs · {exp010d.shots_per_pub:,} shots per PUB"
+        f"{exp010d.backend} · {exp010d.unique_cells} unique settings · "
+        f"{exp010d.pub_count} circuit evaluations (PUBs) · "
+        f"{exp010d.shots_per_pub:,} measurements (shots) each"
     )
     first, second, third, fourth = st.columns(4)
-    first.metric("Ideal/hardware rho", f"{exp010d.spearman_rho:.4f}")
+    first.metric("Ordering agreement (rho)", f"{exp010d.spearman_rho:.4f}")
     second.metric("Classification", exp010d.classification)
     third.metric("Centre rank", str(exp010d.centre_rank))
     fourth.metric("Centre most-likely state", exp010d.centre_most_likely_state)
@@ -94,15 +93,16 @@ def render_hardware_replication(repo_root: Path) -> None:
     )
 
     st.markdown("### EXP-011 — Independent dense replication")
-    st.markdown("**Question:** Did a second, denser run reproduce the same landscape structure?")
+    st.markdown("**Did a second, denser run reproduce the same pattern?**")
     st.caption(
-        f"{exp011.backend} · {exp011.unique_cells} unique cells · {exp011.pub_count} PUBs · "
-        f"{exp011.shots_per_pub:,} shots per PUB"
+        f"{exp011.backend} · {exp011.unique_cells} unique settings · "
+        f"{exp011.pub_count} circuit evaluations (PUBs) · "
+        f"{exp011.shots_per_pub:,} measurements (shots) each"
     )
     first, second, third = st.columns(3)
-    first.metric("Full-grid ideal/hardware rho", f"{exp011.spearman_rho:.4f}")
+    first.metric("Full-grid ordering agreement (rho)", f"{exp011.spearman_rho:.4f}")
     second.metric("Embedded 25-cell rho", f"{exp011.embedded_25_rho:.4f}")
-    third.metric("Cross-run rho", f"{exp011.cross_run_rho:.4f}")
+    third.metric("Cross-run agreement (rho)", f"{exp011.cross_run_rho:.4f}")
     first, second, third = st.columns(3)
     first.metric(
         "Repeated-cell mean absolute difference", f"{exp011.cross_run_mean_absolute_difference:.4f}"

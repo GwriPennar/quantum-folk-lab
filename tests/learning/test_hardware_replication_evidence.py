@@ -148,13 +148,16 @@ def test_learning_console_renders_replication_without_credentials(
         "No IBM access is needed",
         "Did real hardware preserve the predicted landscape?",
         "Did the hardware pattern reproduce?",
+        "map of circuit settings, called the parameter landscape",
+        "circuit evaluations (PUBs)",
+        "measurements (shots) each",
     ):
         assert expected in rendered
     metrics = {metric.label: metric.value for metric in app.metric}
-    assert metrics["Ideal/hardware rho"] == "0.9600"
-    assert metrics["Full-grid ideal/hardware rho"] == "0.9047"
+    assert metrics["Ordering agreement (rho)"] == "0.9600"
+    assert metrics["Full-grid ordering agreement (rho)"] == "0.9047"
     assert metrics["Embedded 25-cell rho"] == "0.9315"
-    assert metrics["Cross-run rho"] == "0.9777"
+    assert metrics["Cross-run agreement (rho)"] == "0.9777"
     assert metrics["Repeated-cell mean absolute difference"] == "0.0187"
     renderer = Path("apps/learning_console/renderers/hardware_replication.py").read_text(
         encoding="utf-8"

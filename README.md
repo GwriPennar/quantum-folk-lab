@@ -30,7 +30,7 @@ pip install -e ".[learning]"
 streamlit run apps/learning_console/app.py
 ```
 
-Open **Experiments** and begin with **Start here · Guided Experiment**. Reveal all 256 assignments,
+Open **Experiments** and begin with **Start here · Guided experiment**. Reveal all 256 answers,
 then compare registered local simulation, the real folk-data compact experiment, the first IBM
 validation, and the replicated hardware landscape. **Foundations** and **Glossary** provide the
 beginner path. No IBM credential or OpenAI API key is required; optional Qiskit remains
