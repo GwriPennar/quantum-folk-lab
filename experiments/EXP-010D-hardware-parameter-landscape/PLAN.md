@@ -29,6 +29,27 @@ seed `44`, transpiles one parameterised circuit once, hashes the ISA QPY, and bi
 only after manifest verification. Failure of the backend, layout, existing hardware gates, or
 the 180-second conservative usage ceiling is a NO-GO; no alternate backend or layout is allowed.
 
+## R1 layout and decoding clarification
+
+The required **initial placement** is exactly q0→20, q1→21, q2→23, q3→22. Qiskit's
+`initial_index_layout()` must equal `[20, 21, 23, 22]`; comparing this placement directly with
+`final_index_layout()` is invalid because the latter composes the initial placement with any
+routing permutation. A non-identity final permutation is permitted only when it arises from
+routing, uses exactly `{20, 21, 22, 23}`, is unambiguous, is recorded before execution, and
+passes every existing routing, count, depth, duration, error and usage gate.
+
+Preflight must record the initial layout, `routing_permutation()`, final layout, raw layout
+metadata, physical measurement-to-classical-bit map, and SWAP count. Result decoding composes
+the final logical-to-physical map with the physical-to-classical measurement map, then converts
+Qiskit's displayed c3..c0 key into the repository's frozen q0..q3/QUBO-variable order. All 16
+computational-basis states must pass before execution, and the mapping manifest and ISA circuit
+must be hashed before authorization is accepted.
+
+Hard NO-GO conditions include a different initial placement, any physical qubit outside the
+frozen set, ambiguous routing or measurement metadata, a failed all-state decoding test,
+changed circuit semantics, unsupported gates, any inherited hardware-gate failure, or any need
+for post-hoc reinterpretation.
+
 ## Safety boundary
 
 Submission defaults off and requires the new exact phrase
