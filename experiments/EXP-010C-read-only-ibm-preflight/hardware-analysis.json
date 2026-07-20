@@ -1,0 +1,304 @@
+Exit code: 0
+Wall time: 1.4 seconds
+Output:
+{
+  "backend": "ibm_fez",
+  "classification": {
+    "narrow_hypothesis_supported": true,
+    "qaoa_1010_is_most_likely": true,
+    "qaoa_beats_control": true,
+    "qaoa_clears_frozen_null_threshold": true
+  },
+  "energy_minimum": 0.033053087676503,
+  "energy_uniform16": 0.051005565403928255,
+  "experiment_id": "EXP-010C",
+  "frozen_uniform_null_threshold": 0.013243523204876345,
+  "ideal_simulator_r": 0.5902006485219975,
+  "job_id": "d9eq7faneu4c739oohf0",
+  "pub_count": 2,
+  "pub_order": [
+    "qaoa",
+    "uniform_control"
+  ],
+  "qaoa": {
+    "all_optimal_probability": 0.24169921875,
+    "all_optimal_states": [
+      "1010"
+    ],
+    "bit_order_contract": "Qiskit c3..c0 reversed to logical x0..x3",
+    "classical_register": "c",
+    "decoded_logical_assignment": [
+      1,
+      0,
+      1,
+      0
+    ],
+    "energy_standard_error": 0.00010953123916339452,
+    "mean_observed_energy": 0.041761239718129714,
+    "most_frequent_logical_bitstring": "1010",
+    "most_frequent_measured_qiskit_bitstring": "0101",
+    "optimum_1010_probability": 0.24169921875,
+    "r": 0.5149331377070235,
+    "r_bootstrap_95_percentile_interval": [
+      0.5031837099270926,
+      0.5266020318459435
+    ],
+    "states": [
+      {
+        "count": 70,
+        "energy": 0.055374836501815,
+        "logical_bitstring": "0000",
+        "probability": 0.01708984375,
+        "qiskit_bitstring": "0000"
+      },
+      {
+        "count": 65,
+        "energy": 0.058815127350607996,
+        "logical_bitstring": "0001",
+        "probability": 0.015869140625,
+        "qiskit_bitstring": "1000"
+      },
+      {
+        "count": 61,
+        "energy": 0.0514424031005,
+        "logical_bitstring": "0010",
+        "probability": 0.014892578125,
+        "qiskit_bitstring": "0100"
+      },
+      {
+        "count": 36,
+        "energy": 0.058622336728072,
+        "logical_bitstring": "0011",
+        "probability": 0.0087890625,
+        "qiskit_bitstring": "1100"
+      },
+      {
+        "count": 36,
+        "energy": 0.063435377010042,
+        "logical_bitstring": "0100",
+        "probability": 0.0087890625,
+        "qiskit_bitstring": "0010"
+      },
+      {
+        "count": 57,
+        "energy": 0.05761228127369,
+        "logical_bitstring": "0101",
+        "probability": 0.013916015625,
+        "qiskit_bitstring": "1010"
+      },
+      {
+        "count": 24,
+        "energy": 0.064478268416507,
+        "logical_bitstring": "0110",
+        "probability": 0.005859375,
+        "qiskit_bitstring": "0110"
+      },
+      {
+        "count": 20,
+        "energy": 0.062394815458934015,
+        "logical_bitstring": "0111",
+        "probability": 0.0048828125,
+        "qiskit_bitstring": "1110"
+      },
+      {
+        "count": 431,
+        "energy": 0.041836649673692,
+        "logical_bitstring": "1000",
+        "probability": 0.105224609375,
+        "qiskit_bitstring": "0001"
+      },
+      {
+        "count": 522,
+        "energy": 0.04404134471126,
+        "logical_bitstring": "1001",
+        "probability": 0.12744140625,
+        "qiskit_bitstring": "1001"
+      },
+      {
+        "count": 990,
+        "energy": 0.033053087676503,
+        "logical_bitstring": "1010",
+        "probability": 0.24169921875,
+        "qiskit_bitstring": "0101"
+      },
+      {
+        "count": 736,
+        "energy": 0.038997425492850006,
+        "logical_bitstring": "1011",
+        "probability": 0.1796875,
+        "qiskit_bitstring": "1101"
+      },
+      {
+        "count": 125,
+        "energy": 0.050994826940892996,
+        "logical_bitstring": "1100",
+        "probability": 0.030517578125,
+        "qiskit_bitstring": "0011"
+      },
+      {
+        "count": 514,
+        "energy": 0.043936135393316006,
+        "logical_bitstring": "1101",
+        "probability": 0.12548828125,
+        "qiskit_bitstring": "1011"
+      },
+      {
+        "count": 120,
+        "energy": 0.047186589751484,
+        "logical_bitstring": "1110",
+        "probability": 0.029296875,
+        "qiskit_bitstring": "0111"
+      },
+      {
+        "count": 289,
+        "energy": 0.04386754098268602,
+        "logical_bitstring": "1111",
+        "probability": 0.070556640625,
+        "qiskit_bitstring": "1111"
+      }
+    ]
+  },
+  "r_qaoa_minus_control": 0.5362416467517604,
+  "schema_version": 1,
+  "shots_per_pub": 4096,
+  "status": "DONE",
+  "synthetic_stress_r": 0.40598082920880263,
+  "uniform_control": {
+    "all_optimal_probability": 0.054931640625,
+    "all_optimal_states": [
+      "1010"
+    ],
+    "bit_order_contract": "Qiskit c3..c0 reversed to logical x0..x3",
+    "classical_register": "c",
+    "decoded_logical_assignment": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "energy_standard_error": 0.0001428845846003745,
+    "mean_observed_energy": 0.051388105937958534,
+    "most_frequent_logical_bitstring": "0000",
+    "most_frequent_measured_qiskit_bitstring": "0000",
+    "optimum_1010_probability": 0.054931640625,
+    "r": -0.021308509044736912,
+    "r_bootstrap_95_percentile_interval": [
+      -0.036808363910994304,
+      -0.0054465183925786155
+    ],
+    "states": [
+      {
+        "count": 281,
+        "energy": 0.055374836501815,
+        "logical_bitstring": "0000",
+        "probability": 0.068603515625,
+        "qiskit_bitstring": "0000"
+      },
+      {
+        "count": 268,
+        "energy": 0.058815127350607996,
+        "logical_bitstring": "0001",
+        "probability": 0.0654296875,
+        "qiskit_bitstring": "1000"
+      },
+      {
+        "count": 226,
+        "energy": 0.0514424031005,
+        "logical_bitstring": "0010",
+        "probability": 0.05517578125,
+        "qiskit_bitstring": "0100"
+      },
+      {
+        "count": 239,
+        "energy": 0.058622336728072,
+        "logical_bitstring": "0011",
+        "probability": 0.058349609375,
+        "qiskit_bitstring": "1100"
+      },
+      {
+        "count": 266,
+        "energy": 0.063435377010042,
+        "logical_bitstring": "0100",
+        "probability": 0.06494140625,
+        "qiskit_bitstring": "0010"
+      },
+      {
+        "count": 274,
+        "energy": 0.05761228127369,
+        "logical_bitstring": "0101",
+        "probability": 0.06689453125,
+        "qiskit_bitstring": "1010"
+      },
+      {
+        "count": 272,
+        "energy": 0.064478268416507,
+        "logical_bitstring": "0110",
+        "probability": 0.06640625,
+        "qiskit_bitstring": "0110"
+      },
+      {
+        "count": 273,
+        "energy": 0.062394815458934015,
+        "logical_bitstring": "0111",
+        "probability": 0.066650390625,
+        "qiskit_bitstring": "1110"
+      },
+      {
+        "count": 244,
+        "energy": 0.041836649673692,
+        "logical_bitstring": "1000",
+        "probability": 0.0595703125,
+        "qiskit_bitstring": "0001"
+      },
+      {
+        "count": 246,
+        "energy": 0.04404134471126,
+        "logical_bitstring": "1001",
+        "probability": 0.06005859375,
+        "qiskit_bitstring": "1001"
+      },
+      {
+        "count": 225,
+        "energy": 0.033053087676503,
+        "logical_bitstring": "1010",
+        "probability": 0.054931640625,
+        "qiskit_bitstring": "0101"
+      },
+      {
+        "count": 237,
+        "energy": 0.038997425492850006,
+        "logical_bitstring": "1011",
+        "probability": 0.057861328125,
+        "qiskit_bitstring": "1101"
+      },
+      {
+        "count": 268,
+        "energy": 0.050994826940892996,
+        "logical_bitstring": "1100",
+        "probability": 0.0654296875,
+        "qiskit_bitstring": "0011"
+      },
+      {
+        "count": 265,
+        "energy": 0.043936135393316006,
+        "logical_bitstring": "1101",
+        "probability": 0.064697265625,
+        "qiskit_bitstring": "1011"
+      },
+      {
+        "count": 242,
+        "energy": 0.047186589751484,
+        "logical_bitstring": "1110",
+        "probability": 0.05908203125,
+        "qiskit_bitstring": "0111"
+      },
+      {
+        "count": 270,
+        "energy": 0.04386754098268602,
+        "logical_bitstring": "1111",
+        "probability": 0.06591796875,
+        "qiskit_bitstring": "1111"
+      }
+    ]
+  }
+}

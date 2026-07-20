@@ -1,0 +1,19 @@
+Exit code: 0
+Wall time: 1.4 seconds
+Output:
+{
+  "analysis_artifact_sha256": {
+    "HARDWARE-RESULT-REPORT.md": "8af0180888174920bc970d1157ae99182c7eec034599ee4d0e0aa0820ff6fd23",
+    "hardware-analysis.json": "9dcd898afbc969098eba7b7eb3c55a35a41fdf36fd81489a2b8ccdb23f1c407b",
+    "hardware-counts.json": "a829432bc453f02a98146b574f228f25d1f1fa801ff5d5f0d0f0f2e54a14b4a6",
+    "hardware-job-metadata.json": "e1d284b74d98dc43ff71152da3a2f1d9d7becdec189e8e2f33ffc0d04ad60ebb"
+  },
+  "automatic_retry": false,
+  "backend": "ibm_fez",
+  "experiment_id": "EXP-010C",
+  "job_id": "d9eq7faneu4c739oohf0",
+  "result_validation": "passed",
+  "retrieved_at_utc": "2026-07-20T04:33:10.592090+00:00",
+  "schema_version": 1,
+  "terminal_status": "DONE"
+}

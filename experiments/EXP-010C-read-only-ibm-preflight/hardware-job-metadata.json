@@ -1,0 +1,27 @@
+Exit code: 0
+Wall time: 1.5 seconds
+Output:
+{
+  "automatic_retry": false,
+  "backend": "ibm_fez",
+  "control_qpy_sha256": "1cdf53e347c15f8b469f7ab2b8fe094f61dce65316f488b7aee1724f0f56bda8",
+  "experiment_id": "EXP-010C",
+  "job_id": "d9eq7faneu4c739oohf0",
+  "layout": [
+    20,
+    21,
+    23,
+    22
+  ],
+  "pub_count": 2,
+  "pub_order": [
+    "qaoa",
+    "uniform_control"
+  ],
+  "qaoa_qpy_sha256": "7f7a811c5175496127db698a50e02d1d950180519cc33dfaf7ec9f577f0c1e0b",
+  "retrieved_at_utc": "2026-07-20T04:33:10.592090+00:00",
+  "schema_version": 1,
+  "shots_per_pub": 4096,
+  "terminal_status": "DONE",
+  "transpiler_seed": 44
+}
