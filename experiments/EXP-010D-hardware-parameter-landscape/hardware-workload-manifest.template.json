@@ -1,0 +1,28 @@
+{
+  "authorization": false,
+  "authorization_required": "I AUTHORIZE ONE EXP-010D IBM QPU JOB",
+  "automatic_retries": 0,
+  "backend": "ibm_fez",
+  "billable_qpu_seconds_ceiling": 180,
+  "exp010c_authorization_accepted": false,
+  "experiment_id": "EXP-010D",
+  "hardware_jobs": 1,
+  "intent_created": false,
+  "job_id": null,
+  "parameterised_isa_qpy_sha256": null,
+  "preflight_required": true,
+  "protocol_only": true,
+  "pub_executions": 32,
+  "receipt_created": false,
+  "required_layout": [
+    20,
+    21,
+    23,
+    22
+  ],
+  "schema_version": 1,
+  "shots_per_execution": 4096,
+  "submission_default": false,
+  "submitted": false,
+  "transpiler_seed": 44
+}
