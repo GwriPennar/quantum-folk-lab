@@ -222,17 +222,19 @@ def _render_evidence_hierarchy() -> None:
 
 def render_guided_experiment(view: GuidedExperimentView) -> None:
     result = view.result
-    st.header("Guided experiment")
+    st.header("Can you spot the hidden split?")
     st.markdown(
         "**Eight tune variants. Two hidden families. 256 possible groupings.**\n\n"
-        "Look at the musical evidence if you like, then make your prediction: which tunes "
-        "belong together?"
+        "Before revealing the answer, inspect the musical evidence and decide which variants "
+        "you think belong together. You do not need to enter a formal answer — make a mental "
+        "prediction, then test it."
     )
 
     with st.expander("Look at the musical evidence"):
         st.write(
-            "This is the evidence your prediction can use. The data is synthetic teaching "
-            "material, not authentic cultural material."
+            "Look for pairs with strong combined similarity. Connected pairs are clues that two "
+            "variants may belong to the same hidden family. This is synthetic teaching material, "
+            "not authentic cultural material."
         )
         pairs = result.evidence_summary["pairs"]
         st.dataframe(pairs, width="stretch", hide_index=True)
@@ -247,10 +249,10 @@ def render_guided_experiment(view: GuidedExperimentView) -> None:
         st.caption("The answer stays hidden until you reveal it.")
         return
 
-    st.subheader("Every possible answer")
+    st.subheader("What did every possible grouping score?")
     _render_landscape(view)
 
-    st.subheader("The exact result")
+    st.subheader("What is the exact answer?")
     st.write("This answer is not a prediction — the computer tried every possibility.")
     exact = result.exact_result
     left, middle, right = st.columns(3)
@@ -268,7 +270,7 @@ def render_guided_experiment(view: GuidedExperimentView) -> None:
     )
     _render_registered_comparison(view)
 
-    st.subheader("How was this model built?")
+    st.subheader("How was the question turned into a model?")
     with st.expander("Technical model and QUBO"):
         st.write(result.fixture_description)
         st.write(
@@ -277,7 +279,7 @@ def render_guided_experiment(view: GuidedExperimentView) -> None:
         )
         st.json({"parameters": result.parameters, "QUBO summary": result.qubo_summary})
 
-    st.subheader("Optional local-Qiskit comparison")
+    st.subheader("Want to run a small local quantum comparison?")
     st.caption(
         "This live bounded quick run uses a smaller submission-safe contract. It is separate "
         "from the registered 4,096-shot evidence shown above."
@@ -317,7 +319,7 @@ def render_guided_experiment(view: GuidedExperimentView) -> None:
             st.caption(f"Validated grounded explanation from {generated.model}.")
     st.write(explanation)
 
-    st.subheader("Export a reproducibility record")
+    st.subheader("Want to inspect or share the reproducibility record?")
     first, second = st.columns(2)
     first.download_button(
         "Download validated JSON",

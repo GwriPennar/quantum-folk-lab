@@ -9,7 +9,12 @@ ROOT = Path(__file__).resolve().parents[1]
 FORBIDDEN_NAMES = {".env"}
 PATTERNS = {
     "email": re.compile(r"[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}"),
-    "token": re.compile(r"(gh[pousr]_|ibm[_-]?quantum[_-]?token|api[_-]?key)", re.IGNORECASE),
+    "token": re.compile(
+        r"(?:gh[pousr]_[A-Za-z0-9]{16,}|sk-(?:proj-)?[A-Za-z0-9_-]{16,}|"
+        r"(?:ibm[_-]?quantum[_-]?token|api[_-]?key)\s*[:=]\s*[\"']?"
+        r"(?!<|your|placeholder)[A-Za-z0-9_-]{16,})",
+        re.IGNORECASE,
+    ),
     "windows_user_path": re.compile(r"C:" + r"\\Users\\"),
     "private_project": re.compile(
         "|".join(
@@ -38,6 +43,12 @@ ALLOWED_BINARY_QPY = {
 }
 
 
+def text_safety_failures(text: str) -> list[str]:
+    """Return public-safety pattern names found in one UTF-8 text payload."""
+
+    return [name for name, pattern in PATTERNS.items() if pattern.search(text)]
+
+
 def main() -> int:
     failures: list[str] = []
     for path in ROOT.rglob("*"):
@@ -61,9 +72,8 @@ def main() -> int:
         except UnicodeDecodeError:
             failures.append(f"binary or non-utf8 file: {relative}")
             continue
-        for name, pattern in PATTERNS.items():
-            if pattern.search(text):
-                failures.append(f"{name}: {relative}")
+        for name in text_safety_failures(text):
+            failures.append(f"{name}: {relative}")
     if failures:
         print("Public safety scan failed:")
         print("\n".join(failures))

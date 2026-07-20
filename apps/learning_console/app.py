@@ -38,12 +38,12 @@ st.set_page_config(
 )
 
 st.title("Quantum Folk Lab")
-st.subheader("Can a quantum method recover hidden structure in folk music?")
+st.subheader("Can patterns in folk tunes help us test a quantum method?")
 st.write(
-    "Make a prediction, reveal every possible answer, and see how a quantum method — and a real "
-    "IBM quantum computer — measured up against the exact truth."
+    "Folk tunes give us small, understandable choices with patterns we can score. Start with a "
+    "made-up example, predict its hidden groups, then compare the exact answer with simulation "
+    "and real IBM hardware."
 )
-st.caption("The exact answer is always computed first. No quantum-advantage claim is made.")
 
 registry = load_registry()
 
@@ -51,9 +51,10 @@ experiments_tab, foundations_tab, glossary_tab = st.tabs(["Experiments", "Founda
 
 with experiments_tab:
     st.write(
-        "Ask a musical question, reveal the exact answer, then compare simulation and real "
-        "quantum hardware with that known truth."
+        "First learn the method with eight synthetic tune variants. Then see the same "
+        "exact-first approach applied to public folk-tune data and governed hardware results."
     )
+    st.caption("The exact answer is always computed first. No quantum-advantage claim is made.")
     exp005a_tab, exp010a_tab = st.tabs(
         [
             "Start here · Guided experiment",
@@ -68,8 +69,8 @@ with experiments_tab:
 with foundations_tab:
     st.header("Foundations")
     st.write(
-        "New to quantum computing? Learn the few core ideas used by the experiments, one concept "
-        "at a time."
+        "Use these short lessons when an experiment mentions an unfamiliar quantum idea. Start "
+        "with bits and qubits, or open only the concept you need."
     )
     entries = registry.foundations_entries()
     foundation_labels = ["Bits & qubits", "Gates", "Hadamard", "Entanglement", "Optimisation"]
@@ -83,7 +84,10 @@ with foundations_tab:
 
 with glossary_tab:
     st.header("Glossary")
-    st.write("Look up the technical terms used in the experiments in plain language.")
+    st.write(
+        "Seen a term such as QAOA, shot or QUBO in an experiment? Search for a plain-language "
+        "definition here."
+    )
     query = st.text_input("Search glossary", placeholder="e.g. qubit, QAOA, shot")
     terms = load_glossary()
     for term in terms:

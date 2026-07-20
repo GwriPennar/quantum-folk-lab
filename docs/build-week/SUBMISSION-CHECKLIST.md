@@ -1,5 +1,8 @@
 # Build Week submission checklist
 
+**Learn quantum computing through folk music—check the exact answer first, then compare simulation
+and real hardware.**
+
 ## Repository and evidence
 
 - [x] Public repository URL is ready for Devpost.
@@ -11,7 +14,8 @@
 
 ## Devpost
 
-- [ ] Use the corrected tagline: **Exact-first quantum learning through folk-music-derived optimisation.**
+- [ ] Use the corrected tagline: **Learn quantum computing through folk music—check the exact
+  answer first, then compare simulation and real hardware.**
 - [ ] Complete the description with the synthetic teaching fixture, governed real-data programme,
   IBM replication evidence, Codex workflow, GPT-5.6 boundary, and limitations.
 - [ ] Select the **Education** category.

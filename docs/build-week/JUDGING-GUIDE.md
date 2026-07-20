@@ -1,5 +1,8 @@
 # Quantum Folk Lab — Build Week judging guide
 
+**Learn quantum computing through folk music—check the exact answer first, then compare simulation
+and real hardware.**
+
 ## Education problem and audience
 
 Quantum demonstrations can be opaque, abstract, and easy to overstate. Quantum Folk Lab is for
