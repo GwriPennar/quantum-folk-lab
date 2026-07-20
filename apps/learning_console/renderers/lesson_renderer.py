@@ -24,10 +24,8 @@ def render_lesson(lesson: LessonDocument, registry: LessonRegistry) -> None:
     if errors:
         st.warning("Validation notes:\n" + "\n".join(f"- {e}" for e in errors))
 
-    st.subheader(lesson.metadata.title)
-    st.caption(f"Route `{lesson.metadata.route}` · content v{lesson.metadata.version}")
     if lesson.metadata.learning_objectives:
-        st.write(lesson.metadata.learning_objectives[0])
+        st.write(f"**Why this matters here:** {lesson.metadata.learning_objectives[0]}")
     st.markdown(semantic_marker_html(lesson, renderer="streamlit"), unsafe_allow_html=True)
 
     if lesson.metadata.learning_objectives:

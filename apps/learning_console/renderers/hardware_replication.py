@@ -27,16 +27,22 @@ def render_hardware_replication(repo_root: Path) -> None:
     exp011 = evidence.exp011
     st.markdown("## Replicated IBM hardware landscape")
     st.write(
-        "Two governed hardware runs tested whether the map of circuit settings, called the "
-        "parameter landscape, could be reproduced."
+        "A parameter landscape is a map of how well different circuit settings perform. Two "
+        "governed hardware runs asked whether the shape of that map survived real-device noise "
+        "and could be reproduced later."
     )
 
-    st.markdown("### EXP-010D — Controlled hardware landscape")
+    st.markdown("### First landscape test")
+    st.caption("Governed experiment EXP-010D")
     st.markdown("**Did real hardware preserve which circuit settings should perform better?**")
+    st.write(
+        "Ordering agreement, shown as rho, is close to 1 when ideal simulation and hardware rank "
+        "the settings in nearly the same order."
+    )
     st.caption(
         f"{exp010d.backend} · {exp010d.unique_cells} unique settings · "
-        f"{exp010d.pub_count} circuit evaluations (PUBs) · "
-        f"{exp010d.shots_per_pub:,} measurements (shots) each"
+        f"{exp010d.pub_count} submitted circuits (PUBs) · "
+        f"each circuit measured {exp010d.shots_per_pub:,} times (shots)"
     )
     first, second, third, fourth = st.columns(4)
     first.metric("Ordering agreement (rho)", f"{exp010d.spearman_rho:.4f}")
@@ -92,12 +98,17 @@ def render_hardware_replication(repo_root: Path) -> None:
         "advantage."
     )
 
-    st.markdown("### EXP-011 — Independent dense replication")
+    st.markdown("### Independent denser replication")
+    st.caption("Governed experiment EXP-011")
     st.markdown("**Did a second, denser run reproduce the same pattern?**")
+    st.write(
+        "This run tested more settings. Its rho values compare the dense run with ideal "
+        "simulation and with the first hardware run; values near 1 mean their ordering agreed."
+    )
     st.caption(
         f"{exp011.backend} · {exp011.unique_cells} unique settings · "
-        f"{exp011.pub_count} circuit evaluations (PUBs) · "
-        f"{exp011.shots_per_pub:,} measurements (shots) each"
+        f"{exp011.pub_count} submitted circuits (PUBs) · "
+        f"each circuit measured {exp011.shots_per_pub:,} times (shots)"
     )
     first, second, third = st.columns(3)
     first.metric("Full-grid ordering agreement (rho)", f"{exp011.spearman_rho:.4f}")

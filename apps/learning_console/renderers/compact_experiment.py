@@ -36,40 +36,22 @@ def render_compact_experiment() -> None:
         json.loads((HARDWARE_ROOT / "hardware-analysis.json").read_text(encoding="utf-8")),
     )
 
-    st.header("EXP-010A")
-    st.subheader("Choosing one setting from four folk-tune families")
-    st.markdown(
-        "**Can we apply the same exact-first approach to choices drawn from real public "
-        "folk-tune families?**"
-    )
+    st.header("Can one choice from each folk-tune family work well together?")
     st.write(
-        "The lab checks all sixteen choices exactly, compares an ideal quantum circuit, and then "
-        "examines what happened on real IBM hardware."
+        "This is the real-data journey. Choose one of two settings from each of four public "
+        "folk-tune families, check all sixteen combinations exactly, then compare simulation "
+        "with governed IBM hardware evidence."
     )
-    st.markdown(
-        "**Real public tune data · 4 binary choices · 16 combinations**  \n"
-        "**Exact classical result · Ideal simulation · IBM hardware · Frozen uniform control**"
-    )
-    st.write(
-        "Four real folk-tune families, two settings each: sixteen combinations, all checked "
-        "exactly."
-    )
+    st.caption("Real public tune data · four binary choices · sixteen valid combinations")
 
-    st.markdown("## Why this experiment exists")
-    st.write(
-        "An earlier eight-qubit formulation spent half its variables enforcing one-hot choices. "
-        "EXP-010A asks whether the same verified musical objective can be represented directly "
-        "with one meaningful bit per tune family."
-    )
-
-    st.markdown("## The problem in plain language")
+    st.markdown("## What are we trying to discover?")
     st.write(
         "For each of four tune families, choose one of two pre-verified settings. The objective "
-        "scores how well the four choices work together. With only sixteen combinations, every "
-        "possibility can be checked exactly."
+        "scores how well the four choices fit together. Because there are only sixteen possible "
+        "combinations, the exact best answer can be found before any quantum comparison."
     )
 
-    st.markdown("## Choices and bit meanings")
+    st.markdown("## What choices go into the experiment?")
     choices = [
         {"bit": "y0", "family": "Blackbird", "0 maps to": "R2 pair 10", "1 maps to": "R2 pair 01"},
         {
@@ -94,7 +76,7 @@ def render_compact_experiment() -> None:
     st.dataframe(choices, width="stretch", hide_index=True)
     st.caption("Every four-bit string is valid. No penalty, repair, or postselection is used.")
 
-    st.markdown("## Data entering the algorithm")
+    st.markdown("## What evidence enters the calculation?")
     st.write(
         "The experiment reads only committed aggregate evidence derived from four public tune "
         "families. It does not reopen the source corpus or include raw notation in this package."
@@ -102,7 +84,7 @@ def render_compact_experiment() -> None:
     with st.expander("Committed input contract"):
         st.markdown((EXPERIMENT_ROOT / "ENCODING-CONTRACT.md").read_text(encoding="utf-8"))
 
-    st.markdown("## Step-by-step process")
+    st.markdown("## How is the answer checked?")
     st.markdown(
         "1. Substitute one compact bit for each two-variable one-hot pair.\n"
         "2. Verify all sixteen compact energies against the earlier scientific objective.\n"
@@ -125,10 +107,15 @@ def render_compact_experiment() -> None:
 
     st.markdown("## Ideal quantum simulation")
     st.markdown("**Does the ideal quantum circuit concentrate on the better choices?**")
+    st.write(
+        "R measures improvement over uniform sampling: higher positive values mean the circuit "
+        "put more weight on lower-energy choices."
+    )
     metrics = qaoa["ideal_metrics"]
     first, second, third = st.columns(3)
     first.metric(
-        "Ideal relative improvement", f"{metrics['relative_expected_energy_improvement']:.2%}"
+        "Improvement over uniform sampling (R)",
+        f"{metrics['relative_expected_energy_improvement']:.2%}",
     )
     second.metric("Ideal optimum mass", f"{metrics['optimum_mass']:.2%}")
     third.metric("Four-lowest mass", f"{metrics['four_lowest_mass']:.2%}")
@@ -141,11 +128,12 @@ def render_compact_experiment() -> None:
     st.markdown("**Did the correct answer remain visible on real hardware?**")
     st.write(
         "One IBM hardware run tested whether the compact real-data result remained visible under "
-        "device noise."
+        "device noise. The same R measure is used so the hardware result can be compared with "
+        "the ideal simulation and a deliberately uniform control circuit."
     )
     hardware_qaoa = hardware["qaoa"]
     first, second, third = st.columns(3)
-    first.metric("Hardware QAOA R", f"{hardware_qaoa['r']:.6f}")
+    first.metric("Hardware improvement (R)", f"{hardware_qaoa['r']:.6f}")
     second.metric("P(1010)", f"{hardware_qaoa['optimum_1010_probability']:.2%}")
     third.metric("Most likely state", hardware_qaoa["most_frequent_logical_bitstring"])
     st.success(
@@ -159,6 +147,10 @@ def render_compact_experiment() -> None:
     )
 
     st.markdown("## Frozen uniform control")
+    st.write(
+        "The control circuit spreads measurements broadly. It shows what the R score looks like "
+        "when the circuit is not trying to favour better choices."
+    )
     control = hardware["uniform_control"]
     first, second, third = st.columns(3)
     first.metric("Control shots", "4,096")

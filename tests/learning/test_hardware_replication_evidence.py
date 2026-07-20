@@ -138,8 +138,10 @@ def test_learning_console_renders_replication_without_credentials(
     )
     for expected in (
         "Replicated IBM hardware landscape",
-        "EXP-010D — Controlled hardware landscape",
-        "EXP-011 — Independent dense replication",
+        "First landscape test",
+        "Governed experiment EXP-010D",
+        "Independent denser replication",
+        "Governed experiment EXP-011",
         "LANDSCAPE SUPPORTED",
         "STRONGLY REPLICATED",
         "Control warning retained",
@@ -148,9 +150,9 @@ def test_learning_console_renders_replication_without_credentials(
         "No IBM access is needed",
         "Did real hardware preserve the predicted landscape?",
         "Did the hardware pattern reproduce?",
-        "map of circuit settings, called the parameter landscape",
-        "circuit evaluations (PUBs)",
-        "measurements (shots) each",
+        "A parameter landscape is a map of how well different circuit settings perform",
+        "submitted circuits (PUBs)",
+        "measured 4,096 times (shots)",
     ):
         assert expected in rendered
     metrics = {metric.label: metric.value for metric in app.metric}

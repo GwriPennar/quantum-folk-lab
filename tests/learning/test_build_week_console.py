@@ -23,7 +23,7 @@ def test_navigation_hierarchy_and_no_secret_display() -> None:
         encoding="utf-8"
     )
     assert "OPENAI_" + "API" + "_KEY" not in renderer
-    assert "Guided experiment" in renderer
+    assert "Can you spot the hidden split?" in renderer
 
 
 def test_service_loads_without_streamlit_qiskit_or_openai_imports() -> None:
@@ -62,7 +62,9 @@ def test_guided_experiment_256_reveal_journey_requires_no_openai_key(
     assert any(
         element.value == "The answer stays hidden until you reveal it." for element in app.caption
     )
-    assert not any(element.value == "Every possible answer" for element in app.subheader)
+    assert not any(
+        element.value == "What did every possible grouping score?" for element in app.subheader
+    )
     assert not any(metric.label == "Minimum energy" for metric in app.metric)
     assert not any(expander.label == "Technical model and QUBO" for expander in app.expander)
     reveal = next(button for button in app.button if button.label == "Reveal all 256 answers")
@@ -84,10 +86,10 @@ def test_guided_experiment_256_reveal_journey_requires_no_openai_key(
         for element in collection
     )
     for expected in (
-        "Every possible answer",
-        "The exact result",
+        "What did every possible grouping score?",
+        "What is the exact answer?",
         "How did the quantum method do?",
-        "How was this model built?",
+        "How was the question turned into a model?",
         "Can AI explain the result safely?",
         "256",
         "00001111",
@@ -129,8 +131,8 @@ def test_foundation_tabs_follow_registry_and_render_without_execution() -> None:
     assert "build_week_quantum" not in app.session_state.filtered_state
     rendered = "\n".join(str(item.value) for item in (*app.markdown, *app.caption))
     for expected in (
-        "New to quantum computing? Learn the few core ideas used by the experiments",
-        "Look up the technical terms used in the experiments in plain language",
+        "Use these short lessons when an experiment mentions an unfamiliar quantum idea",
+        "Seen a term such as QAOA, shot or QUBO in an experiment",
     ):
         assert expected in rendered
     objectives = {
@@ -188,9 +190,8 @@ def test_compact_experiment_presents_four_frozen_evidence_layers() -> None:
         "not quantum advantage",
         "a speedup",
         "Exact enumeration remains the scientific authority",
-        "Four real folk-tune families, two settings each",
-        "Can we apply the same exact-first approach to choices drawn from real public "
-        "folk-tune families?",
+        "Choose one of two settings from each of four public folk-tune families",
+        "Can one choice from each folk-tune family work well together?",
         "Which combination is best when every possibility is checked?",
         "Does the ideal quantum circuit concentrate on the better choices?",
         "Did the correct answer remain visible on real hardware?",
@@ -201,7 +202,7 @@ def test_compact_experiment_presents_four_frozen_evidence_layers() -> None:
         assert expected in rendered
     metrics = {metric.label: metric.value for metric in app.metric}
     assert metrics["Exact optimum"] == "1010"
-    assert metrics["Hardware QAOA R"] == "0.514933"
+    assert metrics["Hardware improvement (R)"] == "0.514933"
     assert metrics["P(1010)"] == "24.17%"
     assert metrics["Most likely state"] == "1010"
     assert metrics["Control R"] == "-0.021309"
@@ -218,11 +219,12 @@ def test_human_question_opening_and_top_level_explainers_render() -> None:
     )
     for expected in (
         "Quantum Folk Lab",
-        "Can a quantum method recover hidden structure in folk music?",
-        "Make a prediction, reveal every possible answer",
+        "Can patterns in folk tunes help us test a quantum method?",
+        "Folk tunes give us small, understandable choices with patterns we can score",
+        "Start with a made-up example",
         "The exact answer is always computed first",
         "No quantum-advantage claim is made",
-        "Ask a musical question, reveal the exact answer",
+        "First learn the method with eight synthetic tune variants",
     ):
         assert expected in rendered
     source = Path("apps/learning_console/app.py").read_text(encoding="utf-8")
