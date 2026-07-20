@@ -42,7 +42,10 @@ def render_compact_experiment() -> None:
         "folk-tune families, check all sixteen combinations exactly, then compare simulation "
         "with governed IBM hardware evidence."
     )
-    st.caption("Real public tune data · four binary choices · sixteen valid combinations")
+    st.caption(
+        "EXP-010A · compact real-data formulation · four families · two choices each · "
+        "sixteen valid combinations"
+    )
 
     st.markdown("## What are we trying to discover?")
     st.write(
@@ -51,10 +54,14 @@ def render_compact_experiment() -> None:
         "combinations, the exact best answer can be found before any quantum comparison."
     )
 
-    st.markdown("## Exact classical result")
-    st.markdown("**Which combination is best when every possibility is checked?**")
-    st.write("This answer is not a prediction — the computer tried every possibility.")
     optimum = exact["optimum_bitstrings"][0]
+    st.markdown("## First: what is the exact answer?")
+    st.markdown("**Which combination is best when every possibility is checked?**")
+    st.write(
+        "Before looking at a simulator or quantum computer, the application checks all 16 "
+        f"possible family selections. The best-scoring selection is `{optimum}`. This is the "
+        "reference result used for every comparison below."
+    )
     left, middle, right = st.columns(3)
     left.metric("Exact optimum", optimum)
     middle.metric("Mapped R2 state", "01100110")

@@ -180,7 +180,7 @@ def test_compact_experiment_presents_four_frozen_evidence_layers() -> None:
         for element in collection
     )
     for expected in (
-        "Exact classical result",
+        "First: what is the exact answer?",
         "Ideal quantum simulation",
         "First IBM hardware validation",
         "Frozen uniform control",
@@ -193,6 +193,8 @@ def test_compact_experiment_presents_four_frozen_evidence_layers() -> None:
         "Choose one of two settings from each of four public folk-tune families",
         "Can one choice from each folk-tune family work well together?",
         "Which combination is best when every possibility is checked?",
+        "The best-scoring selection is `1010`",
+        "EXP-010A · compact real-data formulation",
         "Does the ideal quantum circuit concentrate on the better choices?",
         "Did the correct answer remain visible on real hardware?",
         "Replicated IBM hardware landscape",
@@ -211,7 +213,7 @@ def test_compact_experiment_presents_four_frozen_evidence_layers() -> None:
     source = Path("apps/learning_console/renderers/compact_experiment.py").read_text(
         encoding="utf-8"
     )
-    exact_position = source.index('st.markdown("## Exact classical result")')
+    exact_position = source.index('st.markdown("## First: what is the exact answer?")')
     replication_position = source.index("render_hardware_replication(")
     model_position = source.index('st.markdown("## How the four-bit model works")')
     assert exact_position < replication_position < model_position
@@ -266,9 +268,23 @@ def test_stale_hardware_panel_wording_is_absent() -> None:
 
 def test_readme_landing_uses_learner_facing_evidence_language() -> None:
     readme = Path("README.md").read_text(encoding="utf-8")
-    assert "## What you can inspect" in readme
+    for expected in (
+        "See the exact answer first",
+        "## Why folk tunes?",
+        "## What will I learn?",
+        "## The learning journey",
+        "## Try it in a few minutes",
+        "## What data is included?",
+        "## Four layers of evidence",
+        "## Built with Codex and GPT-5.6",
+        "## Reproduce and test the release",
+        "## Honest limits",
+        "## Repository map",
+        "a rank-correlation measure showing whether two result landscapes have a similar ordering",
+    ):
+        assert expected in readme
     assert "## Four proof points" not in readme
-    assert "where a value near 1 means the rankings closely agree" in readme
+    assert "audio playback or music generation" in readme
 
 
 def test_renderer_keeps_registered_and_quick_run_claims_separate() -> None:

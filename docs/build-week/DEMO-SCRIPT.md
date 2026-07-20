@@ -1,5 +1,8 @@
 # Build Week demo script and shot list
 
+**Learn quantum computing through folk music—check the exact answer first, then compare simulation
+and real hardware.**
+
 Target duration: **2 minutes 45 seconds**. Record the deterministic path; do not depend on live
 Qiskit, GPT-5.6, IBM, or network access.
 
@@ -7,8 +10,9 @@ Qiskit, GPT-5.6, IBM, or network access.
 
 **Screen:** Learning Console landing page or **Experiments** tab.
 
-**Narration:** “Quantum education is often abstract and hype-prone. Learners need meaningful
-examples where the truth can be checked before a quantum or AI result is interpreted.”
+**Narration:** “Quantum education is often abstract and hype-prone. Quantum Folk Lab gives
+first-time learners, teachers and curious musicians a meaningful example where the truth can be
+checked before a quantum or AI result is interpreted.”
 
 ## 0:15–0:45 — working learner journey
 
@@ -42,10 +46,10 @@ EXP-011 independently replicated the landscape: full rho was 0.905 and cross-run
 **Screen:** GPT-5.6 explanation interface or deterministic fallback, then one concise Codex
 workflow visual.
 
-**Narration:** “GPT-5.6 explains only filtered, governed evidence; invalid or unavailable output
-fails closed. Codex accelerated implementation, tests, review, CI repair, and experiment packaging.
-Human decisions and an exact authorization phrase remained mandatory for every hardware job and
-scientific interpretation.”
+**Narration:** “GPT-5.6 explains only filtered, governed evidence inside the app; invalid or
+unavailable output fails closed. Codex accelerated the Learning Console, Reveal journey, tests,
+review, CI repair, and experiment packaging. Gwri retained the educational direction, source and
+licence decisions, hardware authorisation, interpretation and scientific limits.”
 
 ## 2:05–2:30 — limitations and next step
 
