@@ -1,0 +1,25 @@
+{
+  "authorization": false,
+  "automatic_retries": 0,
+  "backend": "ibm_fez",
+  "bindings_sha256": "850704d306e0b0a4b90f52936f49c6269cf803e82b32fccaf39fc2816e5bb5b1",
+  "canonical_workload_sha256": "afc8857d04f4d77c22220f5d605e23a77200547dbd1830d1d81a44978f963f19",
+  "experiment_id": "EXP-011",
+  "hardware_jobs_if_authorized": 1,
+  "intent_created": false,
+  "ising_sha256": "635c8f05ccc4878e7f9fffad62ddd302e0a29aed4ee5837acefbc9be308a3fd5",
+  "job_id": null,
+  "layout": [
+    20,
+    21,
+    23,
+    22
+  ],
+  "parameterised_isa_qpy_sha256": "7a5fed3ee4c26e0aa535bd5aef027f7881b750a9593d35c05103a0ab127e449e",
+  "pub_count": 88,
+  "qubo_sha256": "96cfa65ca023ef7dc7449ce4b8ef132f0cbd2bbfc035f357d19f55431b3bb86e",
+  "receipt_created": false,
+  "shots_per_pub": 4096,
+  "submitted": false,
+  "transpiler_seed": 44
+}
