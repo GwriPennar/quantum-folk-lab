@@ -35,7 +35,7 @@ def displayed_bitstring(qiskit_key: str) -> str:
 
 def build_circuit(*, measured: bool = True) -> Any:
     """Build the explicit H/RZ/RZZ/RX frozen logical circuit."""
-    from qiskit import QuantumCircuit  # type: ignore[import-not-found,import-untyped]
+    from qiskit import QuantumCircuit  # type: ignore
 
     circuit = QuantumCircuit(4, 4 if measured else 0)
     circuit.h(range(4))
