@@ -1,0 +1,15 @@
+{
+  "all_pubs_present": true,
+  "backend": "ibm_fez",
+  "experiment_id": "EXP-011",
+  "intent_sha256": "44fd3924df40872bf74ae4b633befb4ca44d031b57872367a19a9efff3e2df40",
+  "isa_qpy_sha256": "7a5fed3ee4c26e0aa535bd5aef027f7881b750a9593d35c05103a0ab127e449e",
+  "job_id": "d9et3cineu4c739os5mg",
+  "pub_count": 88,
+  "receipt_sha256": "273102e0d7dd818150419115f6fc9373896d8da6724bdc98132c3307ddbff1df",
+  "retry": false,
+  "schema_version": 1,
+  "shots_per_pub": 4096,
+  "source_commit_sha": "f6d28e8102d6303cc7edcaa9237c7fecf14ca6bd",
+  "workload_sha256": "afc8857d04f4d77c22220f5d605e23a77200547dbd1830d1d81a44978f963f19"
+}
