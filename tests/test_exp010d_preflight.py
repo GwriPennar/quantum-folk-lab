@@ -1,6 +1,10 @@
 import ast
 from pathlib import Path
 
+import pytest
+
+pytest.importorskip("qiskit")
+
 from scripts.run_exp010d_preflight import load_and_validate_rows, parameterised_circuit
 
 

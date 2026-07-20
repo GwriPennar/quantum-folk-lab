@@ -9,11 +9,13 @@ from collections import Counter
 from pathlib import Path
 from typing import Any, cast
 
-from qiskit import QuantumCircuit, qpy  # type: ignore[import-untyped]
-from qiskit.circuit import Parameter  # type: ignore[import-untyped]
-from qiskit.transpiler.preset_passmanagers import generate_preset_pass_manager  # type: ignore
+from qiskit import QuantumCircuit, qpy  # type: ignore[import-not-found]
+from qiskit.circuit import Parameter  # type: ignore[import-not-found]
+from qiskit.transpiler.preset_passmanagers import (  # type: ignore[import-not-found]
+    generate_preset_pass_manager,
+)
 
-from quantum_folk_lab.compact_hardware_protocol import (  # type: ignore
+from quantum_folk_lab.compact_hardware_protocol import (
     ENERGY_RANGE,
     ISING_HASH,
     QUBO_HASH,
