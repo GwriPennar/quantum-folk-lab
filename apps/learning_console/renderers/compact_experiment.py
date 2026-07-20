@@ -11,6 +11,9 @@ import streamlit as st
 EXPERIMENT_ROOT = (
     Path(__file__).resolve().parents[3] / "experiments" / "EXP-010A-compact-family-encoding"
 )
+HARDWARE_ROOT = (
+    Path(__file__).resolve().parents[3] / "experiments" / "EXP-010C-read-only-ibm-preflight"
+)
 
 
 @st.cache_data
@@ -26,12 +29,16 @@ def render_compact_experiment() -> None:
     """Render one natural progression from accessible context to technical evidence."""
     exact = _load_json("compact-exact-result.json")
     qaoa = _load_json("qaoa-result.json")
+    hardware = cast(
+        dict[str, Any],
+        json.loads((HARDWARE_ROOT / "hardware-analysis.json").read_text(encoding="utf-8")),
+    )
 
     st.header("EXP-010A")
     st.subheader("Choosing one setting from four folk-tune families")
     st.markdown(
         "**Real public tune data · 4 binary choices · 16 combinations**  \n"
-        "**Exact classical result · Ideal simulator evidence · No real QPU result**"
+        "**Exact classical result · Ideal simulation · IBM hardware · Frozen uniform control**"
     )
 
     st.markdown("## Why this experiment exists")
@@ -100,7 +107,7 @@ def render_compact_experiment() -> None:
         f"Exact enumeration is authoritative. The minimum energy is {exact['minimum_energy']:.15f}."
     )
 
-    st.markdown("## Quantum result")
+    st.markdown("## Ideal quantum simulation")
     metrics = qaoa["ideal_metrics"]
     first, second, third = st.columns(3)
     first.metric(
@@ -109,9 +116,32 @@ def render_compact_experiment() -> None:
     second.metric("Ideal optimum mass", f"{metrics['optimum_mass']:.2%}")
     third.metric("Four-lowest mass", f"{metrics['four_lowest_mass']:.2%}")
     st.info(
-        "This is a frozen local ideal-simulator comparison, not IBM hardware and not evidence "
-        "of quantum advantage. No Qiskit computation runs while this tab renders."
+        "This is the frozen local ideal-simulator layer. It is separate from the single IBM "
+        "hardware run below. No Qiskit computation runs while this tab renders."
     )
+
+    st.markdown("## IBM hardware")
+    hardware_qaoa = hardware["qaoa"]
+    first, second, third = st.columns(3)
+    first.metric("Hardware QAOA R", f"{hardware_qaoa['r']:.6f}")
+    second.metric("P(1010)", f"{hardware_qaoa['optimum_1010_probability']:.2%}")
+    third.metric("Most likely state", hardware_qaoa["most_frequent_logical_bitstring"])
+    st.success(
+        "On IBM hardware, the frozen QAOA circuit still made the exact optimum `1010` the "
+        "most likely result and substantially outperformed the uniform control. Hardware noise "
+        "weakened the concentration compared with ideal simulation, but did not erase the signal."
+    )
+    st.caption(
+        "One frozen job on ibm_fez · 4,096 QAOA shots · committed evidence only · "
+        "no live IBM access"
+    )
+
+    st.markdown("## Frozen uniform control")
+    control = hardware["uniform_control"]
+    first, second, third = st.columns(3)
+    first.metric("Control shots", "4,096")
+    second.metric("Control R", f"{control['r']:.6f}")
+    third.metric("QAOA minus control", f"{hardware['r_qaoa_minus_control']:.6f}")
 
     st.markdown("## Technical evidence")
     with st.expander("Encoding equivalence and earlier R2 comparison"):
@@ -127,6 +157,13 @@ def render_compact_experiment() -> None:
                     "gap": exact["gap_to_next_non_optimal"],
                 },
                 "qaoa": metrics,
+                "hardware": {
+                    "backend": hardware["backend"],
+                    "shots": hardware["shots_per_pub"],
+                    "qaoa_r": hardware_qaoa["r"],
+                    "control_r": control["r"],
+                    "qaoa_minus_control": hardware["r_qaoa_minus_control"],
+                },
                 "hardware readiness": qaoa["hardware_readiness_gate"],
             }
         )
@@ -135,7 +172,7 @@ def render_compact_experiment() -> None:
     st.markdown(
         "- Four families and sixteen combinations are intentionally small.\n"
         "- Aggregate evidence is data-informed but does not establish musical or cultural truth.\n"
-        "- The quantum comparison is local ideal simulation only.\n"
+        "- The hardware evidence is one tiny controlled validation, not a reproducibility claim.\n"
         "- Exact enumeration remains the scientific authority.\n"
-        "- No quantum advantage or hardware-performance claim is made."
+        "- It is not quantum advantage, a speedup, or evidence of general or commercial usefulness."
     )

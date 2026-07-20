@@ -120,6 +120,44 @@ def test_optional_qiskit_stays_button_gated() -> None:
     assert "execute_quick_qiskit" not in app
 
 
+def test_compact_experiment_presents_four_frozen_evidence_layers() -> None:
+    app = AppTest.from_file("apps/learning_console/app.py")
+    app.run(timeout=30)
+    assert not app.exception
+    rendered = "\n".join(
+        str(element.value)
+        for collection in (
+            app.header,
+            app.subheader,
+            app.markdown,
+            app.info,
+            app.success,
+            app.caption,
+        )
+        for element in collection
+    )
+    for expected in (
+        "Exact classical result",
+        "Ideal quantum simulation",
+        "IBM hardware",
+        "Frozen uniform control",
+        "ibm_fez",
+        "4,096 QAOA shots",
+        "one tiny controlled validation",
+        "not quantum advantage",
+        "a speedup",
+        "Exact enumeration remains the scientific authority",
+    ):
+        assert expected in rendered
+    metrics = {metric.label: metric.value for metric in app.metric}
+    assert metrics["Exact optimum"] == "1010"
+    assert metrics["Hardware QAOA R"] == "0.514933"
+    assert metrics["P(1010)"] == "24.17%"
+    assert metrics["Most likely state"] == "1010"
+    assert metrics["Control R"] == "-0.021309"
+    assert metrics["QAOA minus control"] == "0.536242"
+
+
 def test_renderer_keeps_registered_and_quick_run_claims_separate() -> None:
     renderer = Path("apps/learning_console/renderers/guided_experiment.py").read_text(
         encoding="utf-8"
