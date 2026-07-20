@@ -1,0 +1,23 @@
+{
+  "authorization": false,
+  "automatic_retries": 0,
+  "backend": "ibm_fez",
+  "bindings_sha256": "f6ec1955da3505c6fc44d0b6f37805644e0d801020ef388381c560ddc6124c64",
+  "hardware_jobs_if_authorized": 1,
+  "intent_created": false,
+  "ising_sha256": "635c8f05ccc4878e7f9fffad62ddd302e0a29aed4ee5837acefbc9be308a3fd5",
+  "job_id": null,
+  "layout": [
+    20,
+    21,
+    23,
+    22
+  ],
+  "parameterised_isa_qpy_sha256": "8f9256b18c10dbe54f7d800a2a244b7656abfa66b7d2da698881147c0c0b79ab",
+  "pub_count": 32,
+  "qubo_sha256": "96cfa65ca023ef7dc7449ce4b8ef132f0cbd2bbfc035f357d19f55431b3bb86e",
+  "receipt_created": false,
+  "shots_per_pub": 4096,
+  "submitted": false,
+  "transpiler_seed": 44
+}
