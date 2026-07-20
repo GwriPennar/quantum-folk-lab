@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import random
+import math
 from collections.abc import Mapping, Sequence
 from statistics import fmean
 
@@ -33,7 +34,7 @@ def pearson(left: Sequence[float], right: Sequence[float]) -> float:
     right_ss = sum((b - right_mean) ** 2 for b in right)
     if left_ss == 0 or right_ss == 0:
         raise ValueError("Spearman correlation undefined for constant ranks")
-    return numerator / (left_ss * right_ss) ** 0.5
+    return numerator / math.sqrt(left_ss * right_ss)
 
 
 def spearman(left: Sequence[float], right: Sequence[float]) -> float:
@@ -69,5 +70,8 @@ def permutation_p_value(
 def aggregate_centres(rows: Sequence[Mapping[str, object]]) -> dict[str, float]:
     grouped: dict[str, list[float]] = {}
     for row in rows:
-        grouped.setdefault(str(row["point_id"]), []).append(float(row["r"]))
+        value = row["r"]
+        if not isinstance(value, (int, float)):
+            raise ValueError("hardware R must be numeric")
+        grouped.setdefault(str(row["point_id"]), []).append(float(value))
     return {point_id: fmean(values) for point_id, values in grouped.items()}
