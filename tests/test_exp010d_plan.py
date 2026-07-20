@@ -3,14 +3,15 @@ from __future__ import annotations
 import json
 import random
 from pathlib import Path
+from typing import Any, cast
 
 ROOT = Path("experiments/EXP-010D-hardware-parameter-landscape")
 QUBO_HASH = "96cfa65ca023ef7dc7449ce4b8ef132f0cbd2bbfc035f357d19f55431b3bb86e"
 ISING_HASH = "635c8f05ccc4878e7f9fffad62ddd302e0a29aed4ee5837acefbc9be308a3fd5"
 
 
-def load(name: str) -> dict[str, object]:
-    return json.loads((ROOT / name).read_text(encoding="utf-8"))
+def load(name: str) -> dict[str, Any]:
+    return cast(dict[str, Any], json.loads((ROOT / name).read_text(encoding="utf-8")))
 
 
 def test_grid_is_complete_unique_and_frozen() -> None:
