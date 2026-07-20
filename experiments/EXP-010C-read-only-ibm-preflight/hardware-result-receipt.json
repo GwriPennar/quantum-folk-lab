@@ -1,0 +1,16 @@
+{
+  "analysis_artifact_sha256": {
+    "HARDWARE-RESULT-REPORT.md": "d553afae65df453178dc632ad2c559a318099cb4e7ed2733bc1552ab017a591e",
+    "hardware-analysis.json": "36dc43e24a1ec13c9ef8d9ef1585938c792a226c28e5687c6302aca1508cbc87",
+    "hardware-counts.json": "25e68a5d7c706ccaec8963561dc47fe8698a0fc5e2646b7ec721f7e527607d25",
+    "hardware-job-metadata.json": "9cabaeb5c55ea4bc04d0694bf1a56c30cf7154a419a5d14f07fa014dbb37fb4e"
+  },
+  "automatic_retry": false,
+  "backend": "ibm_fez",
+  "experiment_id": "EXP-010C",
+  "job_id": "d9eq7faneu4c739oohf0",
+  "result_validation": "passed",
+  "retrieved_at_utc": "2026-07-20T04:33:10.592090+00:00",
+  "schema_version": 1,
+  "terminal_status": "DONE"
+}

@@ -1,0 +1,34 @@
+{
+  "authorization": false,
+  "backend": "ibm_fez",
+  "beta": 2.476505299986026,
+  "control_circuit_sha256": "1cdf53e347c15f8b469f7ab2b8fe094f61dce65316f488b7aee1724f0f56bda8",
+  "exp010a_squash": "461375818af7f512557003e1348054b5539a150d",
+  "exp010b_squash": "42f9eb8f60946a795d7e632343b18c53802a9039",
+  "experiment_id": "EXP-010C",
+  "gamma": 3.3177975191929154,
+  "intent_created": false,
+  "ising_hash": "635c8f05ccc4878e7f9fffad62ddd302e0a29aed4ee5837acefbc9be308a3fd5",
+  "job_id": null,
+  "layout": [
+    20,
+    21,
+    23,
+    22
+  ],
+  "platform": "Windows",
+  "pub_count": 2,
+  "pub_order": [
+    "qaoa",
+    "uniform_control"
+  ],
+  "python": "3.13.5",
+  "qaoa_circuit_sha256": "7f7a811c5175496127db698a50e02d1d950180519cc33dfaf7ec9f577f0c1e0b",
+  "qiskit": "2.5.0",
+  "qubo_hash": "96cfa65ca023ef7dc7449ce4b8ef132f0cbd2bbfc035f357d19f55431b3bb86e",
+  "receipt_created": false,
+  "schema_version": 1,
+  "shots_per_pub": 4096,
+  "submitted": false,
+  "transpiler_seed": 44
+}
