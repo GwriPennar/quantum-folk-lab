@@ -1,0 +1,74 @@
+{
+  "accepting_jobs": true,
+  "all_basis_states_decoded": 16,
+  "backend": "ibm_fez",
+  "conservative_usage_seconds": 32.465043456,
+  "direction_corrections_or_routing": 0,
+  "duration_us": 3.547999999999999,
+  "initial_layout": [
+    20,
+    21,
+    23,
+    22
+  ],
+  "layout": [
+    23,
+    20,
+    22,
+    21
+  ],
+  "mean_readout_error": 0.0091552734375,
+  "mean_two_qubit_error": 0.0023266149022901543,
+  "operation_counts": {
+    "cz": 23,
+    "measure": 4,
+    "rz": 55,
+    "sx": 53,
+    "x": 1
+  },
+  "operational": true,
+  "parameterised_isa_qpy_sha256": "8f9256b18c10dbe54f7d800a2a244b7656abfa66b7d2da698881147c0c0b79ab",
+  "passes": true,
+  "physical_qubit_set": [
+    20,
+    21,
+    22,
+    23
+  ],
+  "physical_to_classical": {
+    "20": 1,
+    "21": 3,
+    "22": 2,
+    "23": 0
+  },
+  "pub_count": 32,
+  "queue_depth": 1,
+  "routing_permutation_on_physical_set": {
+    "20": 23,
+    "21": 20,
+    "22": 21,
+    "23": 22
+  },
+  "seed": 44,
+  "shots_per_pub": 4096,
+  "swap_count": 0,
+  "total_depth": 75,
+  "total_operation_count": 136,
+  "touched_couplers": [
+    [
+      20,
+      21
+    ],
+    [
+      21,
+      22
+    ],
+    [
+      22,
+      23
+    ]
+  ],
+  "two_qubit_count": 23,
+  "two_qubit_depth": 16,
+  "usage_ceiling_seconds": 180.0
+}
