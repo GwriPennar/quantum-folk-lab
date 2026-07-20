@@ -197,6 +197,26 @@ def build() -> dict[str, Any]:
             "receipt_created": False,
         },
     )
+    _json(
+        OUT / "layout-contract.json",
+        {
+            "schema_version": 1,
+            "experiment_id": "EXP-010D-R1",
+            "required_initial_layout": [20, 21, 23, 22],
+            "required_physical_set": [20, 21, 22, 23],
+            "final_routing_permutation_may_be_non_identity": True,
+            "required_layout_records": [
+                "initial_index_layout",
+                "routing_permutation",
+                "final_index_layout",
+                "physical_to_classical",
+            ],
+            "qiskit_display_order": "c3c2c1c0",
+            "repository_logical_order": "q0q1q2q3",
+            "all_basis_states_required": 16,
+            "post_hoc_reinterpretation_allowed": False,
+        },
+    )
     (OUT / "IDEAL-LANDSCAPE-REPORT.md").write_text(
         "# EXP-010D ideal parameter landscape\n\n"
         "This deterministic statevector calculation covers all 25 frozen grid points. "

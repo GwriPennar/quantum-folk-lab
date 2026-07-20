@@ -1,0 +1,27 @@
+{
+  "all_basis_states_required": 16,
+  "experiment_id": "EXP-010D-R1",
+  "final_routing_permutation_may_be_non_identity": true,
+  "post_hoc_reinterpretation_allowed": false,
+  "qiskit_display_order": "c3c2c1c0",
+  "repository_logical_order": "q0q1q2q3",
+  "required_initial_layout": [
+    20,
+    21,
+    23,
+    22
+  ],
+  "required_layout_records": [
+    "initial_index_layout",
+    "routing_permutation",
+    "final_index_layout",
+    "physical_to_classical"
+  ],
+  "required_physical_set": [
+    20,
+    21,
+    22,
+    23
+  ],
+  "schema_version": 1
+}
