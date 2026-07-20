@@ -9,6 +9,12 @@
 | Release | `120016459c45c26066188602a463bde1f68f630b` | Squash merge of PR #18 |
 | Final submission guidance | `b900a08bedea6bc834d61825730cee5e36fb9a18` | PR #19, **docs: finalize Build Week submission guidance** |
 | In-app 256 Reveal | `a5a43bff1fc078094005100878e39374e727c4b3` | PR #20, **feat: add the in-app 256 reveal** |
+| Portable exact-first product | `cfc4f7e6df1bec4ce5d4e33e7ec3824901c37057` | Tabbed Experiments, Foundations and Glossary experience |
+| Governed real-data formulation | PRs #24–#28 | Licence/provenance gates, real-data selection, negative truth gates and compact encoding |
+| Fail-closed hardware pipeline | PRs #29–#35 | Frozen layout/decoding, bounded preflight, immutable intent/receipt, one job and no retry |
+| Supported 25-cell IBM landscape | `38097de33ed8894c560e95f98510982a7269b667` | EXP-010D rho `0.96`, centre rank 1, retained control warning |
+| Independently replicated 81-cell landscape | `104a6c87d39ea953ca9281ff9534d85890abb663` | EXP-011 rho `0.9046747967479675`, cross-run rho `0.9776923076923076`, retained warning |
+| Judge-runnable public evidence | `104a6c87d39ea953ca9281ff9534d85890abb663` | Public app, reports, tests, safety checks and reproducible result packages |
 
 ## New after the governing plan
 
@@ -30,3 +36,8 @@ No registered EXP-005A artefact or result was changed. The existing Foundations 
 available. The 256 Reveal adds deterministic enumeration, consistency validation, and presentation
 derived from the existing registered objective; it changes no fixture, scientific model, registered
 numerical result, or evidence artefact. Exact enumeration remains authoritative.
+
+The repository was not created wholesale during Build Week. The public Foundations baseline and
+registered experiments predated the governing plan. Build Week added the exact-first product
+journey and subsequently extended the governed research programme through bounded, independently
+replicated hardware evidence.

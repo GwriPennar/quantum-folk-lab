@@ -1,18 +1,37 @@
 # Build Week submission checklist
 
-- [x] Codex Session ID supplied privately through the Devpost submission form.
-- [x] Confirm the actual Session ID is excluded from public repository evidence.
-- [x] Validate the merged release with the judging guide in clean temporary environments.
-- [ ] Capture public-safe landing, evidence/model, exact result, comparison, explanation, and export screenshots.
-- [ ] Check screenshots for credentials, usernames, personal paths, emails, and private windows.
-- [ ] Record the under-three-minute demo using `DEMO-SCRIPT.md`.
-- [ ] Upload the video publicly to YouTube and verify picture and audio.
-- [ ] Add the public repository URL and testing instructions to Devpost.
-- [ ] Select the Education category.
-- [ ] Update the Devpost description to match the actual implementation.
-- [ ] Add screenshots and the public YouTube URL.
-- [ ] Perform the final rules, claims, licence, and availability check.
-- [ ] Submit before the deadline and keep the project public through judging.
+## Repository and evidence
 
-No hosted deployment is required for the documented local test path. Do not block submission on
-credentials or a live optional service.
+- [x] Public repository URL is ready for Devpost.
+- [x] README judge route and hardware-era values verified against merged evidence.
+- [x] Codex Session ID supplied privately through the Devpost form and excluded publicly.
+- [x] Core app works without IBM credentials or an OpenAI API key.
+- [x] EXP-010D and EXP-011 public result reports are linked.
+- [ ] Perform final public-safety, licence, rules, availability, and claims check.
+
+## Devpost
+
+- [ ] Use the corrected tagline: **Exact-first quantum learning through folk-music-derived optimisation.**
+- [ ] Complete the description with the synthetic teaching fixture, governed real-data programme,
+  IBM replication evidence, Codex workflow, GPT-5.6 boundary, and limitations.
+- [ ] Select the **Education** category.
+- [ ] Add the public repository URL and local testing instructions.
+- [ ] Confirm the private Session ID field remains complete without exposing its value.
+- [ ] Review the complete Devpost preview.
+- [ ] Save the final Devpost submission receipt.
+
+## Public media
+
+- [ ] Capture public-safe Guided Experiment, 256 Reveal, exact result, Foundations, Glossary, and
+  evidence-report screenshots.
+- [ ] Do not claim or capture a dedicated EXP-010D/011 app panel unless one is later merged.
+- [ ] Check screenshots for credentials, usernames, personal paths, emails, account data, and
+  private windows.
+- [ ] Create and upload the submission thumbnail.
+- [ ] Record the `DEMO-SCRIPT.md` outline at no more than 2:50.
+- [ ] Ensure the audio explicitly mentions both Codex and GPT-5.6.
+- [ ] Upload publicly to YouTube; verify picture, audio, duration, and accessibility.
+- [ ] Add and verify the public YouTube URL in Devpost.
+
+No hosted deployment is required. Do not block submission on credentials, IBM availability, live
+Qiskit optimisation, or a live GPT-5.6 request.

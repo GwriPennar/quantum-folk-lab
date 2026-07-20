@@ -90,3 +90,56 @@ Gwri decisions governing this stage:
 
 All Codex work remained subject to human review and merge authority. The private Session ID stayed
 outside the public repository.
+
+## Stage 4 — governed real data and formulation gates
+
+Codex implemented and verified public-source provenance records, licence gates, deterministic
+symbolic fixtures, QUBO/Ising equivalence checks, and exact truth gates. Weak, ambiguous, or
+non-detectable formulations were preserved as negative results rather than promoted. GPT-5.6
+helped frame explanations and review language only; deterministic code established every value.
+Gwri chose the sources, accepted or rejected candidate formulations, and required explicit stops
+when provenance, detectability, or interpretability failed.
+
+Safety gates could stop work for uncertain licensing, transcription ambiguity, exact/QUBO/Ising
+disagreement, weak signal, changed evidence, or any pressure to overstate musical meaning.
+
+## Stage 5 — compact encoding and fail-closed IBM preparation
+
+Codex developed the compact four-qubit encoding, verified the exact optimum `1010`, prepared
+bounded simulator comparisons, and implemented hardware-layout, routing, measurement-decoding,
+usage, immutable-intent, durable-receipt, one-job, and zero-retry controls. Layout and receipt
+reviews found and corrected real safety defects before execution. GPT-5.6 did not select a backend,
+layout, shot count, threshold, or submission action. Gwri approved every frozen protocol and alone
+supplied each exact hardware-authorization phrase.
+
+Preflight failed closed on missing credentials, properties, layout/decoding disagreement, excessive
+estimated usage, stale intent or receipt, or any ambiguous submission state.
+
+## Stage 6 — EXP-010D supported landscape
+
+Codex packaged the frozen 25-cell landscape, locally validated the parameterised ISA circuit,
+submitted only after Gwri's exact authorization, retrieved the recorded job, regenerated the
+sanitized result, repaired mechanical CI portability issues, and verified the result PR. The one
+`ibm_fez` job returned 32/32 PUBs; ideal-versus-hardware rho was `0.96`, the centre ranked first,
+and classification was **LANDSCAPE SUPPORTED**. The predeclared control-quality warning remained.
+
+Gwri decided that the warning must remain visible, that no retry was permitted, and that the result
+supported only the frozen small landscape—not advantage, speedup, or musical truth.
+
+## Stage 7 — EXP-011 dense independent replication
+
+Codex constructed the exact-decimal 9×9 grid, embedded all original 25 cells, froze the 88-PUB
+order, generated the ideal landscape, enforced a fresh identity/intent/receipt boundary, and ran
+the single job only after Gwri's exact authorization. It retrieved 88/88 PUBs, applied the frozen
+100,000-permutation and 10,000-bootstrap analysis, regenerated evidence byte-identically, repaired
+result-field and CI issues without rerunning hardware, and prepared PR #38.
+
+The full 81-cell rho was `0.9046747967479675`, embedded-25 rho was
+`0.9315384615384615`, and cross-run rho was `0.9776923076923076`; classification was **STRONGLY
+REPLICATED**. The centre ranked `4/81`, inside the frozen top-five check, and the control warning
+remained. Gwri authorized the job, reviewed the interpretation, and approved the merge. GPT-5.6
+remained explanatory and did not influence statistics or claims.
+
+Across the hardware era, Codex never possessed scientific or hardware authority: human approval
+selected the research question, froze each protocol, supplied each authorization phrase, accepted
+warnings, and controlled every merge. The Session ID remains private and absent from public files.

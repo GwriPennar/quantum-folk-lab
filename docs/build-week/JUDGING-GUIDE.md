@@ -1,75 +1,80 @@
 # Quantum Folk Lab — Build Week judging guide
 
-## What this is
+## Education problem and audience
 
-Quantum Folk Lab is an Education product that walks a learner through one fixed, copyright-safe
-synthetic music question: can interval, contour, and rhythm similarities recover two unlabeled
-tune families? The product exposes the evidence, verified binary model, authoritative exhaustive
-solution, optional local-Qiskit comparison, explanations, and reproducibility record.
+Quantum demonstrations can be opaque, abstract, and easy to overstate. Quantum Folk Lab is for
+learners, educators, and technically curious musicians who want to inspect known classical truth,
+compare bounded quantum heuristics, and understand honest hardware evidence through meaningful
+folk-music-derived optimisation settings.
 
-The public Foundations console existed before Build Week at `281ba40`. The governing plan landed
-at `3950a1f`. The deterministic core (#16) and Guided Experiment (#17) are Build Week work.
+The guided fixture is deterministic synthetic teaching data. A separate governed programme covers
+licence-checked real-data formulation and IBM hardware. The application does not play audio, and
+not every guided example uses historical notation.
 
-## Fastest deterministic run
+## One-command judge experience
 
-Requires Python 3.11 or later. From the repository root:
-
-```powershell
-python -m pip install -e .
-qfl build-week-exact
-qfl build-week-exact --format json --output qfl-result.json
-```
-
-Expected canonical complement class: `00001111`; all 256 assignments are checked.
-
-## Full Learning Console
+Requires Python 3.11 or later:
 
 ```powershell
 python -m pip install -e ".[learning]"
 streamlit run apps/learning_console/app.py
 ```
 
-Open the displayed local URL. Guided Experiment is the first route. Move through evidence, model,
-the app-native **256 Reveal**, exact result, optional comparison, explanation, export, and
-limitations. The reveal displays every assignment in a deterministic 16×16 binary-index grid,
-then distinguishes the two complement-equivalent optima before showing registered QAOA evidence.
+Open the displayed URL. In **Experiments**, follow **Guided Experiment** and click **Reveal all 256
+assignments**. Then inspect **Foundations** and **Glossary**. The exact path works without Qiskit,
+IBM credentials, an OpenAI API key, or network access.
 
-The registered comparison is historical EXP-005A evidence: a p=1, 4,096-shot local ideal
-simulation placed `2175 / 4096` samples (`53.10%`) across both exact optima. This is separate from
-the optional current 256-shot quick run. The uniform-all-assignments optimum-class baseline is
-`2 / 256 = 0.78125%`. Exact enumeration remains authoritative because it checks the complete
-space, not because it has a comparable sampling success rate.
+## Three strongest proof points
 
-## Optional capabilities
+1. **Inspectable truth:** all 256 synthetic-fixture assignments are evaluated; exact enumeration
+   precedes interpretation of registered or live heuristic samples.
+2. **Governed hardware structure:** EXP-010D returned 32/32 PUBs and rho `0.96`, classified
+   **LANDSCAPE SUPPORTED**, with centre rank 1 and the control warning retained.
+3. **Independent dense replication:** EXP-011 returned 88/88 PUBs; full rho was
+   `0.9046747967479675`, embedded-25 rho `0.9315384615384615`, and cross-run rho
+   `0.9776923076923076`, classified **STRONGLY REPLICATED**, with centre rank `4/81` and the
+   control warning retained.
 
-For a bounded p=1, 256-shot local ideal-simulator run:
+Public reports:
 
-```powershell
-python -m pip install -e ".[learning,quantum]"
-```
+- [`experiments/EXP-010D-hardware-parameter-landscape-run/RESULT-REPORT.md`](../../experiments/EXP-010D-hardware-parameter-landscape-run/RESULT-REPORT.md)
+- [`experiments/EXP-011-dense-hardware-landscape-run/RESULT-REPORT.md`](../../experiments/EXP-011-dense-hardware-landscape-run/RESULT-REPORT.md)
 
-For optional grounded explanations:
+The current app does not yet have a dedicated EXP-010D/011 panel; use these public reports or a
+prepared public-safe frame for hardware review.
 
-```powershell
-python -m pip install -e ".[learning,ai]"
-```
+## Judging criteria
 
-Configure the standard OpenAI SDK credential environment variable. The model defaults to
-`gpt-5.6-sol`; `QFL_OPENAI_MODEL` may override it. The deterministic explanation is used when the
-SDK, credential, network, response schema, grounding, or claim validation is unavailable.
+| Criterion | Evidence |
+| --- | --- |
+| Education | progressive Guided Experiment, exact 256 Reveal, portable Foundations and Glossary |
+| Technological Implementation | deterministic contracts, QUBO/Ising verification, bounded Qiskit, fail-closed IBM intent/receipt and tests |
+| Design | tabbed learner path, capability gating, accessible exact landscape and reproducibility exports |
+| Potential Impact | teaches scientific restraint while connecting quantum optimisation with culturally meaningful subject matter |
+| Quality of the Idea | exact-first evidence hierarchy, negative truth gates, one-job/no-retry governance, and independent replication |
 
-## Fixture, limitations, and troubleshooting
+## Codex and GPT-5.6
 
-`synthetic-two-family-v1-seed42` is deterministic generated sample data, not culturally authentic
-or copyrighted material. Exact enumeration is ground truth. The optional Qiskit run is local ideal
-simulation, not hardware evidence. Finite-shot sampling, an optimum sample, and an expectation are
-different measurements. No quantum advantage, speedup, scale, or real-family discovery is claimed.
+Codex accelerated implementation, testing, visual verification, CI diagnosis, safe experiment
+packaging, retrieval, and reproducibility checks. Gwri selected the research direction, froze each
+protocol, explicitly authorized every hardware job, accepted warnings, interpreted results, and
+approved merges. Codex did not autonomously authorize QPU use or decide scientific claims.
 
-- No Qiskit: the exact journey remains complete; install `.[quantum]` only for the comparison.
-- No OpenAI access: the deterministic three-level explanation remains complete.
+GPT-5.6 is an optional explanation layer. Deterministic code supplies all scientific values; model
+input is filtered and output is schema-, grounding-, number-, and claim-checked. Invalid or
+unavailable output fails closed to the complete deterministic explanation.
+
+## Correct interpretation and limitations
+
+The hardware results show preservation and independent replication of a small frozen parameter-
+landscape structure. Exact classical evaluation remains authoritative. The evidence does not show
+quantum advantage, speedup, scale, generalisation, musical truth, real-family discovery, or
+commercial superiority. Preflight-estimated QPU time is not reported as charged usage. The
+control-quality warning remains part of both landscape interpretations.
+
+Troubleshooting:
+
+- No Qiskit: the deterministic app and tracked evidence remain complete.
+- No OpenAI access: the deterministic explanation remains complete.
 - App import failure: install `.[learning]` in the active environment.
-- Validate the release: run `python scripts/verify_build_week_release.py`.
-
-The repository is MIT licensed. Codex implemented and tested the staged product under Gwri's
-scientific and product decisions. GPT-5.6 Sol is used only for an optional validated explanation;
-it never computes or changes scientific values.
+- Validate the release: `python scripts/verify_build_week_release.py`.
