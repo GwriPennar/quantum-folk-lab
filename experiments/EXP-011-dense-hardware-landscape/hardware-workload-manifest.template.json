@@ -1,0 +1,43 @@
+{
+  "absolute_qpu_seconds_ceiling": 100,
+  "authorization": false,
+  "authorization_required": "I AUTHORIZE ONE EXP-011 IBM QPU JOB",
+  "automatic_retries": 0,
+  "backend": "ibm_fez",
+  "execution_order_sha256": "ad767fa17044f5b28875796d5237374b83e89347d7dbcf5835c82289d6744f9d",
+  "experiment_id": "EXP-011",
+  "frozen_parameter_rows_sha256": "5ae03d83eec43a57eebbc9a98ed1ed2e0929bbb57c2cd399ca20c56c20030ba1",
+  "grid_sha256": "49c4a6ca4e64c55a7a36cb82f8758510db6308a09cfc0b8c96f7e913a6f0db24",
+  "hardware_jobs": 1,
+  "ideal_landscape_sha256": "109820acd3823be93c66961aa25773ace4a5123ae80bf7d601a489eb5215d2df",
+  "intent_created": false,
+  "job_id": null,
+  "parameterised_isa_qpy_sha256": null,
+  "preferred_qpu_seconds": [
+    85,
+    95
+  ],
+  "preflight_required": true,
+  "prior_authorization_phrases_accepted": false,
+  "protocol_only": true,
+  "pub_executions": 88,
+  "receipt_created": false,
+  "required_layout": [
+    20,
+    21,
+    23,
+    22
+  ],
+  "required_physical_set": [
+    20,
+    21,
+    22,
+    23
+  ],
+  "schema_version": 1,
+  "shots_per_execution": 4096,
+  "submission_default": false,
+  "submitted": false,
+  "target_qpu_seconds": 90,
+  "transpiler_seed": 44
+}

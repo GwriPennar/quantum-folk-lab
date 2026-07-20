@@ -1,0 +1,766 @@
+{
+  "beta_values": [
+    "2.0765052999860263",
+    "2.17650529998602615",
+    "2.276505299986026",
+    "2.376505299986026",
+    "2.476505299986026",
+    "2.5765052999860262",
+    "2.6765052999860264",
+    "2.7765052999860262",
+    "2.876505299986026"
+  ],
+  "embedded_exp010d_indices": [
+    0,
+    2,
+    4,
+    6,
+    8
+  ],
+  "experiment_id": "EXP-011",
+  "gamma_values": [
+    "2.517797519192915",
+    "2.71779751919291525",
+    "2.9177975191929155",
+    "3.11779751919291545",
+    "3.3177975191929154",
+    "3.51779751919291535",
+    "3.7177975191929153",
+    "3.91779751919291565",
+    "4.117797519192916"
+  ],
+  "generation": "exact decimal strings",
+  "point_count": 81,
+  "points": [
+    {
+      "beta": "2.0765052999860263",
+      "beta_index": 0,
+      "exp010d_original": true,
+      "gamma": "2.517797519192915",
+      "gamma_index": 0,
+      "point_id": "g0_b0",
+      "ring": "outer"
+    },
+    {
+      "beta": "2.17650529998602615",
+      "beta_index": 1,
+      "exp010d_original": false,
+      "gamma": "2.517797519192915",
+      "gamma_index": 0,
+      "point_id": "g0_b1",
+      "ring": "outer"
+    },
+    {
+      "beta": "2.276505299986026",
+      "beta_index": 2,
+      "exp010d_original": true,
+      "gamma": "2.517797519192915",
+      "gamma_index": 0,
+      "point_id": "g0_b2",
+      "ring": "outer"
+    },
+    {
+      "beta": "2.376505299986026",
+      "beta_index": 3,
+      "exp010d_original": false,
+      "gamma": "2.517797519192915",
+      "gamma_index": 0,
+      "point_id": "g0_b3",
+      "ring": "outer"
+    },
+    {
+      "beta": "2.476505299986026",
+      "beta_index": 4,
+      "exp010d_original": true,
+      "gamma": "2.517797519192915",
+      "gamma_index": 0,
+      "point_id": "g0_b4",
+      "ring": "outer"
+    },
+    {
+      "beta": "2.5765052999860262",
+      "beta_index": 5,
+      "exp010d_original": false,
+      "gamma": "2.517797519192915",
+      "gamma_index": 0,
+      "point_id": "g0_b5",
+      "ring": "outer"
+    },
+    {
+      "beta": "2.6765052999860264",
+      "beta_index": 6,
+      "exp010d_original": true,
+      "gamma": "2.517797519192915",
+      "gamma_index": 0,
+      "point_id": "g0_b6",
+      "ring": "outer"
+    },
+    {
+      "beta": "2.7765052999860262",
+      "beta_index": 7,
+      "exp010d_original": false,
+      "gamma": "2.517797519192915",
+      "gamma_index": 0,
+      "point_id": "g0_b7",
+      "ring": "outer"
+    },
+    {
+      "beta": "2.876505299986026",
+      "beta_index": 8,
+      "exp010d_original": true,
+      "gamma": "2.517797519192915",
+      "gamma_index": 0,
+      "point_id": "g0_b8",
+      "ring": "outer"
+    },
+    {
+      "beta": "2.0765052999860263",
+      "beta_index": 0,
+      "exp010d_original": false,
+      "gamma": "2.71779751919291525",
+      "gamma_index": 1,
+      "point_id": "g1_b0",
+      "ring": "outer"
+    },
+    {
+      "beta": "2.17650529998602615",
+      "beta_index": 1,
+      "exp010d_original": false,
+      "gamma": "2.71779751919291525",
+      "gamma_index": 1,
+      "point_id": "g1_b1",
+      "ring": "inner"
+    },
+    {
+      "beta": "2.276505299986026",
+      "beta_index": 2,
+      "exp010d_original": false,
+      "gamma": "2.71779751919291525",
+      "gamma_index": 1,
+      "point_id": "g1_b2",
+      "ring": "inner"
+    },
+    {
+      "beta": "2.376505299986026",
+      "beta_index": 3,
+      "exp010d_original": false,
+      "gamma": "2.71779751919291525",
+      "gamma_index": 1,
+      "point_id": "g1_b3",
+      "ring": "inner"
+    },
+    {
+      "beta": "2.476505299986026",
+      "beta_index": 4,
+      "exp010d_original": false,
+      "gamma": "2.71779751919291525",
+      "gamma_index": 1,
+      "point_id": "g1_b4",
+      "ring": "inner"
+    },
+    {
+      "beta": "2.5765052999860262",
+      "beta_index": 5,
+      "exp010d_original": false,
+      "gamma": "2.71779751919291525",
+      "gamma_index": 1,
+      "point_id": "g1_b5",
+      "ring": "inner"
+    },
+    {
+      "beta": "2.6765052999860264",
+      "beta_index": 6,
+      "exp010d_original": false,
+      "gamma": "2.71779751919291525",
+      "gamma_index": 1,
+      "point_id": "g1_b6",
+      "ring": "inner"
+    },
+    {
+      "beta": "2.7765052999860262",
+      "beta_index": 7,
+      "exp010d_original": false,
+      "gamma": "2.71779751919291525",
+      "gamma_index": 1,
+      "point_id": "g1_b7",
+      "ring": "inner"
+    },
+    {
+      "beta": "2.876505299986026",
+      "beta_index": 8,
+      "exp010d_original": false,
+      "gamma": "2.71779751919291525",
+      "gamma_index": 1,
+      "point_id": "g1_b8",
+      "ring": "outer"
+    },
+    {
+      "beta": "2.0765052999860263",
+      "beta_index": 0,
+      "exp010d_original": true,
+      "gamma": "2.9177975191929155",
+      "gamma_index": 2,
+      "point_id": "g2_b0",
+      "ring": "outer"
+    },
+    {
+      "beta": "2.17650529998602615",
+      "beta_index": 1,
+      "exp010d_original": false,
+      "gamma": "2.9177975191929155",
+      "gamma_index": 2,
+      "point_id": "g2_b1",
+      "ring": "inner"
+    },
+    {
+      "beta": "2.276505299986026",
+      "beta_index": 2,
+      "exp010d_original": true,
+      "gamma": "2.9177975191929155",
+      "gamma_index": 2,
+      "point_id": "g2_b2",
+      "ring": "inner"
+    },
+    {
+      "beta": "2.376505299986026",
+      "beta_index": 3,
+      "exp010d_original": false,
+      "gamma": "2.9177975191929155",
+      "gamma_index": 2,
+      "point_id": "g2_b3",
+      "ring": "inner"
+    },
+    {
+      "beta": "2.476505299986026",
+      "beta_index": 4,
+      "exp010d_original": true,
+      "gamma": "2.9177975191929155",
+      "gamma_index": 2,
+      "point_id": "g2_b4",
+      "ring": "inner"
+    },
+    {
+      "beta": "2.5765052999860262",
+      "beta_index": 5,
+      "exp010d_original": false,
+      "gamma": "2.9177975191929155",
+      "gamma_index": 2,
+      "point_id": "g2_b5",
+      "ring": "inner"
+    },
+    {
+      "beta": "2.6765052999860264",
+      "beta_index": 6,
+      "exp010d_original": true,
+      "gamma": "2.9177975191929155",
+      "gamma_index": 2,
+      "point_id": "g2_b6",
+      "ring": "inner"
+    },
+    {
+      "beta": "2.7765052999860262",
+      "beta_index": 7,
+      "exp010d_original": false,
+      "gamma": "2.9177975191929155",
+      "gamma_index": 2,
+      "point_id": "g2_b7",
+      "ring": "inner"
+    },
+    {
+      "beta": "2.876505299986026",
+      "beta_index": 8,
+      "exp010d_original": true,
+      "gamma": "2.9177975191929155",
+      "gamma_index": 2,
+      "point_id": "g2_b8",
+      "ring": "outer"
+    },
+    {
+      "beta": "2.0765052999860263",
+      "beta_index": 0,
+      "exp010d_original": false,
+      "gamma": "3.11779751919291545",
+      "gamma_index": 3,
+      "point_id": "g3_b0",
+      "ring": "outer"
+    },
+    {
+      "beta": "2.17650529998602615",
+      "beta_index": 1,
+      "exp010d_original": false,
+      "gamma": "3.11779751919291545",
+      "gamma_index": 3,
+      "point_id": "g3_b1",
+      "ring": "inner"
+    },
+    {
+      "beta": "2.276505299986026",
+      "beta_index": 2,
+      "exp010d_original": false,
+      "gamma": "3.11779751919291545",
+      "gamma_index": 3,
+      "point_id": "g3_b2",
+      "ring": "inner"
+    },
+    {
+      "beta": "2.376505299986026",
+      "beta_index": 3,
+      "exp010d_original": false,
+      "gamma": "3.11779751919291545",
+      "gamma_index": 3,
+      "point_id": "g3_b3",
+      "ring": "inner"
+    },
+    {
+      "beta": "2.476505299986026",
+      "beta_index": 4,
+      "exp010d_original": false,
+      "gamma": "3.11779751919291545",
+      "gamma_index": 3,
+      "point_id": "g3_b4",
+      "ring": "inner"
+    },
+    {
+      "beta": "2.5765052999860262",
+      "beta_index": 5,
+      "exp010d_original": false,
+      "gamma": "3.11779751919291545",
+      "gamma_index": 3,
+      "point_id": "g3_b5",
+      "ring": "inner"
+    },
+    {
+      "beta": "2.6765052999860264",
+      "beta_index": 6,
+      "exp010d_original": false,
+      "gamma": "3.11779751919291545",
+      "gamma_index": 3,
+      "point_id": "g3_b6",
+      "ring": "inner"
+    },
+    {
+      "beta": "2.7765052999860262",
+      "beta_index": 7,
+      "exp010d_original": false,
+      "gamma": "3.11779751919291545",
+      "gamma_index": 3,
+      "point_id": "g3_b7",
+      "ring": "inner"
+    },
+    {
+      "beta": "2.876505299986026",
+      "beta_index": 8,
+      "exp010d_original": false,
+      "gamma": "3.11779751919291545",
+      "gamma_index": 3,
+      "point_id": "g3_b8",
+      "ring": "outer"
+    },
+    {
+      "beta": "2.0765052999860263",
+      "beta_index": 0,
+      "exp010d_original": true,
+      "gamma": "3.3177975191929154",
+      "gamma_index": 4,
+      "point_id": "g4_b0",
+      "ring": "outer"
+    },
+    {
+      "beta": "2.17650529998602615",
+      "beta_index": 1,
+      "exp010d_original": false,
+      "gamma": "3.3177975191929154",
+      "gamma_index": 4,
+      "point_id": "g4_b1",
+      "ring": "inner"
+    },
+    {
+      "beta": "2.276505299986026",
+      "beta_index": 2,
+      "exp010d_original": true,
+      "gamma": "3.3177975191929154",
+      "gamma_index": 4,
+      "point_id": "g4_b2",
+      "ring": "inner"
+    },
+    {
+      "beta": "2.376505299986026",
+      "beta_index": 3,
+      "exp010d_original": false,
+      "gamma": "3.3177975191929154",
+      "gamma_index": 4,
+      "point_id": "g4_b3",
+      "ring": "inner"
+    },
+    {
+      "beta": "2.476505299986026",
+      "beta_index": 4,
+      "exp010d_original": true,
+      "gamma": "3.3177975191929154",
+      "gamma_index": 4,
+      "point_id": "g4_b4",
+      "ring": "centre"
+    },
+    {
+      "beta": "2.5765052999860262",
+      "beta_index": 5,
+      "exp010d_original": false,
+      "gamma": "3.3177975191929154",
+      "gamma_index": 4,
+      "point_id": "g4_b5",
+      "ring": "inner"
+    },
+    {
+      "beta": "2.6765052999860264",
+      "beta_index": 6,
+      "exp010d_original": true,
+      "gamma": "3.3177975191929154",
+      "gamma_index": 4,
+      "point_id": "g4_b6",
+      "ring": "inner"
+    },
+    {
+      "beta": "2.7765052999860262",
+      "beta_index": 7,
+      "exp010d_original": false,
+      "gamma": "3.3177975191929154",
+      "gamma_index": 4,
+      "point_id": "g4_b7",
+      "ring": "inner"
+    },
+    {
+      "beta": "2.876505299986026",
+      "beta_index": 8,
+      "exp010d_original": true,
+      "gamma": "3.3177975191929154",
+      "gamma_index": 4,
+      "point_id": "g4_b8",
+      "ring": "outer"
+    },
+    {
+      "beta": "2.0765052999860263",
+      "beta_index": 0,
+      "exp010d_original": false,
+      "gamma": "3.51779751919291535",
+      "gamma_index": 5,
+      "point_id": "g5_b0",
+      "ring": "outer"
+    },
+    {
+      "beta": "2.17650529998602615",
+      "beta_index": 1,
+      "exp010d_original": false,
+      "gamma": "3.51779751919291535",
+      "gamma_index": 5,
+      "point_id": "g5_b1",
+      "ring": "inner"
+    },
+    {
+      "beta": "2.276505299986026",
+      "beta_index": 2,
+      "exp010d_original": false,
+      "gamma": "3.51779751919291535",
+      "gamma_index": 5,
+      "point_id": "g5_b2",
+      "ring": "inner"
+    },
+    {
+      "beta": "2.376505299986026",
+      "beta_index": 3,
+      "exp010d_original": false,
+      "gamma": "3.51779751919291535",
+      "gamma_index": 5,
+      "point_id": "g5_b3",
+      "ring": "inner"
+    },
+    {
+      "beta": "2.476505299986026",
+      "beta_index": 4,
+      "exp010d_original": false,
+      "gamma": "3.51779751919291535",
+      "gamma_index": 5,
+      "point_id": "g5_b4",
+      "ring": "inner"
+    },
+    {
+      "beta": "2.5765052999860262",
+      "beta_index": 5,
+      "exp010d_original": false,
+      "gamma": "3.51779751919291535",
+      "gamma_index": 5,
+      "point_id": "g5_b5",
+      "ring": "inner"
+    },
+    {
+      "beta": "2.6765052999860264",
+      "beta_index": 6,
+      "exp010d_original": false,
+      "gamma": "3.51779751919291535",
+      "gamma_index": 5,
+      "point_id": "g5_b6",
+      "ring": "inner"
+    },
+    {
+      "beta": "2.7765052999860262",
+      "beta_index": 7,
+      "exp010d_original": false,
+      "gamma": "3.51779751919291535",
+      "gamma_index": 5,
+      "point_id": "g5_b7",
+      "ring": "inner"
+    },
+    {
+      "beta": "2.876505299986026",
+      "beta_index": 8,
+      "exp010d_original": false,
+      "gamma": "3.51779751919291535",
+      "gamma_index": 5,
+      "point_id": "g5_b8",
+      "ring": "outer"
+    },
+    {
+      "beta": "2.0765052999860263",
+      "beta_index": 0,
+      "exp010d_original": true,
+      "gamma": "3.7177975191929153",
+      "gamma_index": 6,
+      "point_id": "g6_b0",
+      "ring": "outer"
+    },
+    {
+      "beta": "2.17650529998602615",
+      "beta_index": 1,
+      "exp010d_original": false,
+      "gamma": "3.7177975191929153",
+      "gamma_index": 6,
+      "point_id": "g6_b1",
+      "ring": "inner"
+    },
+    {
+      "beta": "2.276505299986026",
+      "beta_index": 2,
+      "exp010d_original": true,
+      "gamma": "3.7177975191929153",
+      "gamma_index": 6,
+      "point_id": "g6_b2",
+      "ring": "inner"
+    },
+    {
+      "beta": "2.376505299986026",
+      "beta_index": 3,
+      "exp010d_original": false,
+      "gamma": "3.7177975191929153",
+      "gamma_index": 6,
+      "point_id": "g6_b3",
+      "ring": "inner"
+    },
+    {
+      "beta": "2.476505299986026",
+      "beta_index": 4,
+      "exp010d_original": true,
+      "gamma": "3.7177975191929153",
+      "gamma_index": 6,
+      "point_id": "g6_b4",
+      "ring": "inner"
+    },
+    {
+      "beta": "2.5765052999860262",
+      "beta_index": 5,
+      "exp010d_original": false,
+      "gamma": "3.7177975191929153",
+      "gamma_index": 6,
+      "point_id": "g6_b5",
+      "ring": "inner"
+    },
+    {
+      "beta": "2.6765052999860264",
+      "beta_index": 6,
+      "exp010d_original": true,
+      "gamma": "3.7177975191929153",
+      "gamma_index": 6,
+      "point_id": "g6_b6",
+      "ring": "inner"
+    },
+    {
+      "beta": "2.7765052999860262",
+      "beta_index": 7,
+      "exp010d_original": false,
+      "gamma": "3.7177975191929153",
+      "gamma_index": 6,
+      "point_id": "g6_b7",
+      "ring": "inner"
+    },
+    {
+      "beta": "2.876505299986026",
+      "beta_index": 8,
+      "exp010d_original": true,
+      "gamma": "3.7177975191929153",
+      "gamma_index": 6,
+      "point_id": "g6_b8",
+      "ring": "outer"
+    },
+    {
+      "beta": "2.0765052999860263",
+      "beta_index": 0,
+      "exp010d_original": false,
+      "gamma": "3.91779751919291565",
+      "gamma_index": 7,
+      "point_id": "g7_b0",
+      "ring": "outer"
+    },
+    {
+      "beta": "2.17650529998602615",
+      "beta_index": 1,
+      "exp010d_original": false,
+      "gamma": "3.91779751919291565",
+      "gamma_index": 7,
+      "point_id": "g7_b1",
+      "ring": "inner"
+    },
+    {
+      "beta": "2.276505299986026",
+      "beta_index": 2,
+      "exp010d_original": false,
+      "gamma": "3.91779751919291565",
+      "gamma_index": 7,
+      "point_id": "g7_b2",
+      "ring": "inner"
+    },
+    {
+      "beta": "2.376505299986026",
+      "beta_index": 3,
+      "exp010d_original": false,
+      "gamma": "3.91779751919291565",
+      "gamma_index": 7,
+      "point_id": "g7_b3",
+      "ring": "inner"
+    },
+    {
+      "beta": "2.476505299986026",
+      "beta_index": 4,
+      "exp010d_original": false,
+      "gamma": "3.91779751919291565",
+      "gamma_index": 7,
+      "point_id": "g7_b4",
+      "ring": "inner"
+    },
+    {
+      "beta": "2.5765052999860262",
+      "beta_index": 5,
+      "exp010d_original": false,
+      "gamma": "3.91779751919291565",
+      "gamma_index": 7,
+      "point_id": "g7_b5",
+      "ring": "inner"
+    },
+    {
+      "beta": "2.6765052999860264",
+      "beta_index": 6,
+      "exp010d_original": false,
+      "gamma": "3.91779751919291565",
+      "gamma_index": 7,
+      "point_id": "g7_b6",
+      "ring": "inner"
+    },
+    {
+      "beta": "2.7765052999860262",
+      "beta_index": 7,
+      "exp010d_original": false,
+      "gamma": "3.91779751919291565",
+      "gamma_index": 7,
+      "point_id": "g7_b7",
+      "ring": "inner"
+    },
+    {
+      "beta": "2.876505299986026",
+      "beta_index": 8,
+      "exp010d_original": false,
+      "gamma": "3.91779751919291565",
+      "gamma_index": 7,
+      "point_id": "g7_b8",
+      "ring": "outer"
+    },
+    {
+      "beta": "2.0765052999860263",
+      "beta_index": 0,
+      "exp010d_original": true,
+      "gamma": "4.117797519192916",
+      "gamma_index": 8,
+      "point_id": "g8_b0",
+      "ring": "outer"
+    },
+    {
+      "beta": "2.17650529998602615",
+      "beta_index": 1,
+      "exp010d_original": false,
+      "gamma": "4.117797519192916",
+      "gamma_index": 8,
+      "point_id": "g8_b1",
+      "ring": "outer"
+    },
+    {
+      "beta": "2.276505299986026",
+      "beta_index": 2,
+      "exp010d_original": true,
+      "gamma": "4.117797519192916",
+      "gamma_index": 8,
+      "point_id": "g8_b2",
+      "ring": "outer"
+    },
+    {
+      "beta": "2.376505299986026",
+      "beta_index": 3,
+      "exp010d_original": false,
+      "gamma": "4.117797519192916",
+      "gamma_index": 8,
+      "point_id": "g8_b3",
+      "ring": "outer"
+    },
+    {
+      "beta": "2.476505299986026",
+      "beta_index": 4,
+      "exp010d_original": true,
+      "gamma": "4.117797519192916",
+      "gamma_index": 8,
+      "point_id": "g8_b4",
+      "ring": "outer"
+    },
+    {
+      "beta": "2.5765052999860262",
+      "beta_index": 5,
+      "exp010d_original": false,
+      "gamma": "4.117797519192916",
+      "gamma_index": 8,
+      "point_id": "g8_b5",
+      "ring": "outer"
+    },
+    {
+      "beta": "2.6765052999860264",
+      "beta_index": 6,
+      "exp010d_original": true,
+      "gamma": "4.117797519192916",
+      "gamma_index": 8,
+      "point_id": "g8_b6",
+      "ring": "outer"
+    },
+    {
+      "beta": "2.7765052999860262",
+      "beta_index": 7,
+      "exp010d_original": false,
+      "gamma": "4.117797519192916",
+      "gamma_index": 8,
+      "point_id": "g8_b7",
+      "ring": "outer"
+    },
+    {
+      "beta": "2.876505299986026",
+      "beta_index": 8,
+      "exp010d_original": true,
+      "gamma": "4.117797519192916",
+      "gamma_index": 8,
+      "point_id": "g8_b8",
+      "ring": "outer"
+    }
+  ],
+  "schema_version": 1
+}

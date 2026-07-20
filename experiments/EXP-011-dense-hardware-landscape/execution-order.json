@@ -1,0 +1,802 @@
+{
+  "algorithm": "stateful Random(seed).shuffle rejection until all blocks span both axes",
+  "block_size": 22,
+  "experiment_id": "EXP-011",
+  "schema_version": 1,
+  "seed": 20260720,
+  "sequence": [
+    {
+      "beta": "0",
+      "block": 1,
+      "execution": 1,
+      "gamma": "0",
+      "kind": "control",
+      "point_id": "uniform_control",
+      "shots": 4096
+    },
+    {
+      "beta": "2.476505299986026",
+      "block": 1,
+      "execution": 2,
+      "gamma": "3.3177975191929154",
+      "kind": "centre",
+      "point_id": "g4_b4",
+      "shots": 4096
+    },
+    {
+      "beta": "2.6765052999860264",
+      "block": 1,
+      "execution": 3,
+      "gamma": "2.71779751919291525",
+      "kind": "landscape",
+      "point_id": "g1_b6",
+      "shots": 4096
+    },
+    {
+      "beta": "2.5765052999860262",
+      "block": 1,
+      "execution": 4,
+      "gamma": "4.117797519192916",
+      "kind": "landscape",
+      "point_id": "g8_b5",
+      "shots": 4096
+    },
+    {
+      "beta": "2.476505299986026",
+      "block": 1,
+      "execution": 5,
+      "gamma": "2.517797519192915",
+      "kind": "landscape",
+      "point_id": "g0_b4",
+      "shots": 4096
+    },
+    {
+      "beta": "2.876505299986026",
+      "block": 1,
+      "execution": 6,
+      "gamma": "3.51779751919291535",
+      "kind": "landscape",
+      "point_id": "g5_b8",
+      "shots": 4096
+    },
+    {
+      "beta": "2.6765052999860264",
+      "block": 1,
+      "execution": 7,
+      "gamma": "3.7177975191929153",
+      "kind": "landscape",
+      "point_id": "g6_b6",
+      "shots": 4096
+    },
+    {
+      "beta": "2.276505299986026",
+      "block": 1,
+      "execution": 8,
+      "gamma": "3.7177975191929153",
+      "kind": "landscape",
+      "point_id": "g6_b2",
+      "shots": 4096
+    },
+    {
+      "beta": "2.17650529998602615",
+      "block": 1,
+      "execution": 9,
+      "gamma": "3.7177975191929153",
+      "kind": "landscape",
+      "point_id": "g6_b1",
+      "shots": 4096
+    },
+    {
+      "beta": "2.0765052999860263",
+      "block": 1,
+      "execution": 10,
+      "gamma": "3.3177975191929154",
+      "kind": "landscape",
+      "point_id": "g4_b0",
+      "shots": 4096
+    },
+    {
+      "beta": "2.376505299986026",
+      "block": 1,
+      "execution": 11,
+      "gamma": "2.9177975191929155",
+      "kind": "landscape",
+      "point_id": "g2_b3",
+      "shots": 4096
+    },
+    {
+      "beta": "2.276505299986026",
+      "block": 1,
+      "execution": 12,
+      "gamma": "2.9177975191929155",
+      "kind": "landscape",
+      "point_id": "g2_b2",
+      "shots": 4096
+    },
+    {
+      "beta": "2.476505299986026",
+      "block": 1,
+      "execution": 13,
+      "gamma": "2.71779751919291525",
+      "kind": "landscape",
+      "point_id": "g1_b4",
+      "shots": 4096
+    },
+    {
+      "beta": "2.276505299986026",
+      "block": 1,
+      "execution": 14,
+      "gamma": "3.11779751919291545",
+      "kind": "landscape",
+      "point_id": "g3_b2",
+      "shots": 4096
+    },
+    {
+      "beta": "2.276505299986026",
+      "block": 1,
+      "execution": 15,
+      "gamma": "2.517797519192915",
+      "kind": "landscape",
+      "point_id": "g0_b2",
+      "shots": 4096
+    },
+    {
+      "beta": "2.7765052999860262",
+      "block": 1,
+      "execution": 16,
+      "gamma": "3.91779751919291565",
+      "kind": "landscape",
+      "point_id": "g7_b7",
+      "shots": 4096
+    },
+    {
+      "beta": "2.7765052999860262",
+      "block": 1,
+      "execution": 17,
+      "gamma": "2.9177975191929155",
+      "kind": "landscape",
+      "point_id": "g2_b7",
+      "shots": 4096
+    },
+    {
+      "beta": "2.7765052999860262",
+      "block": 1,
+      "execution": 18,
+      "gamma": "3.11779751919291545",
+      "kind": "landscape",
+      "point_id": "g3_b7",
+      "shots": 4096
+    },
+    {
+      "beta": "2.876505299986026",
+      "block": 1,
+      "execution": 19,
+      "gamma": "3.91779751919291565",
+      "kind": "landscape",
+      "point_id": "g7_b8",
+      "shots": 4096
+    },
+    {
+      "beta": "2.7765052999860262",
+      "block": 1,
+      "execution": 20,
+      "gamma": "3.51779751919291535",
+      "kind": "landscape",
+      "point_id": "g5_b7",
+      "shots": 4096
+    },
+    {
+      "beta": "2.876505299986026",
+      "block": 1,
+      "execution": 21,
+      "gamma": "4.117797519192916",
+      "kind": "landscape",
+      "point_id": "g8_b8",
+      "shots": 4096
+    },
+    {
+      "beta": "2.17650529998602615",
+      "block": 1,
+      "execution": 22,
+      "gamma": "3.11779751919291545",
+      "kind": "landscape",
+      "point_id": "g3_b1",
+      "shots": 4096
+    },
+    {
+      "beta": "2.476505299986026",
+      "block": 2,
+      "execution": 23,
+      "gamma": "3.3177975191929154",
+      "kind": "centre",
+      "point_id": "g4_b4",
+      "shots": 4096
+    },
+    {
+      "beta": "0",
+      "block": 2,
+      "execution": 24,
+      "gamma": "0",
+      "kind": "control",
+      "point_id": "uniform_control",
+      "shots": 4096
+    },
+    {
+      "beta": "2.7765052999860262",
+      "block": 2,
+      "execution": 25,
+      "gamma": "4.117797519192916",
+      "kind": "landscape",
+      "point_id": "g8_b7",
+      "shots": 4096
+    },
+    {
+      "beta": "2.5765052999860262",
+      "block": 2,
+      "execution": 26,
+      "gamma": "3.11779751919291545",
+      "kind": "landscape",
+      "point_id": "g3_b5",
+      "shots": 4096
+    },
+    {
+      "beta": "2.0765052999860263",
+      "block": 2,
+      "execution": 27,
+      "gamma": "4.117797519192916",
+      "kind": "landscape",
+      "point_id": "g8_b0",
+      "shots": 4096
+    },
+    {
+      "beta": "2.5765052999860262",
+      "block": 2,
+      "execution": 28,
+      "gamma": "3.51779751919291535",
+      "kind": "landscape",
+      "point_id": "g5_b5",
+      "shots": 4096
+    },
+    {
+      "beta": "2.276505299986026",
+      "block": 2,
+      "execution": 29,
+      "gamma": "2.71779751919291525",
+      "kind": "landscape",
+      "point_id": "g1_b2",
+      "shots": 4096
+    },
+    {
+      "beta": "2.6765052999860264",
+      "block": 2,
+      "execution": 30,
+      "gamma": "4.117797519192916",
+      "kind": "landscape",
+      "point_id": "g8_b6",
+      "shots": 4096
+    },
+    {
+      "beta": "2.0765052999860263",
+      "block": 2,
+      "execution": 31,
+      "gamma": "3.91779751919291565",
+      "kind": "landscape",
+      "point_id": "g7_b0",
+      "shots": 4096
+    },
+    {
+      "beta": "2.276505299986026",
+      "block": 2,
+      "execution": 32,
+      "gamma": "3.91779751919291565",
+      "kind": "landscape",
+      "point_id": "g7_b2",
+      "shots": 4096
+    },
+    {
+      "beta": "2.376505299986026",
+      "block": 2,
+      "execution": 33,
+      "gamma": "3.7177975191929153",
+      "kind": "landscape",
+      "point_id": "g6_b3",
+      "shots": 4096
+    },
+    {
+      "beta": "2.376505299986026",
+      "block": 2,
+      "execution": 34,
+      "gamma": "3.11779751919291545",
+      "kind": "landscape",
+      "point_id": "g3_b3",
+      "shots": 4096
+    },
+    {
+      "beta": "2.6765052999860264",
+      "block": 2,
+      "execution": 35,
+      "gamma": "3.91779751919291565",
+      "kind": "landscape",
+      "point_id": "g7_b6",
+      "shots": 4096
+    },
+    {
+      "beta": "2.376505299986026",
+      "block": 2,
+      "execution": 36,
+      "gamma": "3.91779751919291565",
+      "kind": "landscape",
+      "point_id": "g7_b3",
+      "shots": 4096
+    },
+    {
+      "beta": "2.6765052999860264",
+      "block": 2,
+      "execution": 37,
+      "gamma": "2.517797519192915",
+      "kind": "landscape",
+      "point_id": "g0_b6",
+      "shots": 4096
+    },
+    {
+      "beta": "2.876505299986026",
+      "block": 2,
+      "execution": 38,
+      "gamma": "3.7177975191929153",
+      "kind": "landscape",
+      "point_id": "g6_b8",
+      "shots": 4096
+    },
+    {
+      "beta": "2.17650529998602615",
+      "block": 2,
+      "execution": 39,
+      "gamma": "4.117797519192916",
+      "kind": "landscape",
+      "point_id": "g8_b1",
+      "shots": 4096
+    },
+    {
+      "beta": "2.5765052999860262",
+      "block": 2,
+      "execution": 40,
+      "gamma": "3.91779751919291565",
+      "kind": "landscape",
+      "point_id": "g7_b5",
+      "shots": 4096
+    },
+    {
+      "beta": "2.5765052999860262",
+      "block": 2,
+      "execution": 41,
+      "gamma": "2.517797519192915",
+      "kind": "landscape",
+      "point_id": "g0_b5",
+      "shots": 4096
+    },
+    {
+      "beta": "2.876505299986026",
+      "block": 2,
+      "execution": 42,
+      "gamma": "3.3177975191929154",
+      "kind": "landscape",
+      "point_id": "g4_b8",
+      "shots": 4096
+    },
+    {
+      "beta": "2.376505299986026",
+      "block": 2,
+      "execution": 43,
+      "gamma": "4.117797519192916",
+      "kind": "landscape",
+      "point_id": "g8_b3",
+      "shots": 4096
+    },
+    {
+      "beta": "2.5765052999860262",
+      "block": 2,
+      "execution": 44,
+      "gamma": "3.7177975191929153",
+      "kind": "landscape",
+      "point_id": "g6_b5",
+      "shots": 4096
+    },
+    {
+      "beta": "0",
+      "block": 3,
+      "execution": 45,
+      "gamma": "0",
+      "kind": "control",
+      "point_id": "uniform_control",
+      "shots": 4096
+    },
+    {
+      "beta": "2.476505299986026",
+      "block": 3,
+      "execution": 46,
+      "gamma": "3.3177975191929154",
+      "kind": "centre",
+      "point_id": "g4_b4",
+      "shots": 4096
+    },
+    {
+      "beta": "2.5765052999860262",
+      "block": 3,
+      "execution": 47,
+      "gamma": "2.9177975191929155",
+      "kind": "landscape",
+      "point_id": "g2_b5",
+      "shots": 4096
+    },
+    {
+      "beta": "2.476505299986026",
+      "block": 3,
+      "execution": 48,
+      "gamma": "3.7177975191929153",
+      "kind": "landscape",
+      "point_id": "g6_b4",
+      "shots": 4096
+    },
+    {
+      "beta": "2.17650529998602615",
+      "block": 3,
+      "execution": 49,
+      "gamma": "3.91779751919291565",
+      "kind": "landscape",
+      "point_id": "g7_b1",
+      "shots": 4096
+    },
+    {
+      "beta": "2.276505299986026",
+      "block": 3,
+      "execution": 50,
+      "gamma": "4.117797519192916",
+      "kind": "landscape",
+      "point_id": "g8_b2",
+      "shots": 4096
+    },
+    {
+      "beta": "2.5765052999860262",
+      "block": 3,
+      "execution": 51,
+      "gamma": "2.71779751919291525",
+      "kind": "landscape",
+      "point_id": "g1_b5",
+      "shots": 4096
+    },
+    {
+      "beta": "2.276505299986026",
+      "block": 3,
+      "execution": 52,
+      "gamma": "3.3177975191929154",
+      "kind": "landscape",
+      "point_id": "g4_b2",
+      "shots": 4096
+    },
+    {
+      "beta": "2.476505299986026",
+      "block": 3,
+      "execution": 53,
+      "gamma": "3.11779751919291545",
+      "kind": "landscape",
+      "point_id": "g3_b4",
+      "shots": 4096
+    },
+    {
+      "beta": "2.276505299986026",
+      "block": 3,
+      "execution": 54,
+      "gamma": "3.51779751919291535",
+      "kind": "landscape",
+      "point_id": "g5_b2",
+      "shots": 4096
+    },
+    {
+      "beta": "2.0765052999860263",
+      "block": 3,
+      "execution": 55,
+      "gamma": "3.11779751919291545",
+      "kind": "landscape",
+      "point_id": "g3_b0",
+      "shots": 4096
+    },
+    {
+      "beta": "2.7765052999860262",
+      "block": 3,
+      "execution": 56,
+      "gamma": "2.517797519192915",
+      "kind": "landscape",
+      "point_id": "g0_b7",
+      "shots": 4096
+    },
+    {
+      "beta": "2.6765052999860264",
+      "block": 3,
+      "execution": 57,
+      "gamma": "3.11779751919291545",
+      "kind": "landscape",
+      "point_id": "g3_b6",
+      "shots": 4096
+    },
+    {
+      "beta": "2.6765052999860264",
+      "block": 3,
+      "execution": 58,
+      "gamma": "3.3177975191929154",
+      "kind": "landscape",
+      "point_id": "g4_b6",
+      "shots": 4096
+    },
+    {
+      "beta": "2.376505299986026",
+      "block": 3,
+      "execution": 59,
+      "gamma": "2.517797519192915",
+      "kind": "landscape",
+      "point_id": "g0_b3",
+      "shots": 4096
+    },
+    {
+      "beta": "2.17650529998602615",
+      "block": 3,
+      "execution": 60,
+      "gamma": "2.517797519192915",
+      "kind": "landscape",
+      "point_id": "g0_b1",
+      "shots": 4096
+    },
+    {
+      "beta": "2.476505299986026",
+      "block": 3,
+      "execution": 61,
+      "gamma": "3.51779751919291535",
+      "kind": "landscape",
+      "point_id": "g5_b4",
+      "shots": 4096
+    },
+    {
+      "beta": "2.476505299986026",
+      "block": 3,
+      "execution": 62,
+      "gamma": "2.9177975191929155",
+      "kind": "landscape",
+      "point_id": "g2_b4",
+      "shots": 4096
+    },
+    {
+      "beta": "2.6765052999860264",
+      "block": 3,
+      "execution": 63,
+      "gamma": "2.9177975191929155",
+      "kind": "landscape",
+      "point_id": "g2_b6",
+      "shots": 4096
+    },
+    {
+      "beta": "2.0765052999860263",
+      "block": 3,
+      "execution": 64,
+      "gamma": "3.7177975191929153",
+      "kind": "landscape",
+      "point_id": "g6_b0",
+      "shots": 4096
+    },
+    {
+      "beta": "2.876505299986026",
+      "block": 3,
+      "execution": 65,
+      "gamma": "2.71779751919291525",
+      "kind": "landscape",
+      "point_id": "g1_b8",
+      "shots": 4096
+    },
+    {
+      "beta": "2.876505299986026",
+      "block": 3,
+      "execution": 66,
+      "gamma": "2.517797519192915",
+      "kind": "landscape",
+      "point_id": "g0_b8",
+      "shots": 4096
+    },
+    {
+      "beta": "2.476505299986026",
+      "block": 4,
+      "execution": 67,
+      "gamma": "3.3177975191929154",
+      "kind": "centre",
+      "point_id": "g4_b4",
+      "shots": 4096
+    },
+    {
+      "beta": "0",
+      "block": 4,
+      "execution": 68,
+      "gamma": "0",
+      "kind": "control",
+      "point_id": "uniform_control",
+      "shots": 4096
+    },
+    {
+      "beta": "2.7765052999860262",
+      "block": 4,
+      "execution": 69,
+      "gamma": "2.71779751919291525",
+      "kind": "landscape",
+      "point_id": "g1_b7",
+      "shots": 4096
+    },
+    {
+      "beta": "2.876505299986026",
+      "block": 4,
+      "execution": 70,
+      "gamma": "3.11779751919291545",
+      "kind": "landscape",
+      "point_id": "g3_b8",
+      "shots": 4096
+    },
+    {
+      "beta": "2.476505299986026",
+      "block": 4,
+      "execution": 71,
+      "gamma": "3.91779751919291565",
+      "kind": "landscape",
+      "point_id": "g7_b4",
+      "shots": 4096
+    },
+    {
+      "beta": "2.376505299986026",
+      "block": 4,
+      "execution": 72,
+      "gamma": "3.51779751919291535",
+      "kind": "landscape",
+      "point_id": "g5_b3",
+      "shots": 4096
+    },
+    {
+      "beta": "2.0765052999860263",
+      "block": 4,
+      "execution": 73,
+      "gamma": "2.517797519192915",
+      "kind": "landscape",
+      "point_id": "g0_b0",
+      "shots": 4096
+    },
+    {
+      "beta": "2.476505299986026",
+      "block": 4,
+      "execution": 74,
+      "gamma": "4.117797519192916",
+      "kind": "landscape",
+      "point_id": "g8_b4",
+      "shots": 4096
+    },
+    {
+      "beta": "2.7765052999860262",
+      "block": 4,
+      "execution": 75,
+      "gamma": "3.3177975191929154",
+      "kind": "landscape",
+      "point_id": "g4_b7",
+      "shots": 4096
+    },
+    {
+      "beta": "2.0765052999860263",
+      "block": 4,
+      "execution": 76,
+      "gamma": "2.71779751919291525",
+      "kind": "landscape",
+      "point_id": "g1_b0",
+      "shots": 4096
+    },
+    {
+      "beta": "2.17650529998602615",
+      "block": 4,
+      "execution": 77,
+      "gamma": "2.9177975191929155",
+      "kind": "landscape",
+      "point_id": "g2_b1",
+      "shots": 4096
+    },
+    {
+      "beta": "2.376505299986026",
+      "block": 4,
+      "execution": 78,
+      "gamma": "2.71779751919291525",
+      "kind": "landscape",
+      "point_id": "g1_b3",
+      "shots": 4096
+    },
+    {
+      "beta": "2.876505299986026",
+      "block": 4,
+      "execution": 79,
+      "gamma": "2.9177975191929155",
+      "kind": "landscape",
+      "point_id": "g2_b8",
+      "shots": 4096
+    },
+    {
+      "beta": "2.7765052999860262",
+      "block": 4,
+      "execution": 80,
+      "gamma": "3.7177975191929153",
+      "kind": "landscape",
+      "point_id": "g6_b7",
+      "shots": 4096
+    },
+    {
+      "beta": "2.17650529998602615",
+      "block": 4,
+      "execution": 81,
+      "gamma": "2.71779751919291525",
+      "kind": "landscape",
+      "point_id": "g1_b1",
+      "shots": 4096
+    },
+    {
+      "beta": "2.5765052999860262",
+      "block": 4,
+      "execution": 82,
+      "gamma": "3.3177975191929154",
+      "kind": "landscape",
+      "point_id": "g4_b5",
+      "shots": 4096
+    },
+    {
+      "beta": "2.6765052999860264",
+      "block": 4,
+      "execution": 83,
+      "gamma": "3.51779751919291535",
+      "kind": "landscape",
+      "point_id": "g5_b6",
+      "shots": 4096
+    },
+    {
+      "beta": "2.17650529998602615",
+      "block": 4,
+      "execution": 84,
+      "gamma": "3.3177975191929154",
+      "kind": "landscape",
+      "point_id": "g4_b1",
+      "shots": 4096
+    },
+    {
+      "beta": "2.376505299986026",
+      "block": 4,
+      "execution": 85,
+      "gamma": "3.3177975191929154",
+      "kind": "landscape",
+      "point_id": "g4_b3",
+      "shots": 4096
+    },
+    {
+      "beta": "2.0765052999860263",
+      "block": 4,
+      "execution": 86,
+      "gamma": "3.51779751919291535",
+      "kind": "landscape",
+      "point_id": "g5_b0",
+      "shots": 4096
+    },
+    {
+      "beta": "2.17650529998602615",
+      "block": 4,
+      "execution": 87,
+      "gamma": "3.51779751919291535",
+      "kind": "landscape",
+      "point_id": "g5_b1",
+      "shots": 4096
+    },
+    {
+      "beta": "2.0765052999860263",
+      "block": 4,
+      "execution": 88,
+      "gamma": "2.9177975191929155",
+      "kind": "landscape",
+      "point_id": "g2_b0",
+      "shots": 4096
+    }
+  ],
+  "total_executions": 88
+}
