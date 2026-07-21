@@ -2,6 +2,8 @@
 
 from __future__ import annotations
 
+from textwrap import dedent
+
 import streamlit as st
 from services.build_week_service import (
     VARIANT_DISPLAY_NAMES,
@@ -425,11 +427,52 @@ def _render_evidence_hierarchy() -> None:
         "Explains a validated packet; does not calculate or change the result.",
     )
     st.markdown(
-        "**Exact enumeration**  \n"
-        "↓ governs  \n"
-        "**Qiskit heuristic comparison**  \n"
-        "↓ interpreted through  \n"
-        "**Validated GPT-5.6 explanation**"
+        dedent(
+            """
+        <div role="img"
+             aria-label="Exact enumeration sets the scientific authority; the Qiskit result is
+             judged against it; GPT-5.6 may explain only the validated evidence."
+             style="display:flex;flex-wrap:wrap;gap:.75rem;margin:.35rem 0 1rem">
+          <div style="flex:1 1 13rem;padding:.85rem;border:1px solid rgba(128,128,128,.45);
+                      border-radius:.65rem;background:rgba(128,128,128,.08)">
+            <div style="font-size:.78rem;font-weight:700;letter-spacing:.04em;opacity:.75">
+              1 · SCIENTIFIC AUTHORITY
+            </div>
+            <div style="font-size:1.05rem;font-weight:700;margin:.3rem 0">
+              Exact enumeration
+            </div>
+            <div style="font-size:.9rem;opacity:.82">
+              Checks every possible grouping and fixes the answer.
+            </div>
+          </div>
+          <div style="flex:1 1 13rem;padding:.85rem;border:1px solid rgba(128,128,128,.45);
+                      border-radius:.65rem;background:rgba(128,128,128,.08)">
+            <div style="font-size:.78rem;font-weight:700;letter-spacing:.04em;opacity:.75">
+              2 · GOVERNED COMPARISON
+            </div>
+            <div style="font-size:1.05rem;font-weight:700;margin:.3rem 0">
+              Qiskit heuristic
+            </div>
+            <div style="font-size:.9rem;opacity:.82">
+              Its measured distribution is judged against the exact answer.
+            </div>
+          </div>
+          <div style="flex:1 1 13rem;padding:.85rem;border:1px solid rgba(128,128,128,.45);
+                      border-radius:.65rem;background:rgba(128,128,128,.08)">
+            <div style="font-size:.78rem;font-weight:700;letter-spacing:.04em;opacity:.75">
+              3 · VALIDATED EXPLANATION
+            </div>
+            <div style="font-size:1.05rem;font-weight:700;margin:.3rem 0">
+              GPT-5.6
+            </div>
+            <div style="font-size:.9rem;opacity:.82">
+              Explains checked evidence; it cannot calculate or change the result.
+            </div>
+          </div>
+        </div>
+        """,
+        ),
+        unsafe_allow_html=True,
     )
     st.info("GPT-5.6 may explain the validated result. It may not change the evidence.")
     st.caption("The AI can explain the experiment. It cannot rewrite the evidence.")
