@@ -25,6 +25,7 @@ def test_quick_adapter_uses_bounded_configuration() -> None:
                     "optimal_complement_class_probability": 0.5,
                     "balanced_sample_probability": 0.75,
                 },
+                "measurement_counts": {"00001111": 128, "11110000": 128},
                 "circuit_metrics": {
                     "total_qiskit_circuit_width": 16,
                     "transpiled_depth": 20,
@@ -47,3 +48,4 @@ def test_quick_adapter_uses_bounded_configuration() -> None:
     assert captured["optimiser_max_iterations"] == QUICK_QAOA_MAX_ITERATIONS == 8
     assert captured["initial_points"] == ((0.0, 0.0),)
     assert result["execution_classification"] == "current-local-qiskit-quick-run"
+    assert result["measurement_counts"] == {"00001111": 128, "11110000": 128}

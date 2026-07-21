@@ -133,9 +133,9 @@ def render_lesson(lesson: LessonDocument, registry: LessonRegistry) -> None:
         elif isinstance(block, InteractionDirective):
             render_interaction(block.interaction_id, block.params)
         elif isinstance(block, DisclosureDirective):
-            # Disclosure directives currently carry metadata but no associated body.
-            # Rendering nothing is safer than presenting an empty interactive control.
-            pass
+            if block.body:
+                with st.expander(block.label):
+                    st.markdown(block.body)
         elif isinstance(block, GlossaryDirective):
             st.info("Open the Glossary tab for portable definitions.")
 

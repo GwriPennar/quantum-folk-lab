@@ -63,6 +63,36 @@ def test_registered_top_measurements_are_stable_and_non_mutating() -> None:
     assert counts == original
 
 
+def test_prediction_and_local_summary_are_complement_aware() -> None:
+    path = Path("apps/learning_console/services/build_week_service.py")
+    spec = importlib.util.spec_from_file_location("journey_service_test", path)
+    assert spec and spec.loader
+    module = importlib.util.module_from_spec(spec)
+    sys.modules[spec.name] = module
+    spec.loader.exec_module(module)
+
+    first = module.partition_from_indices((0, 1, 2, 3))
+    complement = module.partition_from_indices((4, 5, 6, 7))
+    assert first.bitstring == "11110000"
+    assert complement.bitstring == "00001111"
+    assert module.partitions_are_equivalent(first.bitstring, complement.bitstring)
+    with pytest.raises(ValueError, match="exactly four"):
+        module.partition_from_indices((0, 1, 2))
+
+    summary = module.summarise_quick_qiskit(
+        {
+            "shots": 100,
+            "measurement_counts": {"00001111": 35, "11110000": 25, "01010101": 40},
+        }
+    )
+    assert summary.shots == 100
+    assert summary.distinct_states == 3
+    assert summary.most_frequent_state == "01010101"
+    assert not summary.most_frequent_is_optimum
+    assert summary.optimum_count == 60
+    assert summary.optimum_probability == 0.6
+
+
 def test_guided_experiment_256_reveal_journey_requires_no_openai_key(
     monkeypatch: pytest.MonkeyPatch,
 ) -> None:
@@ -84,6 +114,9 @@ def test_guided_experiment_256_reveal_journey_requires_no_openai_key(
     assert app.tabs[1].label.startswith("Start here")
     assert any(
         element.value == "The answer stays hidden until you reveal it." for element in app.caption
+    )
+    assert any(
+        widget.label == "Choose exactly four variants for one family" for widget in app.multiselect
     )
     assert not any(
         element.value == "What did every possible grouping score?" for element in app.subheader
@@ -141,6 +174,9 @@ def test_guided_experiment_256_reveal_journey_requires_no_openai_key(
         "distribution of answers",
         "registered ideal simulation",
         "not IBM hardware",
+        "Exact split in named variants",
+        "Check what you now understand",
+        "Quantum computers are a different way to process a scored problem",
     ):
         assert expected in rendered
     assert len(app.dataframe) >= 1
@@ -186,13 +222,41 @@ def test_foundation_tabs_follow_registry_and_render_without_execution() -> None:
         "Why correlation is not communication",
         "Why exact-first matters",
     }
-    assert not disclosure_labels.intersection(expander.label for expander in app.expander)
+    assert disclosure_labels.issubset(expander.label for expander in app.expander)
     assert not any(
         caption.value == "Optional detail — keep plain language first." for caption in app.caption
     )
     assert any(expander.label == "View diagram source" for expander in app.expander)
     source = Path("apps/learning_console/renderers/lesson_renderer.py").read_text(encoding="utf-8")
     assert 'aria-label="Concept flow diagram"' in source
+    directives = Path("apps/learning_console/renderers/directives.py").read_text(encoding="utf-8")
+    for visual in (
+        "foundations-qubit-probability",
+        "foundations-shot-count",
+        "foundations-noise-level",
+    ):
+        assert visual in directives
+
+
+def test_prediction_persists_and_compares_only_after_reveal() -> None:
+    app = AppTest.from_file("apps/learning_console/app.py")
+    app.run(timeout=30)
+    chooser = next(
+        widget
+        for widget in app.multiselect
+        if widget.label == "Choose exactly four variants for one family"
+    )
+    names = list(chooser.options)
+    chooser.set_value(names[:4]).run(timeout=30)
+    assert tuple(app.session_state["build_week_prediction_indices"]) == (0, 1, 2, 3)
+    rendered_before = "\n".join(
+        str(item.value) for item in (*app.markdown, *app.success, *app.info)
+    )
+    assert "Your prediction found the exact split" not in rendered_before
+    reveal = next(button for button in app.button if button.label == "Reveal all 256 answers")
+    reveal.click().run(timeout=30)
+    rendered_after = "\n".join(str(item.value) for item in (*app.markdown, *app.success, *app.info))
+    assert "Your prediction found the exact split" in rendered_after
 
 
 def test_bits_and_qubits_uses_learner_facing_superposition_language() -> None:

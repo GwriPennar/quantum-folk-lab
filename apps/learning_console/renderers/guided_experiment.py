@@ -3,7 +3,15 @@
 from __future__ import annotations
 
 import streamlit as st
-from services.build_week_service import GuidedExperimentView, execute_quick_qiskit
+from services.build_week_service import (
+    VARIANT_DISPLAY_NAMES,
+    GuidedExperimentView,
+    PartitionView,
+    execute_quick_qiskit,
+    partition_from_indices,
+    partitions_are_equivalent,
+    summarise_quick_qiskit,
+)
 
 from quantum_folk_lab.build_week import LearnerLevel, explain_result
 
@@ -12,6 +20,123 @@ LEVEL_LABELS = {
     "Technical learner": LearnerLevel.TECHNICAL_LEARNER,
     "Research detail": LearnerLevel.RESEARCH_DETAIL,
 }
+
+
+def _evidence_identity(label: str, icon: str, authority: str) -> None:
+    with st.container(border=True):
+        st.markdown(f"### {icon} {label}")
+        st.caption(authority)
+
+
+def _display_evidence_pairs(view: GuidedExperimentView) -> list[dict[str, object]]:
+    display_by_id = dict(zip(view.result.tune_ordering, VARIANT_DISPLAY_NAMES, strict=True))
+    return [
+        {
+            "left variant": display_by_id[str(pair["left_tune"])],
+            "right variant": display_by_id[str(pair["right_tune"])],
+            "interval similarity": pair["interval_similarity"],
+            "contour similarity": pair["contour_similarity"],
+            "rhythm similarity": pair["rhythm_similarity"],
+            "combined similarity": pair["combined_similarity"],
+        }
+        for pair in view.result.evidence_summary["pairs"]
+    ]
+
+
+def _render_partition(title: str, partition: PartitionView) -> None:
+    st.markdown(f"**{title}**")
+    left, right = st.columns(2)
+    left.markdown("**One family**")
+    left.write("\n".join(f"- {name}" for name in partition.first_group))
+    right.markdown("**The complementary family**")
+    right.write("\n".join(f"- {name}" for name in partition.second_group))
+
+
+def _render_exit_check() -> None:
+    st.subheader("Check what you now understand")
+    st.write("Five short questions connect the exact answer, quantum evidence and AI boundary.")
+    questions = (
+        (
+            "Why are there 256 possible groupings?",
+            (
+                "Eight independent binary choices give 2⁸ possibilities.",
+                "The circuit uses 256 qubits.",
+                "There are 256 tune recordings.",
+            ),
+            0,
+            "Eight yes-or-no assignments create 2 × 2 × 2 × 2 × 2 × 2 × 2 × 2 = 256 states.",
+        ),
+        (
+            "Why is exact classical calculation still the reference?",
+            (
+                "It evaluates every possible answer for this small problem.",
+                "Classical computers are always faster.",
+                "It removes all modelling choices.",
+            ),
+            0,
+            "Complete enumeration checks the full finite answer space, so sampled methods can "
+            "be judged against it.",
+        ),
+        (
+            "Why does a quantum method return a distribution?",
+            (
+                "Each shot measures one outcome, so repeated shots accumulate counts.",
+                "The answer changes culturally.",
+                "The exact result is unknown.",
+            ),
+            0,
+            "A circuit measurement yields one bitstring per shot; many shots estimate its "
+            "outcome probabilities.",
+        ),
+        (
+            "What is hardware noise?",
+            (
+                "Errors and disturbances in physical qubits, gates and measurements.",
+                "Background music in the laboratory.",
+                "A deliberate change to the exact score.",
+            ),
+            0,
+            "Noise is the collective effect of physical imperfections; one disagreement does "
+            "not identify a single cause.",
+        ),
+        (
+            "What may GPT‑5.6 do here?",
+            (
+                "Explain a validated evidence packet without changing it.",
+                "Calculate the exact optimum.",
+                "Authorise new hardware jobs.",
+            ),
+            0,
+            "GPT‑5.6 is an optional explanation layer; validation fails closed to "
+            "deterministic text.",
+        ),
+    )
+    with st.form("guided-exit-check"):
+        answers = [
+            st.radio(prompt, options, index=None, key=f"guided-exit-{index}")
+            for index, (prompt, options, _, _) in enumerate(questions)
+        ]
+        submitted = st.form_submit_button("Check my answers")
+    if submitted:
+        st.session_state["guided_exit_submitted"] = True
+    if st.session_state.get("guided_exit_submitted"):
+        score = sum(
+            answer == options[correct]
+            for answer, (_, options, correct, _) in zip(answers, questions, strict=True)
+        )
+        st.success(f"You answered {score} of 5 correctly.")
+        for answer, (prompt, options, correct, explanation) in zip(answers, questions, strict=True):
+            status = "Correct" if answer == options[correct] else "Review"
+            st.markdown(f"**{status} — {prompt}**  \n{explanation}")
+        if st.button("Try the exit check again"):
+            st.session_state["guided_exit_submitted"] = False
+            st.rerun()
+    st.info(
+        "Quantum computers are a different way to process a scored problem, not magic. For this "
+        "small experiment, exact classical calculation supplies the truth. Simulation and hardware "
+        "can then be compared with it. The evidence is educational—not a claim of quantum "
+        "advantage."
+    )
 
 
 def _render_landscape(view: GuidedExperimentView) -> None:
@@ -103,6 +228,11 @@ def _render_landscape(view: GuidedExperimentView) -> None:
 
 def _render_registered_comparison(view: GuidedExperimentView) -> None:
     evidence = view.registered_qaoa
+    _evidence_identity(
+        "IDEAL OR REGISTERED SIMULATION",
+        "◫",
+        "Committed simulated measurement evidence; not physical hardware.",
+    )
     st.subheader("What does the quantum method actually do?")
     st.write(
         "A quantum computer does not print one authoritative answer. The circuit is prepared "
@@ -289,6 +419,11 @@ def _render_registered_comparison(view: GuidedExperimentView) -> None:
 
 
 def _render_evidence_hierarchy() -> None:
+    _evidence_identity(
+        "GPT‑5.6 EXPLANATION",
+        "◇",
+        "Explains a validated packet; does not calculate or change the result.",
+    )
     st.markdown(
         "**Exact enumeration**  \n"
         "↓ governs  \n"
@@ -315,9 +450,8 @@ def render_guided_experiment(view: GuidedExperimentView) -> None:
     st.header("Can you spot the hidden split?")
     st.markdown(
         "**Eight tune variants. Two hidden families. 256 possible groupings.**\n\n"
-        "Before revealing the answer, inspect the musical evidence and decide which variants "
-        "you think belong together. You do not need to enter a formal answer — make a mental "
-        "prediction, then test it."
+        "Before revealing the answer, inspect the musical evidence and record which four variants "
+        "you think belong together. Choosing one family automatically defines the other."
     )
 
     with st.expander("Look at the musical evidence"):
@@ -326,12 +460,37 @@ def render_guided_experiment(view: GuidedExperimentView) -> None:
             "variants may belong to the same hidden family. This is synthetic teaching material, "
             "not authentic cultural material."
         )
-        pairs = result.evidence_summary["pairs"]
+        pairs = _display_evidence_pairs(view)
         st.dataframe(pairs, width="stretch", hide_index=True)
         st.caption(
             "An edge joins a pair when its combined synthetic similarity passes the fixed graph "
             "threshold. This is not authentic cultural data."
         )
+
+    st.markdown("### Make and record your prediction")
+    selected_names = st.multiselect(
+        "Choose exactly four variants for one family",
+        VARIANT_DISPLAY_NAMES,
+        default=[
+            VARIANT_DISPLAY_NAMES[index]
+            for index in st.session_state.get("build_week_prediction_indices", ())
+        ],
+        help="The other four variants automatically form the complementary family.",
+    )
+    selected_indices = tuple(
+        index for index, name in enumerate(VARIANT_DISPLAY_NAMES) if name in selected_names
+    )
+    if len(selected_indices) == 4:
+        prediction = partition_from_indices(selected_indices)
+        st.session_state["build_week_prediction_indices"] = selected_indices
+        _render_partition("Your recorded prediction", prediction)
+        st.caption("You can revise this split until Reveal. No score or answer is shown yet.")
+    elif selected_names:
+        st.session_state.pop("build_week_prediction_indices", None)
+        st.warning(f"Choose exactly four variants. You currently selected {len(selected_names)}.")
+    else:
+        st.session_state.pop("build_week_prediction_indices", None)
+        st.caption("You may skip the prediction and still reveal the governed evidence.")
 
     if st.button("Reveal all 256 answers", type="primary"):
         st.session_state["build_week_256_revealed"] = True
@@ -351,6 +510,11 @@ def render_guided_experiment(view: GuidedExperimentView) -> None:
     _render_landscape(view)
 
     st.subheader("What is the exact answer?")
+    _evidence_identity(
+        "EXACT CLASSICAL REFERENCE",
+        "✓",
+        "Complete enumeration supplies the answer used to judge every quantum result.",
+    )
     st.write("This answer is not a prediction — the computer tried every possibility.")
     exact = result.exact_result
     left, middle, right = st.columns(3)
@@ -366,6 +530,45 @@ def render_guided_experiment(view: GuidedExperimentView) -> None:
         "Exhaustive enumeration is authoritative for this eight-variable fixture. The global "
         "bitwise complement denotes the same unlabeled partition."
     )
+    exact_partition = partition_from_indices(
+        tuple(
+            index
+            for index, bit in enumerate(str(exact["canonical_complement_class"]))
+            if bit == "1"
+        )
+    )
+    _render_partition("Exact split in named variants", exact_partition)
+    st.caption(
+        "The displayed names follow bit positions from left to right. Family labels are "
+        "exchangeable and carry no inherent musical or cultural meaning."
+    )
+    recorded_indices = st.session_state.get("build_week_prediction_indices")
+    if recorded_indices is None:
+        st.info("You skipped the prediction step. The exact journey remains complete.")
+    else:
+        learner_partition = partition_from_indices(tuple(recorded_indices))
+        _render_partition("Your prediction", learner_partition)
+        if partitions_are_equivalent(
+            learner_partition.bitstring, str(exact["canonical_complement_class"])
+        ):
+            st.success(
+                "Your prediction found the exact split—even if its family labels are swapped."
+            )
+        else:
+            entry = next(
+                item
+                for item in view.landscape.entries
+                if item.assignment == learner_partition.bitstring
+            )
+            st.info(
+                "Your split was a valid candidate rather than the exact minimum. Its governed "
+                f"energy was {entry.display_energy:.6f}. Comparing predictions is part of the "
+                "lesson."
+            )
+        st.caption(
+            "Your family labels can be swapped, so we compare the split itself—not whether you "
+            "called a group A or B."
+        )
 
     st.subheader("How was the question turned into a model?")
     st.write(
@@ -404,14 +607,40 @@ def render_guided_experiment(view: GuidedExperimentView) -> None:
                     st.warning(f"The quick run is unavailable: {exc}")
         quantum = st.session_state.get("build_week_quantum")
         if quantum:
-            st.markdown("**Quick local-Qiskit result computed now**")
-            st.json(quantum)
-            st.warning(
-                "A best sampled optimum does not prove an optimal expectation, speedup, or "
-                "quantum advantage."
-            )
+            st.markdown("**OPTIONAL LOCAL SIMULATION · computed on this machine**")
+            try:
+                summary = summarise_quick_qiskit(quantum)
+            except (TypeError, ValueError) as exc:
+                st.warning(f"The local run completed but its display summary was invalid: {exc}")
+            else:
+                first, second, third = st.columns(3)
+                first.metric("Total shots", f"{summary.shots:,}")
+                second.metric("Distinct states", str(summary.distinct_states))
+                third.metric("Most frequent state", summary.most_frequent_state)
+                st.write(
+                    "The most frequent state was "
+                    f"{'an' if summary.most_frequent_is_optimum else 'not an'} "
+                    "exact optimum. Across both exact optima, "
+                    f"{summary.optimum_count:,} measurements "
+                    f"({summary.optimum_probability:.2%}) landed "
+                    "on the known answer class."
+                )
+                rows = [item.chart_row() for item in summary.top_states]
+                st.bar_chart(rows, x="bitstring", y="count")
+                st.caption("This optional local ideal simulation is not registered IBM hardware.")
+                st.warning(
+                    "A best sampled optimum does not prove an optimal expectation, speedup, or "
+                    "quantum advantage."
+                )
+            with st.expander("View technical run data"):
+                st.json(quantum)
     else:
-        st.code(view.quantum.install_command)
+        st.info(
+            "Qiskit is optional. The registered exact, simulated and recorded-hardware journey "
+            "above remains complete without it."
+        )
+        with st.expander("Optional installation command"):
+            st.code(view.quantum.install_command)
     st.subheader("Can AI explain the result safely?")
     _render_evidence_hierarchy()
     label = st.selectbox("Explanation level", list(LEVEL_LABELS))
@@ -428,6 +657,8 @@ def render_guided_experiment(view: GuidedExperimentView) -> None:
         else:
             st.caption(f"Validated grounded explanation from {generated.model}.")
     st.write(explanation)
+
+    _render_exit_check()
 
     st.subheader("Want to inspect or share the reproducibility record?")
     first, second = st.columns(2)

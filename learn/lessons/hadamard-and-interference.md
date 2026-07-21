@@ -87,8 +87,9 @@ id: double-h-interference
 
 :::disclosure
 id: optional-maths
-label: Show the maths
+label: Why phase matters
 level: intermediate
+body: Probabilities use squared amplitude magnitudes, so two states can look identical when measured immediately yet interfere differently after another gate. Relative phase controls whether amplitudes reinforce or cancel.
 :::
 
 Static export note: the prediction interaction is available in the public Learning Console app; exported HTML explains the activity without claiming live widgets.

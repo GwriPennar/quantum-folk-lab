@@ -65,4 +65,5 @@ When you measure, you always get a classical 0 or 1. The probabilities are given
 id: optional-notation
 label: Show the notation
 level: intermediate
+body: A qubit state can be written as `α|0⟩ + β|1⟩`, where `|α|² + |β|² = 1`. The squared magnitudes give measurement probabilities; relative phase affects later interference.
 :::

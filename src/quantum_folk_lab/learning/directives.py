@@ -27,6 +27,7 @@ REGISTERED_VISUALS = frozenset(
         "bell-correlation",
         "circuit-thumbnail",
         "x-gate-visual",
+        "ideal-vs-noisy",
     }
 )
 
@@ -89,6 +90,7 @@ def parse_directive_block(kind: str, body: str, line: int) -> Any:
             disclosure_id=disclosure_id,
             label=kv.get("label", "Show more"),
             level=kv.get("level", "intermediate"),
+            body=kv.get("body", "").replace("\\n", "\n").strip(),
             line=line,
         )
     if kind == "glossary":

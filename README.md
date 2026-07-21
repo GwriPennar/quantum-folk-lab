@@ -51,7 +51,7 @@ Quantum Folk Lab is intended for:
 ## The learning journey
 
 1. **Make a prediction.** Look at eight small, invented tune variants and predict how they belong
-   together.
+   together. The console records the split without revealing whether it is right.
 2. **Reveal every answer.** The app checks all 256 possible groupings and shows the best answers.
 3. **Compare a quantum simulation.** See how a bounded quantum method behaves when the exact result
    is already known.
@@ -61,7 +61,9 @@ Quantum Folk Lab is intended for:
    from IBM quantum hardware.
 6. **Ask for an explanation.** Choose a learner level and optionally ask GPT-5.6 to explain the
    validated evidence.
-7. **Keep the record.** Download the governed result for inspection or further discussion in
+7. **Check your understanding.** Answer five short questions about exact truth, measurement,
+   hardware noise and the role of GPT-5.6.
+8. **Keep the record.** Download the governed result for inspection or further discussion in
    ChatGPT or Codex.
 
 The synthetic teaching example is deliberately small. Checking all 256 answers is simpler and
@@ -123,8 +125,10 @@ python -m streamlit run apps/learning_console/app.py
 
 ### What success looks like
 
-Your browser should open the Quantum Folk Lab Learning Console. Select **Experiments**, begin with
-**Start here · Guided experiment**, make a prediction, and press **Reveal all 256 answers**.
+Your browser should open the Quantum Folk Lab Learning Console. Judges and first-time learners
+should select **Experiments**, begin with **Start here · Guided experiment**, make a prediction,
+press **Reveal all 256 answers**, and follow exact truth → simulation → hardware → explanation →
+exit check.
 
 Then visit **Real folk data & IBM results** to follow the same exact-first method using committed
 real-data and hardware evidence. Use **Foundations** when you want the concepts explained from the

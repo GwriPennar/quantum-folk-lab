@@ -32,7 +32,9 @@ def _render_block_markdown(block: LessonBlock) -> str:
     if isinstance(block, RegisteredDataDirective):
         return f"*[Registered data: {block.data_id}]*"
     if isinstance(block, DisclosureDirective):
-        return f"*[Optional disclosure ({block.level}): {block.label}]*"
+        if not block.body:
+            return ""
+        return f"<details><summary>{block.label}</summary>\n\n{block.body}\n\n</details>"
     if isinstance(block, GlossaryDirective):
         return "*[Glossary terms — see learn/glossary.yaml]*"
     return ""
@@ -69,6 +71,11 @@ def export_lesson_html(doc: LessonDocument) -> str:
             body_parts.append(
                 "<p><em>Interactive in Learning Console: "
                 f"{html.escape(block.interaction_id)}</em></p>"
+            )
+        elif isinstance(block, DisclosureDirective) and block.body:
+            body_parts.append(
+                f"<details><summary>{html.escape(block.label)}</summary>"
+                f"<p>{html.escape(block.body)}</p></details>"
             )
     return (
         "<!DOCTYPE html><html lang='en'><head><meta charset='utf-8'/>"
