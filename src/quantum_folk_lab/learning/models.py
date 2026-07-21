@@ -112,6 +112,7 @@ class DisclosureDirective:
     disclosure_id: str
     label: str
     level: str
+    body: str = ""
     line: int = 0
     kind: BlockKind = BlockKind.DISCLOSURE
 

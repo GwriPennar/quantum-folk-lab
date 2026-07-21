@@ -76,3 +76,31 @@ terms:
     one_liner: Quantum Approximate Optimisation Algorithm — hybrid quantum/classical loop.
     deeper: Alternates cost and mixer layers; a classical optimiser picks angles.
     related_lessons: [guided.foundations.optimisation]
+  - term: energy
+    one_liner: The score this optimisation model assigns to one possible answer.
+    deeper: Lower energy is better in the Quantum Folk Lab experiments; exact search identifies the minimum.
+    related_lessons: [guided.foundations.optimisation]
+  - term: noise
+    one_liner: Small errors introduced by imperfect physical qubits, gates and measurements.
+    deeper: Noise can blur an ideal result, although sampling and other effects can also cause differences.
+    related_lessons: [guided.foundations.gates, guided.foundations.hadamard]
+  - term: superposition
+    one_liner: A quantum state described by weighted possibilities before measurement.
+    deeper: Unlike an ordinary bit that is already 0 or 1, a qubit in superposition has amplitudes that can interfere.
+    related_lessons: [guided.foundations.bits_qubits, guided.foundations.hadamard]
+  - term: Spearman rho
+    one_liner: A number measuring how similarly two sets of results are ranked.
+    deeper: Values closer to 1 mean stronger agreement in ordering; it does not by itself prove identical values or quantum advantage.
+    related_lessons: [guided.foundations.optimisation]
+  - term: PUB
+    one_liner: A packaged circuit-and-parameters workload supplied to a Qiskit Runtime primitive.
+    deeper: One Runtime job can contain multiple PUBs; each PUB remains a distinct execution unit in the recorded evidence.
+    related_lessons: [guided.foundations.gates]
+  - term: hardware backend
+    one_liner: The particular simulator or physical quantum device selected to execute a circuit.
+    deeper: Hardware backends have device-specific qubits, connections and error characteristics.
+    related_lessons: [guided.foundations.gates]
+  - term: Hadamard
+    one_liner: A common gate that ideally places a definite qubit into an even superposition.
+    deeper: Hadamard gates also help reveal phase through interference when quantum paths recombine.
+    related_lessons: [guided.foundations.hadamard]

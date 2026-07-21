@@ -72,6 +72,7 @@ When you are ready for hands-on practice, see the public EXP-001 quantum fundame
 
 :::disclosure
 id: optional-notation
-label: Show the notation
+label: Why correlation is not communication
 level: intermediate
+body: The Bell state is `( |00⟩ + |11⟩ ) / √2`. Its outcomes are correlated, but neither observer can choose whether 00 or 11 occurs, so the correlation cannot transmit a controllable faster-than-light message.
 :::

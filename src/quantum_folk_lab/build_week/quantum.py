@@ -75,6 +75,7 @@ def run_quick_qiskit(
         "expected_energy": payload["expected_energy"],
         "expected_objective_gap": payload["expected_objective_gap"],
         "best_sampled_assignment": sampled["best_sampled_human_bitstring"],
+        "measurement_counts": payload["measurement_counts"],
         "optimal_complement_class_probability": sampled["optimal_complement_class_probability"],
         "balanced_sample_probability": sampled["balanced_sample_probability"],
         "shots": config["shots"],

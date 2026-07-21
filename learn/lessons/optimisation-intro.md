@@ -78,6 +78,7 @@ No quantum hardware is needed to understand the setup at this stage.
 
 :::disclosure
 id: optional-maths
-label: Show a tiny score table
+label: Why exact-first matters
 level: intermediate
+body: For two binary choices, list `00`, `01`, `10` and `11`, score each, discard any invalid choices and select the best score. Complete enumeration is practical here and gives a reference for judging a heuristic.
 :::

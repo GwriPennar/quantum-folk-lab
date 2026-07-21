@@ -22,6 +22,7 @@ glossary_terms:
   - measurement
 visuals:
   - circuit-thumbnail
+  - ideal-vs-noisy
 interactions:
   - x-gate-input
 check_question: What does the X gate do to |0⟩?
@@ -77,6 +78,17 @@ Gates are reversible on amplitudes. **Measurement** is different — it produces
 
 :::disclosure
 id: optional-notation
-label: Show the notation
+label: Why measurement matters
 level: intermediate
+body: A gate changes amplitudes predictably, but measurement samples one classical outcome. Repeating the same preparation and measurement is how we estimate the underlying probabilities.
 :::
+
+## Ideal simulation and physical hardware
+
+An ideal simulator applies the circuit without device errors. Physical qubits, gates and measurements are imperfect; **noise** is the collective name for those errors and disturbances. Noise can blur or reorder a result, but disagreement alone does not identify one cause.
+
+:::visual
+id: ideal-vs-noisy
+:::
+
+**What this means:** Hardware evidence must be judged against exact truth. This is comparison evidence, not an advantage claim.

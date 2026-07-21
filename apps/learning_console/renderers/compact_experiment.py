@@ -42,6 +42,19 @@ def render_compact_experiment() -> None:
         "folk-tune families, check all sixteen combinations exactly, then compare simulation "
         "with governed IBM hardware evidence."
     )
+    st.info(
+        "You learned the method using a small invented eight-choice problem. This separate "
+        "registered experiment applies the same exact-first comparison method to a smaller "
+        "four-choice problem that was executed on IBM quantum hardware."
+    )
+    with st.expander("What stays the same—and what changes"):
+        st.markdown(
+            "**Stays the same:** define binary choices, calculate exact truth, inspect quantum "
+            "measurements, and compare their distribution with the reference.\n\n"
+            "**Changes:** the problem instance, number of variables, execution environment and "
+            "presence of physical hardware noise. These are not measurements from the synthetic "
+            "eight-choice circuit."
+        )
     st.caption(
         "EXP-010A · compact real-data formulation · four families · two choices each · "
         "sixteen valid combinations"
@@ -56,6 +69,9 @@ def render_compact_experiment() -> None:
 
     optimum = exact["optimum_bitstrings"][0]
     st.markdown("## First: what is the exact answer?")
+    with st.container(border=True):
+        st.markdown("### ✓ EXACT CLASSICAL REFERENCE")
+        st.caption("Complete enumeration supplies the answer used to judge every quantum result.")
     st.markdown("**Which combination is best when every possibility is checked?**")
     st.write(
         "Before looking at a simulator or quantum computer, the application checks all 16 "
@@ -64,13 +80,16 @@ def render_compact_experiment() -> None:
     )
     left, middle, right = st.columns(3)
     left.metric("Exact optimum", optimum)
-    middle.metric("Mapped R2 state", "01100110")
+    middle.metric("Equivalent earlier encoding", "01100110")
     right.metric("States checked", "16 / 16")
     st.success(
         f"Exact enumeration is authoritative. The minimum energy is {exact['minimum_energy']:.15f}."
     )
 
     st.markdown("## Ideal quantum simulation")
+    with st.container(border=True):
+        st.markdown("### ◫ IDEAL OR REGISTERED SIMULATION")
+        st.caption("Committed simulated measurement evidence; not physical hardware.")
     st.markdown("**Does the ideal quantum circuit concentrate on the better choices?**")
     st.write(
         "R measures improvement over uniform sampling: higher positive values mean the circuit "
@@ -90,6 +109,14 @@ def render_compact_experiment() -> None:
     )
 
     st.markdown("## First IBM hardware validation")
+    with st.container(border=True):
+        st.markdown("### ◉ RECORDED IBM HARDWARE")
+        st.caption("Recorded physical-device evidence, subject to hardware imperfections.")
+    st.caption(
+        "Real quantum hardware is physically imperfect: gates and measurements sometimes "
+        "introduce small errors. That blurring of the ideal result is called noise. Noise is "
+        "one reason hardware and ideal simulation can differ."
+    )
     st.markdown("**Did the correct answer remain visible on real hardware?**")
     st.write(
         "One IBM hardware run tested whether the compact real-data result remained visible under "
@@ -135,26 +162,26 @@ def render_compact_experiment() -> None:
             {
                 "bit": "y0",
                 "family": "Blackbird",
-                "0 maps to": "R2 pair 10",
-                "1 maps to": "R2 pair 01",
+                "0 maps to": "earlier pair 10",
+                "1 maps to": "earlier pair 01",
             },
             {
                 "bit": "y1",
                 "family": "Bold Deserter",
-                "0 maps to": "R2 pair 10",
-                "1 maps to": "R2 pair 01",
+                "0 maps to": "earlier pair 10",
+                "1 maps to": "earlier pair 01",
             },
             {
                 "bit": "y2",
                 "family": "Catherine Tyrrell",
-                "0 maps to": "R2 pair 10",
-                "1 maps to": "R2 pair 01",
+                "0 maps to": "earlier pair 10",
+                "1 maps to": "earlier pair 01",
             },
             {
                 "bit": "y3",
                 "family": "The Merry Old Woman",
-                "0 maps to": "R2 pair 10",
-                "1 maps to": "R2 pair 01",
+                "0 maps to": "earlier pair 10",
+                "1 maps to": "earlier pair 01",
             },
         ]
         st.dataframe(choices, width="stretch", hide_index=True)
@@ -176,7 +203,7 @@ def render_compact_experiment() -> None:
         )
 
     st.markdown("## Technical evidence")
-    with st.expander("Encoding equivalence and earlier R2 comparison"):
+    with st.expander("Encoding equivalence and earlier technical comparison"):
         st.markdown((EXPERIMENT_ROOT / "R2-COMPARISON.md").read_text(encoding="utf-8"))
     with st.expander("Frozen QAOA report"):
         st.markdown((EXPERIMENT_ROOT / "QAOA-REPORT.md").read_text(encoding="utf-8"))
