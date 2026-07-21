@@ -61,7 +61,21 @@ def test_no_private_or_path_leaks_in_lessons() -> None:
 
 def test_glossary_terms_present() -> None:
     terms = {t.term.lower() for t in load_glossary()}
-    for required in ("bit", "qubit", "measurement", "gate", "qaoa", "qubo"):
+    for required in (
+        "bit",
+        "qubit",
+        "measurement",
+        "gate",
+        "qaoa",
+        "qubo",
+        "energy",
+        "noise",
+        "superposition",
+        "spearman rho",
+        "pub",
+        "hardware backend",
+        "hadamard",
+    ):
         assert required in terms
 
 

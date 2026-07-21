@@ -59,7 +59,7 @@ def _render_landscape(view: GuidedExperimentView) -> None:
                     "field": "display_energy",
                     "type": "quantitative",
                     "scale": {"scheme": "viridis", "reverse": True},
-                    "legend": {"title": "Exact energy"},
+                    "legend": {"title": "Exact energy (lower = better)"},
                 },
                 "stroke": {
                     "condition": {"test": "datum.is_global_optimum", "value": "white"},
@@ -103,6 +103,96 @@ def _render_landscape(view: GuidedExperimentView) -> None:
 
 def _render_registered_comparison(view: GuidedExperimentView) -> None:
     evidence = view.registered_qaoa
+    st.subheader("What does the quantum method actually do?")
+    st.write(
+        "A quantum computer does not print one authoritative answer. The circuit is prepared "
+        "and measured once — one shot — and that measurement returns one candidate grouping. "
+        "Repeating this thousands of times creates a distribution of answers. A useful "
+        "optimisation method should place more measurement weight on better-scoring groupings. "
+        "The exact calculation above remains the authority used to judge it."
+    )
+    st.markdown("### What did 4,096 shots actually return?")
+    measurement_rows = [item.chart_row() for item in view.registered_measurements]
+    measurement_order = [item["bitstring"] for item in measurement_rows]
+    st.vega_lite_chart(
+        measurement_rows,
+        {
+            "height": 320,
+            "layer": [
+                {
+                    "mark": {"type": "bar"},
+                    "encoding": {
+                        "y": {
+                            "field": "bitstring",
+                            "type": "nominal",
+                            "sort": measurement_order,
+                            "title": "Returned grouping",
+                        },
+                        "x": {
+                            "field": "count",
+                            "type": "quantitative",
+                            "title": "Registered measurement count",
+                        },
+                        "color": {
+                            "field": "status",
+                            "type": "nominal",
+                            "scale": {
+                                "domain": ["Exact optimum", "Other grouping"],
+                                "range": ["#2a9d8f", "#6c83a6"],
+                            },
+                            "legend": None,
+                        },
+                        "tooltip": [
+                            {"field": "bitstring", "type": "nominal", "title": "Grouping"},
+                            {"field": "count", "type": "quantitative", "title": "Count"},
+                            {"field": "status", "type": "nominal", "title": "Exact check"},
+                        ],
+                    },
+                },
+                {
+                    "mark": {
+                        "type": "text",
+                        "align": "left",
+                        "dx": 6,
+                        "color": "#ffffff",
+                        "fontWeight": "bold",
+                    },
+                    "encoding": {
+                        "y": {
+                            "field": "bitstring",
+                            "type": "nominal",
+                            "sort": measurement_order,
+                        },
+                        "x": {"field": "zero", "type": "quantitative"},
+                        "text": {"field": "optimum_note"},
+                    },
+                },
+                {
+                    "mark": {"type": "text", "align": "left", "dx": 5, "color": "#ffffff"},
+                    "encoding": {
+                        "y": {
+                            "field": "bitstring",
+                            "type": "nominal",
+                            "sort": measurement_order,
+                        },
+                        "x": {"field": "count", "type": "quantitative"},
+                        "text": {"field": "count", "type": "quantitative"},
+                    },
+                },
+            ],
+        },
+        width="stretch",
+    )
+    st.caption(
+        "Each bar is one answer returned by the registered ideal simulation. These are the ten "
+        f"most frequent states, not all {view.registered_distinct_state_count} observed states. "
+        "Exact-optimum states are labelled so the simulated measurements can be checked against "
+        "the known answer. This is registered simulation evidence, not IBM hardware."
+    )
+    st.write(
+        "Many different groupings appeared, but the measurement weight was uneven. The next "
+        "comparison checks how much of it landed on the two known best groupings."
+    )
     st.subheader("How did the quantum method do?")
     st.markdown(
         "**Registered evidence · Local ideal simulation · Not quantum hardware · "
@@ -250,6 +340,14 @@ def render_guided_experiment(view: GuidedExperimentView) -> None:
         return
 
     st.subheader("What did every possible grouping score?")
+    st.write(
+        "Each of the eight variants can join either family, so there are "
+        "2 × 2 × 2 × 2 × 2 × 2 × 2 × 2 = 256 possible groupings."
+    )
+    st.info(
+        "Energy is this model's score for one possible grouping. Lower energy means a better "
+        "answer. The outlined cells mark the exact best groupings."
+    )
     _render_landscape(view)
 
     st.subheader("What is the exact answer?")
@@ -259,18 +357,24 @@ def render_guided_experiment(view: GuidedExperimentView) -> None:
     left.metric("Minimum energy", f"{float(exact['minimum_energy']):.6f}")
     middle.metric("Canonical split", str(exact["canonical_complement_class"]))
     right.metric("Assignments checked", str(exact["evaluated_assignments"]))
+    st.write(
+        "`00001111` has one digit for each tune variant. A `0` places that variant in one "
+        "family and a `1` places it in the other. `11110000` describes the same split with the "
+        "family labels exchanged."
+    )
     st.success(
         "Exhaustive enumeration is authoritative for this eight-variable fixture. The global "
         "bitwise complement denotes the same unlabeled partition."
     )
 
-    st.info(
-        "Because the exact answer is known, every quantum result below can be checked rather "
-        "than taken on trust."
-    )
-    _render_registered_comparison(view)
-
     st.subheader("How was the question turned into a model?")
+    st.write(
+        "To hand this question to a quantum method, it is rewritten in three steps. First, "
+        "each tune variant becomes a 0-or-1 choice. Second, any complete set of eight choices — "
+        "such as `00001111` — is one possible answer. Third, a score called energy says how "
+        "good that answer is; lower is better. The quantum circuit is built from that scored "
+        "problem."
+    )
     with st.expander("Technical model and QUBO"):
         st.write(result.fixture_description)
         st.write(
@@ -278,6 +382,12 @@ def render_guided_experiment(view: GuidedExperimentView) -> None:
             "0 and 1 are exchangeable family labels."
         )
         st.json({"parameters": result.parameters, "QUBO summary": result.qubo_summary})
+
+    st.info(
+        "Because the exact answer is known, every quantum result below can be checked rather "
+        "than taken on trust."
+    )
+    _render_registered_comparison(view)
 
     st.subheader("Want to run a small local quantum comparison?")
     st.caption(

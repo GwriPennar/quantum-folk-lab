@@ -90,6 +90,11 @@ def render_compact_experiment() -> None:
     )
 
     st.markdown("## First IBM hardware validation")
+    st.caption(
+        "Real quantum hardware is physically imperfect: gates and measurements sometimes "
+        "introduce small errors. That blurring of the ideal result is called noise. Noise is "
+        "one reason hardware and ideal simulation can differ."
+    )
     st.markdown("**Did the correct answer remain visible on real hardware?**")
     st.write(
         "One IBM hardware run tested whether the compact real-data result remained visible under "

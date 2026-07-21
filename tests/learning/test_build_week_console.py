@@ -37,7 +37,30 @@ def test_service_loads_without_streamlit_qiskit_or_openai_imports() -> None:
     assert view.result.exact_result["canonical_complement_class"] == "00001111"
     assert len(view.landscape.entries) == 256
     assert view.registered_qaoa.optimum_class_count == 2175
+    assert len(view.registered_measurements) == 10
+    assert view.registered_measurements[0].bitstring == "11110000"
+    assert view.registered_measurements[0].is_exact_optimum
+    assert view.registered_measurements[1].bitstring == "00001111"
+    assert view.registered_distinct_state_count > 10
     assert view.json_export().startswith(b"{")
+
+
+def test_registered_top_measurements_are_stable_and_non_mutating() -> None:
+    path = Path("apps/learning_console/services/build_week_service.py")
+    spec = importlib.util.spec_from_file_location("measurement_service_test", path)
+    assert spec and spec.loader
+    module = importlib.util.module_from_spec(spec)
+    sys.modules[spec.name] = module
+    spec.loader.exec_module(module)
+    counts = {"other-b": 3, "other-a": 3, "best": 8}
+    original = counts.copy()
+
+    rows = module.top_registered_measurements(counts, {"best"}, limit=3)
+
+    assert [row.bitstring for row in rows] == ["best", "other-a", "other-b"]
+    assert [row.is_exact_optimum for row in rows] == [True, False, False]
+    assert rows[0].chart_row()["optimum_note"] == "EXACT OPTIMUM"
+    assert counts == original
 
 
 def test_guided_experiment_256_reveal_journey_requires_no_openai_key(
@@ -90,6 +113,8 @@ def test_guided_experiment_256_reveal_journey_requires_no_openai_key(
         "What is the exact answer?",
         "How did the quantum method do?",
         "How was the question turned into a model?",
+        "What does the quantum method actually do?",
+        "What did 4,096 shots actually return?",
         "Can AI explain the result safely?",
         "256",
         "00001111",
@@ -108,10 +133,24 @@ def test_guided_experiment_256_reveal_journey_requires_no_openai_key(
         "found one of the best answers far more often than random guessing",
         "every quantum result below can be checked rather than taken on trust",
         "GPT-5.6 may explain the validated result",
+        "Energy is this model's score",
+        "Lower energy means a better answer",
+        "2 × 2 × 2 × 2 × 2 × 2 × 2 × 2 = 256",
+        "one digit for each tune variant",
+        "one shot",
+        "distribution of answers",
+        "registered ideal simulation",
+        "not IBM hardware",
     ):
         assert expected in rendered
     assert len(app.dataframe) >= 1
     assert any(expander.label == "Technical model and QUBO" for expander in app.expander)
+    source = Path("apps/learning_console/renderers/guided_experiment.py").read_text(
+        encoding="utf-8"
+    )
+    assert source.index('st.subheader("How was the question turned into a model?")') < source.index(
+        "_render_registered_comparison(view)"
+    )
 
 
 def test_foundation_tabs_follow_registry_and_render_without_execution() -> None:
@@ -200,6 +239,7 @@ def test_compact_experiment_presents_four_frozen_evidence_layers() -> None:
         "Replicated IBM hardware landscape",
         "Did real hardware preserve which circuit settings should perform better?",
         "Did a second, denser run reproduce the same pattern?",
+        "That blurring of the ideal result is called noise",
     ):
         assert expected in rendered
     metrics = {metric.label: metric.value for metric in app.metric}
