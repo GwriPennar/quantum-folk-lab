@@ -177,6 +177,9 @@ def test_guided_experiment_256_reveal_journey_requires_no_openai_key(
         "Exact split in named variants",
         "Check what you now understand",
         "Quantum computers are a different way to process a scored problem",
+        "1 · SCIENTIFIC AUTHORITY",
+        "2 · GOVERNED COMPARISON",
+        "3 · VALIDATED EXPLANATION",
     ):
         assert expected in rendered
     assert len(app.dataframe) >= 1
