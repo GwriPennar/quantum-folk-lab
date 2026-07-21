@@ -41,7 +41,7 @@ semantic:
 
 A **classical bit** is definitely 0 or 1. A **qubit** is described by amplitudes until you measure it.
 
-Do not tell beginners that a qubit is simply "both 0 and 1 at the same time". That hides the role of amplitudes, phase and measurement.
+Rather than picturing a qubit as simply "both 0 and 1 at the same time", think of it as a state described by amplitudes. Those amplitudes carry probability and phase information, and measurement produces one classical outcome.
 
 ```mermaid
 flowchart LR

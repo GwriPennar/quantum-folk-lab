@@ -190,6 +190,17 @@ def test_foundation_tabs_follow_registry_and_render_without_execution() -> None:
     assert not any(
         caption.value == "Optional detail — keep plain language first." for caption in app.caption
     )
+    assert any(expander.label == "View diagram source" for expander in app.expander)
+    source = Path("apps/learning_console/renderers/lesson_renderer.py").read_text(encoding="utf-8")
+    assert 'aria-label="Concept flow diagram"' in source
+
+
+def test_bits_and_qubits_uses_learner_facing_superposition_language() -> None:
+    lesson = Path("learn/lessons/bits-and-qubits.md").read_text(encoding="utf-8")
+    assert "Rather than picturing a qubit" in lesson
+    assert "amplitudes carry probability and phase information" in lesson
+    assert "measurement produces one classical outcome" in lesson
+    assert "Do not tell beginners" not in lesson
 
 
 def test_optional_qiskit_stays_button_gated() -> None:
